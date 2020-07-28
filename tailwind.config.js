@@ -35,9 +35,6 @@ module.exports = {
         default: '#099D0D',
       },
     },
-    fill: (theme) => ({
-      N: theme('northern'),
-    }),
     extend: {
       fontFamily: {
         sans: ['Itim', ...defaultTheme.fontFamily.sans],
@@ -56,5 +53,8 @@ module.exports = {
       'plugins/**/*.js',
       'nuxt.config.js',
     ],
+    options: {
+      whitelist: ['/^bg-/'],
+    }
   },
 }

@@ -54,7 +54,15 @@ module.exports = {
       'nuxt.config.js',
     ],
     options: {
-      whitelistPatterns: [/-eastern$/, /-northern$/, /-northwestern$/, /-southern$/, /-western$/, /-fareastern$/, /-central$/],
-    }
+      whitelistPatterns: [
+        /-eastern$/,
+        /-northern$/,
+        /-northwestern$/,
+        /-southern$/,
+        /-western$/,
+        /-fareastern$/,
+        /-central$/,
+      ],
+    },
   },
 }

@@ -86,6 +86,24 @@ export default {
       },
     ],
     'nuxt-webfontloader',
+    [
+      '@nuxtjs/firebase',
+      {
+        config: {
+          apiKey: process.env.BAGIT_FIREBASE_API_KEY,
+          authDomain: process.env.BAGIT_FIREBASE_AUTH_DOMAIN,
+          databaseURL: process.env.BAGIT_FIREBASE_DATABASE_URL,
+          projectId: process.env.BAGIT_FIREBASE_PROJECT_ID,
+          storageBucket: process.env.BAGIT_FIREBASE_STORAGE_BUCKET,
+          messagingSenderId: process.env.BAGIT_FIREBASE_MESSAGING_SENDER_ID,
+          appId: process.env.BAGIT_FIREBASE_APP_ID,
+          measurementId: process.env.BAGIT_FIREBASE_MEASUREMENT_ID,
+        },
+        services: {
+          firestore: true,
+        },
+      },
+    ],
   ],
   /*
    ** Axios module configuration

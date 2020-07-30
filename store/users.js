@@ -1,20 +1,23 @@
 export const state = () => ({
   users: [],
-  currentUser: 1,
+  user: {},
+  currentUser: '2bEUiSuz0Uk8CpGgY2Mk', // '2bEUiSuz0Uk8CpGgY2Mk'
 })
 export const mutations = {
   SET_USERS(state, users) {
     state.users = users
   },
-  SET_USER(state, { user }) {
-    state.users = { ...state.users, [user.id]: user.data() }
+  SET_USER(state, user) {
+    state.user = user
   },
 }
 export const actions = {
-  async get({ commit, state }) {
-    const userRef = this.$fireStore.collection('users')
-    const users = await userRef.get()
+  async fetchUser({ commit, state, rootState }, userId) {
+    if (Object.keys(state.user).length !== 0) return
 
-    users.forEach((user) => commit('SET_USER', { user }))
+    const userRef = this.$fireStore.collection('users').doc(userId)
+    const user = await userRef.get()
+
+    commit('SET_USER', user.data())
   },
 }

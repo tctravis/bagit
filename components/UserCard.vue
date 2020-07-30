@@ -5,7 +5,7 @@
     </div>
     <div class="p-2">
       <h2 class="text-3xl">{{ user.firstName }} {{ user.secondName }}</h2>
-      <p>Wainwrights climbed: {{ user.hillsClimbed.length }}</p>
+      <p>Wainwrights climbed: {{ user.hillsClimbed }}</p>
     </div>
   </div>
 </template>

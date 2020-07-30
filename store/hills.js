@@ -48,29 +48,30 @@ export const mutations = {
 
 export const actions = {
   fetchHills({ commit, state }) {
-    // add full name of each area to hills data
-    const hills = hillData.hills.map(function (hill) {
-      // find full area name from areas array in state
-      const o = Object.assign({}, hill)
+    if (state.hills.length === 0) {
+      // add full name of each area to hills data
+      const hills = hillData.hills.map(function (hill) {
+        // find full area name from areas array in state
+        const o = Object.assign({}, hill)
 
-      const fullAreaName = state.areas.find((el) => el.id === hill.area).name
-      o.areaName = fullAreaName
+        const fullAreaName = state.areas.find((el) => el.id === hill.area).name
+        o.areaName = fullAreaName
 
-      let heightRating = 0
-      const heightIncrement = (state.highestHill - state.lowestHill) / 3
+        let heightRating = 0
+        const heightIncrement = (state.highestHill - state.lowestHill) / 3
 
-      if (hill.height_m < state.lowestHill + heightIncrement) {
-        heightRating = 1
-      } else if (hill.height_m < state.lowestHill + heightIncrement * 2) {
-        heightRating = 2
-      } else {
-        heightRating = 3
-      }
+        if (hill.height_m < state.lowestHill + heightIncrement) {
+          heightRating = 1
+        } else if (hill.height_m < state.lowestHill + heightIncrement * 2) {
+          heightRating = 2
+        } else {
+          heightRating = 3
+        }
 
-      o.heightRating = heightRating
-      return o
-    })
-    commit('SET_HILLS', hills)
-    // commit('SET_HILLS_TOTAL', hills.length)
+        o.heightRating = heightRating
+        return o
+      })
+      commit('SET_HILLS', hills)
+    }
   },
 }

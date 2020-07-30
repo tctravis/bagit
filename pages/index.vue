@@ -1,6 +1,7 @@
 <template>
   <div>
-    <BasePageTitle>Log in</BasePageTitle>
+    <BasePageTitle>Welcome</BasePageTitle>
+    <nuxt-link to="/user/dashboard">Log In</nuxt-link>
   </div>
 </template>
 

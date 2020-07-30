@@ -7,7 +7,7 @@
       <span class="text-sm uppercase">{{ hill.areaName }}</span>
     </div>
     <div class="p-2">
-      <nuxt-link :to="{ name: 'Hill', params: { id: hill.id } }">
+      <nuxt-link :to="{ name: 'hills-id', params: { id: hill.id } }">
         <h2 class="text-3xl">{{ hill.name }}</h2>
       </nuxt-link>
       <font-awesome-icon
@@ -15,9 +15,11 @@
         :key="n"
         :icon="['fa', 'mountain']"
       />
+      <p v-if="hasClimbed">Well done, you've climbed this hill</p>
       <p>Altitude: {{ hill.height_m }}</p>
       <p>OS grid ref: {{ hill.os_grid_ref }}</p>
       <p>OS map: {{ hill.os_map }}</p>
+      <BaseButton button-class="bg-southern">Climbed Hill</BaseButton>
     </div>
   </div>
 </template>
@@ -28,6 +30,15 @@ export default {
     hill: {
       type: Object,
       required: true,
+    },
+    hillsClimbed: {
+      type: Array,
+      required: true,
+    },
+  },
+  computed: {
+    hasClimbed() {
+      return this.hillsClimbed.includes(this.hill.id)
     },
   },
 }

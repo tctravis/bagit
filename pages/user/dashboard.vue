@@ -12,13 +12,14 @@ export default {
   components: {
     UserCard,
   },
+  fetch() {
+    this.$store.dispatch('users/fetchUser', this.currentUser)
+  },
   computed: {
     ...mapState({
-      user: (state) => state.users.users[state.users.currentUser],
+      user: (state) => state.users.user,
+      currentUser: (state) => state.users.currentUser,
     }),
-  },
-  created() {
-    this.$store.dispatch('users/get')
   },
 }
 </script>

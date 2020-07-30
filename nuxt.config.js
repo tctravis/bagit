@@ -134,9 +134,12 @@ export default {
   },
   loading: {
     color: 'black',
-    height: '10px',
+    throttle: 0,
   },
   generate: {
     fallback: true,
+  },
+  env: {
+    currentUserId: process.env.CURRENT_USER_ID,
   },
 }

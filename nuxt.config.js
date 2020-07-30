@@ -132,4 +132,11 @@ export default {
       families: ['Itim'],
     },
   },
+  loading: {
+    color: 'black',
+    height: '10px',
+  },
+  generate: {
+    fallback: true,
+  },
 }

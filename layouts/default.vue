@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-12">
+  <div>
     <NavBar />
     <div class="container py-4">
       <Nuxt />

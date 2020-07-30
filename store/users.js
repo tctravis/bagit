@@ -11,17 +11,6 @@ export const mutations = {
   },
 }
 export const actions = {
-  //   async fetchUser({ commit }, userId) {
-  //     const ref = this.$fireStore.collection('users').doc(userId)
-  //     let snapshot
-  //     try {
-  //       snapshot = await ref.get()
-  //     } catch (e) {
-  //       // eslint-disable-next-line
-  //       console.log(e)
-  //     }
-  //     commit('SET_USER', snapshot.data())
-  //   },
   async get({ commit, state }) {
     const userRef = this.$fireStore.collection('users')
     const users = await userRef.get()

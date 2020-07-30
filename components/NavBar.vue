@@ -1,5 +1,5 @@
 <template>
-  <header class="bg-southern fixed left-0 right-0 top-0 h-12">
+  <header class="bg-southern left-0 right-0 top-0 h-12">
     <div class="container">
       <div class="flex flex-row justify-between py-2">
         <nuxt-link to="/">Bag It</nuxt-link>

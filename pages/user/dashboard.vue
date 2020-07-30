@@ -17,6 +17,9 @@ export default {
       user: (state) => state.users.users[state.users.currentUser],
     }),
   },
+  created() {
+    this.$store.dispatch('users/get')
+  },
 }
 </script>
 

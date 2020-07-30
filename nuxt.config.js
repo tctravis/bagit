@@ -142,4 +142,7 @@ export default {
   env: {
     currentUserId: process.env.CURRENT_USER_ID,
   },
+  router: {
+    middleware: ['hills', 'user']
+  }
 }

@@ -20,10 +20,10 @@ export default {
   components: {
     HillCard,
   },
-  async fetch() {
-    await this.$store.dispatch('users/fetchUser', process.env.currentUser)
-    await this.$store.dispatch('hills/fetchHills')
-  },
+  // async fetch() {
+  //   await this.$store.dispatch('users/fetchUser', process.env.currentUser)
+  //   //  await this.$store.dispatch('hills/fetchHills')
+  // },
   fetchOnServer: false,
   computed: {
     ...mapState({

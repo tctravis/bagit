@@ -19,9 +19,6 @@ export const mutations = {
 }
 export const actions = {
   async fetchUser({ commit, state, dispatch, rootState }, userId) {
-    if (!userId) {
-      // dispatch('loginRedirect')
-    }
     if (Object.keys(state.user).length !== 0 && state.currentUserId === userId)
       return
 
@@ -56,8 +53,8 @@ export const actions = {
     commit('CREATE_NEW_USER', newUser)
     commit('SET_CURRENT_USER', newUser.id)
   },
-  login({ commit, state, rootState }, credentials) {
-    this.$fireAuth
+  async login({ commit, state, dispatch, rootState }, credentials) {
+    await this.$fireAuth
       .signInWithEmailAndPassword(credentials.email, credentials.password)
       .catch(function (error) {
         // Handle Errors here.
@@ -65,6 +62,8 @@ export const actions = {
         const errorMessage = error.message
         console.log(errorCode, errorMessage)
       })
+
+    dispatch('loginRedirect')
   },
   async signOut({ commit, state, rootState }) {
     await this.$fireAuth.signOut().catch(function (error) {
@@ -78,7 +77,10 @@ export const actions = {
     commit('SET_USER', {})
   },
   logoutRedirect() {
-    this.$router.push({ path: 'user/login' })
+    this.$router.push({ path: '/user/login' })
+  },
+  loginRedirect() {
+    this.$router.push({ path: '/user/dashboard' })
   },
   onAuthStateChangedAction: (
     { state, commit, dispatch },

@@ -1,9 +1,5 @@
-export default function (context) {
-  if (!context.$fireAuth.currentUser) {
-    // context.store.dispatch('users/logoutRedirect')
+export default function ({ $fireAuth, route, redirect }) {
+  if ($fireAuth.currentUser === null && route.name !== 'user-login') {
+    return redirect('/user/login')
   }
-  //   return context.store.dispatch(
-  //     'users/fetchUser',
-  //     context.store.state.users.currentUserId
-  //   )
 }

@@ -101,6 +101,14 @@ export default {
         },
         services: {
           firestore: true,
+          // https://firebase.nuxtjs.org/guide/options/#auth
+          auth: {
+            initialize: {
+              // onAuthStateChangedMutation:
+              //   'users/ON_AUTH_STATE_CHANGED_MUTATION',
+              onAuthStateChangedAction: 'users/onAuthStateChangedAction',
+            },
+          },
         },
       },
     ],
@@ -143,6 +151,6 @@ export default {
     currentUserId: process.env.CURRENT_USER_ID,
   },
   router: {
-    middleware: ['hills', 'user']
-  }
+    middleware: ['hills', 'user'],
+  },
 }

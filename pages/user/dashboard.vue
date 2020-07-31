@@ -12,9 +12,6 @@ export default {
   components: {
     UserCard,
   },
-  fetch() {
-    this.$store.dispatch('users/fetchUser', this.currentUser)
-  },
   computed: {
     ...mapState({
       user: (state) => state.users.user,

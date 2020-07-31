@@ -19,8 +19,7 @@ export const mutations = {
 }
 export const actions = {
   async fetchUser({ commit, state, dispatch, rootState }, userId) {
-    if (Object.keys(state.user).length !== 0 && state.currentUserId === userId)
-      return
+    if (state.user.email === '' && state.currentUserId === userId) return
 
     const userRef = this.$fireStore.collection('users').doc(userId)
     const user = await userRef.get()

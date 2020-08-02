@@ -1,5 +1,5 @@
 <template>
-  <div class="border ml-2 mb-2">
+  <div class="border mr-2 mb-2 w-full">
     <div
       class="p-2"
       :class="('bg-' + hill.areaName) | removeSpaces | lowercase"

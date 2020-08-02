@@ -1,6 +1,8 @@
 export const state = () => ({
   users: [],
-  user: {},
+  user: {
+    hillsClimbed: [],
+  },
   currentUserId: '',
 })
 export const mutations = {
@@ -76,10 +78,14 @@ export const actions = {
     commit('SET_USER', {})
   },
   logoutRedirect() {
-    this.$router.push({ path: '/user/login' })
+    this.$router.push({
+      path: '/user/login',
+    })
   },
   loginRedirect() {
-    this.$router.push({ path: '/user/dashboard' })
+    this.$router.push({
+      path: '/user/dashboard',
+    })
   },
   onAuthStateChangedAction: (
     { state, commit, dispatch },

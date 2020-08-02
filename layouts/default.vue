@@ -1,7 +1,7 @@
 <template>
   <div>
     <NavBar />
-    <div class="container py-4">
+    <div class="container py-16">
       <Nuxt />
     </div>
     <Footer />

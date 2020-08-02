@@ -72,6 +72,15 @@ export const actions = {
         return o
       })
       commit('SET_HILLS', hills)
+      return hills
     }
+  },
+}
+export const getters = {
+  getHills(state) {
+    return state.hills
+  },
+  getHillById: (state) => (id) => {
+    return state.hills.find((hill) => parseInt(hill.id) === parseInt(id))
   },
 }

@@ -13,6 +13,12 @@ module.exports = {
       padding: '2rem',
     },
     colors: {
+      white: {
+        default: '#ffffff',
+      },
+      grey: {
+        default: '#cccccc',
+      },
       fareastern: {
         default: '#DA0808',
       },

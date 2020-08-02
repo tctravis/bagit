@@ -1,9 +1,19 @@
 <template>
   <div>
-    <BasePageTitle>Hills list</BasePageTitle>
+    <BasePageTitle>Wainwrights</BasePageTitle>
+    <div class="flex flex-row items-center py-2">
+      <label for="hills-search-filter" class="mr-2">Fell name:</label>
+      <input
+        class="border-eastern border-2 rounded p-1 flex-grow"
+        type="text"
+        v-model="search"
+        id="hills-search-filter"
+        placeholder="Search by fell name"
+      />
+    </div>
     <div class="flex flex-wrap">
-      <HillCard
-        v-for="hill in hills"
+      <HillListItem
+        v-for="hill in filteredHills"
         :key="hill.rank"
         :hill="hill"
         :hills-climbed="user.hillsClimbed"
@@ -14,19 +24,28 @@
 
 <script>
 import { mapState } from 'vuex'
-import HillCard from '@/components/HillCard.vue'
+import HillListItem from '@/components/HillListItem.vue'
 
 export default {
   components: {
-    HillCard,
+    HillListItem,
   },
-  fetchOnServer: false,
+  data() {
+    return {
+      search: '',
+    }
+  },
   computed: {
     ...mapState({
       hills: (state) => state.hills.hills,
       currentUser: (state) => state.users.currentUser,
       user: (state) => state.users.user,
     }),
+    filteredHills() {
+      return this.hills.filter((hill) => {
+        return hill.name.toLowerCase().includes(this.search.toLowerCase())
+      })
+    },
   },
 }
 </script>

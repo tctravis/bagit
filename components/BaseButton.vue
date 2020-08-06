@@ -2,11 +2,14 @@
   <div>
     <button
       v-bind="$attrs"
-      class="py-1 px-2 rounded-sm"
+      class="py-1 px-2 rounded flex flex-row"
       :class="buttonClass"
       v-on="$listeners"
     >
       <slot />
+      <div v-if="faIconClass != ''">
+        <font-awesome-icon :icon="['fa', faIconClass]" class="ml-2" />
+      </div>
     </button>
   </div>
 </template>
@@ -17,6 +20,10 @@ export default {
   props: {
     buttonClass: {
       type: String,
+    },
+    faIconClass: {
+      type: String,
+      default: '',
     },
   },
 }

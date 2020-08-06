@@ -1,6 +1,6 @@
 <template>
   <footer
-    class="bg-northwestern fixed left-0 right-0 bottom-0 h-12 flex flex-row items-center"
+    class="bg-darkgrey text-white fixed left-0 right-0 bottom-0 h-12 flex flex-row items-center"
   >
     <div class="container">
       <div class="flex flex-row justify-end">

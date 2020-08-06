@@ -16,8 +16,14 @@ module.exports = {
       white: {
         default: '#ffffff',
       },
+      lightgrey: {
+        default: '#eeeeee',
+      },
       grey: {
         default: '#cccccc',
+      },
+      darkgrey: {
+        default: '#333333',
       },
       fareastern: {
         default: '#DA0808',
@@ -40,6 +46,13 @@ module.exports = {
       western: {
         default: '#099D0D',
       },
+    },
+    screens: {
+      'xsm': '400px',
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
     },
     extend: {
       fontFamily: {

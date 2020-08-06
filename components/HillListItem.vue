@@ -11,11 +11,18 @@
       <h3 class="text-lg text-left mx-2" :class="hasClimbed ? 'text-grey' : ''">
         {{ hill.name }}
       </h3>
-      <font-awesome-icon
-        :icon="['fa', 'check']"
-        class="ml-auto"
-        :class="hasClimbed ? 'text-grey' : ''"
-      />
+      <template v-if="hasClimbed">
+        <font-awesome-icon
+          :icon="['fa', 'check']"
+          class="ml-auto"
+          :class="hasClimbed ? 'text-grey' : ''"
+        />
+      </template>
+      <template v-if="!hasClimbed">
+        <BaseButton class="ml-auto" :buttonClass="'bg-' + hill.areaClassName"
+          >Bag it</BaseButton
+        >
+      </template>
     </nuxt-link>
   </div>
 </template>

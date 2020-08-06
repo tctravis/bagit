@@ -1,16 +1,13 @@
 <template>
   <div>
-    <BasePageTitle>Wainwrights</BasePageTitle>
-    <div class="flex flex-row items-center py-2">
-      <label for="hills-search-filter" class="mr-2">Fell name:</label>
-      <input
-        class="border-eastern border-2 rounded p-1 flex-grow"
-        type="text"
-        v-model="search"
-        id="hills-search-filter"
-        placeholder="Search by fell name"
-      />
-    </div>
+    <BasePageTitle><template v-slot:title>Fell list</template></BasePageTitle>
+    <BaseInput
+      id="hills-search-filter"
+      v-model="search"
+      label="Fell name:"
+      type="text"
+      placeholder="Search by fell name"
+    />
     <div class="flex flex-wrap">
       <HillListItem
         v-for="hill in filteredHills"

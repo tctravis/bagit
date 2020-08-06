@@ -1,10 +1,10 @@
+/* eslint-disable */
 import hillData from '@/static/wainwrights.json'
 
 export const state = () => ({
   hills: [],
   hill: {},
-  areas: [
-    {
+  areas: [{
       id: 'N',
       name: 'Northern',
     },
@@ -35,6 +35,7 @@ export const state = () => ({
   ],
   highestHill: 978,
   lowestHill: 290,
+  maxHeightRating: 5,
 })
 
 export const mutations = {
@@ -47,7 +48,10 @@ export const mutations = {
 }
 
 export const actions = {
-  fetchHills({ commit, state }) {
+  fetchHills({
+    commit,
+    state
+  }) {
     if (state.hills.length === 0) {
       // add full name of each area to hills data
       const hills = hillData.hills.map(function (hill) {
@@ -57,15 +61,16 @@ export const actions = {
         const fullAreaName = state.areas.find((el) => el.id === hill.area).name
         o.areaName = fullAreaName
 
-        let heightRating = 0
-        const heightIncrement = (state.highestHill - state.lowestHill) / 3
+        o.areaClassName = fullAreaName.toLowerCase().replace(/ /g, '')
 
-        if (hill.height_m < state.lowestHill + heightIncrement) {
-          heightRating = 1
-        } else if (hill.height_m < state.lowestHill + heightIncrement * 2) {
-          heightRating = 2
-        } else {
-          heightRating = 3
+        let heightRating = 0
+        const heightIncrement = Math.ceil((state.highestHill - state.lowestHill) / state.maxHeightRating)
+
+        for (let i = 1; i <= state.maxHeightRating; i++) {
+          if (hill.height_m < (state.lowestHill + (heightIncrement * i))) {
+            heightRating = i
+            break
+          }
         }
 
         o.heightRating = heightRating

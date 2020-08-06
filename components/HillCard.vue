@@ -10,10 +10,10 @@
       <nuxt-link :to="{ name: 'hills-id', params: { id: hill.id } }">
         <h2 class="text-3xl">{{ hill.name }}</h2>
       </nuxt-link>
-      <font-awesome-icon
-        v-for="n in hill.heightRating"
-        :key="n"
-        :icon="['fa', 'mountain']"
+
+      <HeightRating
+        :heightRating="hill.heightRating"
+        :areaClassName="hill.areaClassName"
       />
       <p v-if="hasClimbed">Well done, you've climbed this hill</p>
       <p>Altitude: {{ hill.height_m }}</p>
@@ -25,7 +25,11 @@
 </template>
 
 <script>
+import HeightRating from '@/components/HeightRating.vue'
 export default {
+  components: {
+    HeightRating,
+  },
   props: {
     hill: {
       type: Object,

@@ -1,6 +1,8 @@
 <template>
   <div>
-    <BasePageTitle>Edit profile</BasePageTitle>
+    <BasePageTitle
+      ><template v-slot:title>Edit profile</template></BasePageTitle
+    >
   </div>
 </template>
 

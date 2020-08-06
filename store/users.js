@@ -1,3 +1,4 @@
+/* eslint-disable */
 export const state = () => ({
   users: [],
   user: {
@@ -20,7 +21,12 @@ export const mutations = {
   },
 }
 export const actions = {
-  async fetchUser({ commit, state, dispatch, rootState }, userId) {
+  async fetchUser({
+    commit,
+    state,
+    dispatch,
+    rootState
+  }, userId) {
     if (state.user.email === '' && state.currentUserId === userId) return
 
     const userRef = this.$fireStore.collection('users').doc(userId)
@@ -28,14 +34,19 @@ export const actions = {
 
     commit('SET_USER', user.data())
   },
-  async register({ commit, state, rootState }, credentials) {
+  async register({
+    commit,
+    state,
+    rootState,
+    dispatch
+  }, credentials) {
     const authUser = await this.$fireAuth
       .createUserWithEmailAndPassword(credentials.email, credentials.password)
-      .catch(function (error) {
-        // Handle Errors here.
-        const errorCode = error.code
-        const errorMessage = error.message
-        console.log(errorCode, errorMessage)
+      .catch(function (e) {
+        error({
+          statusCode: e.code,
+          message: e.message
+        })
       })
 
     const newUser = {
@@ -53,29 +64,42 @@ export const actions = {
 
     commit('CREATE_NEW_USER', newUser)
     commit('SET_CURRENT_USER', newUser.id)
+
+    dispatch('loginRedirect')
   },
-  async login({ commit, state, dispatch, rootState }, credentials) {
+  async login({
+    commit,
+    state,
+    dispatch,
+    rootState
+  }, credentials) {
     await this.$fireAuth
       .signInWithEmailAndPassword(credentials.email, credentials.password)
-      .catch(function (error) {
-        // Handle Errors here.
-        const errorCode = error.code
-        const errorMessage = error.message
-        console.log(errorCode, errorMessage)
+      .catch(function (e) {
+        error({
+          statusCode: e.code,
+          message: e.message
+        })
       })
 
     dispatch('loginRedirect')
   },
-  async signOut({ commit, state, rootState }) {
-    await this.$fireAuth.signOut().catch(function (error) {
-      // Handle Errors here.
-      const errorCode = error.code
-      const errorMessage = error.message
-      console.log(errorCode, errorMessage)
+  async signOut({
+    commit,
+    state,
+    rootState
+  }) {
+    await this.$fireAuth.signOut().catch(function (e) {
+      error({
+        statusCode: e.code,
+        message: e.message
+      })
     })
 
     commit('SET_CURRENT_USER', '')
-    commit('SET_USER', {})
+    commit('SET_USER', {
+      hillsClimbed: [],
+    })
   },
   logoutRedirect() {
     this.$router.push({
@@ -87,16 +111,16 @@ export const actions = {
       path: '/user/dashboard',
     })
   },
-  onAuthStateChangedAction: (
-    { state, commit, dispatch },
-    { authUser, claims }
-  ) => {
+  onAuthStateChangedAction: ({
+    state,
+    commit,
+    dispatch
+  }, {
+    authUser,
+    claims
+  }) => {
     if (!authUser) {
-      // console.log(router)
       dispatch('logoutRedirect')
-      // this.$router.push({ path: '/' })
-      // claims = null
-
       // Perform logout operations
     } else {
       commit('SET_CURRENT_USER', authUser.uid)

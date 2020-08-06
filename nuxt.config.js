@@ -148,4 +148,7 @@ export default {
   router: {
     middleware: ['hills', 'user'],
   },
+  tailwindcss: {
+    exposeConfig: true
+  }
 }

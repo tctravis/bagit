@@ -1,7 +1,12 @@
 <template>
   <div>
-    <BasePageTitle>Dashboard</BasePageTitle>
+    <BasePageTitle
+      ><template v-slot:title>Your progress</template></BasePageTitle
+    >
     <UserCard :user="user" />
+    <h3>Your progress</h3>
+    <h3>Latest bags</h3>
+    <h3>Wishlist</h3>
   </div>
 </template>
 

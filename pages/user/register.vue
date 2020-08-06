@@ -1,53 +1,29 @@
 <template>
   <div>
+    <BasePageTitle><template v-slot:title>Register</template></BasePageTitle>
     <form @submit.prevent="register">
-      <label for="firstName">
-        First Name:
-      </label>
-      <input
+      <BaseInput
+        id="firstName"
         v-model="firstName"
-        class="w-full border"
+        label="First Name:"
         type="text"
-        name="firstName"
-        value
       />
-
-      <label for="secondName">
-        Second Name:
-      </label>
-      <input
+      <BaseInput
+        id="secondName"
         v-model="secondName"
-        class="w-full border"
+        label="Second Name:"
         type="text"
-        name="secondName"
-        value
       />
-
-      <label for="email">
-        Email:
-      </label>
-      <input
-        v-model="email"
-        class="w-full border"
-        type="email"
-        name="email"
-        value
-      />
-
-      <label for="password">
-        Password:
-      </label>
-      <input
+      <BaseInput id="email" v-model="email" label="Email:" type="email" />
+      <BaseInput
+        id="password"
         v-model="password"
-        class="w-full border"
+        label="Password:"
         type="password"
-        name
-        value
       />
-
-      <button type="submit" name="button" class="bg-southern my-2">
-        Register
-      </button>
+      <BaseButton type="submit" button-class="bg-northwestern"
+        >Register</BaseButton
+      >
     </form>
   </div>
 </template>

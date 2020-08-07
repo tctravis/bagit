@@ -1,8 +1,8 @@
 <template>
   <transition name="fade">
     <div
-      class="fixed top-0 left-0 right-0 bottom-0 overflow-y-auto overflow-x-hidden z-10"
       v-if="show"
+      class="fixed top-0 left-0 right-0 bottom-0 overflow-y-auto overflow-x-hidden z-10"
     >
       <div
         class="fixed w-full h-full bg-grey opacity-50 z-1"
@@ -15,9 +15,9 @@
         <div class="p-2 flex flex-row justify-between items-center">
           <slot name="header" />
           <BaseButton
-            @click="closeModal()"
             fa-icon-class="window-close"
             button-class="cursor-pointer"
+            @click="closeModal()"
             >Close</BaseButton
           >
         </div>

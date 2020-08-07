@@ -5,6 +5,7 @@
     >
     <UserCard :user="user" />
     <h3>Your progress</h3>
+    <BaggedList :bags="user.bags" />
     <h3>Latest bags</h3>
     <h3>Wishlist</h3>
   </div>
@@ -13,6 +14,7 @@
 <script>
 import { mapState } from 'vuex'
 import UserCard from '@/components/UserCard.vue'
+import BaggedList from '@/components/BaggedList.vue'
 export default {
   components: {
     UserCard,

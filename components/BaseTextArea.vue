@@ -1,8 +1,8 @@
 <template>
-  <BaseFieldGroup :label="label" :field-id="fieldId">
+  <BaseFieldGroup :label="label" :field-id="fieldId" class="items-start">
     <template v-slot:field>
-      <input
-        class="border-eastern border-2 rounded p-1 flex-grow"
+      <textarea
+        class="w-full border-eastern border-2 rounded p-2"
         :value="value"
         v-bind="$attrs"
         @input="updateValue"

@@ -19,7 +19,7 @@
         />
       </template>
       <template v-if="!hasClimbed">
-        <BaseButton class="ml-auto" :buttonClass="'bg-' + hill.areaClassName"
+        <BaseButton class="ml-auto" :button-class="'bg-' + hill.areaClassName"
           >Bag it</BaseButton
         >
       </template>

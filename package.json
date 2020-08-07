@@ -16,10 +16,14 @@
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@nuxtjs/axios": "^5.11.0",
     "@nuxtjs/firebase": "^6.1.1",
+    "@nuxtjs/moment": "^1.6.1",
+    "@sum.cumo/vue-datepicker": "^2.1.0",
     "firebase": "^7.17.1",
     "nuxt": "^2.13.0",
     "nuxt-fontawesome": "^0.4.0",
-    "nuxt-global-base-components": "^0.1.6"
+    "nuxt-global-base-components": "^0.1.6",
+    "vuejs-datepicker": "^1.6.2",
+    "vuelidate": "^0.7.5"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^3.0.0",

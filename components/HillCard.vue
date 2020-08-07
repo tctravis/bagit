@@ -12,8 +12,8 @@
       </nuxt-link>
 
       <HeightRating
-        :heightRating="hill.heightRating"
-        :areaClassName="hill.areaClassName"
+        :height-rating="hill.heightRating"
+        :area-class-name="hill.areaClassName"
       />
       <p v-if="hasClimbed">Well done, you've climbed this hill</p>
       <p>Altitude: {{ hill.height_m }}</p>

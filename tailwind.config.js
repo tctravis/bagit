@@ -48,11 +48,11 @@ module.exports = {
       },
     },
     screens: {
-      'xsm': '400px',
-      'sm': '640px',
-      'md': '768px',
-      'lg': '1024px',
-      'xl': '1280px',
+      xsm: '400px',
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
     },
     extend: {
       fontFamily: {
@@ -60,7 +60,9 @@ module.exports = {
       },
     },
   },
-  variants: {},
+  variants: {
+    opacity: ['disabled'],
+  },
   plugins: [],
   purge: {
     // Learn more on https://tailwindcss.com/docs/controlling-file-size/#removing-unused-css

@@ -42,7 +42,7 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: ['~/plugins/filters.js'],
+  plugins: ['~/plugins/filters.js', '~/plugins/vuelidate.js'],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -56,6 +56,7 @@ export default {
     // '@nuxtjs/eslint-module',
     // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/moment',
   ],
   /*
    ** Nuxt.js modules
@@ -149,6 +150,6 @@ export default {
     middleware: ['hills', 'user'],
   },
   tailwindcss: {
-    exposeConfig: true
-  }
+    exposeConfig: true,
+  },
 }

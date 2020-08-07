@@ -2,7 +2,7 @@
   <div>
     <button
       v-bind="$attrs"
-      class="py-1 px-2 rounded flex flex-row"
+      class="py-1 px-2 rounded flex flex-row disabled:opacity-50"
       :class="buttonClass"
       v-on="$listeners"
     >

@@ -1,20 +1,35 @@
 <template>
   <BaseFieldGroup :label="label" :field-id="fieldId">
     <template v-slot:field>
-      <input
-        class="border-eastern border-2 rounded p-1 flex-grow"
+      <select
         :value="value"
         v-bind="$attrs"
-        @input="updateValue"
-      />
+        class="w-full border-2 border-eastern p-2 rounded"
+        @change="updateValue"
+      >
+        <option
+          v-for="option in options"
+          :key="option"
+          :selected="option === value"
+          :value="option"
+        >
+          {{ option }}
+        </option>
+      </select>
     </template>
   </BaseFieldGroup>
 </template>
-
 <script>
 export default {
   inheritAttrs: false,
   props: {
+    selectClass: {
+      type: String,
+    },
+    options: {
+      type: Array,
+      required: true,
+    },
     value: [String, Number],
     label: String,
   },
@@ -30,5 +45,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss" scoped></style>

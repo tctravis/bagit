@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full">
+  <div class="w-full" :class="hasClimbed ? 'opacity-25' : ''">
     <nuxt-link
       class="flex flex-row justify-start items-center py-2"
       :to="{ name: 'hills-id', params: { id: hill.id } }"
@@ -8,15 +8,11 @@
         :area="hill.area"
         :class="('bg-' + hill.areaName) | removeSpaces | lowercase"
       />
-      <h3 class="text-lg text-left mx-2" :class="hasClimbed ? 'text-grey' : ''">
+      <h3 class="text-lg text-left mx-2">
         {{ hill.name }}
       </h3>
       <template v-if="hasClimbed">
-        <font-awesome-icon
-          :icon="['fa', 'check']"
-          class="ml-auto"
-          :class="hasClimbed ? 'text-grey' : ''"
-        />
+        <font-awesome-icon :icon="['fa', 'check']" class="ml-auto" />
       </template>
       <template v-if="!hasClimbed">
         <BaseButton class="ml-auto" :button-class="'bg-' + hill.areaClassName"

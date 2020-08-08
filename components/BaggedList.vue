@@ -1,17 +1,20 @@
 <template>
   <div>
-    <h2>Bagged List</h2>
     <template v-if="bags.length > 0">
-      <div v-for="bag in bags" :key="bag.hill_id" class="w-full">
-        <nuxt-link
-          class="flex flex-row justify-start items-center py-2"
-          :to="{ name: 'hills-id', params: { id: bag.hill_id } }"
-        >
-          <h3 class="text-lg text-left mx-2">
+      <div
+        v-for="(bag, index) in bags"
+        :key="index"
+        class="w-full flex flex-row justify-between items-center"
+      >
+        <h3>
+          <nuxt-link
+            class="flex flex-row justify-start items-center py-2"
+            :to="{ name: 'hills-id', params: { id: bag.hill_id } }"
+          >
             {{ bag.hill_name }}
-          </h3>
-          <p>{{ $moment(bag.date.toDate()).format('D M YY') }}</p>
-        </nuxt-link>
+          </nuxt-link>
+        </h3>
+        <span>{{ $moment(bag.date).format('DD MM YY') }}</span>
       </div>
     </template>
     <template v-if="bags.length === 0">

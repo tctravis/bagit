@@ -1,5 +1,7 @@
 <template>
-  <div class="rounded-full w-8 h-8 text-white flex items-center justify-center">
+  <div
+    class="rounded-full w-8 h-8 text-white flex items-center justify-center flex-shrink-0"
+  >
     <span>{{ area }}</span>
   </div>
 </template>

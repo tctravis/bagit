@@ -34,20 +34,26 @@ export const actions = {
     dispatch,
     rootState
   }, userId) {
-    if (state.user.email === '' && state.currentUserId === userId) return
+    if (state.user.email !== undefined && state.currentUserId === userId) return
+    // if (state.currentUserId !== undefined) return
 
     const userRef = this.$fireStore.collection('users').doc(userId)
-    const user = await userRef.get()
+    let user = await userRef.get()
     commit('SET_USER', user.data())
 
-    let bags = []
-    await userRef.collection('bags').get().then(function (querySnapshot) {
-      querySnapshot.forEach(function (doc) {
-        bags.push(doc.data())
+    const bags = []
+    let bagsRef = userRef.collection('bags')
+    await bagsRef.orderBy('date').get().then(function (querySnapshot) {
+      querySnapshot.forEach(function (bag) {
+        let newBag = bag.data()
+        //covert firestore timestamp to date
+        newBag.date = newBag.date.toDate()
+        bags.push(newBag)
       });
+      commit('SET_USER_BAGS', bags)
     });
 
-    commit('SET_USER_BAGS', bags)
+
   },
   async register({
     commit,

@@ -6,11 +6,12 @@
         :key="index"
         class="w-full flex flex-row justify-between items-center"
       >
+        <!-- <AreaIcon
+          :area="bag.area"
+          :class="('bg-' + bag.areaName) | removeSpaces | lowercase"
+        /> -->
         <h3>
-          <nuxt-link
-            class="flex flex-row justify-start items-center py-2"
-            :to="{ name: 'hills-id', params: { id: bag.hill_id } }"
-          >
+          <nuxt-link :to="{ name: 'hills-id', params: { id: bag.hill_id } }">
             {{ bag.hill_name }}
           </nuxt-link>
         </h3>
@@ -24,7 +25,11 @@
 </template>
 
 <script>
+// import AreaIcon from '@/components/AreaIcon.vue'
 export default {
+  // components: {
+  //   AreaIcon,
+  // },
   props: {
     bags: {
       type: Array,

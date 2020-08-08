@@ -66,6 +66,8 @@ export default {
         comments: this.bag.comments,
         hill_id: this.hill.id,
         hill_name: this.hill.name,
+        area: this.hill.area,
+        areaName: this.hill.areaName,
         rating: this.bag.rating,
       })
       this.bagged = true

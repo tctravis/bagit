@@ -103,7 +103,6 @@ export const actions = {
     commit,
     state,
     dispatch,
-    rootState
   }, credentials) {
     await this.$fireAuth
       .signInWithEmailAndPassword(credentials.email, credentials.password)

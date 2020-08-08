@@ -3,19 +3,17 @@
     <BasePageTitle
       ><template v-slot:title>Your progress</template></BasePageTitle
     >
-    <UserCard :user="user" />
-    <h2 class="text-2xl">Latest Bags</h2>
+    <h2 class="text-2xl">Your Bags</h2>
     <BaggedList :bags="user.bags" />
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import UserCard from '@/components/UserCard.vue'
 import BaggedList from '@/components/BaggedList.vue'
 export default {
   components: {
-    UserCard,
+    BaggedList,
   },
   computed: {
     ...mapState({

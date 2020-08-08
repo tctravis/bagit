@@ -2,7 +2,7 @@
 export const state = () => ({
   users: [],
   user: {
-    hillsClimbed: [],
+    hillsBagged: [],
     bags: []
   },
   currentUserId: '',
@@ -17,14 +17,18 @@ export const mutations = {
   SET_USER_BAGS(state, bags) {
     state.user.bags = bags
   },
-  CREATE_NEW_USER(state, user) {
+  ADD_NEW_USER(state, user) {
     state.user = user
   },
   SET_CURRENT_USER(state, userId) {
     state.currentUserId = userId
   },
-  CREATE_NEW_BAG(state, bag) {
+  SET_HILLS_BAGGED(state, hillsBagged) {
+    state.user.hillsBagged = hillsBagged
+  },
+  ADD_NEW_BAG(state, bag) {
     state.user.bags.push(bag)
+    state.user.hillsBagged.push(bag.hill_id)
   },
 }
 export const actions = {
@@ -43,7 +47,7 @@ export const actions = {
 
     const bags = []
     let bagsRef = userRef.collection('bags')
-    await bagsRef.orderBy('date').get().then(function (querySnapshot) {
+    await bagsRef.orderBy('date', 'desc').get().then(function (querySnapshot) {
       querySnapshot.forEach(function (bag) {
         let newBag = bag.data()
         //covert firestore timestamp to date
@@ -51,6 +55,9 @@ export const actions = {
         bags.push(newBag)
       });
       commit('SET_USER_BAGS', bags)
+
+      const hillsBagged = bags.map(bag => bag.hill_id)
+      commit('SET_HILLS_BAGGED', hillsBagged)
     });
 
 
@@ -75,7 +82,7 @@ export const actions = {
       email: authUser.user.email,
       firstName: credentials.firstName,
       secondName: credentials.secondName,
-      hillsClimbed: [],
+      hillsBagged: [],
       bags: []
     }
 
@@ -87,7 +94,7 @@ export const actions = {
       })
     })
 
-    commit('CREATE_NEW_USER', newUser)
+    commit('ADD_NEW_USER', newUser)
     commit('SET_CURRENT_USER', newUser.id)
 
     dispatch('loginRedirect')
@@ -149,7 +156,7 @@ export const actions = {
       // Perform logout operations
     } else {
       commit('SET_CURRENT_USER', authUser.uid)
-      dispatch('fetchUser', state.currentUserId)
+      // dispatch('fetchUser', state.currentUserId)
     }
   },
   async createNewBag({
@@ -159,7 +166,7 @@ export const actions = {
   }, bag) {
     const userRef = this.$fireStore.collection('users').doc(state.currentUserId).collection('bags')
     return await userRef.add(bag).then(function () {
-      commit('CREATE_NEW_BAG', bag)
+      commit('ADD_NEW_BAG', bag)
     }).catch(function (e) {
       error({
         statusCode: e.code,

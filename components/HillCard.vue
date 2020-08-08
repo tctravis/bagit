@@ -15,7 +15,7 @@
         :height-rating="hill.heightRating"
         :area-class-name="hill.areaClassName"
       />
-      <p v-if="hasClimbed">Well done, you've climbed this hill</p>
+      <p v-if="hasBagged">Well done, you've climbed this hill</p>
       <p>Altitude: {{ hill.height_m }}</p>
       <p>OS grid ref: {{ hill.os_grid_ref }}</p>
       <p>OS map: {{ hill.os_map }}</p>
@@ -35,14 +35,14 @@ export default {
       type: Object,
       required: true,
     },
-    hillsClimbed: {
+    hillsBagged: {
       type: Array,
       required: true,
     },
   },
   computed: {
-    hasClimbed() {
-      return this.hillsClimbed.includes(this.hill.id)
+    hasBagged() {
+      return this.hillsBagged.includes(this.hill.id)
     },
   },
 }

@@ -13,7 +13,7 @@
         v-for="hill in filteredHills"
         :key="hill.rank"
         :hill="hill"
-        :hills-climbed="user.hillsClimbed"
+        :hills-bagged="user.hillsBagged"
       />
     </div>
   </div>

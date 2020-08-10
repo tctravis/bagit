@@ -3,8 +3,8 @@
     <BasePageTitle
       ><template v-slot:title>Your progress</template></BasePageTitle
     >
-    <h2 class="text-2xl">Your Bags</h2>
-    <BaggedList :bags="hillsBagged" />
+    <h2 class="text-2xl mb-2">Your Latest Bags</h2>
+    <BaggedList :bags="hillsBaggedDesc" />
   </div>
 </template>
 
@@ -20,14 +20,13 @@ export default {
       user: (state) => state.users.user,
       currentUser: (state) => state.users.currentUser,
     }),
-    hillsBagged() {
-      let hillsBagged = this.user.bags
-      hillsBagged.sort(function (a, b) {
-        if (a.date > b.date) return -1
-        if (a.date < b.date) return 1
-        return 0
+    hillsBaggedDesc() {
+      let hillsBaggedDesc = this.user.bags
+      hillsBaggedDesc.sort(function (a, b) {
+        if (a.date < b.date) return -1
+        if (a.date > b.date) return 1
       })
-      return hillsBagged
+      return hillsBaggedDesc
     },
   },
 }

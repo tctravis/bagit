@@ -68,6 +68,7 @@ export default {
         hill_name: this.hill.name,
         area: this.hill.area,
         areaName: this.hill.areaName,
+        areaClassName: this.hill.areaClassName,
         rating: this.bag.rating,
       })
       this.bagged = true

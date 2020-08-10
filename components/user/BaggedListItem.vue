@@ -29,14 +29,15 @@
       </p>
       <div>
         <BaseRating
+          v-if="bag.rating"
           :rating-out-of="5"
           :rating="parseInt(bag.rating)"
           :area-class-name="bag.areaClassName"
         />
-        <p class="ml-auto">{{ bag.comments }}</p>
+        <p v-if="bag.comments" class="ml-auto mb-2">{{ bag.comments }}</p>
         <nuxt-link
           :to="{ name: 'hills-id', params: { id: bag.hill_id } }"
-          class="block mt-2 underline text-northern hover:text-central"
+          class="block underline text-northern hover:text-central"
         >
           {{ bag.hill_name }} info
         </nuxt-link>

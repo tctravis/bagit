@@ -3,6 +3,7 @@
     <BasePageTitle
       ><template v-slot:title>Your progress</template></BasePageTitle
     >
+    <OverallProgressChart :bags="user.bags" class="mb-6" />
     <h2 class="text-2xl mb-2">Your Latest Bags</h2>
     <BaggedList :bags="hillsBaggedDesc" />
   </div>
@@ -11,9 +12,11 @@
 <script>
 import { mapState } from 'vuex'
 import BaggedList from '@/components/BaggedList.vue'
+import OverallProgressChart from '@/components/user/OverallProgressChart.vue'
 export default {
   components: {
     BaggedList,
+    OverallProgressChart,
   },
   computed: {
     ...mapState({

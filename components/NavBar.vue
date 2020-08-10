@@ -1,6 +1,6 @@
 <template>
   <header
-    class="bg-northern text-white fixed left-0 right-0 top-0 h-12 flex flex-row items-center"
+    class="bg-grey text-darkgrey fixed left-0 right-0 top-0 h-12 flex flex-row items-center z-50"
   >
     <div class="container">
       <div class="flex flex-row justify-between py-2">

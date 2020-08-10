@@ -33,9 +33,10 @@ export const state = () => ({
       name: 'North Western',
     },
   ],
-  highestHill: 978,
-  lowestHill: 290,
+  highestHill: 0,
+  lowestHill: 0,
   maxHeightRating: 5,
+  totalHills: 0
 })
 
 export const mutations = {
@@ -45,6 +46,15 @@ export const mutations = {
   SET_HILL(state, hill) {
     state.hill = hill
   },
+  SET_TOTAL_HILLS(state, totalHills) {
+    state.totalHills = totalHills
+  },
+  SET_LOWEST_HILL(state, lowestHill) {
+    state.lowestHill = lowestHill
+  },
+  SET_HIGHEST_HILL(state, highestHill) {
+    state.highestHill = highestHill
+  },
 }
 
 export const actions = {
@@ -53,6 +63,10 @@ export const actions = {
     state
   }) {
     if (state.hills.length === 0) {
+
+      commit('SET_LOWEST_HILL', 290)
+      commit('SET_HIGHEST_HILL', 978)
+
       // add full name of each area to hills data
       const hills = hillData.hills.map(function (hill) {
         // find full area name from areas array in state
@@ -77,6 +91,7 @@ export const actions = {
         return o
       })
       commit('SET_HILLS', hills)
+      commit('SET_TOTAL_HILLS', hills.length)
       return hills
     }
   },
@@ -84,6 +99,9 @@ export const actions = {
 export const getters = {
   getHills(state) {
     return state.hills
+  },
+  getTotalHills(state) {
+    return state.totalHills
   },
   getHillById: (state) => (id) => {
     return state.hills.find((hill) => parseInt(hill.id) === parseInt(id))

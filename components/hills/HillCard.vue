@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import HeightRating from '@/components/HeightRating.vue'
+import HeightRating from '@/components/hills/HeightRating.vue'
 export default {
   components: {
     HeightRating,

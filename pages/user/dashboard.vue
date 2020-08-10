@@ -11,7 +11,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaggedList from '@/components/BaggedList.vue'
+import BaggedList from '@/components/user/BaggedList.vue'
 import OverallProgressChart from '@/components/user/OverallProgressChart.vue'
 export default {
   components: {

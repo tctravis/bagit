@@ -54,8 +54,8 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex'
-import HeightRating from '@/components/HeightRating.vue'
-import AreaIcon from '@/components/AreaIcon.vue'
+import HeightRating from '@/components/hills/HeightRating.vue'
+import AreaIcon from '@/components/hills/AreaIcon.vue'
 import BagCreate from '@/components/BagCreate.vue'
 
 export default {

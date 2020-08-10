@@ -21,7 +21,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import HillListItem from '@/components/HillListItem.vue'
+import HillListItem from '@/components/hills/HillListItem.vue'
 
 export default {
   components: {

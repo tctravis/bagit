@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import BaggedListItem from '@/components/BaggedListItem.vue'
+import BaggedListItem from '@/components/user/BaggedListItem.vue'
 export default {
   components: {
     BaggedListItem,

@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import AreaIcon from '@/components/AreaIcon.vue'
+import AreaIcon from '@/components/hills/AreaIcon.vue'
 export default {
   components: {
     AreaIcon,

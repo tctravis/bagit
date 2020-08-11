@@ -21,26 +21,15 @@
 
       <nuxt-link
         v-if="currentUserId !== ''"
-        to="/user/dashboard"
-        class="inline-block mb-4 p-2 bg-eastern text-darkgrey rounded"
-        >View your progress</nuxt-link
-      >
-      <nuxt-link
         to="/hills/list"
         class="inline-block mb-4 p-2 bg-western text-white rounded"
-        >Explore the list of fells</nuxt-link
+        >Bag a Wainwright</nuxt-link
       >
       <nuxt-link
         v-if="currentUserId === ''"
         to="/user/login"
-        class="inline-block mb-4 p-2 bg-southern text-white rounded"
-        >Log-in to bag a new fell</nuxt-link
-      >
-      <nuxt-link
-        v-if="currentUserId === ''"
-        to="/user/register"
-        class="inline-block mb-4 p-2 bg-fareastern text-white rounded"
-        >Register as a new bagger</nuxt-link
+        class="inline-block mb-4 p-2 bg-western text-white rounded"
+        >Start bagging Wainwrights</nuxt-link
       >
     </div>
   </div>

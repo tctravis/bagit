@@ -12,6 +12,7 @@
 import NavBar from '@/components/layout/NavBar'
 import Footer from '@/components/layout/Footer'
 export default {
+  transition: '',
   components: {
     NavBar,
     Footer,
@@ -20,7 +21,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.overflow-hidden {
-  overflow: hidden;
+.page-enter-active,
+.page-leave-active {
+  transition-property: opacity;
+  transition-timing-function: ease-in-out;
+  transition-duration: 300ms;
+}
+.page-enter,
+.page-leave-to {
+  opacity: 0;
 }
 </style>

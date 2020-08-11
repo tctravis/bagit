@@ -10,6 +10,7 @@
         ></BasePageTitle
       >
       <nuxt-link
+        v-if="currentUserId !== ''"
         to="/user/dashboard"
         class="inline-block mb-4 p-2 bg-eastern text-darkgrey rounded"
         >View your progress</nuxt-link
@@ -24,17 +25,17 @@
 </template>
 
 <script>
-export default {}
+import { mapState } from 'vuex'
+export default {
+  computed: {
+    ...mapState({
+      currentUserId: (state) => state.users.currentUserId,
+    }),
+  },
+}
 </script>
 
 <style lang="scss" scoped>
-// html {
-//   background-image: url('~assets/img/hiker.png') no-repeat center center fixed;
-//   background-size: cover;
-//   height: 100%;
-//   overflow: hidden;
-// }
-
 img.bg {
   /* Set rules to fill background */
   min-height: 100%;
@@ -50,7 +51,6 @@ img.bg {
   bottom: auto;
   left: 0;
 }
-
 @media screen and (max-width: 800px) {
   /* Specific to this particular image */
   img.bg {

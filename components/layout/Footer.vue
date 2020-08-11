@@ -1,6 +1,6 @@
 <template>
   <footer
-    class="bg-southern text-white fixed left-0 right-0 bottom-0 h-12 flex flex-row items-center"
+    class="z-50 bg-southern text-white fixed left-0 right-0 bottom-0 h-12 flex flex-row items-center"
   >
     <div class="container">
       <div class="flex flex-row justify-end">
@@ -16,7 +16,9 @@
           to="/user/edit-profile"
           >Edit profile</nuxt-link
         >
-        <a v-if="currentUserId !== ''" @click="signOut">Log out</a>
+        <a v-if="currentUserId !== ''" @click="signOut" class="cursor-pointer"
+          >Log out</a
+        >
       </div>
     </div>
   </footer>

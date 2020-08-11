@@ -15,7 +15,10 @@
         <font-awesome-icon :icon="['fa', 'check']" class="ml-auto" />
       </template>
       <template v-if="!hasBagged">
-        <BaseButton class="ml-auto" :button-class="'bg-' + hill.areaClassName"
+        <BaseButton
+          class="ml-auto"
+          :button-class="'bg-' + hill.areaClassName"
+          :disabled="currentUserId === ''"
           >Bag it</BaseButton
         >
       </template>
@@ -24,7 +27,9 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import AreaIcon from '@/components/hills/AreaIcon.vue'
+
 export default {
   components: {
     AreaIcon,
@@ -43,6 +48,9 @@ export default {
     hasBagged() {
       return this.hillsBagged.includes(this.hill.id)
     },
+    ...mapState({
+      currentUserId: (state) => state.users.user.id,
+    }),
   },
 }
 </script>

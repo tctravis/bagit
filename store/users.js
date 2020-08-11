@@ -2,6 +2,10 @@
 export const state = () => ({
   users: [],
   user: {
+    id: '',
+    email: '',
+    firstName: '',
+    secondName: '',
     hillsBagged: [],
     bags: []
   },
@@ -99,6 +103,18 @@ export const actions = {
 
     dispatch('loginRedirect')
   },
+  resetUser() {
+    let user = {
+      id: '',
+      email: '',
+      firstName: '',
+      secondName: '',
+      hillsBagged: [],
+      bags: []
+    }
+    commit('SET_USER', user)
+    commit('SET_CURRENT_USER', '')
+  },
   async login({
     commit,
     state,
@@ -126,11 +142,7 @@ export const actions = {
         message: e.message
       })
     })
-
-    commit('SET_CURRENT_USER', '')
-    commit('SET_USER', {
-      bags: [],
-    })
+    dispatch('resetUser')
   },
   logoutRedirect() {
     this.$router.push({

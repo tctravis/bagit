@@ -6,10 +6,23 @@
       <div class="flex flex-row justify-between py-2">
         <nuxt-link to="/">BAGGR</nuxt-link>
         <nav class="flex flex-row">
-          <nuxt-link class="mx-2" to="/hills/list">Bag a fell</nuxt-link>
-          <nuxt-link to="/user/dashboard">Your progress</nuxt-link>
+          <nuxt-link class="mx-2" to="/hills/list">Explore fells</nuxt-link>
+          <nuxt-link v-if="currentUserId !== ''" to="/user/dashboard"
+            >Your progress</nuxt-link
+          >
         </nav>
       </div>
     </div>
   </header>
 </template>
+
+<script>
+import { mapState } from 'vuex'
+export default {
+  computed: {
+    ...mapState({
+      currentUserId: (state) => state.users.currentUserId,
+    }),
+  },
+}
+</script>

@@ -34,6 +34,9 @@
         :button-class="'bg-' + hill.areaClassName"
         fa-icon-class="shoe-prints"
         @click="$refs.modalName.openModal()"
+        :disabled="
+          user.currentUserId === '' || user.currentUserId === undefined
+        "
         >Bag it!</BaseButton
       >
     </div>

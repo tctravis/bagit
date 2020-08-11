@@ -9,6 +9,7 @@ export const state = () => ({
     hillsBagged: [],
     bags: []
   },
+  baggedSortOrder: 'asc',
   currentUserId: '',
 })
 export const mutations = {
@@ -29,6 +30,9 @@ export const mutations = {
   },
   SET_HILLS_BAGGED(state, hillsBagged) {
     state.user.hillsBagged = hillsBagged
+  },
+  SET_HILLS_BAGGED_SORT_ORDER(state, bags) {
+    state.user.bags = bags
   },
   ADD_NEW_BAG(state, bag) {
     state.user.bags.push(bag)
@@ -103,8 +107,11 @@ export const actions = {
 
     dispatch('loginRedirect')
   },
-  resetUser() {
-    let user = {
+  resetUser({
+    commit,
+    dispatch
+  }) {
+    let emptyUser = {
       id: '',
       email: '',
       firstName: '',
@@ -112,8 +119,10 @@ export const actions = {
       hillsBagged: [],
       bags: []
     }
-    commit('SET_USER', user)
+    console.log('signed out')
+    commit('SET_USER', emptyUser)
     commit('SET_CURRENT_USER', '')
+    dispatch('logoutRedirect')
   },
   async login({
     commit,
@@ -132,9 +141,7 @@ export const actions = {
     dispatch('loginRedirect')
   },
   async signOut({
-    commit,
-    state,
-    rootState
+    dispatch
   }) {
     await this.$fireAuth.signOut().catch(function (e) {
       error({
@@ -146,7 +153,7 @@ export const actions = {
   },
   logoutRedirect() {
     this.$router.push({
-      path: '/user/login',
+      path: '/',
     })
   },
   loginRedirect() {
@@ -184,7 +191,45 @@ export const actions = {
         message: e.message
       })
     })
+  },
+  sortHillsBagged({
+    commit
+  }, sortDirection) {
+    const bags = this.user.bags
+    switch (sortDirection) {
+      case 'asc':
+        bags.sort(function (a, b) {
+          if (a.date < b.date) return -1
+          if (a.date > b.date) return 1
+        })
+        break;
+      case 'desc':
+        bags.sort(function (a, b) {
+          if (a.date > b.date) return -1
+          if (a.date < b.date) return 1
+        })
+        break;
+    }
+    commit('SET_HILLS_BAGGED_SORT_ORDER', bags)
   }
 }
 
-export const getters = {}
+export const getters = {
+  // getBags: state => {
+  //   switch (state.baggedSortOrder) {
+  //     case 'asc':
+  //       return state.user.bags.sort(function (a, b) {
+  //         if (a.date < b.date) return -1
+  //         if (a.date > b.date) return 1
+  //       })
+  //       break;
+  //     case 'desc':
+  //       return state.user.bags.sort(function (a, b) {
+  //         if (a.date > b.date) return -1
+  //         if (a.date < b.date) return 1
+  //       })
+  //       break;
+  //   }
+
+  // }
+}

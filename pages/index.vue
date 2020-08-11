@@ -6,9 +6,19 @@
     >
       <BasePageTitle class="text-white"
         ><template v-slot:title
-          >Which fell are you bagging today?</template
+          >Which fells are you bagging today?</template
         ></BasePageTitle
       >
+      <p class="text-white mb-4">
+        Get your hiking boots on and start bagging Wainwrights. There are 214
+        Wainwrights in the Lake District, from the mighty Scafell Pike (978m) to
+        the diminutive Castle Crag (290m alt).
+      </p>
+      <p class="text-white mb-4">
+        Use this web app to record your progress through the challenge of a
+        lifetime!
+      </p>
+
       <nuxt-link
         v-if="currentUserId !== ''"
         to="/user/dashboard"
@@ -17,8 +27,20 @@
       >
       <nuxt-link
         to="/hills/list"
-        class="inline-block p-2 bg-western text-white rounded"
-        >Choose a fell to bag</nuxt-link
+        class="inline-block mb-4 p-2 bg-western text-white rounded"
+        >Explore the list of fells</nuxt-link
+      >
+      <nuxt-link
+        v-if="currentUserId === ''"
+        to="/user/login"
+        class="inline-block mb-4 p-2 bg-southern text-white rounded"
+        >Log-in to bag a new fell</nuxt-link
+      >
+      <nuxt-link
+        v-if="currentUserId === ''"
+        to="/user/register"
+        class="inline-block mb-4 p-2 bg-fareastern text-white rounded"
+        >Register as a new bagger</nuxt-link
       >
     </div>
   </div>

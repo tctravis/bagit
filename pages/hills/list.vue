@@ -39,7 +39,8 @@ export default {
       user: (state) => state.users.user,
     }),
     filteredHills() {
-      return this.hills.filter((hill) => {
+      let hillsArray = this.hills
+      return hillsArray.filter((hill) => {
         return hill.name.toLowerCase().includes(this.search.toLowerCase())
       })
     },

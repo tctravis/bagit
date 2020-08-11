@@ -34,9 +34,7 @@
         :button-class="'bg-' + hill.areaClassName"
         fa-icon-class="shoe-prints"
         @click="$refs.modalName.openModal()"
-        :disabled="
-          user.currentUserId === '' || user.currentUserId === undefined
-        "
+        :disabled="currentUserId === '' || currentUserId === undefined"
         >Bag it!</BaseButton
       >
     </div>
@@ -70,6 +68,7 @@ export default {
   computed: {
     ...mapState({
       user: (state) => state.users.user,
+      currentUserId: (state) => state.users.currentUserId,
     }),
     ...mapGetters('hills', ['getHillById']),
     hill() {

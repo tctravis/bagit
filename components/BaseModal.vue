@@ -2,7 +2,7 @@
   <transition name="fade">
     <div
       v-if="show"
-      class="fixed top-0 left-0 right-0 bottom-0 overflow-y-auto overflow-x-hidden z-10"
+      class="fixed top-0 left-0 right-0 bottom-0 overflow-y-auto overflow-x-hidden z-50"
     >
       <div
         class="fixed w-full h-full bg-grey opacity-50 z-1"

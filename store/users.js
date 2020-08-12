@@ -46,7 +46,7 @@ export const actions = {
     dispatch,
     rootState
   }, userId) {
-    if (state.user.email !== undefined && state.currentUserId === userId) return
+    if (state.user.email !== '' && state.currentUserId === userId) return
     // if (state.currentUserId !== undefined) return
 
     const userRef = this.$fireStore.collection('users').doc(userId)

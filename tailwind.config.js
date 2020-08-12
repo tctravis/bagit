@@ -56,7 +56,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ['Itim', ...defaultTheme.fontFamily.sans],
+        sans: ['Source Sans Pro', ...defaultTheme.fontFamily.sans],
       },
     },
   },

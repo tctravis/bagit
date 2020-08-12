@@ -133,7 +133,7 @@ export default {
   },
   webfontloader: {
     google: {
-      families: ['Itim'],
+      families: ['Source Sans Pro'],
     },
   },
   loading: {

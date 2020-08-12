@@ -15,11 +15,6 @@
         </div>
       </div>
     </header>
-    <div v-if="currentUserId === ''" class="container">
-      <div class="flex flex-row items-center justify-between py-2 bg-western">
-        <p>Login or register to start bagging the fells</p>
-      </div>
-    </div>
   </div>
 </template>
 

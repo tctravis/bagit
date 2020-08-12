@@ -96,7 +96,9 @@ export default {
           measurementId: process.env.BAGIT_FIREBASE_MEASUREMENT_ID,
         },
         services: {
-          firestore: true,
+          firestore: {
+            enablePersistence: true,
+          },
           // https://firebase.nuxtjs.org/guide/options/#auth
           auth: {
             initialize: {

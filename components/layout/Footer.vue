@@ -2,7 +2,7 @@
   <footer
     class="z-50 bg-southern text-white fixed left-0 right-0 bottom-0 h-12 flex flex-row items-center"
   >
-    <div class="container">
+    <div class="container px-4">
       <div class="flex flex-row justify-end">
         <nuxt-link v-if="currentUserId === ''" class="mx-2" to="/user/register"
           >Register</nuxt-link

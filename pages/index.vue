@@ -1,9 +1,10 @@
 <template>
-  <div class="test bg-fixed">
-    <img src="~assets/img/hiker.jpg" class="bg z-0" />
+  <div>
     <div
       class="absolute top-0 left-0 right-0 bottom-0 p-4 z-10 h-screen flex flex-col items-center text-center justify-center"
     >
+      <img src="~assets/img/hiker.jpg" class="bg z-0" />
+
       <BasePageTitle class="text-white"
         ><template v-slot:title
           >Which fells are you bagging today?</template

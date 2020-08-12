@@ -24,12 +24,14 @@
           label="Rate this bag:"
           :options="ratingOptions"
         />
-        <BaseButton
-          type="submit"
-          button-class="bg-northwestern ml-32"
-          :disabled="$v.$invalid"
-          >Bag It!</BaseButton
-        >
+        <div class="flex flex-row justify-end">
+          <BaseButton
+            type="submit"
+            button-class="bg-northwestern"
+            :disabled="$v.$invalid"
+            >Bag It!</BaseButton
+          >
+        </div>
       </form>
     </template>
     <template v-if="bagged">

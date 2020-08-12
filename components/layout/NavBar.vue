@@ -3,7 +3,7 @@
     <header
       class="bg-southern text-white fixed left-0 right-0 top-0 h-12 flex flex-row items-center z-20"
     >
-      <div class="container">
+      <div class="container px-4">
         <div class="flex flex-row items-center justify-between py-2">
           <nuxt-link to="/">BAGGR</nuxt-link>
           <nav class="flex flex-row">

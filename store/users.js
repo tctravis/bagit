@@ -22,6 +22,9 @@ export const mutations = {
   SET_USER_BAGS(state, bags) {
     state.user.bags = bags
   },
+  SET_USER_BAGS_DETAILS(state, bags) {
+    state.user.bags = bags
+  },
   ADD_NEW_USER(state, user) {
     state.user = user
   },
@@ -66,6 +69,28 @@ export const actions = {
 
       const hillsBagged = bags.map(bag => bag.hill_id)
       commit('SET_HILLS_BAGGED', hillsBagged)
+
+      // build array of details for hills bagged from hills modules
+      let hills = rootState.hills.hills
+      const hillsBaggedDetails = hills.filter(function (hill) {
+        return hillsBagged.includes(hill.id)
+      })
+
+      // for each bag, find corresponding object in hillsBaggedDetails and merge objects
+      let bagsWithDetails = []
+      bags.forEach(function (bag) {
+        // console.log(bag)
+        let hillDetails = hillsBaggedDetails.find(hill => hill.id === bag.hill_id)
+        if (hillDetails) {
+          bag = {
+            ...bag,
+            ...hillDetails
+          }
+        }
+        bagsWithDetails.push(bag)
+      })
+
+      commit('SET_USER_BAGS_DETAILS', bagsWithDetails)
     });
 
 
@@ -119,7 +144,7 @@ export const actions = {
       hillsBagged: [],
       bags: []
     }
-    console.log('signed out')
+
     commit('SET_USER', emptyUser)
     commit('SET_CURRENT_USER', '')
     dispatch('logoutRedirect')
@@ -184,7 +209,16 @@ export const actions = {
   }, bag) {
     const userRef = this.$fireStore.collection('users').doc(state.currentUserId).collection('bags')
     return await userRef.add(bag).then(function () {
-      commit('ADD_NEW_BAG', bag)
+
+      let hills = rootState.hills.hills,
+        hillDetails = hills.find(hill => hill.id === bag.hill_id)
+
+      let bagWithDetails = {
+        ...bag,
+        ...hillDetails
+      }
+
+      commit('ADD_NEW_BAG', bagWithDetails)
     }).catch(function (e) {
       error({
         statusCode: e.code,
@@ -232,4 +266,15 @@ export const getters = {
   //   }
 
   // }
+  getTotalAltClimbed: state => {
+    let totalAltClimbed = 0
+    totalAltClimbed = state.user.bags.reduce(function (
+        accumulator,
+        bag
+      ) {
+        return accumulator + bag.height_m
+      },
+      0)
+    return totalAltClimbed
+  }
 }

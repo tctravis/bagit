@@ -17,6 +17,7 @@
     "@nuxtjs/axios": "^5.11.0",
     "@nuxtjs/firebase": "^6.1.1",
     "@nuxtjs/moment": "^1.6.1",
+    "@nuxtjs/pwa": "^3.0.0-beta.20",
     "@sum.cumo/vue-datepicker": "^2.1.0",
     "chart.js": "^2.9.3",
     "firebase": "^7.17.1",

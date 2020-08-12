@@ -108,6 +108,22 @@ export default {
         },
       },
     ],
+    ['@nuxtjs/pwa',
+      {
+        pwa: {
+          meta: {
+            title: 'Fell Baggr',
+            author: 'Toby Travis',
+          },
+          manifest: {
+            name: 'Fell Baggr - an app for Wainwright baggers to record their bags',
+            short_name: 'Fell Baggr',
+            lang: 'en',
+          },
+          onesignal: false
+        }
+      }
+    ]
   ],
   /*
    ** Axios module configuration

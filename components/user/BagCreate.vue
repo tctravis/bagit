@@ -32,6 +32,9 @@
             >Bag It!</BaseButton
           >
         </div>
+        <BaseValidationMessage v-if="error === 'prebagged'" message-type="error"
+          >You've already bagged this fell!</BaseValidationMessage
+        >
       </form>
     </template>
     <template v-if="bagged">
@@ -59,20 +62,21 @@ export default {
         rating: '',
       },
       bagged: false,
+      error: '',
     }
   },
   methods: {
     async createNewBag() {
-      await this.$store.dispatch('users/createNewBag', {
+      let addingBag = await this.$store.dispatch('users/createNewBag', {
         date: this.bag.date,
         comments: this.bag.comments,
         hill_id: this.hill.id,
-        hill_name: this.hill.name,
-        area: this.hill.area,
-        areaName: this.hill.areaName,
-        areaClassName: this.hill.areaClassName,
         rating: this.bag.rating,
       })
+      if (addingBag === 'prebagged') {
+        this.error = addingBag
+        return false
+      }
       this.bagged = true
     },
     validateDate() {

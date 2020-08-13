@@ -205,26 +205,31 @@ export const actions = {
   async createNewBag({
     commit,
     state,
-    rootState
+    rootState,
+    error
   }, bag) {
-    const userRef = this.$fireStore.collection('users').doc(state.currentUserId).collection('bags')
-    return await userRef.add(bag).then(function () {
-
-      let hills = rootState.hills.hills,
-        hillDetails = hills.find(hill => hill.id === bag.hill_id)
-
-      let bagWithDetails = {
-        ...bag,
-        ...hillDetails
+    try {
+      const alreadyBagged = state.user.bags.some(userbag => userbag.hill_id === bag.hill_id)
+      if (alreadyBagged) {
+        throw 'prebagged'
       }
+      const userRef = this.$fireStore.collection('users').doc(state.currentUserId).collection('bags')
+      return await userRef.add(bag).then(function () {
 
-      commit('ADD_NEW_BAG', bagWithDetails)
-    }).catch(function (e) {
-      error({
-        statusCode: e.code,
-        message: e.message
+        let hills = rootState.hills.hills,
+          hillDetails = hills.find(hill => hill.id === bag.hill_id)
+
+        let bagWithDetails = {
+          ...bag,
+          ...hillDetails
+        }
+
+        commit('ADD_NEW_BAG', bagWithDetails)
       })
-    })
+    } catch (error) {
+      return error
+      console.log(error)
+    }
   },
   sortHillsBagged({
     commit
@@ -249,23 +254,6 @@ export const actions = {
 }
 
 export const getters = {
-  // getBags: state => {
-  //   switch (state.baggedSortOrder) {
-  //     case 'asc':
-  //       return state.user.bags.sort(function (a, b) {
-  //         if (a.date < b.date) return -1
-  //         if (a.date > b.date) return 1
-  //       })
-  //       break;
-  //     case 'desc':
-  //       return state.user.bags.sort(function (a, b) {
-  //         if (a.date > b.date) return -1
-  //         if (a.date < b.date) return 1
-  //       })
-  //       break;
-  //   }
-
-  // }
   getTotalAltClimbed: state => {
     let totalAltClimbed = 0
     totalAltClimbed = state.user.bags.reduce(function (

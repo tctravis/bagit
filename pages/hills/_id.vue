@@ -57,7 +57,7 @@
 import { mapState, mapGetters } from 'vuex'
 import HeightRating from '@/components/hills/HeightRating.vue'
 import AreaIcon from '@/components/hills/AreaIcon.vue'
-import BagCreate from '@/components/BagCreate.vue'
+import BagCreate from '@/components/user/BagCreate.vue'
 
 export default {
   components: {

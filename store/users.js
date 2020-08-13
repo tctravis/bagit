@@ -87,16 +87,11 @@ export const actions = {
         //add extra details from hills module
         let hillDetails = hills.find(hill => hill.id === newBag.hill_id)
         if (hillDetails) {
-          // newBag = {
-          //   ...newBag,
-          //   ...hillDetails
-          // }
           newBag = Object.assign({}, newBag, hillDetails)
         }
 
         bags.push(newBag)
       });
-      console.log(bags)
       commit('SET_USER_BAGS', bags)
 
       const hillsBagged = bags.map(bag => bag.hill_id)

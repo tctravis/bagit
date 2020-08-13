@@ -3,6 +3,7 @@
     <div
       v-if="show"
       class="fixed top-0 left-0 right-0 bottom-0 overflow-y-auto overflow-x-hidden z-50"
+      v-on:open-modal="openModal"
     >
       <div
         class="fixed w-full h-full bg-grey opacity-50 z-1"
@@ -52,6 +53,12 @@ export default {
       document.querySelector('body').classList.add('overflow-hidden')
     },
   },
+  // mounted() {
+  //   this.$root.$on('openModal', (data) => {
+  //     this.openModal()
+  //     console.log(data)
+  //   })
+  // },
 }
 </script>
 

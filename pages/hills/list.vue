@@ -8,24 +8,35 @@
       type="text"
       placeholder="Search by fell name"
     />
-    <div class="flex flex-wrap">
-      <HillListItem
-        v-for="hill in filteredHills"
-        :key="hill.rank"
-        :hill="hill"
-        :hills-bagged="user.hillsBagged"
-      />
-    </div>
+    <HillListItem
+      v-for="hill in filteredHills"
+      :key="hill.rank"
+      :hill="hill"
+      :hills-bagged="user.hillsBagged"
+    />
+    <BaseModal>
+      <template v-slot:header>
+        <h1>Bag it!</h1>
+      </template>
+
+      <template v-slot:body>
+        <BagCreate :hill="hill" />
+      </template>
+
+      <template v-slot:footer> </template>
+    </BaseModal>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
 import HillListItem from '@/components/hills/HillListItem.vue'
+import BagCreate from '@/components/user/BagCreate.vue'
 
 export default {
   components: {
     HillListItem,
+    BagCreate,
   },
   data() {
     return {

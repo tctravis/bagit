@@ -7,10 +7,30 @@ export const state = () => ({
     firstName: '',
     secondName: '',
     hillsBagged: [],
-    bags: []
+    bags: [{
+      date: '',
+      area: '',
+      areaClassName: '',
+      areaName: '',
+      comments: '',
+      date: '',
+      heightRating: '',
+      height_f: '',
+      height_m: '',
+      hill_id: '',
+      id: '',
+      name: '',
+      os_grid_ref: '',
+      os_map: '',
+      prom_f: '',
+      prom_m: '',
+      rating: '',
+      section: ''
+    }]
   },
-  baggedSortOrder: 'asc',
   currentUserId: '',
+  sortBy: 'date',
+  sortAsc: true
 })
 export const mutations = {
   SET_USERS(state, users) {
@@ -34,9 +54,6 @@ export const mutations = {
   SET_HILLS_BAGGED(state, hillsBagged) {
     state.user.hillsBagged = hillsBagged
   },
-  SET_HILLS_BAGGED_SORT_ORDER(state, bags) {
-    state.user.bags = bags
-  },
   ADD_NEW_BAG(state, bag) {
     state.user.bags.push(bag)
     state.user.hillsBagged.push(bag.hill_id)
@@ -58,39 +75,32 @@ export const actions = {
 
     const bags = []
     let bagsRef = userRef.collection('bags')
+    let hills = rootState.hills.hills
+
     await bagsRef.orderBy('date', 'desc').get().then(function (querySnapshot) {
       querySnapshot.forEach(function (bag) {
         let newBag = bag.data()
+
         //covert firestore timestamp to date
         newBag.date = newBag.date.toDate()
+
+        //add extra details from hills module
+        let hillDetails = hills.find(hill => hill.id === newBag.hill_id)
+        if (hillDetails) {
+          // newBag = {
+          //   ...newBag,
+          //   ...hillDetails
+          // }
+          newBag = Object.assign({}, newBag, hillDetails)
+        }
+
         bags.push(newBag)
       });
+      console.log(bags)
       commit('SET_USER_BAGS', bags)
 
       const hillsBagged = bags.map(bag => bag.hill_id)
       commit('SET_HILLS_BAGGED', hillsBagged)
-
-      // build array of details for hills bagged from hills modules
-      let hills = rootState.hills.hills
-      const hillsBaggedDetails = hills.filter(function (hill) {
-        return hillsBagged.includes(hill.id)
-      })
-
-      // for each bag, find corresponding object in hillsBaggedDetails and merge objects
-      let bagsWithDetails = []
-      bags.forEach(function (bag) {
-        // console.log(bag)
-        let hillDetails = hillsBaggedDetails.find(hill => hill.id === bag.hill_id)
-        if (hillDetails) {
-          bag = {
-            ...bag,
-            ...hillDetails
-          }
-        }
-        bagsWithDetails.push(bag)
-      })
-
-      commit('SET_USER_BAGS_DETAILS', bagsWithDetails)
     });
 
 
@@ -228,28 +238,8 @@ export const actions = {
       })
     } catch (error) {
       return error
-      console.log(error)
+      // console.log(error)
     }
-  },
-  sortHillsBagged({
-    commit
-  }, sortDirection) {
-    const bags = this.user.bags
-    switch (sortDirection) {
-      case 'asc':
-        bags.sort(function (a, b) {
-          if (a.date < b.date) return -1
-          if (a.date > b.date) return 1
-        })
-        break;
-      case 'desc':
-        bags.sort(function (a, b) {
-          if (a.date > b.date) return -1
-          if (a.date < b.date) return 1
-        })
-        break;
-    }
-    commit('SET_HILLS_BAGGED_SORT_ORDER', bags)
   }
 }
 
@@ -264,5 +254,17 @@ export const getters = {
       },
       0)
     return totalAltClimbed
+  },
+  sortedBagsDesc: state => {
+    let bagsSorted = []
+    bagsSorted = [...state.user.bags].sort((a, b) => {
+      if (a[state.sortBy] > b[state.sortBy]) return -1
+      if (a[state.sortBy] < b[state.sortBy]) return 1
+      return 0
+    })
+    if (!state.sort_asc) {
+      bagsSorted.reverse()
+    }
+    return bagsSorted
   }
 }

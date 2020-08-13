@@ -44,6 +44,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import { required } from 'vuelidate/lib/validators'
 
 export default {
@@ -64,6 +65,14 @@ export default {
       bagged: false,
       error: '',
     }
+  },
+  computed: {
+    ...mapState({
+      bags: (state) => state.users.user.bags,
+    }),
+    hasBagged() {
+      return false
+    },
   },
   methods: {
     async createNewBag() {

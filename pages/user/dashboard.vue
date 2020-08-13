@@ -4,10 +4,18 @@
       ><template v-slot:title>Your progress</template></BasePageTitle
     >
     <p>Total altitude climbed: {{ getTotalAltClimbed }}m</p>
-    <ChartOverallProgress :bags="user.bags" class="mb-6" />
-    <ChartAltitudeLine :bags="user.bags" class="mb-6" />
+    <ChartOverallProgress
+      v-if="user.bags.length > 0"
+      :bags="user.bags"
+      class="mb-6"
+    />
+    <ChartAltitudeLine
+      v-if="user.bags.length > 0"
+      :bags="user.bags"
+      class="mb-6"
+    />
     <h2 class="text-2xl mb-2">Your Latest Bags</h2>
-    <BaggedList :bags="user.bags" />
+    <BaggedList />
   </div>
 </template>
 

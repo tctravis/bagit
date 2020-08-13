@@ -9,7 +9,7 @@
         :class="('bg-' + bag.areaName) | removeSpaces | lowercase"
       />
       <h3 class="text-lg text-left mx-2">
-        {{ bag.hill_name }}
+        {{ bag.name }}
       </h3>
       <div class="ml-auto">
         <template v-if="!detailsExpanded">
@@ -39,7 +39,7 @@
           :to="{ name: 'hills-id', params: { id: bag.hill_id } }"
           class="block underline text-northern hover:text-central"
         >
-          {{ bag.hill_name }} info
+          {{ bag.name }} info
         </nuxt-link>
       </div>
     </div>

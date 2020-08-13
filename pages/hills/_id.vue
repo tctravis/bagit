@@ -33,9 +33,10 @@
       <BaseButton
         :button-class="'bg-' + hill.areaClassName"
         fa-icon-class="shoe-prints"
+        :disabled="this.$fireAuth.currentUser === null || hasBagged"
         @click="$refs.modalName.openModal()"
-        :disabled="currentUserId === '' || currentUserId === undefined"
-        >Bag it!</BaseButton
+        ><template v-if="hasBagged">Bagged it!</template
+        ><template v-else="">Bag it!</template></BaseButton
       >
     </div>
 
@@ -67,8 +68,7 @@ export default {
   },
   computed: {
     ...mapState({
-      user: (state) => state.users.user,
-      currentUserId: (state) => state.users.currentUserId,
+      hillsBagged: (state) => state.users.user.hillsBagged,
     }),
     ...mapGetters('hills', ['getHillById']),
     hill() {
@@ -76,6 +76,13 @@ export default {
     },
     hillId() {
       return this.$route.params.id
+    },
+    hasBagged() {
+      let hasBagged = false
+      if (this.hillsBagged.includes(this.hillId)) {
+        hasBagged = true
+      }
+      return hasBagged
     },
   },
   head() {

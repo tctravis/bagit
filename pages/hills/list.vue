@@ -14,33 +14,24 @@
       :hill="hill"
       :hills-bagged="user.hillsBagged"
     />
-    <BaseModal>
-      <template v-slot:header>
-        <h1>Bag it!</h1>
-      </template>
-
-      <template v-slot:body>
-        <BagCreate :hill="hill" />
-      </template>
-
-      <template v-slot:footer> </template>
-    </BaseModal>
+    <BagCreateModal />
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import HillListItem from '@/components/hills/HillListItem.vue'
-import BagCreate from '@/components/user/BagCreate.vue'
+import BagCreateModal from '@/components/user/BagCreateModal.vue'
 
 export default {
   components: {
     HillListItem,
-    BagCreate,
+    BagCreateModal,
   },
   data() {
     return {
       search: '',
+      showBagCreateModal: false,
     }
   },
   computed: {
@@ -55,6 +46,12 @@ export default {
         return hill.name.toLowerCase().includes(this.search.toLowerCase())
       })
     },
+  },
+  methods: {
+    ...mapActions('users', ['closeBagModal']),
+  },
+  mounted() {
+    this.closeBagModal()
   },
 }
 </script>

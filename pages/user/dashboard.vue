@@ -35,7 +35,7 @@ export default {
       user: (state) => state.users.user,
       currentUser: (state) => state.users.currentUser,
     }),
-    ...mapGetters('users', ['getTotalAltClimbed']),
+    ...mapGetters('users', ['getTotalAltClimbed', 'sortedBagsDesc']),
   },
 }
 </script>

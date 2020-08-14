@@ -30,7 +30,9 @@ export const state = () => ({
   },
   currentUserId: '',
   sortBy: 'date',
-  sortAsc: true
+  sortAsc: true,
+  bagModalState: false,
+  hillToBagId: 0
 })
 export const mutations = {
   SET_USERS(state, users) {
@@ -57,6 +59,12 @@ export const mutations = {
   ADD_NEW_BAG(state, bag) {
     state.user.bags.push(bag)
     state.user.hillsBagged.push(bag.hill_id)
+  },
+  BAG_MODAL_TOGGLE(state, bagModalState) {
+    state.bagModalState = bagModalState
+  },
+  SET_HILL_TO_BAG(state, hillToBagId) {
+    state.hillToBagId = hillToBagId
   },
 }
 export const actions = {
@@ -235,6 +243,23 @@ export const actions = {
       return error
       // console.log(error)
     }
+  },
+  toggleBagModal({
+    state,
+    commit
+  }) {
+    let modalState = state.bagModalState ? false : true;
+    commit('BAG_MODAL_TOGGLE', modalState)
+  },
+  closeBagModal({
+    commit
+  }) {
+    commit('BAG_MODAL_TOGGLE', false)
+  },
+  setHillToBag({
+    commit
+  }, hillToBagId) {
+    commit('SET_HILL_TO_BAG', hillToBagId)
   }
 }
 
@@ -250,16 +275,4 @@ export const getters = {
       0)
     return totalAltClimbed
   },
-  sortedBagsDesc: state => {
-    let bagsSorted = []
-    bagsSorted = [...state.user.bags].sort((a, b) => {
-      if (a[state.sortBy] > b[state.sortBy]) return -1
-      if (a[state.sortBy] < b[state.sortBy]) return 1
-      return 0
-    })
-    if (!state.sort_asc) {
-      bagsSorted.reverse()
-    }
-    return bagsSorted
-  }
 }

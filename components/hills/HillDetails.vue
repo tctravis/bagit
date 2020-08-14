@@ -25,7 +25,7 @@
           class="ml-auto"
           :button-class="'bg-' + hill.areaClassName"
           :disabled="this.$fireAuth.currentUser === null || hasBagged"
-          @click="openBagItModal"
+          @click="bagThis"
           ><template v-if="!hasBagged">Bag it!</template
           ><template v-if="hasBagged">Bagged already</template></BaseButton
         >
@@ -35,6 +35,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import HeightRating from '@/components/hills/HeightRating.vue'
 export default {
   components: {
@@ -56,8 +57,10 @@ export default {
     },
   },
   methods: {
-    openBagItModal() {
-      this.$root.$emit('openModal', this.hill.id)
+    ...mapActions('users', ['toggleBagModal', 'setHillToBag']),
+    bagThis() {
+      this.setHillToBag(this.hill.id)
+      this.toggleBagModal()
     },
   },
 }

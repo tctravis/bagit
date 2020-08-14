@@ -1,7 +1,7 @@
 <template>
   <div class="w-full">
     <div
-      class="flex flex-row justify-start items-center py-2"
+      class="flex flex-row justify-start items-center py-2 cursor-pointer"
       :class="hasBagged ? 'opacity-25' : ''"
       @click="toggleDetails"
     >
@@ -32,7 +32,11 @@
       </div>
     </div>
     <div v-if="detailsExpanded">
-      <HillDetails :hill="hill" :hillsBagged="hillsBagged" />
+      <HillDetails
+        :hill="hill"
+        :hillsBagged="hillsBagged"
+        v-on:modal-button="parentMethod()"
+      />
     </div>
   </div>
 </template>
@@ -73,6 +77,9 @@ export default {
   methods: {
     toggleDetails() {
       return (this.detailsExpanded = this.detailsExpanded ? false : true)
+    },
+    parentMethod() {
+      console.log('parent')
     },
   },
 }

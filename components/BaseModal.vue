@@ -3,7 +3,6 @@
     <div
       v-if="show"
       class="fixed top-0 left-0 right-0 bottom-0 overflow-y-auto overflow-x-hidden z-50"
-      v-on:open-modal="openModal"
     >
       <div
         class="fixed w-full h-full bg-grey opacity-50 z-1"
@@ -38,27 +37,23 @@
 <script>
 export default {
   name: 'BaseModal',
-  data() {
-    return {
-      show: false,
-    }
+  props: {
+    show: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
   },
   methods: {
     closeModal() {
-      this.show = false
+      this.$emit('toggle-modal')
       document.querySelector('body').classList.remove('overflow-hidden')
     },
     openModal() {
-      this.show = true
+      this.$emit('toggle-modal')
       document.querySelector('body').classList.add('overflow-hidden')
     },
   },
-  // mounted() {
-  //   this.$root.$on('openModal', (data) => {
-  //     this.openModal()
-  //     console.log(data)
-  //   })
-  // },
 }
 </script>
 

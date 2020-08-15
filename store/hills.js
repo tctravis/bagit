@@ -1,5 +1,5 @@
 /* eslint-disable */
-import hillData from '@/static/wainwrights.json'
+import hillData from '@/static/hills.json'
 
 export const state = () => ({
   hills: [],

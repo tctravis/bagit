@@ -9,9 +9,7 @@
         :area="hill.area"
         :class="('bg-' + hill.areaName) | removeSpaces | lowercase"
       />
-      <h3 class="text-lg text-left mx-2">
-        {{ hill.name }}
-      </h3>
+      <h3 class="text-lg text-left mx-2">{{ hill.name }}</h3>
       <div class="ml-auto">
         <font-awesome-icon
           v-if="hasBagged"

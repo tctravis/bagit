@@ -34,39 +34,35 @@
         :button-class="'bg-' + hill.areaClassName"
         fa-icon-class="shoe-prints"
         :disabled="this.$fireAuth.currentUser === null || hasBagged"
-        @click="$refs.modalName.openModal()"
+        @click="bagThis"
         ><template v-if="hasBagged">Bagged it!</template
         ><template v-else="">Bag it!</template></BaseButton
       >
     </div>
+    <NearbyHillsList :hill="hill" />
 
-    <BaseModal ref="modalName">
-      <template v-slot:header>
-        <h1>Bag it!</h1>
-      </template>
-
-      <template v-slot:body>
-        <BagCreate :hill="hill" />
-      </template>
-
-      <template v-slot:footer> </template>
-    </BaseModal>
+    <BagCreateModal />
   </div>
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 import HeightRating from '@/components/hills/HeightRating.vue'
 import AreaIcon from '@/components/hills/AreaIcon.vue'
-import BagCreate from '@/components/user/BagCreate.vue'
+import BagCreateModal from '@/components/user/BagCreateModal.vue'
+import NearbyHillsList from '@/components/hills/NearbyHillsList.vue'
 
 export default {
   components: {
     HeightRating,
     AreaIcon,
-    BagCreate,
+    BagCreateModal,
+    NearbyHillsList,
   },
   computed: {
+    apikey() {
+      return process.env.bingMapsApiKey
+    },
     ...mapState({
       hillsBagged: (state) => state.users.user.hillsBagged,
     }),
@@ -83,6 +79,13 @@ export default {
         hasBagged = true
       }
       return hasBagged
+    },
+  },
+  methods: {
+    ...mapActions('users', ['toggleBagModal', 'setHillToBag']),
+    bagThis() {
+      this.setHillToBag(this.hillId)
+      this.toggleBagModal()
     },
   },
   head() {

@@ -15,7 +15,8 @@ export default {
    */
   head: {
     title: process.env.npm_package_name || '',
-    meta: [{
+    meta: [
+      {
         charset: 'utf-8',
       },
       {
@@ -28,11 +29,13 @@ export default {
         content: process.env.npm_package_description || '',
       },
     ],
-    link: [{
-      rel: 'icon',
-      type: 'image/x-icon',
-      href: '/favicon.ico',
-    }, ],
+    link: [
+      {
+        rel: 'icon',
+        type: 'image/x-icon',
+        href: '/favicon.ico',
+      },
+    ],
   },
   /*
    ** Global CSS
@@ -75,10 +78,21 @@ export default {
     [
       'nuxt-fontawesome',
       {
-        imports: [{
-          set: '@fortawesome/free-solid-svg-icons',
-          icons: ['faMountain', 'faCheck', 'faShoePrints', 'faWindowClose', 'faChevronDown', 'faChevronRight', 'faChevronUp', 'faStar'],
-        }, ],
+        imports: [
+          {
+            set: '@fortawesome/free-solid-svg-icons',
+            icons: [
+              'faMountain',
+              'faCheck',
+              'faShoePrints',
+              'faWindowClose',
+              'faChevronDown',
+              'faChevronRight',
+              'faChevronUp',
+              'faStar',
+            ],
+          },
+        ],
       },
     ],
     'nuxt-webfontloader',
@@ -110,7 +124,8 @@ export default {
         },
       },
     ],
-    ['@nuxtjs/pwa',
+    [
+      '@nuxtjs/pwa',
       {
         pwa: {
           meta: {
@@ -118,14 +133,15 @@ export default {
             author: 'Toby Travis',
           },
           manifest: {
-            name: 'Fell Baggr - an app for Wainwright baggers to record their bags',
+            name:
+              'Fell Baggr - an app for Wainwright baggers to record their bags',
             short_name: 'Fell Baggr',
             lang: 'en',
           },
-          onesignal: false
-        }
-      }
-    ]
+          onesignal: false,
+        },
+      },
+    ],
   ],
   /*
    ** Axios module configuration
@@ -163,6 +179,7 @@ export default {
   },
   env: {
     currentUserId: process.env.CURRENT_USER_ID,
+    bingMapsApiKey: process.env.BING_MAPS_API_KEY,
   },
   router: {
     middleware: ['hills', 'user'],

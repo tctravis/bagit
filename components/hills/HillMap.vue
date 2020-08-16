@@ -8,6 +8,8 @@
 <script>
 // see https://markus.oberlehner.net/blog/using-the-google-maps-api-with-vue/
 import bingMapsInit from '@/utils/bingMaps.js'
+import { theme } from '~tailwind.config'
+
 export default {
   props: {
     hill: {
@@ -27,6 +29,16 @@ export default {
         maxZoom: 16,
         minZoom: 9,
       })
+      var center = map.getCenter()
+
+      //Create custom Pushpin
+      var pin = new Microsoft.Maps.Pushpin(center, {
+        title: this.hill.name,
+        text: this.hill.area,
+        color: theme.colors[this.hill.areaClassName].default,
+      })
+
+      map.entities.push(pin)
     } catch (error) {
       console.error(error)
     }

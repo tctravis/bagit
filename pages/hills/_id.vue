@@ -1,14 +1,8 @@
 <template>
   <div>
-    <BasePageTitle
-      ><template v-slot:title>{{ hill.name }}</template>
-      <template v-slot:icon>
-        <AreaIcon
-          :area="hill.area"
-          :class="
-            ('bg-' + hill.areaName) | removeSpaces | lowercase
-          " /></template
-    ></BasePageTitle>
+    <HillPageTitle :hill="hill" :hills-bagged="hillsBagged">{{
+      hill.name
+    }}</HillPageTitle>
 
     <div class="mb-4 p-4 bg-lightgrey rounded">
       <div class="mb-2">
@@ -29,16 +23,6 @@
         <p>OS map #: {{ hill.os_map }}</p>
       </div>
     </div>
-    <div class="flex flex-row justify-end">
-      <BaseButton
-        :button-class="'bg-' + hill.areaClassName"
-        fa-icon-class="shoe-prints"
-        :disabled="this.$fireAuth.currentUser === null || hasBagged"
-        @click="bagThis"
-        ><template v-if="hasBagged">Bagged it!</template
-        ><template v-else="">Bag it!</template></BaseButton
-      >
-    </div>
     <HillMap :hill="hill" />
     <NearbyHillsList :hill="hill" />
 
@@ -48,8 +32,8 @@
 
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
+import HillPageTitle from '@/components/hills/HillPageTitle.vue'
 import HeightRating from '@/components/hills/HeightRating.vue'
-import AreaIcon from '@/components/hills/AreaIcon.vue'
 import BagCreateModal from '@/components/user/BagCreateModal.vue'
 import HillMap from '@/components/hills/HillMap.vue'
 import NearbyHillsList from '@/components/hills/NearbyHillsList.vue'
@@ -57,7 +41,7 @@ import NearbyHillsList from '@/components/hills/NearbyHillsList.vue'
 export default {
   components: {
     HeightRating,
-    AreaIcon,
+    HillPageTitle,
     BagCreateModal,
     HillMap,
     NearbyHillsList,

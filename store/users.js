@@ -270,7 +270,7 @@ export const getters = {
         accumulator,
         bag
       ) {
-        return accumulator + bag.height_m
+        return accumulator + parseInt(bag.prom_m)
       },
       0)
     return totalAltClimbed

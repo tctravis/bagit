@@ -12,7 +12,7 @@
 const API_KEY = process.env.bingMapsApiKey
 const CALLBACK_NAME = 'bingMapsCallback'
 
-let initialized = !!window.microsoft
+let initialized = !!window.Microsoft
 let resolveInitPromise
 let rejectInitPromise
 // This promise handles the initialization

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <PieChart :chartData="chartData"></PieChart>
+    <PieChart :chart-data="chartData"></PieChart>
   </div>
 </template>
 
@@ -9,14 +9,14 @@ import { theme } from '~tailwind.config'
 import PieChart from '@/components/charts/PieChart.vue'
 import { mapGetters } from 'vuex'
 export default {
+  components: {
+    PieChart,
+  },
   props: {
     bags: {
       Type: Array,
       required: true,
     },
-  },
-  components: {
-    PieChart,
   },
   computed: {
     chartData() {

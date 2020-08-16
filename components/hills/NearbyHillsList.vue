@@ -14,6 +14,9 @@
 import { mapState, mapGetters } from 'vuex'
 import HillListItem from '@/components/hills/HillListItem.vue'
 export default {
+  components: {
+    HillListItem,
+  },
   props: {
     hill: {
       type: Object,
@@ -23,9 +26,6 @@ export default {
       type: Number,
       default: 5,
     },
-  },
-  components: {
-    HillListItem,
   },
   computed: {
     ...mapState({

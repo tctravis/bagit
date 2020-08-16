@@ -32,7 +32,8 @@ export default function init() {
   // The callback function is called by
   // the Google Maps script if it is
   // successfully loaded.
-  window[CALLBACK_NAME] = () => resolveInitPromise(window.microsoft)
+
+  window[CALLBACK_NAME] = () => resolveInitPromise(window.Microsoft)
 
   // We inject a new script tag into
   // the `<head>` of our HTML to load

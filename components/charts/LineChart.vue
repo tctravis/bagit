@@ -1,6 +1,6 @@
 <template>
   <div class="max-w-4xl">
-    <canvas width="200" height="200" ref="lineChart"></canvas>
+    <canvas ref="lineChart" width="200" height="200"></canvas>
   </div>
 </template>
 
@@ -16,6 +16,11 @@ export default {
       myChart: null,
     }
   },
+  watch: {
+    chartData() {
+      this.myChart.update()
+    },
+  },
   mounted() {
     let chartEl = this.$refs.lineChart
     // eslint-disable-next-line
@@ -27,11 +32,6 @@ export default {
       },
       options: this.chartData.options,
     })
-  },
-  watch: {
-    chartData() {
-      this.myChart.update()
-    },
   },
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <BaseModal :show="bagModalState" v-on:toggle-modal="toggleBagModal">
+  <BaseModal :show="bagModalState" @toggle-modal="toggleBagModal">
     <template v-slot:header>
       <h1>Bag it!</h1>
     </template>

@@ -39,6 +39,7 @@
         ><template v-else="">Bag it!</template></BaseButton
       >
     </div>
+    <HillMap :hill="hill" />
     <NearbyHillsList :hill="hill" />
 
     <BagCreateModal />
@@ -50,6 +51,7 @@ import { mapState, mapGetters, mapActions } from 'vuex'
 import HeightRating from '@/components/hills/HeightRating.vue'
 import AreaIcon from '@/components/hills/AreaIcon.vue'
 import BagCreateModal from '@/components/user/BagCreateModal.vue'
+import HillMap from '@/components/hills/HillMap.vue'
 import NearbyHillsList from '@/components/hills/NearbyHillsList.vue'
 
 export default {
@@ -57,6 +59,7 @@ export default {
     HeightRating,
     AreaIcon,
     BagCreateModal,
+    HillMap,
     NearbyHillsList,
   },
   computed: {

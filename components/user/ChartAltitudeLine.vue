@@ -1,6 +1,6 @@
 <template>
   <div>
-    <LineChart :chartData="chartData"></LineChart>
+    <LineChart :chart-data="chartData"></LineChart>
   </div>
 </template>
 
@@ -9,14 +9,14 @@ import { theme } from '~tailwind.config'
 import LineChart from '@/components/charts/LineChart.vue'
 import { mapState, mapGetters } from 'vuex'
 export default {
+  components: {
+    LineChart,
+  },
   props: {
     bags: {
       Type: Array,
       required: true,
     },
-  },
-  components: {
-    LineChart,
   },
   computed: {
     chartData() {

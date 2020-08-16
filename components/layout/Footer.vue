@@ -16,7 +16,7 @@
           to="/user/edit-profile"
           >Edit profile</nuxt-link
         >
-        <a v-if="currentUserId !== ''" @click="signOut" class="cursor-pointer"
+        <a v-if="currentUserId !== ''" class="cursor-pointer" @click="signOut"
           >Log out</a
         >
       </div>

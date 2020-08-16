@@ -32,8 +32,8 @@
     <div v-if="detailsExpanded">
       <HillDetails
         :hill="hill"
-        :hillsBagged="hillsBagged"
-        v-on:modal-button="parentMethod()"
+        :hills-bagged="hillsBagged"
+        @modal-button="parentMethod()"
       />
     </div>
   </div>
@@ -49,11 +49,6 @@ export default {
     AreaIcon,
     HillDetails,
   },
-  data() {
-    return {
-      detailsExpanded: false,
-    }
-  },
   props: {
     hill: {
       type: Object,
@@ -63,6 +58,11 @@ export default {
       type: Array,
       required: true,
     },
+  },
+  data() {
+    return {
+      detailsExpanded: false,
+    }
   },
   computed: {
     hasBagged() {

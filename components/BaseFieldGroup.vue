@@ -1,6 +1,9 @@
 <template>
-  <div class="w-full xsm:flex items-center mb-4">
-    <label v-if="label" :for="fieldId" class="xsm:w-40">{{ label }}</label>
+  <div class="w-full items-center py-2">
+    <label v-if="label" :for="fieldId" class="w-full block"
+      >{{ label
+      }}<span v-if="isRequired" class="text-error ml-1">*</span></label
+    >
     <slot name="field" />
   </div>
 </template>
@@ -10,6 +13,7 @@ export default {
   props: {
     label: String,
     fieldId: String,
+    isRequired: Boolean,
   },
 }
 </script>

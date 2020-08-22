@@ -1,5 +1,5 @@
 <template>
-  <label class="mr-2" :for="fieldId"><slot>Field label: </slot></label>
+  <label class="w-full block" :for="fieldId"><slot>Field label: </slot></label>
 </template>
 
 <script>

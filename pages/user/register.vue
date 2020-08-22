@@ -1,51 +1,44 @@
 <template>
   <div>
     <BasePageTitle><template v-slot:title>Register</template></BasePageTitle>
-    <form @submit.prevent="register">
-      <BaseInput
-        id="firstName"
-        v-model="firstName"
-        label="First Name:"
-        type="text"
-      />
-      <BaseInput
-        id="secondName"
-        v-model="secondName"
-        label="Second Name:"
-        type="text"
-      />
-      <BaseInput id="email" v-model="email" label="Email:" type="email" />
-      <BaseInput
-        id="password"
-        v-model="password"
-        label="Password:"
-        type="password"
-      />
-      <BaseButton type="submit" button-class="bg-northwestern"
-        >Register</BaseButton
-      >
-    </form>
+    <div v-if="message" class="bg-western p-2 mb-4 rounded">
+      <p>{{ message }}</p>
+    </div>
+    <CreateUser v-on:create-user="register">Register</CreateUser>
   </div>
 </template>
 
 <script>
+import CreateUser from '@/components/user/CreateUser.vue'
 export default {
   data() {
     return {
-      firstName: '',
-      secondName: '',
-      email: '',
-      password: '',
+      message: null,
     }
   },
+  components: {
+    CreateUser,
+  },
   methods: {
-    register() {
-      this.$store.dispatch('users/register', {
-        firstName: this.firstName,
-        secondName: this.secondName,
-        email: this.email,
-        password: this.password,
-      })
+    async register(req, res) {
+      const { userName, email, password } = req
+      const newUser = {
+        userName,
+        email,
+        password,
+      }
+
+      let registerUser = await this.$store.dispatch('users/register', newUser)
+      if (registerUser) {
+        switch (registerUser.code) {
+          case 'auth/email-already-in-use':
+            this.message =
+              'This email is already linked to another account. Try using a different email, or reset your password'
+            break
+          default:
+            this.message = 'great!'
+        }
+      }
     },
   },
 }

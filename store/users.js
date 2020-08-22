@@ -4,8 +4,7 @@ export const state = () => ({
   user: {
     id: '',
     email: '',
-    firstName: '',
-    secondName: '',
+    userName: '',
     hillsBagged: [],
     bags: [{
       date: '',
@@ -66,6 +65,10 @@ export const mutations = {
   SET_HILL_TO_BAG(state, hillToBagId) {
     state.hillToBagId = hillToBagId
   },
+  EDIT_PROFILE(state, user) {
+    state.user.userName = user.userName
+    state.user.email = user.email
+  },
 }
 export const actions = {
   async fetchUser({
@@ -114,37 +117,35 @@ export const actions = {
     rootState,
     dispatch
   }, credentials) {
-    const authUser = await this.$fireAuth
-      .createUserWithEmailAndPassword(credentials.email, credentials.password)
-      .catch(function (e) {
-        error({
-          statusCode: e.code,
-          message: e.message
-        })
-      })
 
-    const newUser = {
-      id: authUser.user.uid,
-      email: authUser.user.email,
-      firstName: credentials.firstName,
-      secondName: credentials.secondName,
+    let newUser = {
+      id: '',
+      email: credentials.email,
+      userName: credentials.userName,
       hillsBagged: [],
       bags: []
     }
 
-    const userRef = this.$fireStore.collection('users').doc(newUser.id)
-    await userRef.set(newUser).catch(function (e) {
-      error({
-        statusCode: e.code,
-        message: e.message
+    try {
+      const authUser = await this.$fireAuth.createUserWithEmailAndPassword(credentials.email, credentials.password)
+
+      // also add user profile details to users firestore collection
+      const userRef = this.$fireStore.collection('users').doc(authUser.user.uid)
+      const addUserDetails = await userRef.set(newUser).catch(function (err) {
+        return err
       })
-    })
 
-    commit('ADD_NEW_USER', newUser)
-    commit('SET_CURRENT_USER', newUser.id)
+      commit('ADD_NEW_USER', newUser)
+      commit('SET_CURRENT_USER', authUser.user.uid)
 
-    dispatch('loginRedirect')
+      dispatch('loginRedirect')
+
+    } catch (err) {
+      return err
+    }
+
   },
+
   resetUser({
     commit,
     dispatch
@@ -152,8 +153,7 @@ export const actions = {
     let emptyUser = {
       id: '',
       email: '',
-      firstName: '',
-      secondName: '',
+      userName: '',
       hillsBagged: [],
       bags: []
     }
@@ -188,6 +188,19 @@ export const actions = {
       })
     })
     dispatch('resetUser')
+  },
+  async editProfile({
+    state,
+    commit
+  }, user) {
+    const userRef = this.$fireStore.collection('users').doc(state.currentUserId)
+    await userRef.update(user).catch(function (e) {
+      error({
+        statusCode: e.code,
+        message: e.message
+      })
+    })
+    commit('EDIT_PROFILE', user)
   },
   logoutRedirect() {
     this.$router.push({
@@ -264,6 +277,9 @@ export const actions = {
 }
 
 export const getters = {
+  getUser(state) {
+    return state.user
+  },
   getTotalAltClimbed: state => {
     let totalAltClimbed = 0
     totalAltClimbed = state.user.bags.reduce(function (

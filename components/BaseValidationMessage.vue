@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full mb-4">
+  <div class="w-full mb-2">
     <p class="text-fareastern">
       <slot>Validation message</slot>
     </p>

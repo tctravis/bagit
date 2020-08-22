@@ -1,11 +1,14 @@
 <template>
-  <BaseFieldGroup :label="label" :field-id="fieldId">
+  <BaseFieldGroup :label="label" :field-id="fieldId" :isRequired="isRequired">
     <template v-slot:field>
       <input
-        class="border-eastern border-2 rounded p-1 flex-grow"
+        class="border-eastern border-2 rounded p-1 flex-grow w-full"
         :value="value"
         v-bind="$attrs"
-        @input="updateValue"
+        v-on="{
+          ...$listeners,
+          input: (event) => updateValue(event),
+        }"
       />
     </template>
   </BaseFieldGroup>
@@ -17,6 +20,7 @@ export default {
   props: {
     value: [String, Number],
     label: String,
+    isRequired: Boolean,
   },
   computed: {
     fieldId() {

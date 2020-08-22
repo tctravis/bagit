@@ -8,6 +8,11 @@
       type="text"
       placeholder="Search by fell name"
     />
+    <h3>Filter</h3>
+    <p>Filter by area: Western, Nothern etc</p>
+    <p>Already bagged | Not bagged</p>
+    <h3>Sort</h3>
+    <p>High-Low | Low-High</p>
     <HillListItem
       v-for="hill in filteredHills"
       :key="hill.rank"

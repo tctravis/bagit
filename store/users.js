@@ -165,18 +165,12 @@ export const actions = {
   async login({
     commit,
     state,
-    dispatch,
   }, credentials) {
-    await this.$fireAuth
-      .signInWithEmailAndPassword(credentials.email, credentials.password)
-      .catch(function (e) {
-        error({
-          statusCode: e.code,
-          message: e.message
-        })
-      })
-
-    dispatch('loginRedirect')
+    try {
+      return await this.$fireAuth.signInWithEmailAndPassword(credentials.email, credentials.password)
+    } catch (err) {
+      return err
+    }
   },
   async signOut({
     dispatch
@@ -205,11 +199,6 @@ export const actions = {
   logoutRedirect() {
     this.$router.push({
       path: '/',
-    })
-  },
-  loginRedirect() {
-    this.$router.push({
-      path: '/user/dashboard',
     })
   },
   onAuthStateChangedAction: ({

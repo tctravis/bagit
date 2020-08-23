@@ -24,7 +24,6 @@ export default {
     ...mapState({
       bags: (state) => state.users.user.bags,
     }),
-    //...mapGetters('users', ['sortedBagsDesc']),
     sortedBagsDesc() {
       let sortedBags = this.bags
       return sortedBags.sort((a, b) => {

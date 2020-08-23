@@ -9,11 +9,7 @@ export default function ({
     $fireAuth.currentUser === null
   ) {
     if (
-      route.path !== '/' &&
-      route.name !== 'hills-list' &&
-      route.name !== 'hills-id' &&
-      route.name !== 'user-login' &&
-      route.name !== 'user-register') {
+      route.name === 'user-dashboard') {
       return redirect('/')
     }
   } else {

@@ -25,7 +25,10 @@
       <BaseValidationMessage v-if="$v.password.$error" message-type="error"
         >Please enter your password</BaseValidationMessage
       >
-      <div class="flex flex-row justify-end pt-4">
+      <div class="flex flex-row justify-between pt-4">
+        <nuxt-link class="mr-2" to="/user/password-reset"
+          >Forgotten password?</nuxt-link
+        >
         <BaseButton
           :disabled="$v.$invalid"
           type="submit"

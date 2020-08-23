@@ -65,9 +65,8 @@ export const mutations = {
   SET_HILL_TO_BAG(state, hillToBagId) {
     state.hillToBagId = hillToBagId
   },
-  EDIT_PROFILE(state, user) {
+  UPDATE_PROFILE(state, user) {
     state.user.userName = user.userName
-    state.user.email = user.email
   },
 }
 export const actions = {
@@ -183,7 +182,7 @@ export const actions = {
     })
     dispatch('resetUser')
   },
-  async editProfile({
+  async updateProfile({
     state,
     commit
   }, user) {
@@ -194,7 +193,7 @@ export const actions = {
         message: e.message
       })
     })
-    commit('EDIT_PROFILE', user)
+    commit('UPDATE_PROFILE', user)
   },
   logoutRedirect() {
     this.$router.push({

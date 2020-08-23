@@ -1,9 +1,9 @@
 <template>
   <div>
     <BasePageTitle><template v-slot:title>Register</template></BasePageTitle>
-    <div v-if="message" class="bg-western p-2 mb-4 rounded">
-      <p>{{ message }}</p>
-    </div>
+    <BaseFormFeedback v-if="feedback.message !== ''" :type="feedback.type">{{
+      feedback.message
+    }}</BaseFormFeedback>
     <CreateUser v-on:create-user="register">Register</CreateUser>
   </div>
 </template>
@@ -13,7 +13,10 @@ import CreateUser from '@/components/user/CreateUser.vue'
 export default {
   data() {
     return {
-      message: null,
+      feedback: {
+        type: '',
+        message: '',
+      },
     }
   },
   components: {
@@ -29,10 +32,12 @@ export default {
       }
 
       let registerUser = await this.$store.dispatch('users/register', newUser)
+
       if (registerUser) {
+        this.feedback.type = 'error'
         switch (registerUser.code) {
           case 'auth/email-already-in-use':
-            this.message =
+            this.feedback.message =
               'This email is already linked to another account. Try using a different email, or reset your password'
             break
           default:

@@ -7,24 +7,27 @@
       feedback.message
     }}</BaseFormFeedback>
     <form @submit.prevent="resetPassword">
-      <BaseInput
-        id="user-email"
-        v-model="email"
-        label="Email:"
-        type="text"
-        @blur="$v.email.$touch()"
-        :isRequired="true"
-      />
-      <BaseValidationMessage v-if="$v.email.$error" message-type="error"
-        >Please enter a valid email</BaseValidationMessage
-      >
-      <div class="flex flex-row justify-end pt-4">
-        <BaseButton
-          :disabled="$v.$invalid"
-          type="submit"
-          button-class="bg-southern"
-          >Reset password</BaseButton
+      <div class="form-section">
+        <p class="text-error mb-4">* required</p>
+        <BaseInput
+          id="user-email"
+          v-model="email"
+          label="Email:"
+          type="text"
+          @blur="$v.email.$touch()"
+          :isRequired="true"
+        />
+        <BaseValidationMessage v-if="$v.email.$error" message-type="error"
+          >Please enter a valid email</BaseValidationMessage
         >
+        <div class="flex flex-row justify-end pt-4">
+          <BaseButton
+            :disabled="$v.$invalid"
+            type="submit"
+            button-class="bg-southern"
+            >Reset password</BaseButton
+          >
+        </div>
       </div>
     </form>
   </div>

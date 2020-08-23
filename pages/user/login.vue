@@ -1,40 +1,46 @@
 <template>
   <div>
     <BasePageTitle><template v-slot:title>Log in</template></BasePageTitle>
-    <BaseFormFeedback v-if="message">{{ message }}</BaseFormFeedback>
+    <BaseFormFeedback v-if="feedback.message !== ''" :type="feedback.type">{{
+      feedback.message
+    }}</BaseFormFeedback>
+
     <form @submit.prevent="login">
-      <BaseInput
-        id="user-email"
-        v-model="email"
-        label="Email:"
-        type="text"
-        @blur="$v.email.$touch()"
-        :isRequired="true"
-      />
-      <BaseValidationMessage v-if="$v.email.$error" message-type="error"
-        >Please enter your email</BaseValidationMessage
-      >
-      <BaseInput
-        id="user-password"
-        v-model="password"
-        label="Password:"
-        type="password"
-        @blur="$v.password.$touch()"
-        :isRequired="true"
-      />
-      <BaseValidationMessage v-if="$v.password.$error" message-type="error"
-        >Please enter your password</BaseValidationMessage
-      >
-      <div class="flex flex-row justify-between pt-4">
-        <nuxt-link class="mr-2" to="/user/password-reset"
-          >Forgotten password?</nuxt-link
+      <div class="form-section">
+        <p class="text-error mb-4">* required</p>
+        <BaseInput
+          id="user-email"
+          v-model="email"
+          label="Email:"
+          type="text"
+          @blur="$v.email.$touch()"
+          :isRequired="true"
+        />
+        <BaseValidationMessage v-if="$v.email.$error" message-type="error"
+          >Please enter your email</BaseValidationMessage
         >
-        <BaseButton
-          :disabled="$v.$invalid"
-          type="submit"
-          button-class="bg-southern"
-          >Log In</BaseButton
+        <BaseInput
+          id="user-password"
+          v-model="password"
+          label="Password:"
+          type="password"
+          @blur="$v.password.$touch()"
+          :isRequired="true"
+        />
+        <BaseValidationMessage v-if="$v.password.$error" message-type="error"
+          >Please enter your password</BaseValidationMessage
         >
+        <div class="flex flex-row justify-between pt-4">
+          <nuxt-link class="mr-2" to="/user/password-reset"
+            >Forgotten password?</nuxt-link
+          >
+          <BaseButton
+            :disabled="$v.$invalid"
+            type="submit"
+            button-class="bg-southern"
+            >Log In</BaseButton
+          >
+        </div>
       </div>
     </form>
   </div>
@@ -47,7 +53,10 @@ export default {
     return {
       email: '',
       password: '',
-      message: '',
+      feedback: {
+        type: '',
+        message: '',
+      },
     }
   },
   methods: {
@@ -61,20 +70,21 @@ export default {
           path: '/user/dashboard',
         })
       } else {
+        this.feedback.type = 'error'
         switch (loggedIn.code) {
           case 'auth/user-not-found':
-            this.message =
+            this.feedback.message =
               'The email you have entered is not linked to a Baggr account.'
             break
           case 'auth/wrong-password':
-            this.message =
+            this.feedback.message =
               'The password you have entered does not match the email.'
             break
           case 'auth/too-many-requests':
-            this.message = loggedIn.message
+            this.feedback.message = loggedIn.message
             break
           default:
-            this.message =
+            this.feedback.message =
               'Sorry, we have not been able to log you in. Please check that you are online and are using the correct log-in details.'
         }
       }

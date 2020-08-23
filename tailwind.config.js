@@ -46,7 +46,8 @@ module.exports = {
       western: {
         default: '#099D0D',
       },
-      error: 'red'
+      error: 'red',
+      success: 'green'
     },
     screens: {
       xsm: '400px',

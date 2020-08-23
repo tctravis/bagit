@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-western p-2 mb-4 rounded">
+  <div class="p-2 mb-4 rounded" :class="messageClass">
     <p>
       <slot>Form message</slot>
     </p>
@@ -7,7 +7,16 @@
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    type: String,
+  },
+  computed: {
+    messageClass() {
+      return 'bg-' + this.type
+    },
+  },
+}
 </script>
 
 <style lang="scss" scoped></style>

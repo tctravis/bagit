@@ -3,7 +3,9 @@
     <BasePageTitle
       ><template v-slot:title>Reset your password</template></BasePageTitle
     >
-    <BaseFormFeedback v-if="message">{{ message }}</BaseFormFeedback>
+    <BaseFormFeedback v-if="feedback.message !== ''" :type="feedback.type">{{
+      feedback.message
+    }}</BaseFormFeedback>
     <form @submit.prevent="resetPassword">
       <BaseInput
         id="user-email"
@@ -34,20 +36,25 @@ export default {
   data() {
     return {
       email: '',
-      message: '',
+      feedback: {
+        type: '',
+        message: '',
+      },
     }
   },
   methods: {
     async resetPassword() {
       let resetEmail = await this.sendResetEmail()
-      console.log(resetEmail)
+      // if successful resetEmail is null
       if (resetEmail) {
-        switch (resetEmail.code) {
-          case 'auth/user-not-found':
-            this.message = 'The email you have entered has not been recognised.'
-            break
-          default:
-            this.message = 'The email you have entered has not been recognised.'
+        this.feedback = {
+          type: 'error',
+          message: 'The email you have entered has not been recognised.',
+        }
+      } else {
+        this.feedback = {
+          type: 'success',
+          message: 'A reset password email has been sent to ' + this.email,
         }
       }
     },

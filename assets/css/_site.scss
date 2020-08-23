@@ -1,3 +1,7 @@
 .form-section {
-  @apply rounded bg-lightgrey px-2 py-4 mb-4;
+  @apply rounded bg-lightgrey p-2 mb-4;
+}
+
+.form-section-buttons {
+  @apply flex flex-row justify-end items-center py-2;
 }

@@ -3,9 +3,11 @@
     <BasePageTitle
       ><template v-slot:title>Edit profile</template></BasePageTitle
     >
-    <div class="sm:w-3/5">
-      <p class="text-error mb-4">* required</p>
 
+    <div class="sm:w-3/5">
+      <BaseFormFeedback v-if="feedback.message !== ''" :type="feedback.type">{{
+        feedback.message
+      }}</BaseFormFeedback>
       <h3 class="text-xl">Profile details</h3>
       <div class="form-section">
         <form @submit.prevent="updateProfile">
@@ -14,9 +16,8 @@
             v-model="user.userName"
             label="Username"
             type="text"
-            :isRequired="true"
           />
-          <div class="flex flex-row justify-end">
+          <div class="form-section-buttons">
             <BaseButton type="submit" button-class="bg-southern text-white"
               ><slot>Update Profile</slot></BaseButton
             >
@@ -33,7 +34,7 @@
             type="email"
             :isRequired="true"
           />
-          <div class="flex flex-row justify-end items-center">
+          <div class="form-section-buttons">
             <BaseButton type="submit" button-class="bg-southern text-white"
               ><slot>Update email</slot></BaseButton
             >
@@ -48,21 +49,56 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
+  data() {
+    return {
+      feedback: {
+        message: '',
+        type: '',
+      },
+    }
+  },
   computed: {
-    ...mapState({
-      user: (state) => state.users.user,
-      currentUser: (state) => state.users.currentUser,
-    }),
+    ...mapGetters('users', ['getUser']),
+    user() {
+      let user = Object.assign({}, this.getUser)
+      return user
+    },
   },
   methods: {
-    updateProfile(user) {
-      this.$store.dispatch('users/updateProfile', {
-        firstName: user.firstName,
-        secondName: user.secondName,
-        email: user.email,
+    async updateProfile() {
+      let updateRef = await this.$store.dispatch('users/updateProfile', {
+        userName: this.user.userName,
       })
+      if (updateRef === 'success') {
+        this.feedback = {
+          type: 'success',
+          message: 'Your profile has been updated',
+        }
+      } else {
+        this.feedback = {
+          type: 'error',
+          message: 'Failed to update your profile',
+        }
+      }
+    },
+    async updateEmail() {
+      let emailUpdateRef = await this.$store.dispatch(
+        'users/updateEmail',
+        this.user.email
+      )
+      if (emailUpdateRef === 'success') {
+        this.feedback = {
+          type: 'success',
+          message: 'Your email has been updated',
+        }
+      } else {
+        this.feedback = {
+          type: 'error',
+          message: emailUpdateRef.message,
+        }
+      }
     },
   },
 }

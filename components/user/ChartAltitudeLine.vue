@@ -39,7 +39,6 @@ export default {
       }
       return data
     },
-    ...mapGetters('hills', ['getHills']),
   },
 }
 </script>

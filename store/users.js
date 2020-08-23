@@ -68,6 +68,9 @@ export const mutations = {
   UPDATE_PROFILE(state, user) {
     state.user.userName = user.userName
   },
+  UPDATE_EMAIL(state, email) {
+    state.user.email = email
+  },
 }
 export const actions = {
   async fetchUser({
@@ -186,14 +189,29 @@ export const actions = {
     state,
     commit
   }, user) {
-    const userRef = this.$fireStore.collection('users').doc(state.currentUserId)
-    await userRef.update(user).catch(function (e) {
-      error({
-        statusCode: e.code,
-        message: e.message
-      })
-    })
-    commit('UPDATE_PROFILE', user)
+    try {
+      const userRef = this.$fireStore.collection('users').doc(state.currentUserId)
+      // const userRef = this.$fireStore.collection('users').doc('gfsgsfgsf')
+      const userUpdate = await userRef.update(user)
+
+      commit('UPDATE_PROFILE', user)
+      return 'success'
+    } catch (err) {
+      return err
+    }
+  },
+  async updateEmail({
+    state,
+    commit
+  }, email) {
+    const currentUser = this.$fireAuth.currentUser;
+    try {
+      const updateEmailRef = await currentUser.updateEmail(email)
+      commit('UPDATE_EMAIL', email)
+      return 'success'
+    } catch (err) {
+      return err
+    }
   },
   logoutRedirect() {
     this.$router.push({
@@ -267,6 +285,9 @@ export const actions = {
 export const getters = {
   getUser(state) {
     return state.user
+  },
+  getUserBags(state) {
+    return state.user.bags
   },
   getTotalAltClimbed: state => {
     let totalAltClimbed = 0

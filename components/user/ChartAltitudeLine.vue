@@ -12,13 +12,23 @@ export default {
   components: {
     LineChart,
   },
-  props: {
-    bags: {
-      Type: Array,
-      required: true,
-    },
-  },
+  // props: {
+  //   bags: {
+  //     Type: Array,
+  //     required: true,
+  //   },
+  // },
   computed: {
+    ...mapGetters('users', ['getUserBags']),
+    bags() {
+      let bags = [...this.getUserBags]
+      return bags.sort((a, b) => {
+        if (a.date > b.date) return -1
+        if (a.date < b.date) return 1
+        return 0
+      })
+      // return bags
+    },
     chartData() {
       let bagLabels = this.bags.map(function (bag) {
         return bag.name

@@ -36,7 +36,14 @@ export const state = () => ({
   highestHill: 0,
   lowestHill: 0,
   maxHeightRating: 5,
-  totalHills: 0
+  totalHills: 0,
+  hillList: {
+    filters: {
+      area: '',
+      bagged: 'all' // 'bagged', 'unbagged', 'all'
+    },
+    sort: 'asc'
+  }
 })
 
 export const mutations = {
@@ -54,6 +61,16 @@ export const mutations = {
   },
   SET_HIGHEST_HILL(state, highestHill) {
     state.highestHill = highestHill
+  },
+  SET_HILL_LIST_FILTERS(state, filters) {
+    let filterObj = {
+      ...state.hillList.filters,
+      ...filters
+    }
+    state.hillList.filters = filterObj
+  },
+  SET_HILL_LIST_SORT(state, sortOrder) {
+    state.hillList.sort = sortOrder
   },
 }
 
@@ -95,10 +112,18 @@ export const actions = {
       return hills
     }
   },
+  filterHillList({
+    commit
+  }, filters) {
+    commit('SET_HILL_LIST_FILTERS', filters)
+  }
 }
 export const getters = {
   getHills(state) {
     return state.hills
+  },
+  getAreas(state) {
+    return state.areas
   },
   getTotalHills(state) {
     return state.totalHills

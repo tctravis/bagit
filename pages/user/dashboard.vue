@@ -9,11 +9,7 @@
       :bags="user.bags"
       class="mb-6"
     />
-    <ChartAltitudeLine
-      v-if="user.bags.length > 0"
-      :bags="user.bags"
-      class="mb-6"
-    />
+    <ChartAltitudeLine v-if="user.bags.length > 0" class="mb-6" />
     <h2 class="text-2xl mb-2">Your Latest Bags</h2>
     <BaggedList />
   </div>

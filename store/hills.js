@@ -116,6 +116,12 @@ export const actions = {
     commit
   }, filters) {
     commit('SET_HILL_LIST_FILTERS', filters)
+  },
+
+  sortHillList({
+    commit
+  }, sortOrder) {
+    commit('SET_HILL_LIST_SORT', sortOrder)
   }
 }
 export const getters = {

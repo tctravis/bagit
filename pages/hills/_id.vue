@@ -5,9 +5,7 @@
     }}</HillPageTitle>
 
     <div class="mb-4 p-4 bg-lightgrey rounded">
-      <div class="mb-2">
-        <span>Wainwright #{{ hill.id }}</span>
-      </div>
+      <p class="text-lg mb-2">Wainwright #{{ hill.id }}</p>
       <div class="mb-2">
         <HeightRating
           :height-rating="hill.heightRating"

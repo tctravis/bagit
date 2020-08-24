@@ -5,7 +5,7 @@
       <BaseInput
         id="hills-search-filter"
         v-model="search"
-        label="Fell name:"
+        label="Find a fell:"
         type="text"
         placeholder="Search by fell name"
       />
@@ -18,11 +18,14 @@
           aria-controls="panel-1"
           id="tab-1"
           tabindex="0"
-          @click="openTab"
+          @click="openTab(0)"
           class="rounded-t-lg bg-lightgrey p-2 cursor-pointer hover:bg-southern hover:text-white w-1/2 md:w-auto"
           :class="filterTabs.selectedTab === 0 ? 'bg-southern text-white' : ''"
         >
           Filters
+          <span v-if="totalFiltersApplied > 0"
+            >({{ totalFiltersApplied }} applied)</span
+          >
         </h3>
         <h3
           role="tab"
@@ -30,11 +33,11 @@
           aria-controls="panel-2"
           id="tab-2"
           tabindex="1"
-          @click="openTab"
+          @click="openTab(1)"
           class="rounded-t-lg bg-lightgrey p-2 cursor-pointer hover:bg-southern hover:text-white w-1/2 md:w-auto"
           :class="filterTabs.selectedTab === 1 ? 'bg-southern text-white' : ''"
         >
-          Sort
+          Sort ({{ currentSortOrder }})
         </h3>
       </div>
       <div
@@ -51,30 +54,21 @@
         <div class="flex flex-row flex-wrap">
           <BasePill
             @click="filterByBagged('all')"
+            :isActive="hillList.filters.bagged === 'all'"
             class="bg-darkgrey text-white mb-2 mr-2"
-            >All<span
-              v-if="hillList.filters.bagged === 'all'"
-              class="ml-2 rounded-full bg-white text-darkgrey w-6 inline-block text-center"
-              >x</span
-            ></BasePill
+            >All</BasePill
           >
           <BasePill
             @click="filterByBagged('bagged')"
+            :isActive="hillList.filters.bagged === 'bagged'"
             class="bg-darkgrey text-white mb-2 mr-2"
-            >Bagged<span
-              v-if="hillList.filters.bagged === 'bagged'"
-              class="ml-2 rounded-full bg-white text-darkgrey w-6 inline-block text-center"
-              >x</span
-            ></BasePill
+            >Bagged</BasePill
           >
           <BasePill
             @click="filterByBagged('unbagged')"
+            :isActive="hillList.filters.bagged === 'unbagged'"
             class="bg-darkgrey text-white mb-2 mr-2"
-            >Not bagged<span
-              v-if="hillList.filters.bagged === 'unbagged'"
-              class="ml-2 rounded-full bg-white text-darkgrey w-6 inline-block text-center"
-              >x</span
-            ></BasePill
+            >Not bagged</BasePill
           >
         </div>
       </div>
@@ -86,19 +80,35 @@
         aria-labelledby="tab-2"
         class="p-2 bg-lightgrey border-t-2 border-southern"
       >
-        <p>High-Low | Low-High</p>
+        <div class="flex flex-row justify-end">
+          <BasePill
+            :isActive="hillList.sort === 'desc'"
+            @click="sortByHeight('desc')"
+            class="bg-darkgrey text-white mr-2"
+            >High-Low</BasePill
+          >
+          <BasePill
+            :isActive="hillList.sort === 'asc'"
+            @click="sortByHeight('asc')"
+            class="bg-darkgrey text-white"
+            >Low-High</BasePill
+          >
+        </div>
       </div>
     </div>
     <template v-if="filteredHills.length > 0">
       <HillListItem
-        v-for="hill in filteredHills"
+        v-for="hill in sortedHills"
         :key="hill.rank"
         :hill="hill"
         :hills-bagged="user.hillsBagged"
       />
     </template>
     <template v-else>
-      <p>Sorry, there are no results for your search</p>
+      <p class="mb-2">Sorry, there are no results for your search</p>
+      <BaseButton @click="clearSearch()" buttonClass="bg-southern"
+        >Start a new search</BaseButton
+      >
     </template>
     <BagCreateModal />
   </div>
@@ -169,12 +179,38 @@ export default {
 
       return hillsArray
     },
+    sortedHills() {
+      let hillsArray = this.filteredHills
+      if (this.hillList.sort === 'desc') {
+        hillsArray.sort((a, b) => {
+          if (a.height_m > b.height_m) return -1
+          if (a.height_m < b.height_m) return 1
+          return 0
+        })
+      } else {
+        hillsArray.sort((a, b) => {
+          if (a.height_m < b.height_m) return -1
+          if (a.height_m > b.height_m) return 1
+          return 0
+        })
+      }
+      return hillsArray
+    },
+    totalFiltersApplied() {
+      const areaFilters = parseInt(this.hillList.filters.area.length)
+      const baggedFilter = parseInt(
+        this.hillList.filters.bagged === 'all' ? '0' : '1'
+      )
+      return areaFilters + baggedFilter
+    },
+    currentSortOrder() {
+      return this.hillList.sort === 'asc' ? 'Low-High' : 'High-Low'
+    },
   },
   methods: {
     ...mapActions('users', ['closeBagModal']),
-    openTab(e) {
-      let currentTab = e.target.tabIndex
-      this.filterTabs.selectedTab = currentTab
+    openTab(tabIndex) {
+      this.filterTabs.selectedTab = tabIndex
     },
     tabIsSelected(tabIndex) {
       return tabIndex === this.filterTabs.selectedTab ? true : false
@@ -184,6 +220,19 @@ export default {
         bagged: baggedStatus,
       }
       this.$store.dispatch('hills/filterHillList', filters)
+    },
+    sortByHeight(sortOrder) {
+      this.$store.dispatch('hills/sortHillList', sortOrder)
+    },
+    clearSearch() {
+      let filters = {
+        area: [],
+        bagged: 'all',
+      }
+      this.search = ''
+      this.filterTabs.selectedTab = ''
+      this.$store.dispatch('hills/filterHillList', filters)
+      this.$store.dispatch('hills/sortHillList', 'desc')
     },
   },
   mounted() {

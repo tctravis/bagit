@@ -2,16 +2,12 @@
   <div>
     <BasePill
       v-for="area in sortedAreas"
+      :isActive="isSelected(area.id)"
       :key="area.id"
       :class="('bg-' + area.name) | removeSpaces | lowercase"
       @click="filterByArea(area.id)"
       class="text-white mb-2 mr-2"
-      >{{ area.name
-      }}<span
-        v-if="isSelected(area.id)"
-        class="ml-2 rounded-full bg-white text-darkgrey w-6 inline-block text-center"
-        >x</span
-      ></BasePill
+      >{{ area.name }}</BasePill
     >
   </div>
 </template>

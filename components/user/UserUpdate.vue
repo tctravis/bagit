@@ -7,21 +7,21 @@
         v-model="user.userName"
         label="Username"
         type="text"
-        :isRequired="true"
+        :is-required="true"
       />
       <BaseInput
         id="email"
         v-model="user.email"
         label="Email"
         type="email"
-        :isRequired="true"
+        :is-required="true"
       />
       <BaseInput
         id="password"
         v-model="user.password"
         label="Password"
         type="password"
-        :isRequired="true"
+        :is-required="true"
       />
       <div class="flex flex-row justify-end pt-4">
         <BaseButton type="submit" button-class="bg-southern text-white"

@@ -13,8 +13,8 @@
           v-model="email"
           label="Email:"
           type="text"
+          :is-required="true"
           @blur="$v.email.$touch()"
-          :isRequired="true"
         />
         <BaseValidationMessage v-if="$v.email.$error" message-type="error"
           >Please enter your email</BaseValidationMessage
@@ -24,8 +24,8 @@
           v-model="password"
           label="Password:"
           type="password"
+          :is-required="true"
           @blur="$v.password.$touch()"
-          :isRequired="true"
         />
         <BaseValidationMessage v-if="$v.password.$error" message-type="error"
           >Please enter your password</BaseValidationMessage

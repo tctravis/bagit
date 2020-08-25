@@ -1,21 +1,5 @@
 <script>
 export default {
-  render: function (createElement) {
-    const titleClasses = this.titleClasses.join(' ')
-    const titleObject = {
-      class: titleClasses,
-    }
-    return createElement(
-      'h' + this.level, // tag name
-      titleObject,
-      this.$slots.default // array of children
-    )
-  },
-  data() {
-    return {
-      titleClasses: [],
-    }
-  },
   props: {
     level: {
       type: Number,
@@ -28,6 +12,15 @@ export default {
       default: false,
     },
   },
+  data() {
+    return {
+      titleClasses: [],
+    }
+  },
+  mounted() {
+    this.setDecorationClass()
+    this.setTailwindClasses()
+  },
   methods: {
     setDecorationClass() {
       if (this.hasDecoration) {
@@ -35,30 +28,40 @@ export default {
       }
     },
     setTailwindClasses() {
-      let classArray = []
+      let classArray = ['pt-2 mb-4']
       switch (this.level) {
         case 1:
-          classArray.push(['text-3xl'])
+          classArray.push('text-3xl')
           break
         case 2:
-          classArray.push(['text-2xl'])
+          classArray.push('text-2xl')
           break
         case 3:
-          classArray.push(['text-xl'])
+          classArray.push('text-xl')
           break
         case 4:
-          classArray.push(['text-lg'])
+          classArray.push('text-lg')
           break
         case 5:
-          classArray.push(['text-md'])
+          classArray.push('text-md')
           break
       }
-      this.titleClasses.push(classArray)
+      this.titleClasses = this.titleClasses.concat(classArray)
     },
   },
-  mounted() {
-    this.setDecorationClass()
-    //this.setTailwindClasses()
+  render: function (createElement) {
+    const titleClasses = this.titleClasses.join(' ')
+
+    const titleObject = {
+      attrs: {
+        class: titleClasses,
+      },
+    }
+    return createElement(
+      'h' + this.level, // tag name
+      titleObject,
+      this.$slots.default // array of children
+    )
   },
 }
 </script>

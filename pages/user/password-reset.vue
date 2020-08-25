@@ -14,8 +14,8 @@
           v-model="email"
           label="Email:"
           type="text"
+          :is-required="true"
           @blur="$v.email.$touch()"
-          :isRequired="true"
         />
         <BaseValidationMessage v-if="$v.email.$error" message-type="error"
           >Please enter a valid email</BaseValidationMessage

@@ -32,7 +32,7 @@
             v-model="user.email"
             label="Email"
             type="email"
-            :isRequired="true"
+            :is-required="true"
           />
           <div class="form-section-buttons">
             <BaseButton type="submit" button-class="bg-southern text-white"

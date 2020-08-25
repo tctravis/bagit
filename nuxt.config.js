@@ -87,7 +87,10 @@ export default {
             'faChevronUp',
             'faStar',
             'faTimes',
-            'faQuestionCircle'
+            'faQuestionCircle',
+            'faCertificate',
+            'faRibbon',
+            'faTrophy',
           ],
         }, ],
       },

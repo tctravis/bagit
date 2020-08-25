@@ -8,8 +8,8 @@
           v-model="user.userName"
           label="Username"
           type="text"
+          :is-required="true"
           @blur="$v.user.userName.$touch()"
-          :isRequired="true"
         />
         <BaseValidationMessage
           v-if="$v.user.userName.$error"
@@ -21,8 +21,8 @@
           v-model="user.email"
           label="Email"
           type="email"
+          :is-required="true"
           @blur="$v.user.email.$touch()"
-          :isRequired="true"
         />
         <BaseValidationMessage v-if="$v.user.email.$error" message-type="error"
           >Please enter a valid email</BaseValidationMessage
@@ -32,8 +32,8 @@
           v-model="user.password"
           label="Password"
           type="password"
+          :is-required="true"
           @blur="$v.user.password.$touch()"
-          :isRequired="true"
         />
         <BaseValidationMessage
           v-if="$v.user.password.$error"
@@ -45,8 +45,8 @@
           v-model="user.confirmPassword"
           label="Confirm password"
           type="password"
+          :is-required="true"
           @blur="$v.user.confirmPassword.$touch()"
-          :isRequired="true"
         />
         <BaseValidationMessage
           v-if="$v.user.confirmPassword.$error"

@@ -13,21 +13,22 @@ export default {
     LineChart,
   },
   computed: {
-    ...mapGetters('users', ['getUserBags']),
-    bags() {
-      let bags = [...this.getUserBags]
-      return bags.sort((a, b) => {
+    ...mapState({
+      userBags: (state) => state.users.user.bags,
+    }),
+    sortedBags() {
+      let sortedBags = [...this.userBags]
+      return sortedBags.sort((a, b) => {
         if (a.date < b.date) return -1
         if (a.date > b.date) return 1
         return 0
       })
-      // return bags
     },
     chartData() {
-      let bagLabels = this.bags.map(function (bag) {
+      let bagLabels = this.sortedBags.map(function (bag) {
         return bag.name
       })
-      let bagAltitudes = this.bags.map(function (bag) {
+      let bagAltitudes = this.sortedBags.map(function (bag) {
         return bag.height_m
       })
 

@@ -1,5 +1,5 @@
 <template>
-  <BaseFieldGroup :label="label" :field-id="fieldId" :isRequired="isRequired">
+  <BaseFieldGroup :label="label" :field-id="fieldId" :is-required="isRequired">
     <template v-slot:field>
       <input
         class="border-eastern border-2 rounded p-1 flex-grow w-full"

@@ -13,14 +13,14 @@
     <div class="mb-4">
       <div role="tabslist" class="flex flex-row justify-between">
         <h3
+          id="tab-1"
           role="tab"
           :aria-selected="filterTabs.selectedTab === 0 ? 'true' : 'false'"
           aria-controls="panel-1"
-          id="tab-1"
           tabindex="0"
-          @click="toggleTab(0)"
           class="rounded-t-lg bg-lightgrey p-2 cursor-pointer hover:bg-southern hover:text-white w-1/2 md:w-auto flex flex-row items-center justify-start"
           :class="filterTabs.selectedTab === 0 ? 'bg-southern text-white' : ''"
+          @click="toggleTab(0)"
         >
           Filters
           <span v-if="totalFiltersApplied > 0"
@@ -33,14 +33,14 @@
           />
         </h3>
         <h3
+          id="tab-2"
           role="tab"
           :aria-selected="filterTabs.selectedTab === 1 ? 'true' : 'false'"
           aria-controls="panel-2"
-          id="tab-2"
           tabindex="1"
-          @click="toggleTab(1)"
           class="rounded-t-lg bg-lightgrey p-2 cursor-pointer hover:bg-southern hover:text-white w-1/2 md:w-auto flex flex-row items-center justify-start"
           :class="filterTabs.selectedTab === 1 ? 'bg-southern text-white' : ''"
+          @click="toggleTab(1)"
         >
           Sort ({{ currentSortOrder }})
           <font-awesome-icon
@@ -63,21 +63,21 @@
         <p class="mb-2">By status</p>
         <div class="flex flex-row flex-wrap">
           <BasePill
-            @click="filterByBagged('all')"
-            :isActive="hillList.filters.bagged === 'all'"
+            :is-active="hillList.filters.bagged === 'all'"
             class="bg-darkgrey text-white mb-2 mr-2"
+            @click="filterByBagged('all')"
             >All</BasePill
           >
           <BasePill
-            @click="filterByBagged('bagged')"
-            :isActive="hillList.filters.bagged === 'bagged'"
+            :is-active="hillList.filters.bagged === 'bagged'"
             class="bg-darkgrey text-white mb-2 mr-2"
+            @click="filterByBagged('bagged')"
             >Bagged</BasePill
           >
           <BasePill
-            @click="filterByBagged('unbagged')"
-            :isActive="hillList.filters.bagged === 'unbagged'"
+            :is-active="hillList.filters.bagged === 'unbagged'"
             class="bg-darkgrey text-white mb-2 mr-2"
+            @click="filterByBagged('unbagged')"
             >Not bagged</BasePill
           >
         </div>
@@ -92,15 +92,15 @@
       >
         <div class="flex flex-row justify-end">
           <BasePill
-            :isActive="hillList.sort === 'desc'"
-            @click="sortByHeight('desc')"
+            :is-active="hillList.sort === 'desc'"
             class="bg-darkgrey text-white mr-2"
+            @click="sortByHeight('desc')"
             >High-Low</BasePill
           >
           <BasePill
-            :isActive="hillList.sort === 'asc'"
-            @click="sortByHeight('asc')"
+            :is-active="hillList.sort === 'asc'"
             class="bg-darkgrey text-white"
+            @click="sortByHeight('asc')"
             >Low-High</BasePill
           >
         </div>
@@ -116,7 +116,7 @@
     </template>
     <template v-else>
       <p class="mb-2">Sorry, there are no results for your search</p>
-      <BaseButton @click="clearSearch()" buttonClass="bg-southern"
+      <BaseButton button-class="bg-southern" @click="clearSearch()"
         >Start a new search</BaseButton
       >
     </template>

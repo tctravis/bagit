@@ -47,7 +47,7 @@ module.exports = {
         default: '#099D0D',
       },
       error: 'red',
-      success: 'green'
+      success: 'green',
     },
     screens: {
       xsm: '400px',

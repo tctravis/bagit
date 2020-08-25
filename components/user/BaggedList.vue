@@ -14,21 +14,18 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapState } from 'vuex'
 import BaggedListItem from '@/components/user/BaggedListItem.vue'
 export default {
   components: {
     BaggedListItem,
   },
   computed: {
-    ...mapGetters('users', ['getUserBags']),
-    bags() {
-      // https://stackoverflow.com/questions/52581488/how-can-i-clone-data-from-vuex-state-to-local-data
-      let bags = [...this.getUserBags]
-      return bags
-    },
+    ...mapState({
+      userBags: (state) => state.users.user.bags,
+    }),
     sortedBagsDesc() {
-      let sortedBags = this.bags
+      let sortedBags = [...this.userBags]
       return sortedBags.sort((a, b) => {
         if (a.date > b.date) return -1
         if (a.date < b.date) return 1

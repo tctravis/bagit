@@ -4,13 +4,16 @@
     <BaseFormFeedback v-if="feedback.message !== ''" :type="feedback.type">{{
       feedback.message
     }}</BaseFormFeedback>
-    <CreateUser v-on:create-user="register">Register</CreateUser>
+    <CreateUser @create-user="register">Register</CreateUser>
   </div>
 </template>
 
 <script>
 import CreateUser from '@/components/user/CreateUser.vue'
 export default {
+  components: {
+    CreateUser,
+  },
   data() {
     return {
       feedback: {
@@ -18,9 +21,6 @@ export default {
         message: '',
       },
     }
-  },
-  components: {
-    CreateUser,
   },
   methods: {
     async register(req, res) {

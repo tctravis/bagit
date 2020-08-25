@@ -80,7 +80,6 @@ export const actions = {
     rootState
   }, userId) {
     if (state.user.email !== '' && state.currentUserId === userId) return
-    // if (state.currentUserId !== undefined) return
 
     const userRef = this.$fireStore.collection('users').doc(userId)
     let user = await userRef.get()
@@ -92,6 +91,7 @@ export const actions = {
 
     await bagsRef.orderBy('date', 'desc').get().then(function (querySnapshot) {
       querySnapshot.forEach(function (bag) {
+
         let newBag = bag.data()
 
         //covert firestore timestamp to date
@@ -125,7 +125,26 @@ export const actions = {
       email: credentials.email,
       userName: credentials.userName,
       hillsBagged: [],
-      bags: []
+      bags: [{
+        date: '',
+        area: '',
+        areaClassName: '',
+        areaName: '',
+        comments: '',
+        date: '',
+        heightRating: '',
+        height_f: '',
+        height_m: '',
+        hill_id: '',
+        id: '',
+        name: '',
+        os_grid_ref: '',
+        os_map: '',
+        prom_f: '',
+        prom_m: '',
+        rating: '',
+        section: ''
+      }]
     }
 
     try {
@@ -260,7 +279,6 @@ export const actions = {
       })
     } catch (error) {
       return error
-      // console.log(error)
     }
   },
   toggleBagModal({

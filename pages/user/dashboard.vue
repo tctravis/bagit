@@ -3,30 +3,33 @@
     <BasePageTitle
       ><template v-slot:title>Your progress</template></BasePageTitle
     >
-    <BaseTitle :level="2" :hasDecoration="true" class="text-xl"
+    <BaseInfoBar>
+      {{ user.userName }}, you have bagged {{ totalBagged }} of
+      {{ totalHills }} Wainwrights
+    </BaseInfoBar>
+    <BaggingBadges />
+    <BaseTitle :level="2" :has-decoration="true" class="text-xl"
       >Altitude</BaseTitle
     >
-    <div
-      class="rounded p-2 bg-lightgrey mb-2 flex flex-row justify-between items-center"
-    >
+    <BaseInfoBar>
       <p>
         Altitude bagged:
         <span>{{ getTotalAltClimbed }}m</span>
       </p>
       <TooltipInfo>
         <BaseParagraph>
-          Nunc luctus molestie ante, ut tristique mauris ultrices in. Ut
-          venenatis ex justo, at lobortis eros auctor eget.
+          'Altitude bagged' is calculated using the prominence (rather than the
+          altitude) of all the Wainwrights you have bagged.
         </BaseParagraph>
       </TooltipInfo>
-    </div>
+    </BaseInfoBar>
     <BaseParagraph>
       Sed consectetur eros metus, a maximus urna pulvinar a. Nunc luctus
       molestie ante, ut tristique mauris ultrices in. Ut venenatis ex justo, at
       lobortis eros auctor eget.
     </BaseParagraph>
     <ChartAltitudeLine v-if="user.bags.length > 0" class="mb-6" />
-    <BaseTitle :level="2" :hasDecoration="true" class="text-xl"
+    <BaseTitle :level="2" :has-decoration="true" class="text-xl"
       >Your latest bags</BaseTitle
     >
     <BaggedList />
@@ -35,11 +38,13 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex'
+import BaggingBadges from '@/components/user/BaggingBadges.vue'
 import BaggedList from '@/components/user/BaggedList.vue'
 import ChartAltitudeLine from '@/components/user/ChartAltitudeLine.vue'
 import TooltipInfo from '@/components/widgets/TooltipInfo.vue'
 export default {
   components: {
+    BaggingBadges,
     BaggedList,
     ChartAltitudeLine,
     TooltipInfo,
@@ -48,8 +53,15 @@ export default {
     ...mapState({
       user: (state) => state.users.user,
       currentUser: (state) => state.users.currentUser,
+      hills: (state) => state.hills.hills,
     }),
     ...mapGetters('users', ['getTotalAltClimbed']),
+    totalBagged() {
+      return this.user.bags.length
+    },
+    totalHills() {
+      return this.hills.length
+    },
   },
 }
 </script>

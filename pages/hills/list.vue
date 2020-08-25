@@ -18,14 +18,19 @@
           aria-controls="panel-1"
           id="tab-1"
           tabindex="0"
-          @click="openTab(0)"
-          class="rounded-t-lg bg-lightgrey p-2 cursor-pointer hover:bg-southern hover:text-white w-1/2 md:w-auto"
+          @click="toggleTab(0)"
+          class="rounded-t-lg bg-lightgrey p-2 cursor-pointer hover:bg-southern hover:text-white w-1/2 md:w-auto flex flex-row items-center justify-start"
           :class="filterTabs.selectedTab === 0 ? 'bg-southern text-white' : ''"
         >
           Filters
           <span v-if="totalFiltersApplied > 0"
             >({{ totalFiltersApplied }} applied)</span
           >
+          <font-awesome-icon
+            v-if="filterTabs.selectedTab === 0"
+            :icon="['fa', 'times']"
+            class="text-darkgrey ml-auto"
+          />
         </h3>
         <h3
           role="tab"
@@ -33,11 +38,16 @@
           aria-controls="panel-2"
           id="tab-2"
           tabindex="1"
-          @click="openTab(1)"
-          class="rounded-t-lg bg-lightgrey p-2 cursor-pointer hover:bg-southern hover:text-white w-1/2 md:w-auto"
+          @click="toggleTab(1)"
+          class="rounded-t-lg bg-lightgrey p-2 cursor-pointer hover:bg-southern hover:text-white w-1/2 md:w-auto flex flex-row items-center justify-start"
           :class="filterTabs.selectedTab === 1 ? 'bg-southern text-white' : ''"
         >
           Sort ({{ currentSortOrder }})
+          <font-awesome-icon
+            v-if="filterTabs.selectedTab === 1"
+            :icon="['fa', 'times']"
+            class="text-darkgrey ml-auto"
+          />
         </h3>
       </div>
       <div
@@ -209,8 +219,12 @@ export default {
   },
   methods: {
     ...mapActions('users', ['closeBagModal']),
-    openTab(tabIndex) {
-      this.filterTabs.selectedTab = tabIndex
+    toggleTab(tabIndex) {
+      if (this.filterTabs.selectedTab !== tabIndex) {
+        this.filterTabs.selectedTab = tabIndex
+      } else {
+        this.filterTabs.selectedTab = ''
+      }
     },
     tabIsSelected(tabIndex) {
       return tabIndex === this.filterTabs.selectedTab ? true : false
@@ -237,6 +251,9 @@ export default {
   },
   mounted() {
     this.closeBagModal()
+    if (this.totalFiltersApplied > 0) {
+      this.filterTabs.selectedTab = 0
+    }
   },
 }
 </script>

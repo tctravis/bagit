@@ -1,6 +1,6 @@
 <template>
   <div class="max-w-4xl">
-    <canvas ref="lineChart" width="200" height="200"></canvas>
+    <canvas ref="lineChart" width="200" height="140"></canvas>
   </div>
 </template>
 

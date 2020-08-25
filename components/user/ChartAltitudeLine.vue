@@ -12,19 +12,13 @@ export default {
   components: {
     LineChart,
   },
-  // props: {
-  //   bags: {
-  //     Type: Array,
-  //     required: true,
-  //   },
-  // },
   computed: {
     ...mapGetters('users', ['getUserBags']),
     bags() {
       let bags = [...this.getUserBags]
       return bags.sort((a, b) => {
-        if (a.date > b.date) return -1
-        if (a.date < b.date) return 1
+        if (a.date < b.date) return -1
+        if (a.date > b.date) return 1
         return 0
       })
       // return bags
@@ -43,9 +37,22 @@ export default {
           {
             label: 'Altitude climbed',
             data: bagAltitudes,
+            backgroundColor: 'rgba(9, 157, 13, 0.2)',
+            borderColor: 'rgba(9, 157, 13, 1)',
           },
         ],
-        options: {},
+        options: {
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  suggestedMin: 500,
+                  suggestedMax: 1000,
+                },
+              },
+            ],
+          },
+        },
       }
       return data
     },

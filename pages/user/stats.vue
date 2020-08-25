@@ -1,15 +1,10 @@
 <template>
   <div>
-    <BasePageTitle><template v-slot:title>Bags</template></BasePageTitle>
+    <BasePageTitle><template v-slot:title>Statistics</template></BasePageTitle>
     <BaseInfoBar>
       {{ user.userName }}, you have bagged {{ totalBagged }} of
       {{ totalHills }} Wainwrights
     </BaseInfoBar>
-    <BaseTitle :level="2" :has-decoration="true" class="text-xl"
-      >Your latest bags</BaseTitle
-    >
-    <BaggedList :bagsToShow="5" />
-    <BaggingBadges />
     <BaseTitle :level="2" :has-decoration="true" class="text-xl"
       >Altitude</BaseTitle
     >
@@ -36,14 +31,12 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex'
-import BaggingBadges from '@/components/user/BaggingBadges.vue'
-import BaggedList from '@/components/user/BaggedList.vue'
+// import BaggingBadges from '@/components/user/BaggingBadges.vue'
 import ChartAltitudeLine from '@/components/user/ChartAltitudeLine.vue'
 import TooltipInfo from '@/components/widgets/TooltipInfo.vue'
 export default {
   components: {
-    BaggingBadges,
-    BaggedList,
+    // BaggingBadges,
     ChartAltitudeLine,
     TooltipInfo,
   },

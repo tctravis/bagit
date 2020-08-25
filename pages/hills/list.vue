@@ -1,6 +1,6 @@
 <template>
   <div>
-    <BasePageTitle><template v-slot:title>Wainwrights</template></BasePageTitle>
+    <BasePageTitle><template v-slot:title>Fells</template></BasePageTitle>
     <div class="form-section">
       <BaseInput
         id="hills-search-filter"

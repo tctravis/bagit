@@ -7,9 +7,12 @@
         <div class="flex flex-row items-center justify-between py-2">
           <nuxt-link to="/">FELL BAGGR</nuxt-link>
           <nav class="flex flex-row">
-            <nuxt-link class="mx-2" to="/hills/list">Fells</nuxt-link>
-            <nuxt-link v-if="currentUserId !== ''" to="/user/dashboard"
-              >Your Progress</nuxt-link
+            <nuxt-link class="mr-2" to="/hills/list">Fells</nuxt-link>
+            <nuxt-link class="mr-2" v-if="currentUserId !== ''" to="/user/bags"
+              >Bags</nuxt-link
+            >
+            <nuxt-link v-if="currentUserId !== ''" to="/user/stats"
+              >Stats</nuxt-link
             >
           </nav>
         </div>

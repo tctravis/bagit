@@ -1,5 +1,8 @@
 <template>
   <div>
+    <BaseTitle :level="2" :has-decoration="true" class="text-xl"
+      >Your latest bags</BaseTitle
+    >
     <template v-if="sortedBagsDesc.length > 0">
       <BaggedListItem
         v-for="(bag, index) in bagsList"

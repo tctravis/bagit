@@ -5,11 +5,11 @@
     >
       <div class="container px-4">
         <div class="flex flex-row items-center justify-between py-2">
-          <nuxt-link to="/">BAGGR</nuxt-link>
+          <nuxt-link to="/">FELL BAGGR</nuxt-link>
           <nav class="flex flex-row">
-            <nuxt-link class="mx-2" to="/hills/list">Wainwrights</nuxt-link>
+            <nuxt-link class="mx-2" to="/hills/list">Fells</nuxt-link>
             <nuxt-link v-if="currentUserId !== ''" to="/user/dashboard"
-              >Dashboard</nuxt-link
+              >Your Progress</nuxt-link
             >
           </nav>
         </div>

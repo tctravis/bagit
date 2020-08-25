@@ -7,6 +7,10 @@
       {{ user.userName }}, you have bagged {{ totalBagged }} of
       {{ totalHills }} Wainwrights
     </BaseInfoBar>
+    <BaseTitle :level="2" :has-decoration="true" class="text-xl"
+      >Your latest bags</BaseTitle
+    >
+    <BaggedList :bagsToShow="5" />
     <BaggingBadges />
     <BaseTitle :level="2" :has-decoration="true" class="text-xl"
       >Altitude</BaseTitle
@@ -29,10 +33,6 @@
       lobortis eros auctor eget.
     </BaseParagraph>
     <ChartAltitudeLine v-if="user.bags.length > 0" class="mb-6" />
-    <BaseTitle :level="2" :has-decoration="true" class="text-xl"
-      >Your latest bags</BaseTitle
-    >
-    <BaggedList />
   </div>
 </template>
 

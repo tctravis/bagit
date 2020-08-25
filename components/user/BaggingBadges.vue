@@ -1,6 +1,10 @@
 <template>
   <div class="mb-4">
     <BaseTitle :level="2" :has-decoration="true">Bagging Milestones</BaseTitle>
+    <BaseParagraph
+      >Celebrate your bagging achievements by collecting these badges and
+      ribbons.</BaseParagraph
+    >
     <BaseTitle :level="3">Total bags</BaseTitle>
     <BadgeRack>
       <Badge

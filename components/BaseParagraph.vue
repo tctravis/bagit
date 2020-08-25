@@ -1,5 +1,5 @@
 <template>
-  <p class="mb-2"><slot>Paragraph</slot></p>
+  <p class="mb-3"><slot>Paragraph</slot></p>
 </template>
 
 <script>

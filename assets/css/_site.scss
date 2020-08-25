@@ -15,3 +15,11 @@
     width: 50px;
   }
 }
+
+.button {
+  @apply py-1 px-2 rounded flex flex-row whitespace-no-wrap shadow;
+
+  &:disabled {
+    @apply opacity-50;
+  }
+}

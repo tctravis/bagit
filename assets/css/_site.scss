@@ -5,3 +5,13 @@
 .form-section-buttons {
   @apply flex flex-row justify-end items-center py-2;
 }
+
+.decorated-header {
+  &:after {
+    content: '';
+    display: block;
+    border-bottom: 2px solid #f56c0a;
+    margin: 0.25em 0;
+    width: 50px;
+  }
+}

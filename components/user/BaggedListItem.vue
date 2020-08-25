@@ -1,7 +1,7 @@
 <template>
   <div class="w-full py-2">
     <div
-      class="flex flex-row justify-start items-center"
+      class="flex flex-row justify-start items-center cursor-pointer"
       @click="toggleDetails"
     >
       <AreaIcon

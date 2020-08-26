@@ -17,11 +17,11 @@
       <div
         @keydown.esc="navOpen = false"
         v-show="navOpen"
-        class="z-20 fixed inset-0 transition-opacity"
+        class="z-20 fixed inset-0 transition-opacity md:hidden"
       >
         <div
           @click="navOpen = false"
-          class="absolute inset-0 bg-black opacity-50"
+          class="absolute inset-0 bg-black opacity-50 md:hidden"
           tabindex="0"
         ></div>
       </div>
@@ -41,32 +41,33 @@
       <nav
         class="flex flex-col divide-y md:divide-y-0 md:flex-row md:items-center"
       >
-        <nuxt-link
+        <BaseMenuLink
           @click.native="toggleMenu"
-          class="p-4 hover:bg-fareastern"
-          to="/hills/list"
-          >Find a fell</nuxt-link
+          route="/hills/list"
+          icon="mountain"
+          icon-class="text-lg"
+          >Fells</BaseMenuLink
         >
-        <nuxt-link
+        <BaseMenuLink
           @click.native="toggleMenu"
-          class="p-4 hover:bg-fareastern"
-          v-if="currentUserId !== ''"
-          to="/user/bags"
-          >Your Bags</nuxt-link
+          route="/user/bags"
+          icon="hiking"
+          icon-class="text-xl"
+          >Bags</BaseMenuLink
         >
-        <nuxt-link
+        <BaseMenuLink
           @click.native="toggleMenu"
-          class="p-4 hover:bg-fareastern"
-          v-if="currentUserId !== ''"
-          to="/user/stats"
-          >Your statistics</nuxt-link
+          route="/user/stats"
+          icon="chart-bar"
+          icon-class="text-xl"
+          >Stats</BaseMenuLink
         >
-        <nuxt-link
+        <BaseMenuLink
           @click.native="toggleMenu"
-          v-if="currentUserId !== ''"
-          class="p-4 hover:bg-fareastern"
-          to="/user/edit-profile"
-          >Edit profile</nuxt-link
+          route="/user/edit-profile"
+          icon="user"
+          icon-class="text-xl"
+          >Profile</BaseMenuLink
         >
       </nav>
     </div>

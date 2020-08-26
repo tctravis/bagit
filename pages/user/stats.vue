@@ -6,6 +6,10 @@
       {{ totalHills }} Wainwrights
     </BaseInfoBar>
     <BaseTitle :level="2" :has-decoration="true" class="text-xl"
+      >Bagged by area</BaseTitle
+    >
+    <ChartBaggedByArea />
+    <BaseTitle :level="2" :has-decoration="true" class="text-xl"
       >Altitude</BaseTitle
     >
     <BaseInfoBar>
@@ -32,11 +36,13 @@
 <script>
 import { mapState, mapGetters } from 'vuex'
 // import BaggingBadges from '@/components/user/BaggingBadges.vue'
+import ChartBaggedByArea from '@/components/user/ChartBaggedByArea.vue'
 import ChartAltitudeLine from '@/components/user/ChartAltitudeLine.vue'
 import TooltipInfo from '@/components/widgets/TooltipInfo.vue'
 export default {
   components: {
     // BaggingBadges,
+    ChartBaggedByArea,
     ChartAltitudeLine,
     TooltipInfo,
   },

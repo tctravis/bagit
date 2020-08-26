@@ -91,6 +91,7 @@ export default {
             'faCertificate',
             'faRibbon',
             'faTrophy',
+            'faBars',
           ],
         }, ],
       },

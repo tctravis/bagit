@@ -25,6 +25,7 @@ module.exports = {
       darkgrey: {
         default: '#333333',
       },
+      black: '#000000',
       fareastern: {
         default: '#DA0808',
       },
@@ -60,6 +61,16 @@ module.exports = {
       fontFamily: {
         sans: ['Source Sans Pro', ...defaultTheme.fontFamily.sans],
       },
+      boxShadow: {
+        left: '-5px 0 5px rgba(0, 0, 0, 0.3)',
+      },
+      zIndex: {
+        '1': 1,
+        '9999': 9999
+      },
+      translate: {
+        '105': '105%'
+      }
     },
   },
   variants: {

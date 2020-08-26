@@ -1,3 +1,4 @@
+/* eslint-disable */
 .form-section {
   @apply rounded bg-lightgrey p-2 mb-4;
 }
@@ -21,5 +22,15 @@
 
   &:disabled {
     @apply opacity-50;
+  }
+}
+
+.collapseNav {
+  @apply shadow-left top-0 right-0 w-64 bg-southern fixed h-full overflow-auto ease-in-out transition-all duration-300 z-50;
+}
+
+@screen md {
+  .collapseNav {
+    @apply top-auto right-auto w-auto h-auto relative ml-auto translate-x-0 shadow-none;
   }
 }

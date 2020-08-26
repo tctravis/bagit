@@ -12,20 +12,17 @@ export default {
   },
   computed: {
     ...mapState({
-      stateHills: (state) => state.hills.hills,
-      stateAreas: (state) => state.hills.areas,
+      hills: (state) => state.hills.hills,
+      userBags: (state) => state.users.user.bags,
+      areas: (state) => state.hills.areas,
     }),
     sortedAreas() {
-      let areas = [...this.stateAreas]
+      let areas = [...this.areas]
       return areas.sort((a, b) => {
         if (a.name < b.name) return -1
         if (a.name > b.name) return 1
         return 0
       })
-    },
-    hills() {
-      let hills = [...this.stateHills]
-      return hills
     },
     chartLabels() {
       let areaLabels = this.sortedAreas.map(function (area) {
@@ -41,6 +38,15 @@ export default {
       })
       return hillsInAreaData
     },
+    totalBagsInArea() {
+      let bagsInAreaData = []
+      this.sortedAreas.forEach((area) => {
+        let bagsInArea = this.userBags.filter((bag) => bag.area === area.id)
+        console.log('bags in area ', bagsInArea)
+        bagsInAreaData.push(bagsInArea.length)
+      })
+      return bagsInAreaData
+    },
     areaColourThemes() {
       let areaThemeData = {
         bgColors: [],
@@ -55,13 +61,13 @@ export default {
         labels: this.chartLabels,
         datasets: [
           {
-            label: 'Total hills per area',
+            label: 'Total hills',
             data: this.totalHillsInArea,
             backgroundColor: theme.colors.grey.default,
           },
           {
-            label: 'Total hills bagged per area',
-            data: [10, 4, 3, 5, 0, 7, 12],
+            label: 'Total bags',
+            data: this.totalBagsInArea,
             backgroundColor: this.areaColourThemes.bgColors,
           },
         ],

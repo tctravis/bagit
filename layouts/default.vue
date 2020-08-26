@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="">
     <NavBar />
-    <div class="container py-16 px-4">
+    <div class="container py-20 px-4 relative z-0">
       <Nuxt />
     </div>
     <Footer />

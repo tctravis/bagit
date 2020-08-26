@@ -1,26 +1,16 @@
 <template>
   <footer
-    class="z-50 bg-southern text-white fixed left-0 right-0 bottom-0 h-12 flex flex-row items-center"
+    class="bg-southern text-white fixed left-0 right-0 bottom-0 flex flex-row items-center justify-end z-1"
   >
-    <div class="container px-4">
-      <div class="flex flex-row justify-end">
-        <nuxt-link v-if="currentUserId === ''" class="mx-2" to="/user/register"
-          >Register</nuxt-link
-        >
-        <nuxt-link v-if="currentUserId === ''" class="mx-2" to="/user/login"
-          >Login</nuxt-link
-        >
-        <nuxt-link
-          v-if="currentUserId !== ''"
-          class="mx-2"
-          to="/user/edit-profile"
-          >Edit profile</nuxt-link
-        >
-        <a v-if="currentUserId !== ''" class="cursor-pointer" @click="signOut"
-          >Log out</a
-        >
-      </div>
-    </div>
+    <nuxt-link v-if="currentUserId === ''" class="p-4" to="/user/register"
+      >Register</nuxt-link
+    >
+    <nuxt-link v-if="currentUserId === ''" class="p-4" to="/user/login"
+      >Login</nuxt-link
+    >
+    <a v-if="currentUserId !== ''" class="p-4 cursor-pointer" @click="signOut"
+      >Log out</a
+    >
   </footer>
 </template>
 

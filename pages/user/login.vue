@@ -69,7 +69,8 @@ export default {
       })
       if (loggedIn.user !== undefined) {
         this.$router.push({
-          path: '/user/bags',
+          //path: '/user/bags',
+          path: '/hills/list',
         })
       } else {
         this.feedback.type = 'error'

@@ -1,18 +1,14 @@
 <template>
   <BaseModal :show="bagModalState" @toggle-modal="toggleBagModal">
-    <template v-slot:header>
-      <h1>Bag it!</h1>
-    </template>
-
+    <template v-slot:header>Bag it!</template>
     <template v-slot:body>
-      <template v-if="currentUserId === ''">
+      <template v-if="currentUserId !== ''">
         <BagCreate :hill="hillToBag" />
       </template>
       <template v-else>
         <LoggedOutMessage />
       </template>
     </template>
-
     <template v-slot:footer> </template>
   </BaseModal>
 </template>

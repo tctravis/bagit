@@ -5,6 +5,7 @@ export const state = () => ({
     id: '',
     email: '',
     userName: '',
+    totalBags: 0,
     hillsBagged: [],
     bags: []
     // bags: [{
@@ -32,7 +33,7 @@ export const state = () => ({
   sortBy: 'date',
   sortAsc: true,
   bagModalState: false,
-  hillToBagId: 0
+  hillToBagId: 0,
 })
 export const mutations = {
   SET_USERS(state, users) {
@@ -55,6 +56,9 @@ export const mutations = {
   },
   SET_HILLS_BAGGED(state, hillsBagged) {
     state.user.hillsBagged = hillsBagged
+  },
+  SET_TOTAL_HILLS_BAGGED(state, totalBags) {
+    state.user.totalBags = totalBags
   },
   ADD_NEW_BAG(state, bag) {
     state.user.bags.push(bag)
@@ -110,6 +114,8 @@ export const actions = {
 
       const hillsBagged = bags.map(bag => bag.hill_id)
       commit('SET_HILLS_BAGGED', hillsBagged)
+
+      commit('SET_TOTAL_HILLS_BAGGED', hillsBagged.length)
     });
 
 

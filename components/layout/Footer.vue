@@ -19,11 +19,12 @@ export default {
   components: {
     MilestoneBadge,
   },
-  computed: {
-    ...mapState({
-      currentUserId: (state) => state.users.currentUserId,
-    }),
-  },
+  // computed: {
+  //   ...mapState({
+  //     currentUserId: (state) => state.users.currentUserId,
+  //     userBags: (state) => state.users.user.bags,
+  //   }),
+  // },
   methods: {
     ...mapActions({
       signOut: 'users/signOut',

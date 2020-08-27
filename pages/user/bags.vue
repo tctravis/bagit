@@ -5,11 +5,19 @@
       <LoggedOutMessage />
     </template>
     <template v-else>
-      <BaseInfoBar v-if="totalBagged !== 0">
-        {{ user.userName }}, you have bagged {{ totalBagged }} of
-        {{ totalHills }} Wainwrights
-      </BaseInfoBar>
-      <BaggedList :bags-to-show="5" />
+      <template v-if="totalBagged !== 0">
+        <BaseInfoBar>
+          {{ user.userName }}, you have bagged {{ totalBagged }} of
+          {{ totalHills }} Wainwrights
+        </BaseInfoBar>
+        <BaggedList :bags-to-show="5" />
+      </template>
+      <template v-else>
+        <BaseInfoBar>
+          {{ user.userName }}, you haven't bagged anything yet! Why not find
+          your <BaseLink to="/hills/list">first fell to bag?</BaseLink>
+        </BaseInfoBar>
+      </template>
     </template>
   </div>
 </template>

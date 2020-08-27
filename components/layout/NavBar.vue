@@ -31,13 +31,7 @@
       class="collapseNav"
       :class="navOpen ? 'transform translate-x-0' : 'transform translate-x-105'"
     >
-      <div
-        @click="toggleMenu"
-        class="p-4 md:hidden flex flex-row justify-end items-center cursor-pointer"
-      >
-        Close
-        <font-awesome-icon :icon="['fa', 'times']" :class="'ml-2 text-xl'" />
-      </div>
+      <BaseClose @click="toggleMenu" class="p-4" />
       <nav
         class="flex flex-col divide-y md:divide-y-0 md:flex-row md:items-center"
       >

@@ -242,6 +242,11 @@ export const actions = {
       return err
     }
   },
+  loginRedirect() {
+    this.$router.push({
+      path: '/hills/list',
+    })
+  },
   logoutRedirect() {
     this.$router.push({
       path: '/',

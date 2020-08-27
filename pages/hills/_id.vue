@@ -20,7 +20,7 @@
       </div>
     </BaseInfoBar>
     <BaseTitle :level="2" :hasDecoration="true">Map</BaseTitle>
-    <BaseInfoBar>
+    <BaseInfoBar class="flex flex-row items-center justify-between">
       <span>OS ref: {{ hill.os_grid_ref }}</span>
       <span>OS map: {{ hill.os_map }}</span>
     </BaseInfoBar>

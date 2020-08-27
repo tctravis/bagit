@@ -2,7 +2,7 @@
   <div class="w-full">
     <div
       class="flex flex-row justify-start items-center py-2 cursor-pointer"
-      :class="hasBagged ? 'opacity-25' : ''"
+      :class="hasBagged ? 'opacity-50' : ''"
       @click="toggleDetails"
     >
       <AreaIcon
@@ -54,10 +54,6 @@ export default {
       type: Object,
       required: true,
     },
-    hillsBagged: {
-      type: Array,
-      required: true,
-    },
   },
   data() {
     return {
@@ -65,6 +61,9 @@ export default {
     }
   },
   computed: {
+    ...mapState({
+      hillsBagged: (state) => state.users.user.hillsBagged,
+    }),
     hasBagged() {
       return this.hillsBagged.includes(this.hill.id)
     },

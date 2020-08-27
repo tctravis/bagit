@@ -76,8 +76,6 @@
     <BaseMenuLink
       v-if="currentUserId === ''"
       route="/user/login"
-      icon="user"
-      icon-class="text-xl"
       class="ml-auto"
       >Login</BaseMenuLink
     >
@@ -85,8 +83,6 @@
       @click.native="signOut"
       v-if="currentUserId !== ''"
       route="/user/login"
-      icon="user"
-      icon-class="text-xl"
       class="ml-auto"
       >Logout</BaseMenuLink
     >

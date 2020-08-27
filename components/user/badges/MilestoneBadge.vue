@@ -23,9 +23,12 @@ export default {
     ...mapState({
       user: (state) => state.users.user,
     }),
-    // passedMilestone() {
-    //   return this.user.totalBags >= this.target
-    // },
+    totalBags() {
+      return this.user.hillsBagged && this.user.hillsBagged.length
+    },
+    passedMilestone() {
+      return this.totalBags >= this.target
+    },
   },
 }
 </script>

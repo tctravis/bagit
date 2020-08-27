@@ -39,7 +39,8 @@ export const mutations = {
     state.users = users
   },
   SET_USER(state, user) {
-    state.user = user
+    //state.user = user
+    state.user = Object.assign(state.user, user)
   },
   SET_USER_BAGS(state, bags) {
     state.user.bags = bags

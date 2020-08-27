@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h3>Nearby Hills</h3>
     <HillListItem
       v-for="nearbyHill in nearbyHills"
       :key="nearbyHill.hill.id"

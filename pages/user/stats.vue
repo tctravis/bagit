@@ -18,18 +18,19 @@
       >Altitude</BaseTitle
     >
     <BaseInfoBar>
-      <p>
-        Altitude bagged:
-        <span>{{ getTotalAltClimbed }}m</span>
-      </p>
-      <template v-slot:icon>
+      <div class="flex flex-row items-center justify-between">
+        <p>
+          Altitude bagged:
+          <span>{{ getTotalAltClimbed }}m</span>
+        </p>
+
         <TooltipInfo>
           <BaseParagraph>
             'Altitude bagged' is calculated using the prominence (rather than
             the altitude) of all the Wainwrights you have bagged.
           </BaseParagraph>
         </TooltipInfo>
-      </template>
+      </div>
     </BaseInfoBar>
     <ChartAltitudeLine v-if="user.bags.length > 0" class="mb-6" />
   </div>

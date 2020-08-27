@@ -76,9 +76,6 @@ export default {
     toggleDetails() {
       return (this.detailsExpanded = this.detailsExpanded ? false : true)
     },
-    parentMethod() {
-      console.log('parent')
-    },
   },
 }
 </script>

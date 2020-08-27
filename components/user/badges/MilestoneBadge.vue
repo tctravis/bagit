@@ -1,7 +1,7 @@
 <template>
   <div class="relative flex flex-row items-center justify-center">
     <font-awesome-icon
-      :class="passedMilestone ? 'text-western' : 'text-grey'"
+      :class="user.totalBags >= target ? 'text-western' : 'text-grey'"
       class="text-4xl"
       :icon="['fa', 'certificate']"
     />
@@ -11,7 +11,6 @@
 
 <script>
 import { mapState } from 'vuex'
-import Badge from '@/components/widgets/Badge.vue'
 export default {
   props: {
     target: {
@@ -22,13 +21,11 @@ export default {
   },
   computed: {
     ...mapState({
-      totalBags: (state) => state.users.user.totalBags,
+      user: (state) => state.users.user,
     }),
-    passedMilestone() {
-      return this.totalBags >= this.target
-    },
+    // passedMilestone() {
+    //   return this.user.totalBags >= this.target
+    // },
   },
 }
 </script>
-
-<style lang="scss" scoped></style>

@@ -1,6 +1,5 @@
 /* eslint-disable */
 export const state = () => ({
-  users: [],
   user: {
     id: '',
     email: '',
@@ -131,6 +130,7 @@ export const actions = {
       id: '',
       email: credentials.email,
       userName: credentials.userName,
+      totalBags: 0,
       hillsBagged: [],
       bags: []
       // bags: [{
@@ -183,6 +183,7 @@ export const actions = {
       id: '',
       email: '',
       userName: '',
+      totalBags: 0,
       hillsBagged: [],
       bags: []
     }

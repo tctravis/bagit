@@ -1,6 +1,5 @@
 <template>
   <div class="mb-4">
-    <h3>Map</h3>
     <div ref="bingMap" class="w-full h-64 bg-lightgrey p-2">Loading map</div>
   </div>
 </template>

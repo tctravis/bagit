@@ -27,7 +27,7 @@ export default {
     iconColor(n) {
       return n <= this.heightRating
         ? theme.colors[this.areaClassName].default
-        : '#eeeeee'
+        : theme.colors.grey.default
     },
   },
 }

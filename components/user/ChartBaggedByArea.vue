@@ -42,7 +42,6 @@ export default {
       let bagsInAreaData = []
       this.sortedAreas.forEach((area) => {
         let bagsInArea = this.userBags.filter((bag) => bag.area === area.id)
-        console.log('bags in area ', bagsInArea)
         bagsInAreaData.push(bagsInArea.length)
       })
       return bagsInAreaData

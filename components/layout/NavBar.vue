@@ -1,6 +1,6 @@
 <template>
   <header
-    class="bg-southern text-white fixed left-0 right-0 top-0 z-10 flex flex-row items-center justify-between"
+    class="bg-darkgrey text-white fixed left-0 right-0 top-0 z-10 flex flex-row items-center justify-between"
   >
     <div class="px-4 py-4">
       <nuxt-link to="/">FELL BAGGR</nuxt-link>

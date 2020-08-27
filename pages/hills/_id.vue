@@ -4,27 +4,29 @@
       hill.name
     }}</HillPageTitle>
 
-    <div class="mb-4 p-4 bg-lightgrey rounded">
-      <p class="text-lg mb-2">Wainwright #{{ hill.id }}</p>
-      <div class="mb-2">
+    <BaseInfoBar>
+      <div class="xsm:flex flex-row items-center justify-between xsm:mb-2">
+        <p class="mb-2 xsm:mb-0">Wainwright #{{ hill.id }}</p>
         <HeightRating
+          class="mb-2 xsm:mb-0"
           :height-rating="hill.heightRating"
           :area-class-name="hill.areaClassName"
         />
       </div>
-      <div class="xsm:flex xsm:flex-row xsm:justify-between mb-2">
+
+      <div class="flex flex-row items-center justify-between">
         <p>Altitude: {{ hill.height_m }}m</p>
         <p>Prominence: {{ hill.prom_m }}m</p>
       </div>
-      <div class="xsm:flex xsm:flex-row xsm:justify-between mb-2">
-        <p>OS grid ref: {{ hill.os_grid_ref }}</p>
-        <p>OS map #: {{ hill.os_map }}</p>
-      </div>
-    </div>
+    </BaseInfoBar>
+    <BaseTitle :level="2" :hasDecoration="true">Map</BaseTitle>
+    <BaseInfoBar>
+      <span>OS ref: {{ hill.os_grid_ref }}</span>
+      <span>OS map: {{ hill.os_map }}</span>
+    </BaseInfoBar>
     <HillMap :hill="hill" />
+    <BaseTitle :level="2" :hasDecoration="true">Nearby Hills</BaseTitle>
     <NearbyHillsList :hill="hill" />
-
-    <BagCreateModal />
   </div>
 </template>
 
@@ -32,7 +34,6 @@
 import { mapState, mapGetters, mapActions } from 'vuex'
 import HillPageTitle from '@/components/hills/HillPageTitle.vue'
 import HeightRating from '@/components/hills/HeightRating.vue'
-import BagCreateModal from '@/components/user/BagCreateModal.vue'
 import HillMap from '@/components/hills/HillMap.vue'
 import NearbyHillsList from '@/components/hills/NearbyHillsList.vue'
 
@@ -40,7 +41,6 @@ export default {
   components: {
     HeightRating,
     HillPageTitle,
-    BagCreateModal,
     HillMap,
     NearbyHillsList,
   },

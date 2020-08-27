@@ -9,9 +9,7 @@
         Celebrate your progress by collecting milestone badges and challenge
         awards.
       </BaseInfoBar>
-      <BaggedList :bags-to-show="5" />
     </template>
-
     <BaseTitle :level="2" :has-decoration="true">Milestone Badges</BaseTitle>
     <BadgesMilestones />
     <BaseTitle :level="2" :has-decoration="true">Challenge Awards</BaseTitle>

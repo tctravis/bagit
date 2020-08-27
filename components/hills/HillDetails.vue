@@ -20,7 +20,7 @@
         <BaseButton
           class="ml-2"
           :button-class="'bg-' + hill.areaClassName"
-          :disabled="this.$fireAuth.currentUser === null || hasBagged"
+          :disabled="hasBagged"
           @click="bagThis"
           ><template v-if="!hasBagged">Bag it!</template
           ><template v-if="hasBagged">Bagged already</template></BaseButton

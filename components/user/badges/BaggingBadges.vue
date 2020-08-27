@@ -1,11 +1,5 @@
 <template>
   <div class="mb-4">
-    <BaseTitle :level="2" :has-decoration="true">Badges</BaseTitle>
-    <BaseParagraph
-      >Celebrate your achievements by collecting milestone badges and challenge
-      awards.</BaseParagraph
-    >
-    <BaseTitle :level="3">Milestones</BaseTitle>
     <BadgeRack>
       <Badge
         class="w-1/2"

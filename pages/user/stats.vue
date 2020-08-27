@@ -1,10 +1,15 @@
 <template>
   <div>
     <BasePageTitle><template v-slot:title>Statistics</template></BasePageTitle>
-    <BaseInfoBar>
-      {{ user.userName }}, you have bagged {{ totalBagged }} of
-      {{ totalHills }} Wainwrights
-    </BaseInfoBar>
+    <template v-if="currentUserId === ''">
+      <LoggedOutMessage />
+    </template>
+    <template v-else>
+      <BaseInfoBar>
+        {{ user.userName }}, you have bagged {{ totalBagged }} of
+        {{ totalHills }} Wainwrights
+      </BaseInfoBar>
+    </template>
     <BaseTitle :level="2" :has-decoration="true" class="text-xl"
       >Bagged by area</BaseTitle
     >
@@ -17,31 +22,28 @@
         Altitude bagged:
         <span>{{ getTotalAltClimbed }}m</span>
       </p>
-      <TooltipInfo>
-        <BaseParagraph>
-          'Altitude bagged' is calculated using the prominence (rather than the
-          altitude) of all the Wainwrights you have bagged.
-        </BaseParagraph>
-      </TooltipInfo>
+      <template v-slot:icon>
+        <TooltipInfo>
+          <BaseParagraph>
+            'Altitude bagged' is calculated using the prominence (rather than
+            the altitude) of all the Wainwrights you have bagged.
+          </BaseParagraph>
+        </TooltipInfo>
+      </template>
     </BaseInfoBar>
-    <BaseParagraph>
-      Sed consectetur eros metus, a maximus urna pulvinar a. Nunc luctus
-      molestie ante, ut tristique mauris ultrices in. Ut venenatis ex justo, at
-      lobortis eros auctor eget.
-    </BaseParagraph>
     <ChartAltitudeLine v-if="user.bags.length > 0" class="mb-6" />
   </div>
 </template>
 
 <script>
 import { mapState, mapGetters } from 'vuex'
-// import BaggingBadges from '@/components/user/BaggingBadges.vue'
+import LoggedOutMessage from '@/components/user/LoggedOutMessage.vue'
 import ChartBaggedByArea from '@/components/user/ChartBaggedByArea.vue'
 import ChartAltitudeLine from '@/components/user/ChartAltitudeLine.vue'
 import TooltipInfo from '@/components/widgets/TooltipInfo.vue'
 export default {
   components: {
-    // BaggingBadges,
+    LoggedOutMessage,
     ChartBaggedByArea,
     ChartAltitudeLine,
     TooltipInfo,
@@ -49,7 +51,7 @@ export default {
   computed: {
     ...mapState({
       user: (state) => state.users.user,
-      currentUser: (state) => state.users.currentUser,
+      currentUserId: (state) => state.users.currentUserId,
       hills: (state) => state.hills.hills,
     }),
     ...mapGetters('users', ['getTotalAltClimbed']),

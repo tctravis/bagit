@@ -64,6 +64,14 @@
         >
         <BaseMenuLink
           @click.native="toggleMenu"
+          route="/user/badges"
+          icon="certificate"
+          icon-class="text-xl"
+          >Badges</BaseMenuLink
+        >
+        <BaseMenuLink
+          v-if="$fireAuth.currentUser !== null"
+          @click.native="toggleMenu"
           route="/user/edit-profile"
           icon="user"
           icon-class="text-xl"

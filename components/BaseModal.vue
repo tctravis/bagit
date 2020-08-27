@@ -2,15 +2,15 @@
   <transition name="fade">
     <div
       v-if="show"
-      class="fixed top-0 left-0 right-0 bottom-0 overflow-y-auto overflow-x-hidden z-50"
+      class="fixed top-0 left-0 right-0 bottom-0 overflow-y-auto overflow-x-hidden z-9999 flex flex-row items-center"
     >
       <div
-        class="fixed w-full h-full bg-grey opacity-50 z-1"
+        class="fixed w-full h-full bg-grey opacity-50"
         @click="closeModal()"
       />
 
       <div
-        class="relative bg-white w-11/12 md:max-w-md my-6 mx-auto rounded shadow-lg z-50"
+        class="relative bg-white w-11/12 md:max-w-md my-6 mx-auto rounded shadow-lg"
       >
         <div class="p-2 flex flex-row justify-between items-center">
           <slot name="header" />
@@ -47,12 +47,13 @@ export default {
   methods: {
     closeModal() {
       this.$emit('toggle-modal')
-      document.querySelector('body').classList.remove('overflow-hidden')
     },
-    openModal() {
-      this.$emit('toggle-modal')
-      document.querySelector('body').classList.add('overflow-hidden')
-    },
+  },
+  mounted() {
+    document.body.classList.add('overflow-hidden')
+  },
+  destroyed() {
+    document.body.classList.remove('overflow-hidden')
   },
 }
 </script>

@@ -2,7 +2,8 @@
   <div
     class="rounded p-2 bg-lightgrey mb-2 flex flex-row justify-between items-center"
   >
-    <slot>Info here</slot>
+    <div><slot>Info here</slot></div>
+    <slot name="icon"></slot>
   </div>
 </template>
 

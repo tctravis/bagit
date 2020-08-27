@@ -1,21 +1,30 @@
 <template>
-  <div class="">
+  <div>
     <NavBar />
     <div class="container py-20 px-4 relative z-0">
       <Nuxt />
     </div>
     <Footer />
+    <BagCreateModal v-if="openBagModal" />
   </div>
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
 import NavBar from '@/components/layout/NavBar'
 import Footer from '@/components/layout/Footer'
+import BagCreateModal from '@/components/user/BagCreateModal'
 export default {
   transition: '',
   components: {
     NavBar,
     Footer,
+    BagCreateModal,
+  },
+  computed: {
+    ...mapState({
+      openBagModal: (state) => state.users.bagModalState,
+    }),
   },
 }
 </script>

@@ -1,27 +1,32 @@
 <template>
   <div>
-    <BasePageTitle><template v-slot:title>Bags</template></BasePageTitle>
+    <BasePageTitle><template v-slot:title>Badges</template></BasePageTitle>
     <template v-if="currentUserId === ''">
       <LoggedOutMessage />
     </template>
     <template v-else>
-      <BaseInfoBar v-if="totalBagged !== 0">
-        {{ user.userName }}, you have bagged {{ totalBagged }} of
-        {{ totalHills }} Wainwrights
+      <BaseInfoBar>
+        Celebrate your progress by collecting milestone badges and challenge
+        awards.
       </BaseInfoBar>
       <BaggedList :bags-to-show="5" />
     </template>
+
+    <BaseTitle :level="2" :has-decoration="true">Milestone Badges</BaseTitle>
+    <BadgesMilestones />
+    <BaseTitle :level="2" :has-decoration="true">Challenge Awards</BaseTitle>
+    <BadgesChallenges />
   </div>
 </template>
 
 <script>
 import { mapState, mapGetters } from 'vuex'
-import LoggedOutMessage from '@/components/user/LoggedOutMessage.vue'
-import BaggedList from '@/components/user/BaggedList.vue'
+import BadgesMilestones from '@/components/user/badges/BadgesMilestones.vue'
+import BadgesChallenges from '@/components/user/badges/BadgesChallenges.vue'
 export default {
   components: {
-    LoggedOutMessage,
-    BaggedList,
+    BadgesMilestones,
+    BadgesChallenges,
   },
   computed: {
     ...mapState({

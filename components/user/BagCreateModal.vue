@@ -5,7 +5,12 @@
     </template>
 
     <template v-slot:body>
-      <BagCreate :hill="hillToBag" />
+      <template v-if="currentUserId === ''">
+        <BagCreate :hill="hillToBag" />
+      </template>
+      <template v-else>
+        <LoggedOutMessage />
+      </template>
     </template>
 
     <template v-slot:footer> </template>
@@ -14,6 +19,7 @@
 
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
+import LoggedOutMessage from '@/components/user/LoggedOutMessage.vue'
 import BagCreate from '@/components/user/BagCreate.vue'
 
 export default {
@@ -22,6 +28,7 @@ export default {
   },
   computed: {
     ...mapState({
+      currentUserId: (state) => state.users.currentUserId,
       bagModalState: (state) => state.users.bagModalState,
       hillToBagId: (state) => state.users.hillToBagId,
     }),

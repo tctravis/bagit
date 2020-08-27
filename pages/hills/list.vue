@@ -120,7 +120,6 @@
         >Start a new search</BaseButton
       >
     </template>
-    <BagCreateModal />
   </div>
 </template>
 
@@ -128,12 +127,12 @@
 import { mapState, mapGetters, mapActions } from 'vuex'
 import AreaPills from '@/components/hills/AreaPills.vue'
 import HillListItem from '@/components/hills/HillListItem.vue'
-import BagCreateModal from '@/components/user/BagCreateModal.vue'
+// import BagCreateModal from '@/components/user/BagCreateModal.vue'
 
 export default {
   components: {
     HillListItem,
-    BagCreateModal,
+    // BagCreateModal,
     AreaPills,
   },
   data() {
@@ -250,7 +249,7 @@ export default {
     },
   },
   mounted() {
-    this.closeBagModal()
+    //this.closeBagModal()
     if (this.totalFiltersApplied > 0) {
       this.filterTabs.selectedTab = 0
     }

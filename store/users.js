@@ -6,26 +6,27 @@ export const state = () => ({
     email: '',
     userName: '',
     hillsBagged: [],
-    bags: [{
-      date: '',
-      area: '',
-      areaClassName: '',
-      areaName: '',
-      comments: '',
-      date: '',
-      heightRating: '',
-      height_f: '',
-      height_m: '',
-      hill_id: '',
-      id: '',
-      name: '',
-      os_grid_ref: '',
-      os_map: '',
-      prom_f: '',
-      prom_m: '',
-      rating: '',
-      section: ''
-    }]
+    bags: []
+    // bags: [{
+    //   date: '',
+    //   area: '',
+    //   areaClassName: '',
+    //   areaName: '',
+    //   comments: '',
+    //   date: '',
+    //   heightRating: '',
+    //   height_f: '',
+    //   height_m: '',
+    //   hill_id: '',
+    //   id: '',
+    //   name: '',
+    //   os_grid_ref: '',
+    //   os_map: '',
+    //   prom_f: '',
+    //   prom_m: '',
+    //   rating: '',
+    //   section: ''
+    // }]
   },
   currentUserId: '',
   sortBy: 'date',
@@ -125,26 +126,27 @@ export const actions = {
       email: credentials.email,
       userName: credentials.userName,
       hillsBagged: [],
-      bags: [{
-        date: '',
-        area: '',
-        areaClassName: '',
-        areaName: '',
-        comments: '',
-        date: '',
-        heightRating: '',
-        height_f: '',
-        height_m: '',
-        hill_id: '',
-        id: '',
-        name: '',
-        os_grid_ref: '',
-        os_map: '',
-        prom_f: '',
-        prom_m: '',
-        rating: '',
-        section: ''
-      }]
+      bags: []
+      // bags: [{
+      //   date: '',
+      //   area: '',
+      //   areaClassName: '',
+      //   areaName: '',
+      //   comments: '',
+      //   date: '',
+      //   heightRating: '',
+      //   height_f: '',
+      //   height_m: '',
+      //   hill_id: '',
+      //   id: '',
+      //   name: '',
+      //   os_grid_ref: '',
+      //   os_map: '',
+      //   prom_f: '',
+      //   prom_m: '',
+      //   rating: '',
+      //   section: ''
+      // }]
     }
 
     try {

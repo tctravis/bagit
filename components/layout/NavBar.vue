@@ -1,6 +1,6 @@
 <template>
   <header
-    class="bg-southern text-white fixed left-0 right-0 top-0 z-10 flex flex-row items-center"
+    class="bg-southern text-white fixed left-0 right-0 top-0 z-10 flex flex-row items-center justify-between"
   >
     <div class="px-4 py-4">
       <nuxt-link to="/">FELL BAGGR</nuxt-link>
@@ -45,7 +45,7 @@
           @click.native="toggleMenu"
           route="/hills/list"
           icon="mountain"
-          icon-class="text-lg"
+          icon-class="text-md"
           >Fells</BaseMenuLink
         >
         <BaseMenuLink
@@ -71,14 +71,31 @@
         >
       </nav>
     </div>
-    <div @click="toggleMenu" class="md:hidden px-4 py-4 ml-auto cursor-pointer">
+    <BaseMenuLink
+      v-if="currentUserId === ''"
+      route="/user/login"
+      icon="user"
+      icon-class="text-xl"
+      class="ml-auto"
+      >Login</BaseMenuLink
+    >
+    <BaseMenuLink
+      @click.native="signOut"
+      v-if="currentUserId !== ''"
+      route="/user/login"
+      icon="user"
+      icon-class="text-xl"
+      class="ml-auto"
+      >Logout</BaseMenuLink
+    >
+    <div @click="toggleMenu" class="md:hidden px-4 py-4 cursor-pointer">
       <font-awesome-icon :icon="['fa', 'bars']" />
     </div>
   </header>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 export default {
   data() {
     return {
@@ -94,6 +111,9 @@ export default {
     toggleMenu() {
       this.navOpen = this.navOpen ? false : true
     },
+    ...mapActions({
+      signOut: 'users/signOut',
+    }),
   },
   watch: {
     navOpen: {
@@ -101,8 +121,16 @@ export default {
       immediate: true,
       handler(navOpen) {
         if (process.client) {
-          if (navOpen) document.body.style.setProperty('overflow', 'hidden')
-          else document.body.style.removeProperty('overflow')
+          if (navOpen)
+            document.body.classList.add(
+              'overflow-hidden',
+              'md:overflow-visible'
+            )
+          else
+            document.body.classList.remove(
+              'overflow-hidden',
+              'md:overflow-visible'
+            )
         }
       },
     },

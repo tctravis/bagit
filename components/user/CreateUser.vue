@@ -1,5 +1,5 @@
 <template>
-  <div class="sm:w-3/5">
+  <div>
     <form @submit.prevent="createUser">
       <div class="form-section">
         <p class="text-error mb-4">* required</p>

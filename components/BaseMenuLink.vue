@@ -1,7 +1,7 @@
 <template>
   <nuxt-link
     v-on="$listeners"
-    class="p-4 hover:bg-fareastern flex flex-row items-center"
+    class="p-4 hover:bg-northern flex flex-row items-center"
     :to="route"
     ><font-awesome-icon
       :icon="['fa', icon]"

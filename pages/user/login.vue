@@ -31,9 +31,7 @@
           >Please enter your password</BaseValidationMessage
         >
         <div class="flex flex-row justify-between pt-4">
-          <nuxt-link class="mr-2" to="/user/password-reset"
-            >Forgotten password?</nuxt-link
-          >
+          <BaseLink to="/user/password-reset">Forgotten password?</BaseLink>
           <BaseButton
             :disabled="$v.$invalid"
             type="submit"
@@ -43,6 +41,10 @@
         </div>
       </div>
     </form>
+    <BaseInfoBar>
+      New user?
+      <BaseLink to="/user/register">Sign up for an account</BaseLink>
+    </BaseInfoBar>
   </div>
 </template>
 

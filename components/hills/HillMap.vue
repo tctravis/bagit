@@ -8,12 +8,29 @@
 // see https://markus.oberlehner.net/blog/using-the-google-maps-api-with-vue/
 import bingMapsInit from '@/utils/bingMaps.js'
 import { theme } from '~tailwind.config'
+import { mapState } from 'vuex'
+import calculateDistances from '@/mixins/calculateDistances.js'
 
 export default {
+  mixins: [calculateDistances],
   props: {
     hill: {
       type: Object,
       required: true,
+    },
+  },
+  data() {
+    return {
+      limit: 10,
+    }
+  },
+  computed: {
+    ...mapState({
+      hills: (state) => state.hills.hills,
+    }),
+    nearbyHills() {
+      // see mixins : calculateDistances: move into state for each hill
+      return this.findDistancesFromHill(this.hill, this.limit)
     },
   },
   async mounted() {
@@ -31,13 +48,22 @@ export default {
       var center = map.getCenter()
 
       //Create custom Pushpin
-      var pin = new Microsoft.Maps.Pushpin(center, {
+      let pin = new Microsoft.Maps.Pushpin(center, {
         title: this.hill.name,
-        text: this.hill.area,
+        // text: this.hill.area,
         color: theme.colors[this.hill.areaClassName].default,
       })
-
       map.entities.push(pin)
+
+      this.nearbyHills.forEach((hill) => {
+        let hillObj = hill.hill
+        let hillLoc = new Microsoft.Maps.Location(hillObj.lat, hillObj.lng)
+        let pin = new Microsoft.Maps.Pushpin(hillLoc, {
+          title: hillObj.name,
+          color: theme.colors[hillObj.areaClassName].default,
+        })
+        map.entities.push(pin)
+      })
     } catch (error) {
       console.error(error)
     }

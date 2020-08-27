@@ -23,7 +23,7 @@
           :disabled="hasBagged"
           @click="bagThis"
           ><template v-if="!hasBagged">Bag it!</template
-          ><template v-if="hasBagged">Bagged already</template></BaseButton
+          ><template v-if="hasBagged">Bagged</template></BaseButton
         >
       </div>
     </div>
@@ -45,6 +45,10 @@ export default {
     hillsBagged: {
       type: Array,
       required: true,
+    },
+    distance: {
+      type: Number,
+      required: false,
     },
   },
   computed: {

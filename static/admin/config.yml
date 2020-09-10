@@ -19,3 +19,26 @@ collections:
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
       - { label: 'Description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
+  - name: 'hills'
+    label: 'Hills'
+    format: 'json'
+    files:
+      - label: 'Hills JSON'   
+        name: 'hills json'
+        file: 'content/hills.json'
+        fields:
+          - label: 'Hill'
+            name: 'hills'
+            widget: list
+            fields:
+            - { label: 'Name', name: 'name', widget: 'string'  }
+            - { label: 'Id', name: 'id', widget: 'number'  }
+            - { label: 'Area', name: 'area', widget: 'string'  }
+            - { label: 'Height(m)', name: 'height_m', widget: 'number'  }
+            - { label: 'Prominence(m)', name: 'prom_m', widget: 'number'  }
+            - { label: 'Height(f)', name: 'height_f', widget: 'number'  }
+            - { label: 'Prominence(f)', name: 'prom_f', widget: 'number'  }
+            - { label: 'OS Maps No', name: 'os_map', widget: 'string'  }
+            - { label: 'OS grid reference', name: 'os_grid_ref', widget: 'string'  }
+            - { label: 'Latitude', name: 'lat', widget: 'number'  }
+            - { label: 'Longitude', name: 'lng', widget: 'number'  }

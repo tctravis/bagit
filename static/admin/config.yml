@@ -36,8 +36,8 @@ collections:
             - { label: 'Area', name: 'area', widget: 'string'  }
             - { label: 'Height(m)', name: 'height_m', widget: 'number'  }
             - { label: 'Prominence(m)', name: 'prom_m', widget: 'number'  }
-            - { label: 'Height(f)', name: 'height_f', widget: 'number'  }
-            - { label: 'Prominence(f)', name: 'prom_f', widget: 'number'  }
+            - { label: 'Height(f)', name: 'height_ft', widget: 'number'  }
+            - { label: 'Prominence(f)', name: 'prom_ft', widget: 'number'  }
             - { label: 'OS Maps No', name: 'os_map', widget: 'string'  }
             - { label: 'OS grid reference', name: 'os_grid_ref', widget: 'string'  }
             - { label: 'Latitude', name: 'lat', widget: 'number'  }

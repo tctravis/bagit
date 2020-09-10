@@ -16,10 +16,10 @@ import calculateDistances from '@/mixins/calculateDistances.js'
 import { mapState, mapGetters } from 'vuex'
 import HillListItem from '@/components/hills/HillListItem.vue'
 export default {
-  mixins: [calculateDistances],
   components: {
     HillListItem,
   },
+  mixins: [calculateDistances],
   props: {
     hill: {
       type: Object,

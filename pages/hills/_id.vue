@@ -19,13 +19,13 @@
         <p>Prominence: {{ hill.prom_m }}m</p>
       </div>
     </BaseInfoBar>
-    <BaseTitle :level="2" :hasDecoration="true">Map</BaseTitle>
+    <BaseTitle :level="2" :has-decoration="true">Map</BaseTitle>
     <BaseInfoBar class="flex flex-row items-center justify-between">
       <span>OS ref: {{ hill.os_grid_ref }}</span>
       <span>OS map: {{ hill.os_map }}</span>
     </BaseInfoBar>
     <HillMap :hill="hill" />
-    <BaseTitle :level="2" :hasDecoration="true">Nearby Hills</BaseTitle>
+    <BaseTitle :level="2" :has-decoration="true">Nearby Hills</BaseTitle>
     <NearbyHillsList :hill="hill" />
   </div>
 </template>

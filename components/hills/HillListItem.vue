@@ -36,8 +36,8 @@
       <HillDetails
         :hill="hill"
         :hills-bagged="hillsBagged"
-        @modal-button="parentMethod()"
         :distance="distance"
+        @modal-button="parentMethod()"
       />
     </div>
   </div>

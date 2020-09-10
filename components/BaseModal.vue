@@ -13,7 +13,7 @@
         class="relative bg-white w-11/12 md:max-w-md my-6 mx-auto rounded shadow-lg"
       >
         <div class="p-2 flex flex-row justify-between items-start">
-          <BaseTitle :level="3" :hasDecoration="true"
+          <BaseTitle :level="3" :has-decoration="true"
             ><slot name="header"
           /></BaseTitle>
           <BaseClose @click="closeModal()" />
@@ -41,9 +41,9 @@ export default {
       default: false,
     },
   },
-  methods: {
-    closeModal() {
-      this.$emit('toggle-modal')
+  watch: {
+    $route(to, from) {
+      this.closeModal()
     },
   },
   mounted() {
@@ -52,9 +52,9 @@ export default {
   destroyed() {
     document.body.classList.remove('overflow-hidden')
   },
-  watch: {
-    $route(to, from) {
-      this.closeModal()
+  methods: {
+    closeModal() {
+      this.$emit('toggle-modal')
     },
   },
 }

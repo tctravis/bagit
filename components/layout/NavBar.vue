@@ -15,14 +15,14 @@
       leave-to-class="opacity-0"
     >
       <div
-        @keydown.esc="navOpen = false"
         v-show="navOpen"
         class="z-20 fixed inset-0 transition-opacity md:hidden"
+        @keydown.esc="navOpen = false"
       >
         <div
-          @click="navOpen = false"
           class="absolute inset-0 bg-black opacity-50 md:hidden"
           tabindex="0"
+          @click="navOpen = false"
         ></div>
       </div>
     </transition>
@@ -31,44 +31,44 @@
       class="collapseNav"
       :class="navOpen ? 'transform translate-x-0' : 'transform translate-x-105'"
     >
-      <BaseClose @click="toggleMenu" class="p-4" />
+      <BaseClose class="p-4" @click="toggleMenu" />
       <nav
         class="flex flex-col divide-y md:divide-y-0 md:flex-row md:items-center"
       >
         <BaseMenuLink
-          @click.native="toggleMenu"
           route="/hills/list"
           icon="mountain"
           icon-class="text-md"
+          @click.native="toggleMenu"
           >Fells</BaseMenuLink
         >
         <BaseMenuLink
-          @click.native="toggleMenu"
           route="/user/bags"
           icon="hiking"
           icon-class="text-xl"
+          @click.native="toggleMenu"
           >Bags</BaseMenuLink
         >
         <BaseMenuLink
-          @click.native="toggleMenu"
           route="/user/stats"
           icon="chart-bar"
           icon-class="text-xl"
+          @click.native="toggleMenu"
           >Stats</BaseMenuLink
         >
         <BaseMenuLink
-          @click.native="toggleMenu"
           route="/user/badges"
           icon="certificate"
           icon-class="text-xl"
+          @click.native="toggleMenu"
           >Badges</BaseMenuLink
         >
         <BaseMenuLink
           v-if="$fireAuth.currentUser !== null"
-          @click.native="toggleMenu"
           route="/user/edit-profile"
           icon="user"
           icon-class="text-xl"
+          @click.native="toggleMenu"
           >Profile</BaseMenuLink
         >
       </nav>
@@ -80,13 +80,13 @@
       >Login</BaseMenuLink
     >
     <BaseMenuLink
-      @click.native="signOut"
       v-if="currentUserId !== ''"
       route="/user/login"
       class="ml-auto"
+      @click.native="signOut"
       >Logout</BaseMenuLink
     >
-    <div @click="toggleMenu" class="md:hidden px-4 py-4 cursor-pointer">
+    <div class="md:hidden px-4 py-4 cursor-pointer" @click="toggleMenu">
       <font-awesome-icon :icon="['fa', 'bars']" />
     </div>
   </header>

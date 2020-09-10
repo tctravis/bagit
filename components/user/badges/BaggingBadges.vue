@@ -3,44 +3,44 @@
     <BadgeRack>
       <Badge
         class="w-1/2"
-        :iconClass="totalBags >= 10 ? 'text-southern' : 'text-grey'"
-        :labelClass="totalBags >= 10 ? 'text-darkgrey' : 'text-grey'"
-        iconText="10"
+        :icon-class="totalBags >= 10 ? 'text-southern' : 'text-grey'"
+        :label-class="totalBags >= 10 ? 'text-darkgrey' : 'text-grey'"
+        icon-text="10"
         >10 bags</Badge
       >
       <Badge
         class="w-1/2"
-        :iconClass="totalBags >= 20 ? 'text-eastern' : 'text-grey'"
-        :labelClass="totalBags >= 20 ? 'text-darkgrey' : 'text-grey'"
-        iconText="20"
+        :icon-class="totalBags >= 20 ? 'text-eastern' : 'text-grey'"
+        :label-class="totalBags >= 20 ? 'text-darkgrey' : 'text-grey'"
+        icon-text="20"
         >20 bags</Badge
       >
       <Badge
         class="w-1/2"
-        :iconClass="totalBags >= 50 ? 'text-northern' : 'text-grey'"
-        :labelClass="totalBags >= 50 ? 'text-darkgrey' : 'text-grey'"
-        iconText="50"
+        :icon-class="totalBags >= 50 ? 'text-northern' : 'text-grey'"
+        :label-class="totalBags >= 50 ? 'text-darkgrey' : 'text-grey'"
+        icon-text="50"
         >50 bags</Badge
       >
       <Badge
         class="w-1/2"
-        :iconClass="totalBags >= 100 ? 'text-northwestern' : 'text-grey'"
-        :labelClass="totalBags >= 100 ? 'text-darkgrey' : 'text-grey'"
-        iconText="100"
+        :icon-class="totalBags >= 100 ? 'text-northwestern' : 'text-grey'"
+        :label-class="totalBags >= 100 ? 'text-darkgrey' : 'text-grey'"
+        icon-text="100"
         >100 bags</Badge
       >
       <Badge
         class="w-1/2"
-        :iconClass="totalBags >= 150 ? 'text-western' : 'text-grey'"
-        :labelClass="totalBags >= 150 ? 'text-darkgrey' : 'text-grey'"
-        iconText="150"
+        :icon-class="totalBags >= 150 ? 'text-western' : 'text-grey'"
+        :label-class="totalBags >= 150 ? 'text-darkgrey' : 'text-grey'"
+        icon-text="150"
         >150 bags</Badge
       >
       <Badge
         class="w-1/2"
-        :iconClass="totalBags >= 200 ? 'text-fareastern' : 'text-grey'"
-        :labelClass="totalBags >= 200 ? 'text-darkgrey' : 'text-grey'"
-        iconText="200"
+        :icon-class="totalBags >= 200 ? 'text-fareastern' : 'text-grey'"
+        :label-class="totalBags >= 200 ? 'text-darkgrey' : 'text-grey'"
+        icon-text="200"
         >200 bags</Badge
       >
     </BadgeRack>
@@ -50,38 +50,38 @@
     >
       <Badge
         class="justify-center"
-        :iconClass="totalBags === totalHills ? 'text-white' : 'text-grey'"
-        :labelClass="
+        :icon-class="totalBags === totalHills ? 'text-white' : 'text-grey'"
+        :label-class="
           totalBags === totalHills ? 'text-white text-lg' : 'text-grey text-lg'
         "
-        :badgeIcon="['fa', 'trophy']"
+        :badge-icon="['fa', 'trophy']"
         >Bagged 'em all!</Badge
       >
     </div>
     <BaseTitle :level="3">Challenges</BaseTitle>
     <div>
       <Badge
-        :iconClass="hasBagged([1, 10]) ? 'text-southern' : 'text-grey'"
-        :labelClass="hasBagged([1, 10]) ? 'text-darkgrey' : 'text-grey'"
-        :badgeIcon="['fa', 'ribbon']"
+        :icon-class="hasBagged([1, 10]) ? 'text-southern' : 'text-grey'"
+        :label-class="hasBagged([1, 10]) ? 'text-darkgrey' : 'text-grey'"
+        :badge-icon="['fa', 'ribbon']"
         >10 highest fells bagged</Badge
       >
       <Badge
-        :iconClass="mostBagsInADay >= 5 ? 'text-southern' : 'text-grey'"
-        :labelClass="mostBagsInADay >= 5 ? 'text-darkgrey' : 'text-grey'"
-        :badgeIcon="['fa', 'ribbon']"
+        :icon-class="mostBagsInADay >= 5 ? 'text-southern' : 'text-grey'"
+        :label-class="mostBagsInADay >= 5 ? 'text-darkgrey' : 'text-grey'"
+        :badge-icon="['fa', 'ribbon']"
         >5 bags in a day</Badge
       >
       <Badge
-        :iconClass="mostBagsInADay >= 10 ? 'text-southern' : 'text-grey'"
-        :labelClass="mostBagsInADay >= 10 ? 'text-darkgrey' : 'text-grey'"
-        :badgeIcon="['fa', 'ribbon']"
+        :icon-class="mostBagsInADay >= 10 ? 'text-southern' : 'text-grey'"
+        :label-class="mostBagsInADay >= 10 ? 'text-darkgrey' : 'text-grey'"
+        :badge-icon="['fa', 'ribbon']"
         >10 bags in a day</Badge
       >
       <Badge
-        :iconClass="bagsInEachArea ? 'text-southern' : 'text-grey'"
-        :labelClass="bagsInEachArea ? 'text-darkgrey' : 'text-grey'"
-        :badgeIcon="['fa', 'ribbon']"
+        :icon-class="bagsInEachArea ? 'text-southern' : 'text-grey'"
+        :label-class="bagsInEachArea ? 'text-darkgrey' : 'text-grey'"
+        :badge-icon="['fa', 'ribbon']"
         >At least 1 bag in each area</Badge
       >
     </div>

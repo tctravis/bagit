@@ -1,27 +1,27 @@
 <template>
   <div>
     <Badge
-      :iconClass="hasBagged([1, 10]) ? 'text-southern' : 'text-grey'"
-      :labelClass="hasBagged([1, 10]) ? 'text-darkgrey' : 'text-grey'"
-      :badgeIcon="['fa', 'ribbon']"
+      :icon-class="hasBagged([1, 10]) ? 'text-southern' : 'text-grey'"
+      :label-class="hasBagged([1, 10]) ? 'text-darkgrey' : 'text-grey'"
+      :badge-icon="['fa', 'ribbon']"
       >10 highest fells bagged</Badge
     >
     <Badge
-      :iconClass="mostBagsInADay >= 5 ? 'text-southern' : 'text-grey'"
-      :labelClass="mostBagsInADay >= 5 ? 'text-darkgrey' : 'text-grey'"
-      :badgeIcon="['fa', 'ribbon']"
+      :icon-class="mostBagsInADay >= 5 ? 'text-southern' : 'text-grey'"
+      :label-class="mostBagsInADay >= 5 ? 'text-darkgrey' : 'text-grey'"
+      :badge-icon="['fa', 'ribbon']"
       >5 bags in a day</Badge
     >
     <Badge
-      :iconClass="mostBagsInADay >= 10 ? 'text-southern' : 'text-grey'"
-      :labelClass="mostBagsInADay >= 10 ? 'text-darkgrey' : 'text-grey'"
-      :badgeIcon="['fa', 'ribbon']"
+      :icon-class="mostBagsInADay >= 10 ? 'text-southern' : 'text-grey'"
+      :label-class="mostBagsInADay >= 10 ? 'text-darkgrey' : 'text-grey'"
+      :badge-icon="['fa', 'ribbon']"
       >10 bags in a day</Badge
     >
     <Badge
-      :iconClass="bagsInEachArea ? 'text-southern' : 'text-grey'"
-      :labelClass="bagsInEachArea ? 'text-darkgrey' : 'text-grey'"
-      :badgeIcon="['fa', 'ribbon']"
+      :icon-class="bagsInEachArea ? 'text-southern' : 'text-grey'"
+      :label-class="bagsInEachArea ? 'text-darkgrey' : 'text-grey'"
+      :badge-icon="['fa', 'ribbon']"
       >At least 1 bag in each area</Badge
     >
   </div>

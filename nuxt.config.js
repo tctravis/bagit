@@ -15,7 +15,8 @@ export default {
    */
   head: {
     title: process.env.npm_package_name || '',
-    meta: [{
+    meta: [
+      {
         charset: 'utf-8',
       },
       {
@@ -28,11 +29,13 @@ export default {
         content: process.env.npm_package_description || '',
       },
     ],
-    link: [{
-      rel: 'icon',
-      type: 'image/x-icon',
-      href: '/favicon.ico',
-    }, ],
+    link: [
+      {
+        rel: 'icon',
+        type: 'image/x-icon',
+        href: '/favicon.ico',
+      },
+    ],
   },
   /*
    ** Global CSS
@@ -75,28 +78,30 @@ export default {
     [
       'nuxt-fontawesome',
       {
-        imports: [{
-          set: '@fortawesome/free-solid-svg-icons',
-          icons: [
-            'faMountain',
-            'faCheck',
-            'faShoePrints',
-            'faWindowClose',
-            'faChevronDown',
-            'faChevronRight',
-            'faChevronUp',
-            'faStar',
-            'faTimes',
-            'faQuestionCircle',
-            'faCertificate',
-            'faRibbon',
-            'faTrophy',
-            'faBars',
-            'faUser',
-            'faChartBar',
-            'faHiking',
-          ],
-        }, ],
+        imports: [
+          {
+            set: '@fortawesome/free-solid-svg-icons',
+            icons: [
+              'faMountain',
+              'faCheck',
+              'faShoePrints',
+              'faWindowClose',
+              'faChevronDown',
+              'faChevronRight',
+              'faChevronUp',
+              'faStar',
+              'faTimes',
+              'faQuestionCircle',
+              'faCertificate',
+              'faRibbon',
+              'faTrophy',
+              'faBars',
+              'faUser',
+              'faChartBar',
+              'faHiking',
+            ],
+          },
+        ],
       },
     ],
     'nuxt-webfontloader',
@@ -137,7 +142,8 @@ export default {
             author: 'Toby Travis',
           },
           manifest: {
-            name: 'Fell Baggr - an app for Wainwright baggers to record their bags',
+            name:
+              'Fell Baggr - an app for Wainwright baggers to record their bags',
             short_name: 'Fell Baggr',
             lang: 'en',
           },

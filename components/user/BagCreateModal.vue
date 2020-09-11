@@ -9,7 +9,7 @@
         <LoggedOutMessage />
       </template>
     </template>
-    <template v-slot:footer> </template>
+    <template v-slot:footer></template>
   </BaseModal>
 </template>
 
@@ -21,6 +21,7 @@ import BagCreate from '@/components/user/BagCreate.vue'
 export default {
   components: {
     BagCreate,
+    LoggedOutMessage,
   },
   computed: {
     ...mapState({

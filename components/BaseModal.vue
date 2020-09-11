@@ -13,9 +13,9 @@
         class="relative bg-white w-11/12 md:max-w-md my-6 mx-auto rounded shadow-lg"
       >
         <div class="p-2 flex flex-row justify-between items-start">
-          <BaseTitle :level="3" :has-decoration="true"
-            ><slot name="header"
-          /></BaseTitle>
+          <BaseTitle :level="3" :has-decoration="true">
+            <slot name="header" />
+          </BaseTitle>
           <BaseClose @click="closeModal()" />
         </div>
 
@@ -42,7 +42,7 @@ export default {
     },
   },
   watch: {
-    $route(to, from) {
+    $route() {
       this.closeModal()
     },
   },

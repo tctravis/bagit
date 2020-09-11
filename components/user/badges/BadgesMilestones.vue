@@ -62,7 +62,6 @@
 </template>
 
 <script>
-import calcMode from '@/utils/calcMode.js'
 import { mapGetters, mapState } from 'vuex'
 import BadgeRack from '@/components/widgets/BadgeRack.vue'
 import Badge from '@/components/widgets/Badge.vue'
@@ -70,6 +69,7 @@ import Badge from '@/components/widgets/Badge.vue'
 export default {
   components: {
     Badge,
+    BadgeRack,
   },
   data() {
     return {}

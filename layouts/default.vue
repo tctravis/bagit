@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState } from 'vuex'
 import NavBar from '@/components/layout/NavBar'
 import Footer from '@/components/layout/Footer'
 import BagCreateModal from '@/components/user/BagCreateModal'

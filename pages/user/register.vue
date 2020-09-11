@@ -1,9 +1,11 @@
 <template>
   <div>
-    <BasePageTitle><template v-slot:title>Register</template></BasePageTitle>
-    <BaseFormFeedback v-if="feedback.message !== ''" :type="feedback.type">{{
-      feedback.message
-    }}</BaseFormFeedback>
+    <BasePageTitle>
+      <template v-slot:title>Register</template>
+    </BasePageTitle>
+    <BaseFormFeedback v-if="feedback.message !== ''" :type="feedback.type">
+      {{ feedback.message }}
+    </BaseFormFeedback>
     <CreateUser @create-user="register">Register</CreateUser>
   </div>
 </template>
@@ -23,7 +25,7 @@ export default {
     }
   },
   methods: {
-    async register(req, res) {
+    async register(req) {
       const { userName, email, password } = req
       const newUser = {
         userName,

@@ -1,44 +1,44 @@
 /* eslint-disable */
-import hillData from '@/static/hills.json'
+import hillData from '@/content/hills.json'
 
 export const state = () => ({
   hills: [],
   hill: {},
   areas: [{
-      id: 'N',
-      name: 'Northern',
-      className: 'northern'
-    },
-    {
-      id: 'S',
-      name: 'Southern',
-      className: 'southern'
-    },
-    {
-      id: 'E',
-      name: 'Eastern',
-      className: 'eastern'
-    },
-    {
-      id: 'W',
-      name: 'Western',
-      className: 'western'
-    },
-    {
-      id: 'FE',
-      name: 'Far Eastern',
-      className: 'fareastern'
-    },
-    {
-      id: 'C',
-      name: 'Central',
-      className: 'central'
-    },
-    {
-      id: 'NW',
-      name: 'North Western',
-      className: 'northwestern'
-    },
+    id: 'N',
+    name: 'Northern',
+    className: 'northern'
+  },
+  {
+    id: 'S',
+    name: 'Southern',
+    className: 'southern'
+  },
+  {
+    id: 'E',
+    name: 'Eastern',
+    className: 'eastern'
+  },
+  {
+    id: 'W',
+    name: 'Western',
+    className: 'western'
+  },
+  {
+    id: 'FE',
+    name: 'Far Eastern',
+    className: 'fareastern'
+  },
+  {
+    id: 'C',
+    name: 'Central',
+    className: 'central'
+  },
+  {
+    id: 'NW',
+    name: 'North Western',
+    className: 'northwestern'
+  },
   ],
   highestHill: 0,
   lowestHill: 0,

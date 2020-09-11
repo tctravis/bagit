@@ -12,9 +12,8 @@ module.exports = {
   ],
   rules: {
     'vue/component-name-in-template-casing': ['error', 'PascalCase'],
-    'no-console': 'off',
-    'no-debugger': 'off',
-    'no-unused-vars': 'off',
+    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
   },
   globals: {
     $nuxt: true,
@@ -23,4 +22,3 @@ module.exports = {
     parser: 'babel-eslint',
   },
 }
-// https://medium.com/@gogl.alex/how-to-properly-set-up-eslint-with-prettier-for-vue-or-nuxt-in-vscode-e42532099a9c

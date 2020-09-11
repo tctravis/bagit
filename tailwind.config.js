@@ -71,6 +71,11 @@ module.exports = {
       translate: {
         '105': '105%',
       },
+      gridTemplateColumns: {
+        // Complex site-specific column configuration
+        '12': 'repeat(12, minmax(0, 1fr))',
+        'hills-list': 'auto-fill, minmax(260px, 1fr) auto-fill, 2fr',
+      },
     },
   },
   variants: {

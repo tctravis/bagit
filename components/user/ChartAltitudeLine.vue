@@ -5,9 +5,9 @@
 </template>
 
 <script>
-import { theme } from '~tailwind.config'
+// import { theme } from '~tailwind.config'
 import LineChart from '@/components/charts/LineChart.vue'
-import { mapState, mapGetters } from 'vuex'
+import { mapState } from 'vuex'
 export default {
   components: {
     LineChart,

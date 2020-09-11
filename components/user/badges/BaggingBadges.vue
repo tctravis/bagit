@@ -97,6 +97,7 @@ import Badge from '@/components/widgets/Badge.vue'
 export default {
   components: {
     Badge,
+    BadgeRack,
   },
   data() {
     return {}

@@ -31,7 +31,6 @@
           >Not bagged</BasePill>
         </div>
       </div>
-
       <div class="col-span-12 md:col-span-8">
         <div class="flex flex-row justify-end py-2">
           <BasePill

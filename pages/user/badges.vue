@@ -1,6 +1,8 @@
 <template>
   <div>
-    <BasePageTitle><template v-slot:title>Badges</template></BasePageTitle>
+    <BasePageTitle>
+      <template v-slot:title>Badges</template>
+    </BasePageTitle>
     <template v-if="currentUserId === ''">
       <LoggedOutMessage />
     </template>
@@ -10,10 +12,16 @@
         awards.
       </BaseInfoBar>
     </template>
-    <BaseTitle :level="2" :has-decoration="true">Milestone Badges</BaseTitle>
-    <BadgesMilestones />
-    <BaseTitle :level="2" :has-decoration="true">Challenge Awards</BaseTitle>
-    <BadgesChallenges />
+    <div class="grid grid-cols-12 gap-4">
+      <div class="col-span-12 sm:col-span-6">
+        <BaseTitle :level="2" :has-decoration="true">Milestone Badges</BaseTitle>
+        <BadgesMilestones />
+      </div>
+      <div class="col-span-12 sm:col-span-6">
+        <BaseTitle :level="2" :has-decoration="true">Challenge Awards</BaseTitle>
+        <BadgesChallenges />
+      </div>
+    </div>
   </div>
 </template>
 

@@ -1,6 +1,8 @@
 <template>
   <div>
-    <BasePageTitle><template v-slot:title>Bags</template></BasePageTitle>
+    <BasePageTitle>
+      <template v-slot:title>Bags</template>
+    </BasePageTitle>
     <template v-if="currentUserId === ''">
       <LoggedOutMessage />
     </template>
@@ -10,12 +12,13 @@
           {{ user.userName }}, you have bagged {{ totalBagged }} of
           {{ totalHills }} Wainwrights
         </BaseInfoBar>
-        <BaggedList :bags-to-show="5" />
+        <BaggedList :bags-to-show="12" />
       </template>
       <template v-else>
         <BaseInfoBar>
           {{ user.userName }}, you haven't bagged anything yet! Why not find
-          your <BaseLink to="/hills/list">first fell to bag?</BaseLink>
+          your
+          <BaseLink to="/hills/list">first fell to bag?</BaseLink>
         </BaseInfoBar>
       </template>
     </template>

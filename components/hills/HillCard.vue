@@ -1,9 +1,6 @@
 <template>
-  <div class="bg-grey p-2">
-    <div
-      class="p-2"
-      :class="('bg-' + hill.areaName) | removeSpaces | lowercase"
-    >
+  <div class="bg-lightgrey">
+    <div class="p-2" :class="('bg-' + hill.areaName) | removeSpaces | lowercase">
       <span class="text-sm uppercase">{{ hill.areaName }}</span>
     </div>
     <div class="p-2">
@@ -11,10 +8,7 @@
         <h2 class="text-3xl">{{ hill.name }}</h2>
       </nuxt-link>
 
-      <HeightRating
-        :height-rating="hill.heightRating"
-        :area-class-name="hill.areaClassName"
-      />
+      <HeightRating :height-rating="hill.heightRating" :area-class-name="hill.areaClassName" />
       <p v-if="hasBagged">Well done, you've climbed this hill</p>
       <p>Altitude: {{ hill.height_m }}</p>
       <p>OS grid ref: {{ hill.os_grid_ref }}</p>

@@ -1,14 +1,15 @@
 <template>
   <div>
-    <BaseTitle :level="2" :has-decoration="true" class="text-xl"
-      >Your latest bags</BaseTitle
-    >
     <template v-if="sortedBagsDesc.length > 0">
-      <BaggedListItem
-        v-for="(bag, index) in bagsList"
-        :key="index"
-        :bag="bag"
-      />
+      <div class="grid grid-cols-12 gap-4">
+        <HillCard
+          v-for="(hill, index) in bagsList"
+          :key="index"
+          :hill="hill"
+          :hillsBagged="userBags"
+          class="col-span-12 sm:col-span-4"
+        />
+      </div>
     </template>
     <template v-if="bagsList.length === 0">
       <p>You have no bags yet - time to get bagging!</p>
@@ -19,9 +20,11 @@
 <script>
 import { mapState } from 'vuex'
 import BaggedListItem from '@/components/user/BaggedListItem.vue'
+import HillCard from '@/components/hills/HillCard.vue'
 export default {
   components: {
     BaggedListItem,
+    HillCard,
   },
   props: {
     bagsToShow: {
@@ -33,6 +36,7 @@ export default {
   computed: {
     ...mapState({
       userBags: (state) => state.users.user.bags,
+      hills: (state) => state.hills.hills,
     }),
     sortedBagsDesc() {
       let sortedBags = [...this.userBags]

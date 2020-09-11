@@ -1,16 +1,17 @@
 <template>
   <div
+    :class="('bg-' + hill.areaName) | removeSpaces | lowercase"
     class="rounded-full w-8 h-8 text-white flex items-center justify-center flex-shrink-0"
   >
-    <span>{{ area }}</span>
+    <span>{{ hill.area }}</span>
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    area: {
-      type: String,
+    hill: {
+      type: Object,
       required: true,
     },
   },

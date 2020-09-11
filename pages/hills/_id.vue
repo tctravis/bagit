@@ -1,19 +1,15 @@
 <template>
   <div>
-    <!-- <HillPageTitle :hill="hill" :hills-bagged="hillsBagged">{{
-      hill.name
-    }}</HillPageTitle>-->
-
     <BaseInfoBar>
-      <div class="xsm:flex flex-row items-center justify-between xsm:mb-2">
-        <p class="mb-2 xsm:mb-0">Wainwright #{{ hill.id }}</p>
-        <HeightRating
-          class="mb-2 xsm:mb-0"
-          :height-rating="hill.heightRating"
-          :area-class-name="hill.areaClassName"
-        />
+      <div class="flex flex-row items-center justify-between mb-2">
+        <p class="text-lg">Wainwright #{{ hill.id }}</p>
+        <AreaIcon :hill="hill" />
       </div>
-
+      <HeightRating
+        class="mb-2 xsm:mb-0"
+        :height-rating="hill.heightRating"
+        :area-class-name="hill.areaClassName"
+      />
       <div class="flex flex-row items-center justify-between">
         <p>Altitude: {{ hill.height_m }}m</p>
         <p>Prominence: {{ hill.prom_m }}m</p>

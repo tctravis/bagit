@@ -1,18 +1,18 @@
 <template>
   <div class="flex flex-row items-start mb-4">
-    <AreaIcon
-      :area="hill.area"
-      :class="('bg-' + hill.areaName) | removeSpaces | lowercase"
-    />
-    <h1 class="text-2xl ml-2"><slot>Page title</slot></h1>
+    <AreaIcon :hill="hill" />
+    <h1 class="text-2xl ml-2">
+      <slot>Page title</slot>
+    </h1>
     <BaseButton
       class="ml-auto"
       :button-class="'bg-' + hill.areaClassName"
       :disabled="hasBagged"
       @click="bagThis"
-      ><template v-if="!hasBagged">Bag it!</template
-      ><template v-if="hasBagged">Bagged already</template></BaseButton
     >
+      <template v-if="!hasBagged">Bag it!</template>
+      <template v-if="hasBagged">Bagged already</template>
+    </BaseButton>
   </div>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="h-32 sm:h-40 lg:h-56 flex items-end bg-cover"
+    class="h-32 sm:h-40 md:h-56 lg:h-64 flex items-end bg-cover"
     :style="'margin-top: 56px; background-image: url(' + imgUrl + ')'"
   >
     <div class="container p-4">

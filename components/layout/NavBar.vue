@@ -32,60 +32,47 @@
       :class="navOpen ? 'transform translate-x-0' : 'transform translate-x-105'"
     >
       <BaseClose class="p-4" @click="toggleMenu" />
-      <nav
-        class="flex flex-col divide-y md:divide-y-0 md:flex-row md:items-center"
-      >
+      <nav class="flex flex-col divide-y md:divide-y-0 md:flex-row md:items-center">
         <BaseMenuLink
           route="/hills/list"
           icon="mountain"
           icon-class="text-md"
           @click.native="toggleMenu"
-          >Fells</BaseMenuLink
-        >
+        >Fells</BaseMenuLink>
         <BaseMenuLink
           route="/user/bags"
           icon="hiking"
           icon-class="text-xl"
           @click.native="toggleMenu"
-          >Bags</BaseMenuLink
-        >
+        >Bags</BaseMenuLink>
         <BaseMenuLink
           route="/user/stats"
           icon="chart-bar"
           icon-class="text-xl"
           @click.native="toggleMenu"
-          >Stats</BaseMenuLink
-        >
+        >Stats</BaseMenuLink>
         <BaseMenuLink
           route="/user/badges"
           icon="certificate"
           icon-class="text-xl"
           @click.native="toggleMenu"
-          >Badges</BaseMenuLink
-        >
+        >Badges</BaseMenuLink>
         <BaseMenuLink
           v-if="$fireAuth.currentUser !== null"
           route="/user/edit-profile"
           icon="user"
           icon-class="text-xl"
           @click.native="toggleMenu"
-          >Profile</BaseMenuLink
-        >
+        >Profile</BaseMenuLink>
       </nav>
     </div>
-    <BaseMenuLink
-      v-if="currentUserId === ''"
-      route="/user/login"
-      class="ml-auto"
-      >Login</BaseMenuLink
-    >
+    <BaseMenuLink v-if="currentUserId === ''" route="/user/login" class="ml-auto">Login</BaseMenuLink>
     <BaseMenuLink
       v-if="currentUserId !== ''"
       route="/user/login"
-      class="ml-auto"
+      class="ml-auto md:ml-0"
       @click.native="signOut"
-      >Logout</BaseMenuLink
-    >
+    >Logout</BaseMenuLink>
     <div class="md:hidden px-4 py-4 cursor-pointer" @click="toggleMenu">
       <font-awesome-icon :icon="['fa', 'bars']" />
     </div>

@@ -6,7 +6,7 @@
         class="flex justify-between items-center mb-2"
       >
         <h2 class="text-xl">{{ hill.name }}</h2>
-        <AreaIcon :area="hill.area" :class="('bg-' + hill.areaName) | removeSpaces | lowercase" />
+        <AreaIcon :hill="hill" />
       </nuxt-link>
 
       <div v-if="hillDetails" class="flex justify-between items-align">

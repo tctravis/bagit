@@ -1,11 +1,6 @@
 <template>
   <div>
-    <BasePageTitle>
-      <template v-slot:title>Register</template>
-    </BasePageTitle>
-    <BaseFormFeedback v-if="feedback.message !== ''" :type="feedback.type">
-      {{ feedback.message }}
-    </BaseFormFeedback>
+    <BaseFormFeedback v-if="feedback.message !== ''" :type="feedback.type">{{ feedback.message }}</BaseFormFeedback>
     <CreateUser @create-user="register">Register</CreateUser>
   </div>
 </template>
@@ -47,6 +42,9 @@ export default {
         }
       }
     },
+  },
+  mounted() {
+    this.$store.dispatch('pages/setPageTitle', 'Register')
   },
 }
 </script>

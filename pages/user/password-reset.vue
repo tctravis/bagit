@@ -1,11 +1,10 @@
 <template>
   <div>
-    <BasePageTitle
-      ><template v-slot:title>Reset your password</template></BasePageTitle
-    >
-    <BaseFormFeedback v-if="feedback.message !== ''" :type="feedback.type">{{
+    <BaseFormFeedback v-if="feedback.message !== ''" :type="feedback.type">
+      {{
       feedback.message
-    }}</BaseFormFeedback>
+      }}
+    </BaseFormFeedback>
     <form @submit.prevent="resetPassword">
       <div class="form-section">
         <p class="text-error mb-4">* required</p>
@@ -17,16 +16,16 @@
           :is-required="true"
           @blur="$v.email.$touch()"
         />
-        <BaseValidationMessage v-if="$v.email.$error" message-type="error"
-          >Please enter a valid email</BaseValidationMessage
-        >
+        <BaseValidationMessage
+          v-if="$v.email.$error"
+          message-type="error"
+        >Please enter a valid email</BaseValidationMessage>
         <div class="flex flex-row justify-end pt-4">
           <BaseButton
             :disabled="$v.$invalid"
             type="submit"
             button-class="bg-southern"
-            >Reset password</BaseButton
-          >
+          >Reset password</BaseButton>
         </div>
       </div>
     </form>
@@ -81,6 +80,9 @@ export default {
       required,
       email,
     },
+  },
+  mounted() {
+    this.$store.dispatch('pages/setPageTitle', 'Reset your password')
   },
 }
 </script>

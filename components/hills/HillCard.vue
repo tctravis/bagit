@@ -1,40 +1,51 @@
 <template>
   <div class="bg-lightgrey">
-    <div class="p-2" :class="('bg-' + hill.areaName) | removeSpaces | lowercase">
-      <span class="text-sm uppercase">{{ hill.areaName }}</span>
-    </div>
     <div class="p-2">
-      <nuxt-link :to="{ name: 'hills-id', params: { id: hill.id } }">
-        <h2 class="text-3xl">{{ hill.name }}</h2>
+      <nuxt-link
+        :to="{ name: 'hills-id', params: { id: hill.id } }"
+        class="flex justify-between items-center mb-2"
+      >
+        <h2 class="text-xl">{{ hill.name }}</h2>
+        <AreaIcon :area="hill.area" :class="('bg-' + hill.areaName) | removeSpaces | lowercase" />
       </nuxt-link>
 
-      <HeightRating :height-rating="hill.heightRating" :area-class-name="hill.areaClassName" />
-      <p v-if="hasBagged">Well done, you've climbed this hill</p>
-      <p>Altitude: {{ hill.height_m }}</p>
-      <p>OS grid ref: {{ hill.os_grid_ref }}</p>
-      <p>OS map: {{ hill.os_map }}</p>
-      <BaseButton button-class="bg-southern">Climbed Hill</BaseButton>
+      <div v-if="hillDetails" class="flex justify-between items-align">
+        <HeightRating :height-rating="hill.heightRating" :area-class-name="hill.areaClassName"></HeightRating>
+        {{ hill.height_m }}m
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+import AreaIcon from '@/components/hills/AreaIcon.vue'
 import HeightRating from '@/components/hills/HeightRating.vue'
 export default {
   components: {
     HeightRating,
+    AreaIcon,
   },
   props: {
     hill: {
       type: Object,
       required: true,
     },
-    hillsBagged: {
-      type: Array,
-      required: true,
+    hillDetails: {
+      type: Boolean,
+      required: false,
+      default: true,
+    },
+    bagDetails: {
+      type: Boolean,
+      required: false,
+      default: true,
     },
   },
   computed: {
+    ...mapState({
+      hillsBagged: (state) => state.users.user.hillsBagged,
+    }),
     hasBagged() {
       return this.hillsBagged.includes(this.hill.id)
     },

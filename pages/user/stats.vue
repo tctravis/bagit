@@ -1,8 +1,5 @@
 <template>
   <div>
-    <BasePageTitle>
-      <template v-slot:title>Statistics</template>
-    </BasePageTitle>
     <template v-if="currentUserId === ''">
       <LoggedOutMessage />
     </template>
@@ -64,6 +61,9 @@ export default {
     totalHills() {
       return this.hills.length
     },
+  },
+  mounted() {
+    this.$store.dispatch('pages/setPageTitle', 'Statistics')
   },
 }
 </script>

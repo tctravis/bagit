@@ -1,6 +1,8 @@
 <template>
   <div class="flex flex-row items-center">
-    <span class="mr-2">Height-rating:</span>
+    <span>
+      <slot></slot>
+    </span>
     <font-awesome-icon
       v-for="n in 5"
       :key="n"

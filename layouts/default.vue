@@ -1,7 +1,8 @@
 <template>
   <div>
     <NavBar />
-    <div class="container py-20 px-4 relative z-0">
+    <PageBanner :img-url="require('~/assets/img/banner.jpg')">{{ pageTitle }}</PageBanner>
+    <div class="container px-4 py-4 relative z-0">
       <Nuxt />
     </div>
     <Footer />
@@ -12,17 +13,20 @@
 <script>
 import { mapState } from 'vuex'
 import NavBar from '@/components/layout/NavBar'
+import PageBanner from '@/components/layout/PageBanner'
 import Footer from '@/components/layout/Footer'
 import BagCreateModal from '@/components/user/BagCreateModal'
 export default {
   transition: '',
   components: {
     NavBar,
+    PageBanner,
     Footer,
     BagCreateModal,
   },
   computed: {
     ...mapState({
+      pageTitle: (state) => state.pages.page.title,
       openBagModal: (state) => state.users.bagModalState,
     }),
   },

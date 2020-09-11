@@ -6,8 +6,7 @@
           v-for="(hill, index) in bagsList"
           :key="index"
           :hill="hill"
-          :hillsBagged="userBags"
-          class="col-span-12 sm:col-span-4"
+          class="col-span-12 sm:col-span-4 lg:col-span-3"
         />
       </div>
     </template>

@@ -1,8 +1,5 @@
 <template>
   <div>
-    <BasePageTitle>
-      <template v-slot:title>Bags</template>
-    </BasePageTitle>
     <template v-if="currentUserId === ''">
       <LoggedOutMessage />
     </template>
@@ -27,10 +24,12 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex'
+import PageBanner from '@/components/layout/PageBanner.vue'
 import LoggedOutMessage from '@/components/user/LoggedOutMessage.vue'
 import BaggedList from '@/components/user/BaggedList.vue'
 export default {
   components: {
+    PageBanner,
     LoggedOutMessage,
     BaggedList,
   },
@@ -47,6 +46,9 @@ export default {
     totalHills() {
       return this.hills.length
     },
+  },
+  mounted() {
+    this.$store.dispatch('pages/setPageTitle', 'Bags')
   },
 }
 </script>

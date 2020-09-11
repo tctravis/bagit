@@ -1,9 +1,5 @@
 <template>
   <div>
-    <BasePageTitle>
-      <template v-slot:title>Profile</template>
-    </BasePageTitle>
-
     <BaseFormFeedback v-if="feedback.message !== ''" :type="feedback.type">
       {{
       feedback.message
@@ -101,6 +97,9 @@ export default {
         }
       }
     },
+  },
+  mounted() {
+    this.$store.dispatch('pages/setPageTitle', 'Profile')
   },
 }
 </script>

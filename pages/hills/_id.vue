@@ -1,8 +1,8 @@
 <template>
   <div>
-    <HillPageTitle :hill="hill" :hills-bagged="hillsBagged">{{
+    <!-- <HillPageTitle :hill="hill" :hills-bagged="hillsBagged">{{
       hill.name
-    }}</HillPageTitle>
+    }}</HillPageTitle>-->
 
     <BaseInfoBar>
       <div class="xsm:flex flex-row items-center justify-between xsm:mb-2">
@@ -84,6 +84,9 @@ export default {
         },
       ],
     }
+  },
+  mounted() {
+    this.$store.dispatch('pages/setPageTitle', this.hill.name)
   },
 }
 </script>

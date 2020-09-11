@@ -1,8 +1,5 @@
 <template>
   <div>
-    <BasePageTitle>
-      <template v-slot:title>Fells</template>
-    </BasePageTitle>
     <div class="grid grid-cols-12 gap-4">
       <div class="form-section col-span-12 md:col-span-4">
         <BaseInput
@@ -182,7 +179,8 @@ export default {
     },
   },
   mounted() {
-    //this.closeBagModal()
+    this.$store.dispatch('pages/setPageTitle', 'Fells')
+
     if (this.totalFiltersApplied > 0) {
       this.filterTabs.selectedTab = 0
     }

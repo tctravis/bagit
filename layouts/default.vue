@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="py-16">
     <NavBar />
     <PageBanner :img-url="require('~/assets/img/banner.jpg')">{{ pageTitle }}</PageBanner>
     <div class="container px-4 py-4 relative z-0">

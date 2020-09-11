@@ -1,7 +1,7 @@
 <template>
   <div
     class="h-32 sm:h-40 md:h-56 lg:h-64 flex items-end bg-cover"
-    :style="'margin-top: 56px; background-image: url(' + imgUrl + ')'"
+    :style="'background-image: url(' + imgUrl + ')'"
   >
     <div class="container p-4">
       <h1 class="text-4xl md:text-5xl lg:text-6xl text-white">

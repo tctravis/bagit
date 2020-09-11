@@ -1,8 +1,8 @@
 <template>
   <header
-    class="bg-darkgrey text-white fixed left-0 right-0 top-0 z-10 flex flex-row items-center justify-between"
+    class="h-16 bg-darkgrey text-white fixed left-0 right-0 top-0 z-10 flex flex-row items-center justify-between"
   >
-    <div class="px-4 py-4">
+    <div class="px-4">
       <nuxt-link to="/">FELL BAGGR</nuxt-link>
     </div>
 
@@ -31,7 +31,7 @@
       class="collapseNav"
       :class="navOpen ? 'transform translate-x-0' : 'transform translate-x-105'"
     >
-      <BaseClose class="p-4" @click="toggleMenu" />
+      <BaseClose class="h-16 px-4" @click="toggleMenu" />
       <nav class="flex flex-col divide-y md:divide-y-0 md:flex-row md:items-center">
         <BaseMenuLink
           route="/hills/list"

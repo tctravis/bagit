@@ -1,23 +1,17 @@
 <template>
   <div>
-    <BaseParagraph>
-      Use this app to help plan and record your adventures bagging the Lake
-      District fells.
-    </BaseParagraph>
-    <BaseParagraph>
-      Based on the Wainwrights, the list of fells described in the classic
-      guides by A.W. Wainwright
-    </BaseParagraph>
     <nuxt-link
       v-if="currentUserId !== ''"
       to="/hills/list"
       class="bg-southern text-white button"
-    >Bag a fell</nuxt-link>
+      >Bag a fell</nuxt-link
+    >
     <nuxt-link
       v-if="currentUserId === ''"
       to="/user/login"
       class="bg-southern text-white button"
-    >Start bagging Wainwrights</nuxt-link>
+      >Start bagging Wainwrights</nuxt-link
+    >
   </div>
 </template>
 

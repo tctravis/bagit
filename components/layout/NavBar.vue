@@ -1,93 +1,80 @@
 <template>
-  <header
-    class="h-16 bg-darkgrey text-white fixed left-0 right-0 top-0 z-10 flex flex-row items-center justify-between"
-  >
-    <div class="px-4">
-      <nuxt-link to="/">FELL BAGGR</nuxt-link>
-    </div>
+  <header class="h-16 bg-darkgrey text-white fixed left-0 right-0 top-0 z-10">
+    <div class="h-16 container flex flex-row items-center justify-between">
+      <div>
+        <nuxt-link to="/">FELL BAGGR</nuxt-link>
+      </div>
 
-    <transition
-      enter-class="opacity-0"
-      enter-active-class="ease-out transition-medium"
-      enter-to-class="opacity-100"
-      leave-class="opacity-100"
-      leave-active-class="ease-out transition-medium"
-      leave-to-class="opacity-0"
-    >
-      <div
-        v-show="navOpen"
-        class="z-20 fixed inset-0 transition-opacity md:hidden"
-        @keydown.esc="navOpen = false"
+      <transition
+        enter-class="opacity-0"
+        enter-active-class="ease-out transition-medium"
+        enter-to-class="opacity-100"
+        leave-class="opacity-100"
+        leave-active-class="ease-out transition-medium"
+        leave-to-class="opacity-0"
       >
         <div
-          class="absolute inset-0 bg-black opacity-50 md:hidden"
-          tabindex="0"
-          @click="navOpen = false"
-        ></div>
-      </div>
-    </transition>
+          v-show="navOpen"
+          class="z-20 fixed inset-0 transition-opacity md:hidden"
+          @keydown.esc="navOpen = false"
+        >
+          <div
+            class="absolute inset-0 bg-black opacity-50 md:hidden"
+            tabindex="0"
+            @click="navOpen = false"
+          ></div>
+        </div>
+      </transition>
 
-    <div
-      class="collapseNav"
-      :class="navOpen ? 'transform translate-x-0' : 'transform translate-x-105'"
-    >
-      <BaseClose class="h-16 px-4" @click="toggleMenu" />
-      <nav
-        class="flex flex-col divide-y md:divide-y-0 md:flex-row md:items-center"
+      <div
+        class="collapseNav"
+        :class="
+          navOpen ? 'transform translate-x-0' : 'transform translate-x-105'
+        "
       >
-        <BaseMenuLink
-          route="/hills/list"
-          icon="mountain"
-          icon-class="text-md"
-          @click.native="toggleMenu"
-          >Fells</BaseMenuLink
+        <BaseClose class="h-16 bg-darkgrey px-4" @click="toggleMenu" />
+        <nav
+          class="flex flex-col divide-y md:divide-y-0 md:flex-row md:items-center"
         >
-        <BaseMenuLink
-          route="/user/bags"
-          icon="hiking"
-          icon-class="text-xl"
-          @click.native="toggleMenu"
-          >Bags</BaseMenuLink
-        >
-        <BaseMenuLink
-          route="/user/stats"
-          icon="chart-bar"
-          icon-class="text-xl"
-          @click.native="toggleMenu"
-          >Stats</BaseMenuLink
-        >
-        <BaseMenuLink
-          route="/user/badges"
-          icon="certificate"
-          icon-class="text-xl"
-          @click.native="toggleMenu"
-          >Badges</BaseMenuLink
-        >
-        <BaseMenuLink
-          v-if="$fireAuth.currentUser !== null"
-          route="/user/edit-profile"
-          icon="user"
-          icon-class="text-xl"
-          @click.native="toggleMenu"
-          >Profile</BaseMenuLink
-        >
-      </nav>
-    </div>
-    <BaseMenuLink
-      v-if="currentUserId === ''"
-      route="/user/login"
-      class="ml-auto"
-      >Login</BaseMenuLink
-    >
-    <BaseMenuLink
-      v-if="currentUserId !== ''"
-      route="/user/login"
-      class="ml-auto md:ml-0"
-      @click.native="signOut"
-      >Logout</BaseMenuLink
-    >
-    <div class="md:hidden px-4 py-4 cursor-pointer" @click="toggleMenu">
-      <font-awesome-icon :icon="['fa', 'bars']" />
+          <BaseMenuLink route="/hills/list" @click.native="toggleMenu"
+            >Fells</BaseMenuLink
+          >
+          <BaseMenuLink route="/user/bags" @click.native="toggleMenu"
+            >Bags</BaseMenuLink
+          >
+          <BaseMenuLink route="/user/stats" @click.native="toggleMenu"
+            >Stats</BaseMenuLink
+          >
+          <BaseMenuLink route="/user/badges" @click.native="toggleMenu"
+            >Badges</BaseMenuLink
+          >
+          <BaseMenuLink route="/about" @click.native="toggleMenu"
+            >About</BaseMenuLink
+          >
+          <BaseMenuLink
+            v-if="$fireAuth.currentUser !== null"
+            route="/user/edit-profile"
+            @click.native="toggleMenu"
+            >Profile</BaseMenuLink
+          >
+        </nav>
+      </div>
+      <nuxt-link
+        v-if="currentUserId === ''"
+        to="/user/login"
+        class="ml-auto bg-southern text-white button"
+        >Login</nuxt-link
+      >
+      <nuxt-link
+        v-if="currentUserId !== ''"
+        to="/user/login"
+        class="ml-auto md:ml-0 bg-southern text-white button"
+        @click.native="signOut"
+        >Logout</nuxt-link
+      >
+      <div class="md:hidden pl-4 py-4 cursor-pointer" @click="toggleMenu">
+        <font-awesome-icon :icon="['fa', 'bars']" />
+      </div>
     </div>
   </header>
 </template>

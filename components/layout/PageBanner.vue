@@ -7,6 +7,7 @@
       <h1 class="text-4xl md:text-5xl lg:text-6xl text-white">
         <slot>Page title</slot>
       </h1>
+      <p class="text-white uppercase">The fun way to collect Wainwrights</p>
     </div>
   </div>
 </template>

@@ -151,6 +151,7 @@ export default {
         },
       },
     ],
+    'vue-geolocation-api/nuxt'
   ],
   /*
    ** Axios module configuration
@@ -195,5 +196,8 @@ export default {
   },
   tailwindcss: {
     exposeConfig: true,
+  },
+  geolocation: {
+    watch: true,
   },
 }

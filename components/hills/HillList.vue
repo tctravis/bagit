@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="grid grid-cols-12 gap-4">
-      <div class="form-section col-span-12">
+      <div class="form-section col-span-12 md:col-span-4">
         <BaseInput
           id="hills-search-filter"
           v-model="search"
@@ -31,8 +31,15 @@
           >
         </div>
       </div>
-      <div class="col-span-12">
+      <div class="col-span-12 md:col-span-8">
         <div class="flex flex-row justify-end py-2">
+          <BasePill
+            v-if="this.$geolocation.supported"
+            :is-active="hillList.sort === 'vicinity'"
+            class="bg-lightgrey mr-2"
+            @click="sortByVicinity()"
+            >Near me</BasePill
+          >
           <BasePill
             :is-active="hillList.sort === 'desc'"
             class="bg-lightgrey mr-2"
@@ -49,11 +56,11 @@
 
         <template v-if="filteredHills.length > 0">
           <div class="grid grid-cols-12 gap-4">
-            <HillListItem
+            <HillCard
               v-for="hill in sortedHills"
-              :key="hill.rank"
+              :key="hill.id"
               :hill="hill"
-              class="col-span-12 sm:col-span-4 lg:col-span-3"
+              class="col-span-12 sm:col-span-6 lg:col-span-4"
             />
           </div>
         </template>
@@ -70,15 +77,19 @@
 
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
+
 import AreaPills from '@/components/hills/AreaPills.vue'
-import HillListItem from '@/components/hills/HillListItem.vue'
+import HillCard from '@/components/hills/HillCard.vue'
+
+import calculateDistances from '@/mixins/calculateDistances.js'
 
 export default {
   components: {
-    HillListItem,
+    HillCard,
     // BagCreateModal,
     AreaPills,
   },
+  mixins: [calculateDistances],
   data() {
     return {
       search: '',
@@ -134,7 +145,18 @@ export default {
     },
     sortedHills() {
       let hillsArray = this.filteredHills
-      if (this.hillList.sort === 'desc') {
+      if (this.hillList.sort === 'vicinity') {
+        if (this.$geolocation.coords) {
+          let userLoc = {
+            lat: this.$geolocation.coords.latitude,
+            lng: this.$geolocation.coords.longitude,
+          }
+          hillsArray = this.findDistancesFromLoc(userLoc, hillsArray)
+        } else {
+          console.log('User location not available')
+        }
+        // console.log(this)
+      } else if (this.hillList.sort === 'desc') {
         hillsArray.sort((a, b) => {
           if (a.height_m > b.height_m) return -1
           if (a.height_m < b.height_m) return 1
@@ -180,6 +202,9 @@ export default {
     },
     sortByHeight(sortOrder) {
       this.$store.dispatch('hills/sortHillList', sortOrder)
+    },
+    sortByVicinity() {
+      this.$store.dispatch('hills/sortHillList', 'vicinity')
     },
     clearSearch() {
       let filters = {

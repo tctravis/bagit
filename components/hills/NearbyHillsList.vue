@@ -2,8 +2,8 @@
   <div>
     <HillListItem
       v-for="nearbyHill in nearbyHills"
-      :key="nearbyHill.hill.id"
-      :hill="nearbyHill.hill"
+      :key="nearbyHill.id"
+      :hill="nearbyHill"
       :hills-bagged="hillsBagged"
       :distance="nearbyHill.distance"
     />
@@ -39,7 +39,7 @@ export default {
     },
     nearbyHills() {
       // see mixins : calculateDistances: move into state for each hill
-      return this.findDistancesFromHill(this.hill, this.limit)
+      return this.findDistancesFromLoc(this.hill, this.hills, this.limit)
     },
   },
   methods: {

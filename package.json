@@ -24,6 +24,7 @@
     "nuxt": "^2.13.0",
     "nuxt-fontawesome": "^0.4.0",
     "nuxt-global-base-components": "^0.1.6",
+    "vue-geolocation-api": "^0.1.19",
     "vuejs-datepicker": "^1.6.2",
     "vuelidate": "^0.7.5"
   },

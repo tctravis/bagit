@@ -10,7 +10,7 @@ module.exports = {
   theme: {
     container: {
       center: true,
-      padding: '2rem',
+      padding: '1rem',
     },
     colors: {
       white: {
@@ -18,6 +18,9 @@ module.exports = {
       },
       lightgrey: {
         default: '#eeeeee',
+      },
+      midgrey: {
+        default: '#666',
       },
       grey: {
         default: '#cccccc',
@@ -74,6 +77,9 @@ module.exports = {
       gridTemplateColumns: {
         '12': 'repeat(12, minmax(0, 1fr))',
       },
+      height: {
+        80: '20rem'
+      }
     },
   },
   variants: {

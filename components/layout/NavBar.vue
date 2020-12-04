@@ -62,13 +62,13 @@
       <nuxt-link
         v-if="currentUserId === ''"
         to="/user/login"
-        class="ml-auto bg-southern text-white button"
+        class="ml-auto md:ml-4 bg-southern text-white button"
         >Login</nuxt-link
       >
       <nuxt-link
         v-if="currentUserId !== ''"
         to="/user/login"
-        class="ml-auto md:ml-0 bg-southern text-white button"
+        class="ml-auto md:ml-4 bg-southern text-white button"
         @click.native="signOut"
         >Logout</nuxt-link
       >

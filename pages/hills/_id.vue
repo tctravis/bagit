@@ -1,28 +1,36 @@
 <template>
   <div>
-    <BaseInfoBar>
-      <div class="flex flex-row items-center justify-between mb-2">
-        <p class="text-lg">Wainwright #{{ hill.id }}</p>
-        <AreaIcon :hill="hill" />
+    <div class="grid grid-cols-12 gap-4">
+      <div class="col-span-12 md:col-span-8">
+        <BaseTitle :level="2" :has-decoration="true">Overview</BaseTitle>
+        <BaseInfoBar>
+          <div class="flex flex-row items-center justify-between mb-2">
+            <p class="text-lg">Wainwright #{{ hill.id }}</p>
+            <AreaIcon :hill="hill" />
+          </div>
+          <HeightRating
+            class="mb-2 xsm:mb-0"
+            :height-rating="hill.heightRating"
+            :area-class-name="hill.areaClassName"
+          />
+          <div class="flex flex-row items-center justify-between">
+            <p>Altitude: {{ hill.height_m }}m</p>
+            <p>Prominence: {{ hill.prom_m }}m</p>
+          </div>
+        </BaseInfoBar>
+
+        <BaseTitle :level="2" :has-decoration="true">Map</BaseTitle>
+        <BaseInfoBar class="flex flex-row items-center justify-between">
+          <span>OS ref: {{ hill.os_grid_ref }}</span>
+          <span>OS map: {{ hill.os_map }}</span>
+        </BaseInfoBar>
+        <HillMap :hill="hill" />
       </div>
-      <HeightRating
-        class="mb-2 xsm:mb-0"
-        :height-rating="hill.heightRating"
-        :area-class-name="hill.areaClassName"
-      />
-      <div class="flex flex-row items-center justify-between">
-        <p>Altitude: {{ hill.height_m }}m</p>
-        <p>Prominence: {{ hill.prom_m }}m</p>
+      <div class="col-span-12 md:col-span-4">
+        <BaseTitle :level="2" :has-decoration="true">Nearby Hills</BaseTitle>
+        <NearbyHillsList :hill="hill" />
       </div>
-    </BaseInfoBar>
-    <BaseTitle :level="2" :has-decoration="true">Map</BaseTitle>
-    <BaseInfoBar class="flex flex-row items-center justify-between">
-      <span>OS ref: {{ hill.os_grid_ref }}</span>
-      <span>OS map: {{ hill.os_map }}</span>
-    </BaseInfoBar>
-    <HillMap :hill="hill" />
-    <BaseTitle :level="2" :has-decoration="true">Nearby Hills</BaseTitle>
-    <NearbyHillsList :hill="hill" />
+    </div>
   </div>
 </template>
 

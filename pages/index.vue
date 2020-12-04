@@ -1,6 +1,7 @@
 <template>
   <div>
-    <nuxt-link
+    <HillList />
+    <!-- <nuxt-link
       v-if="currentUserId !== ''"
       to="/hills/list"
       class="bg-southern text-white button"
@@ -12,12 +13,27 @@
       class="bg-southern text-white button"
       >Start bagging Wainwrights</nuxt-link
     >
+    <BaseCard theme="southern">
+      <template v-slot:header>Bag a fell</template>
+    </BaseCard>
+    <BaseCard theme="northern">
+      <template v-slot:header>Collect badges</template>
+    </BaseCard>
+    <BaseCard theme="eastern">
+      <template v-slot:header>View your stats</template>
+    </BaseCard> -->
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
+
+import HillList from '@/components/hills/HillList.vue'
+
 export default {
+  components: {
+    HillList,
+  },
   computed: {
     ...mapState({
       currentUserId: (state) => state.users.currentUserId,

@@ -1,28 +1,34 @@
 export default {
   methods: {
-    findDistancesFromHill(hill, limit) {
+    findDistancesFromLoc(loc, hills, limit) {
       let distancesFromHill = []
       let originLoc = {
-        lat: hill.lat,
-        lon: hill.lng,
+        lat: loc.lat,
+        lon: loc.lng,
       }
-      this.hills.forEach((hill) => {
-        let loc = {
+      hills.forEach((hill) => {
+        let hillLoc = {
           lat: hill.lat,
           lon: hill.lng,
         }
-        let distanceFromOrigin = this.calcDistance(originLoc, loc)
-        let nearbyHills = {
-          distance: distanceFromOrigin,
-          hill: hill,
-        }
-        distancesFromHill.push(nearbyHills)
+        let distanceFromOrigin = this.calcDistance(originLoc, hillLoc)
+        // let nearbyHills = {
+        //   distance: distanceFromOrigin,
+        //   hill: hill,
+        // }
+        hill.distance = distanceFromOrigin
+        distancesFromHill.push(hill)
+        // hill.distance = distanceFromOrigin
       })
       //sort by closest to this hill
       distancesFromHill.sort(function (a, b) {
         return a.distance - b.distance
       })
-      return distancesFromHill.slice(1, limit + 1)
+      if (limit) {
+        return distancesFromHill.slice(1, limit + 1)
+      } else {
+        return distancesFromHill
+      }
     },
     calcDistance(loc1, loc2) {
       const R = 6371e3 // metres

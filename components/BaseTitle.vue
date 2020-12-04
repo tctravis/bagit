@@ -11,6 +11,11 @@ export default {
       required: false,
       default: false,
     },
+    srOnly: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
   data() {
     return {
@@ -45,6 +50,9 @@ export default {
         case 5:
           classArray.push('text-md')
           break
+      }
+      if (this.srOnly) {
+        classArray.push('sr-only')
       }
       this.titleClasses = this.titleClasses.concat(classArray)
     },

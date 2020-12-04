@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3>Bing Map</h3>
-    <div ref="bingMap" class="w-full h-64"></div>
+    <div ref="bingMap" class="w-full h-80"></div>
   </div>
 </template>
 

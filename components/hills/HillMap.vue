@@ -1,6 +1,8 @@
 <template>
   <div class="mb-4">
-    <div ref="bingMap" class="w-full h-64 bg-lightgrey p-2">Loading map</div>
+    <div ref="bingMap" class="w-full h-64 md:h-80 bg-lightgrey p-2">
+      Loading map
+    </div>
   </div>
 </template>
 
@@ -30,7 +32,7 @@ export default {
     }),
     nearbyHills() {
       // see mixins : calculateDistances: move into state for each hill
-      return this.findDistancesFromHill(this.hill, this.limit)
+      return this.findDistancesFromLoc(this.hill, this.hills, this.limit)
     },
   },
   async mounted() {
@@ -56,11 +58,11 @@ export default {
       map.entities.push(pin)
 
       this.nearbyHills.forEach((hill) => {
-        let hillObj = hill.hill
-        let hillLoc = new Microsoft.Maps.Location(hillObj.lat, hillObj.lng)
+        // let hillObj = hill.hill
+        let hillLoc = new Microsoft.Maps.Location(hill.lat, hill.lng)
         let pin = new Microsoft.Maps.Pushpin(hillLoc, {
-          title: hillObj.name,
-          color: theme.colors[hillObj.areaClassName].default,
+          title: hill.name,
+          color: theme.colors[hill.areaClassName].default,
         })
         map.entities.push(pin)
       })

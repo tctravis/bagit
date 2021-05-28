@@ -35,9 +35,21 @@
           >
           <BasePill
             :is-active="hillList.sort === 'asc'"
-            class="bg-lightgrey"
+            class="bg-lightgrey mr-2"
             @click="sortByHeight('asc')"
             >Low-High</BasePill
+          >
+          <BasePill
+            :is-active="hillList.sort === 'az'"
+            class="bg-lightgrey mr-2"
+            @click="sortByFirstLetter('az')"
+            >A-Z</BasePill
+          >
+          <BasePill
+            :is-active="hillList.sort === 'za'"
+            class="bg-lightgrey"
+            @click="sortByFirstLetter('za')"
+            >Z-A</BasePill
           >
         </div>
 
@@ -146,6 +158,18 @@ export default {
           console.log('User location not available')
         }
         // console.log(this)
+      } else if (this.hillList.sort === 'az') {
+        hillsArray.sort((a, b) => {
+          if (a.name < b.name) return -1
+          if (a.name > b.name) return 1
+          return 0
+        })
+      } else if (this.hillList.sort === 'za') {
+        hillsArray.sort((a, b) => {
+          if (a.name > b.name) return -1
+          if (a.name < b.name) return 1
+          return 0
+        })
       } else if (this.hillList.sort === 'desc') {
         hillsArray.sort((a, b) => {
           if (a.height_m > b.height_m) return -1
@@ -194,6 +218,9 @@ export default {
     //   this.$store.dispatch('hills/filterHillList', filters)
     // },
     sortByHeight(sortOrder) {
+      this.$store.dispatch('hills/sortHillList', sortOrder)
+    },
+    sortByFirstLetter(sortOrder) {
       this.$store.dispatch('hills/sortHillList', sortOrder)
     },
     sortByVicinity() {

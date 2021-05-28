@@ -17,11 +17,11 @@
           <span>OS ref: {{ hill.os_grid_ref }}</span>
           <span>OS map: {{ hill.os_map }}</span>
         </BaseInfoBar>
-        <HillMap :hill="hill" />
+        <HillMap :hill="hill" :limit="20" />
       </div>
       <div class="col-span-12 md:col-span-4">
         <BaseTitle :level="2" :has-decoration="true">Nearby Hills</BaseTitle>
-        <NearbyHillsList :hill="hill" />
+        <NearbyHillsList :hill="hill" :limit="20" />
       </div>
     </div>
   </div>

@@ -20,11 +20,10 @@ export default {
       type: Object,
       required: true,
     },
-  },
-  data() {
-    return {
-      limit: 10,
-    }
+    limit: {
+      type: Number,
+      default: 10,
+    },
   },
   computed: {
     ...mapState({

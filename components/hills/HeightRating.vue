@@ -24,11 +24,21 @@ export default {
       type: String,
       required: true,
     },
+    hasBagged: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+  },
+  computed: {
+    enabledIconColor() {
+      return this.hasBagged ? 'darkgrey' : this.areaClassName
+    },
   },
   methods: {
     iconColor(n) {
       return n <= this.heightRating
-        ? theme.colors[this.areaClassName].default
+        ? theme.colors[this.enabledIconColor].default
         : theme.colors.grey.default
     },
   },

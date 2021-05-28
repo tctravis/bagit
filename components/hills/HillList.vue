@@ -9,41 +9,24 @@
           type="text"
           placeholder="Search by fell name"
         />
-        <AreaPills class="py-2" />
         <BagStatusPills
           v-if="currentUserId"
           class="flex flex-row flex-wrap py-2"
         />
-        <!-- <div class="flex flex-row flex-wrap py-2">
-          <BasePill
-            :is-active="hillList.filters.bagged === 'all'"
-            class="bg-darkgrey text-white mb-2 mr-2"
-            @click="filterByBagged('all')"
-            >All</BasePill
-          >
-          <BasePill
-            :is-active="hillList.filters.bagged === 'bagged'"
-            class="bg-darkgrey text-white mb-2 mr-2"
-            @click="filterByBagged('bagged')"
-            >Bagged</BasePill
-          >
-          <BasePill
-            :is-active="hillList.filters.bagged === 'unbagged'"
-            class="bg-darkgrey text-white mb-2 mr-2"
-            @click="filterByBagged('unbagged')"
-            >Not bagged</BasePill
-          >
-        </div> -->
+        <div>
+          <p @click="toggleFilters">Filters +</p>
+          <div v-show="showFilters"><AreaPills class="py-2" /></div>
+        </div>
       </div>
       <div class="col-span-12 md:col-span-8">
         <div class="flex flex-row justify-end py-2">
-          <BasePill
+          <!-- <BasePill
             v-if="this.$geolocation.supported"
             :is-active="hillList.sort === 'vicinity'"
             class="bg-lightgrey mr-2"
             @click="sortByVicinity()"
             >Near me</BasePill
-          >
+          > -->
           <BasePill
             :is-active="hillList.sort === 'desc'"
             class="bg-lightgrey mr-2"
@@ -191,6 +174,9 @@ export default {
   },
   methods: {
     ...mapActions('users', ['closeBagModal']),
+    toggleFilters() {
+      this.showFilters = !this.showFilters
+    },
     toggleTab(tabIndex) {
       if (this.filterTabs.selectedTab !== tabIndex) {
         this.filterTabs.selectedTab = tabIndex

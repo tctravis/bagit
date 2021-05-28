@@ -1,11 +1,17 @@
 <template>
-  <div>
-    <HillListItem
+  <div class="grid grid-cols-12 gap-4">
+    <!-- <HillListItem
       v-for="nearbyHill in nearbyHills"
       :key="nearbyHill.id"
       :hill="nearbyHill"
       :hills-bagged="hillsBagged"
       :distance="nearbyHill.distance"
+    /> -->
+    <HillCard
+      v-for="nearbyHill in nearbyHills"
+      :key="nearbyHill.id"
+      :hill="nearbyHill"
+      class="col-span-12 sm:col-span-6 lg:col-span-4"
     />
   </div>
 </template>
@@ -14,10 +20,11 @@
 //import calcDistance from '@/utils/calcDistance.js'
 import calculateDistances from '@/mixins/calculateDistances.js'
 import { mapState, mapGetters } from 'vuex'
-import HillListItem from '@/components/hills/HillListItem.vue'
+import HillCard from '@/components/hills/HillCard.vue'
+// import HillListItem from '@/components/hills/HillListItem.vue'
 export default {
   components: {
-    HillListItem,
+    HillCard,
   },
   mixins: [calculateDistances],
   props: {

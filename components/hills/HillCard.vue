@@ -1,5 +1,5 @@
 <template>
-  <div class="relative" :class="hillCardTheme">
+  <div class="relative bg-lightgrey" :class="hillCardTheme">
     <div class="p-2">
       <nuxt-link
         :to="{ name: 'hills-id', params: { id: hill.id } }"
@@ -23,7 +23,7 @@
     </div>
     <div
       v-if="hasBagged"
-      class="z-10 text-lightgrey text-5xl uppercase absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform -rotate-12"
+      class="z-10 text-grey font-bold text-5xl uppercase absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform -rotate-12"
     >
       Bagged
     </div>
@@ -73,10 +73,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.HillCard--bagged {
-  @apply bg-darkgrey text-white;
-}
-.HillCard--unbagged {
-  @apply bg-lightgrey;
-}
+// .HillCard--bagged {
+//   @apply bg-darkgrey text-white;
+// }
+// .HillCard--unbagged {
+//   @apply bg-lightgrey;
+// }
 </style>

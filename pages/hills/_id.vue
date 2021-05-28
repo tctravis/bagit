@@ -2,19 +2,12 @@
   <div>
     <div class="grid grid-cols-12 gap-4">
       <div class="col-span-12 md:col-span-8">
-        <BaseTitle :level="2" :has-decoration="true">Overview</BaseTitle>
+        <HillCard :hill="hill" />
+        <BaseTitle :level="2" :has-decoration="true">Details</BaseTitle>
+
         <BaseInfoBar>
           <div class="flex flex-row items-center justify-between mb-2">
             <p class="text-lg">Wainwright #{{ hill.id }}</p>
-            <AreaIcon :hill="hill" />
-          </div>
-          <HeightRating
-            class="mb-2 xsm:mb-0"
-            :height-rating="hill.heightRating"
-            :area-class-name="hill.areaClassName"
-          />
-          <div class="flex flex-row items-center justify-between">
-            <p>Altitude: {{ hill.height_m }}m</p>
             <p>Prominence: {{ hill.prom_m }}m</p>
           </div>
         </BaseInfoBar>
@@ -36,6 +29,7 @@
 
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
+import HillCard from '@/components/hills/HillCard.vue'
 import HillPageTitle from '@/components/hills/HillPageTitle.vue'
 import HeightRating from '@/components/hills/HeightRating.vue'
 import HillMap from '@/components/hills/HillMap.vue'
@@ -45,6 +39,7 @@ export default {
   components: {
     HeightRating,
     HillPageTitle,
+    HillCard,
     HillMap,
     NearbyHillsList,
   },

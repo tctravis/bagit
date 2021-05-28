@@ -3,7 +3,7 @@
     class="h-16 fixed bg-darkgrey text-white left-0 right-0 bottom-0 z-1 flex flex-row items-center"
   >
     <div v-if="currentUserId">
-      <div>Total Bagged</div>
+      <div>Total Bagged <TotalBaggedBadge /></div>
       <div
         v-if="showMilestones"
         class="container flex flex-row items-center justify-between"
@@ -27,9 +27,11 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 import MilestoneBadge from '@/components/user/badges/MilestoneBadge.vue'
+import TotalBaggedBadge from '@/components/user/badges/TotalBaggedBadge.vue'
 export default {
   components: {
     MilestoneBadge,
+    TotalBaggedBadge,
   },
   data() {
     return {

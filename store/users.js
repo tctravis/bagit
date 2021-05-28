@@ -64,6 +64,16 @@ export const mutations = {
     state.user.bags.push(bag)
     state.user.hillsBagged.push(bag.hill_id)
   },
+  DELETE_BAG(state, bag) {
+    let index = state.user.bags.indexOf(bag)
+    if (index > -1) {
+      state.user.bags.splice(index, 1)
+    }
+    index = state.user.hillsBagged.indexOf(bag)
+    if (index > -1) {
+      state.user.hillsBagged.splice(index, 1)
+    }
+  },
   BAG_MODAL_TOGGLE(state, bagModalState) {
     state.bagModalState = bagModalState
   },
@@ -94,13 +104,14 @@ export const actions = {
     let bagsRef = userRef.collection('bags')
     let hills = rootState.hills.hills
 
-    await bagsRef.orderBy('date', 'desc').get().then(function (querySnapshot) {
+    //await bagsRef.orderBy('date', 'desc').get().then(function (querySnapshot) {
+    await bagsRef.get().then(function (querySnapshot) {
       querySnapshot.forEach(function (bag) {
 
         let newBag = bag.data()
 
         //covert firestore timestamp to date
-        newBag.date = newBag.date.toDate()
+        // newBag.date = newBag.date.toDate()
 
         //add extra details from hills module
         let hillDetails = hills.find(hill => hill.id === newBag.hill_id)
@@ -279,18 +290,43 @@ export const actions = {
       if (alreadyBagged) {
         throw 'prebagged'
       }
+      const userBagsRef = this.$fireStore.collection('users').doc(state.currentUserId).collection('bags')
+
+      return await userBagsRef.add(bag)
+        .then(function (docRef) {
+          let hills = rootState.hills.hills,
+            hillDetails = hills.find(hill => hill.id === bag.hill_id)
+          let bagWithDetails = {
+            ...bag,
+            ...hillDetails
+          }
+          commit('ADD_NEW_BAG', bagWithDetails)
+        }).catch((error) => {
+          console.error("Error adding document: ", error);
+        })
+    } catch (error) {
+      return error
+    }
+  },
+  async deleteBag({
+    commit,
+    state,
+    rootState,
+    error
+  }, bag) {
+    try {
+      const hillId = bag.hill_id
+      const alreadyBagged = state.user.bags.some(userbag => userbag.hill_id === hillId)
+      if (!alreadyBagged) {
+        throw 'not bagged'
+      }
       const userRef = this.$fireStore.collection('users').doc(state.currentUserId).collection('bags')
-      return await userRef.add(bag).then(function () {
-
-        let hills = rootState.hills.hills,
-          hillDetails = hills.find(hill => hill.id === bag.hill_id)
-
-        let bagWithDetails = {
-          ...bag,
-          ...hillDetails
-        }
-
-        commit('ADD_NEW_BAG', bagWithDetails)
+      return await userRef.where('hill_id', '==', hillId).get().then(function (snapshot) {
+        // https://stackoverflow.com/questions/47180076/how-to-delete-document-from-firestore-using-where-clause
+        snapshot.forEach((doc) => {
+          doc.ref.delete();
+        });
+        commit('DELETE_BAG', hillId)
       })
     } catch (error) {
       return error
@@ -325,11 +361,11 @@ export const getters = {
   getTotalAltClimbed: state => {
     let totalAltClimbed = 0
     totalAltClimbed = state.user.bags.reduce(function (
-        accumulator,
-        bag
-      ) {
-        return accumulator + parseInt(bag.prom_m)
-      },
+      accumulator,
+      bag
+    ) {
+      return accumulator + parseInt(bag.prom_m)
+    },
       0)
     return totalAltClimbed
   },

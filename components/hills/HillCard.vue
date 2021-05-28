@@ -18,7 +18,11 @@
       </div>
 
       <div v-if="currentUserId" class="flex pt-2 justify-end items-align">
-        <BagItButton :hill="hill" :hasBagged="hasBagged" />
+        <BagItButton
+          :hill-id="hill.id"
+          :area-class-name="hill.areaClassName"
+          :hasBagged="hasBagged"
+        />
       </div>
     </div>
     <div

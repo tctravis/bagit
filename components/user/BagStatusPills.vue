@@ -1,10 +1,10 @@
 <template>
   <div class="flex flex-row flex-wrap py-2">
     <BasePill
-      :is-active="this.bagStatusSelected === 'all'"
+      :is-active="this.bagStatusSelected === 'unbagged'"
       class="bg-darkgrey text-white mb-2 mr-2"
-      @click="filterByBagged('all')"
-      >All</BasePill
+      @click="filterByBagged('unbagged')"
+      >Unbagged</BasePill
     >
     <BasePill
       :is-active="this.bagStatusSelected === 'bagged'"
@@ -13,10 +13,10 @@
       >Bagged</BasePill
     >
     <BasePill
-      :is-active="this.bagStatusSelected === 'unbagged'"
+      :is-active="this.bagStatusSelected === 'all'"
       class="bg-darkgrey text-white mb-2 mr-2"
-      @click="filterByBagged('unbagged')"
-      >Not bagged</BasePill
+      @click="filterByBagged('all')"
+      >All</BasePill
     >
   </div>
 </template>
@@ -25,7 +25,7 @@
 export default {
   data() {
     return {
-      bagStatusSelected: 'all',
+      bagStatusSelected: 'unbagged',
     }
   },
   methods: {

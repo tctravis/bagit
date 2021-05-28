@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-lightgrey hover:drop-shadow">
+  <div class="relative" :class="hillCardTheme">
     <div class="p-2">
       <nuxt-link
         :to="{ name: 'hills-id', params: { id: hill.id } }"
@@ -20,6 +20,12 @@
       <div v-if="currentUserId" class="flex pt-2 justify-end items-align">
         <BagItButton :hill="hill" :hasBagged="hasBagged" />
       </div>
+    </div>
+    <div
+      v-if="hasBagged"
+      class="z-10 text-lightgrey text-5xl uppercase absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform -rotate-12"
+    >
+      Bagged
     </div>
   </div>
 </template>
@@ -59,8 +65,18 @@ export default {
     hasBagged() {
       return this.hillsBagged.includes(this.hill.id)
     },
+    hillCardTheme() {
+      return this.hasBagged ? 'HillCard--bagged' : 'HillCard--unbagged'
+    },
   },
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="scss" scoped>
+.HillCard--bagged {
+  @apply bg-darkgrey text-white;
+}
+.HillCard--unbagged {
+  @apply bg-lightgrey;
+}
+</style>

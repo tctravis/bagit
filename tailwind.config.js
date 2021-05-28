@@ -81,6 +81,11 @@ module.exports = {
         80: '20rem'
       },
       dropShadow: ['hover', 'focus'],
+      inset: {
+        '4': '1rem',
+        '8': '2rem',
+        '1/2': '50%'
+      }
     },
   },
   variants: {

@@ -1,27 +1,27 @@
 <template>
   <div>
     <div class="grid grid-cols-12 gap-4">
-      <div class="col-span-12 md:col-span-8">
-        <HillCard :hill="hill" />
-        <BaseTitle :level="2" :has-decoration="true">Details</BaseTitle>
-
-        <BaseInfoBar>
-          <div class="flex flex-row items-center justify-between mb-2">
-            <p class="text-lg">Wainwright #{{ hill.id }}</p>
-            <p>Prominence: {{ hill.prom_m }}m</p>
-          </div>
-        </BaseInfoBar>
-
-        <BaseTitle :level="2" :has-decoration="true">Map</BaseTitle>
-        <BaseInfoBar class="flex flex-row items-center justify-between">
-          <span>OS ref: {{ hill.os_grid_ref }}</span>
-          <span>OS map: {{ hill.os_map }}</span>
-        </BaseInfoBar>
-        <HillMap :hill="hill" :limit="20" />
+      <div class="grid grid-cols-12 gap-4 col-span-12">
+        <div class="col-span-12 md:col-span-4">
+          <HillCard :hill="hill" class="mb-4" />
+          <BaseInfoBar>
+            <div class="flex flex-row items-center justify-between mb-2">
+              <p class="text-lg">Wainwright #{{ hill.id }}</p>
+              <p>Prominence: {{ hill.prom_m }}m</p>
+            </div>
+          </BaseInfoBar>
+        </div>
+        <div class="col-span-12 md:col-span-8">
+          <BaseInfoBar class="flex flex-row items-center justify-between">
+            <span>OS ref: {{ hill.os_grid_ref }}</span>
+            <span>OS map: {{ hill.os_map }}</span>
+          </BaseInfoBar>
+          <HillMap :hill="hill" :limit="12" />
+        </div>
       </div>
-      <div class="col-span-12 md:col-span-4">
+      <div class="col-span-12">
         <BaseTitle :level="2" :has-decoration="true">Nearby Hills</BaseTitle>
-        <NearbyHillsList :hill="hill" :limit="20" />
+        <NearbyHillsList :hill="hill" :limit="12" />
       </div>
     </div>
   </div>
@@ -85,7 +85,7 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch('pages/setPageTitle', this.hill.name)
+    this.$store.dispatch('pages/setPageTitle', 'Fell details')
   },
 }
 </script>

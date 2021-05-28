@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="grid grid-cols-12 gap-4">
-      <div class="form-section col-span-12 md:col-span-4">
+      <div class="form-section col-span-12">
         <BaseInput
           id="hills-search-filter"
           v-model="search"
@@ -18,15 +18,8 @@
           <div v-show="showFilters"><AreaPills class="py-2" /></div>
         </div>
       </div>
-      <div class="col-span-12 md:col-span-8">
-        <div class="flex flex-row justify-end py-2">
-          <!-- <BasePill
-            v-if="this.$geolocation.supported"
-            :is-active="hillList.sort === 'vicinity'"
-            class="bg-lightgrey mr-2"
-            @click="sortByVicinity()"
-            >Near me</BasePill
-          > -->
+      <div class="col-span-12">
+        <div class="flex flex-row justify-end pb-4">
           <BasePill
             :is-active="hillList.sort === 'desc'"
             class="bg-lightgrey mr-2"

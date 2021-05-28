@@ -78,7 +78,8 @@ module.exports = {
         '12': 'repeat(12, minmax(0, 1fr))',
       },
       height: {
-        80: '20rem'
+        80: '20rem',
+        '30rem': '30rem'
       },
       dropShadow: ['hover', 'focus'],
       inset: {

@@ -1,6 +1,6 @@
 <template>
-  <div class="w-full items-center py-2">
-    <label v-if="label" :for="fieldId" class="w-full block"
+  <div class="w-full flex items-center py-2">
+    <label v-if="label" :for="fieldId" class="block flex-shrink-0 mr-2"
       >{{ label
       }}<span v-if="isRequired" class="text-error ml-1">*</span></label
     >

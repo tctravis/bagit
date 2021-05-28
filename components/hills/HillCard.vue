@@ -1,11 +1,20 @@
 <template>
-  <div class="relative bg-lightgrey" :class="hillCardTheme">
-    <div class="p-2">
+  <div class="bg-lightgrey" :class="hillCardTheme">
+    <div class="p-2 relative">
+      <div
+        v-if="hasBagged"
+        class="z-10 bg-black bg-opacity-25 absolute inset-0 flex items-center justify-center"
+      >
+        <p class="text-grey font-bold text-5xl uppercase transform -rotate-6">
+          Bagged
+        </p>
+      </div>
+
       <nuxt-link
         :to="{ name: 'hills-id', params: { id: hill.id } }"
-        class="flex justify-between items-center mb-2"
+        class="flex relative justify-between items-center mb-2"
       >
-        <h2 class="text-xl">{{ hill.name }}</h2>
+        <h2 class="relative z-20 text-2xl">{{ hill.name }}</h2>
         <AreaIcon :hill="hill" />
       </nuxt-link>
 
@@ -17,19 +26,16 @@
         {{ hill.height_m }}m
       </div>
 
-      <div v-if="currentUserId" class="flex pt-2 justify-end items-align">
+      <div
+        v-if="currentUserId"
+        class="flex relative z-20 pt-2 justify-end items-align"
+      >
         <BagItButton
           :hill-id="hill.id"
           :area-class-name="hill.areaClassName"
           :hasBagged="hasBagged"
         />
       </div>
-    </div>
-    <div
-      v-if="hasBagged"
-      class="z-10 text-grey font-bold text-5xl uppercase absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform -rotate-12"
-    >
-      Bagged
     </div>
   </div>
 </template>

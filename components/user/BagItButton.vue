@@ -3,11 +3,11 @@
     <BaseButton
       class="ml-auto"
       :button-class="'bg-' + hill.areaClassName"
-      :disabled="this.$fireAuth.currentUser === null || hasBagged"
+      :disabled="this.$fireAuth.currentUser === null"
       ><template v-if="!hasBagged">Bag it!</template
-      ><template v-if="hasBagged">Bagged already</template></BaseButton
+      ><template v-if="hasBagged">Unbag it!</template></BaseButton
     >
-    <BaseModal ref="modalName">
+    <!-- <BaseModal ref="modalName">
       <template v-slot:header>
         <h1>Bag it!</h1>
       </template>
@@ -17,16 +17,16 @@
       </template>
 
       <template v-slot:footer> </template>
-    </BaseModal>
+    </BaseModal> -->
   </div>
 </template>
 
 <script>
-import BagCreate from '@/components/user/BagCreate.vue'
+// import BagCreate from '@/components/user/BagCreate.vue'
 export default {
-  components: {
-    BagCreate,
-  },
+  // components: {
+  //   BagCreate,
+  // },
   props: {
     hill: {
       type: Object,

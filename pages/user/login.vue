@@ -1,9 +1,7 @@
 <template>
   <div>
     <BaseFormFeedback v-if="feedback.message !== ''" :type="feedback.type">
-      {{
-      feedback.message
-      }}
+      {{ feedback.message }}
     </BaseFormFeedback>
 
     <form @submit.prevent="login">
@@ -17,7 +15,9 @@
           :is-required="true"
           @blur="$v.email.$touch()"
         />
-        <BaseValidationMessage v-if="$v.email.$error" message-type="error">Please enter your email</BaseValidationMessage>
+        <BaseValidationMessage v-if="$v.email.$error" message-type="error"
+          >Please enter your email</BaseValidationMessage
+        >
         <BaseInput
           id="user-password"
           v-model="password"
@@ -26,13 +26,17 @@
           :is-required="true"
           @blur="$v.password.$touch()"
         />
-        <BaseValidationMessage
-          v-if="$v.password.$error"
-          message-type="error"
-        >Please enter your password</BaseValidationMessage>
+        <BaseValidationMessage v-if="$v.password.$error" message-type="error"
+          >Please enter your password</BaseValidationMessage
+        >
         <div class="flex flex-row justify-between pt-4">
           <BaseLink to="/user/password-reset">Forgotten password?</BaseLink>
-          <BaseButton :disabled="$v.$invalid" type="submit" button-class="bg-southern">Log In</BaseButton>
+          <BaseButton
+            :disabled="$v.$invalid"
+            type="submit"
+            button-class="bg-southern"
+            >Log In</BaseButton
+          >
         </div>
       </div>
     </form>
@@ -65,7 +69,7 @@ export default {
       if (loggedIn.user !== undefined) {
         this.$router.push({
           //path: '/user/bags',
-          path: '/hills/list',
+          path: '/',
         })
       } else {
         this.feedback.type = 'error'

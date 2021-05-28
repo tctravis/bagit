@@ -47,7 +47,7 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch('pages/setPageTitle', 'Fell baggr')
+    this.$store.dispatch('pages/setPageTitle', 'Wainwrights')
   },
 }
 </script>

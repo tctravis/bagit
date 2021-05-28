@@ -79,7 +79,8 @@ module.exports = {
       },
       height: {
         80: '20rem'
-      }
+      },
+      dropShadow: ['hover', 'focus'],
     },
   },
   variants: {

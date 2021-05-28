@@ -10,7 +10,11 @@
           placeholder="Search by fell name"
         />
         <AreaPills class="py-2" />
-        <div class="flex flex-row flex-wrap py-2">
+        <BagStatusPills
+          v-if="currentUserId"
+          class="flex flex-row flex-wrap py-2"
+        />
+        <!-- <div class="flex flex-row flex-wrap py-2">
           <BasePill
             :is-active="hillList.filters.bagged === 'all'"
             class="bg-darkgrey text-white mb-2 mr-2"
@@ -29,7 +33,7 @@
             @click="filterByBagged('unbagged')"
             >Not bagged</BasePill
           >
-        </div>
+        </div> -->
       </div>
       <div class="col-span-12 md:col-span-8">
         <div class="flex flex-row justify-end py-2">
@@ -79,6 +83,7 @@
 import { mapState, mapGetters, mapActions } from 'vuex'
 
 import AreaPills from '@/components/hills/AreaPills.vue'
+import BagStatusPills from '@/components/user/BagStatusPills.vue'
 import HillCard from '@/components/hills/HillCard.vue'
 
 import calculateDistances from '@/mixins/calculateDistances.js'
@@ -87,6 +92,7 @@ export default {
   components: {
     HillCard,
     // BagCreateModal,
+    BagStatusPills,
     AreaPills,
   },
   mixins: [calculateDistances],
@@ -105,6 +111,7 @@ export default {
     ...mapState({
       hillList: (state) => state.hills.hillList,
       currentUser: (state) => state.users.currentUser,
+      currentUserId: (state) => state.users.currentUserId,
       user: (state) => state.users.user,
     }),
     hills() {
@@ -194,12 +201,12 @@ export default {
     tabIsSelected(tabIndex) {
       return tabIndex === this.filterTabs.selectedTab ? true : false
     },
-    filterByBagged(baggedStatus) {
-      let filters = {
-        bagged: baggedStatus,
-      }
-      this.$store.dispatch('hills/filterHillList', filters)
-    },
+    // filterByBagged(baggedStatus) {
+    //   let filters = {
+    //     bagged: baggedStatus,
+    //   }
+    //   this.$store.dispatch('hills/filterHillList', filters)
+    // },
     sortByHeight(sortOrder) {
       this.$store.dispatch('hills/sortHillList', sortOrder)
     },

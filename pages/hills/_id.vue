@@ -12,11 +12,11 @@
           </BaseInfoBar>
         </div>
         <div class="col-span-12 md:col-span-8">
+          <HillMap :hill="hill" :limit="12" />
           <BaseInfoBar class="flex flex-row items-center justify-between">
             <span>OS ref: {{ hill.os_grid_ref }}</span>
             <span>OS map: {{ hill.os_map }}</span>
           </BaseInfoBar>
-          <HillMap :hill="hill" :limit="12" />
         </div>
       </div>
       <div class="col-span-12">

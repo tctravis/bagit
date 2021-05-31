@@ -5,18 +5,29 @@
         v-if="hasBagged"
         class="z-10 bg-black bg-opacity-25 absolute inset-0 flex items-center justify-center"
       >
-        <p class="text-grey font-bold text-5xl uppercase transform -rotate-6">
+        <p
+          class="hidden text-grey font-bold text-5xl uppercase transform -rotate-6"
+        >
           Bagged
         </p>
       </div>
 
-      <nuxt-link
-        :to="{ name: 'hills-id', params: { id: hill.id } }"
-        class="flex relative justify-between items-center mb-2"
-      >
-        <h2 class="relative z-20 text-2xl">{{ hill.name }}</h2>
-        <AreaIcon :hill="hill" />
-      </nuxt-link>
+      <div class="flex relative items-center mb-2">
+        <nuxt-link
+          :to="{ name: 'hills-id', params: { id: hill.id } }"
+          class="flex relative items-center mb-2"
+        >
+          <h2 class="relative underline z-20 text-2xl">
+            {{ hill.name }}
+          </h2>
+        </nuxt-link>
+        <BagItButton
+          v-if="currentUserId"
+          :hill-id="hill.id"
+          :area-class-name="hill.areaClassName"
+          class="ml-auto relative z-20"
+        />
+      </div>
 
       <div v-if="hillDetails" class="flex justify-between items-align">
         <HeightRating
@@ -24,17 +35,6 @@
           :area-class-name="hill.areaClassName"
         ></HeightRating>
         {{ hill.height_m }}m
-      </div>
-
-      <div
-        v-if="currentUserId"
-        class="flex relative z-20 pt-2 justify-end items-align"
-      >
-        <BagItButton
-          :hill-id="hill.id"
-          :area-class-name="hill.areaClassName"
-          :hasBagged="hasBagged"
-        />
       </div>
     </div>
   </div>

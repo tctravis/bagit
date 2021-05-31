@@ -21,10 +21,6 @@ export default {
       default: 'northwestern',
       required: true,
     },
-    hasBagged: {
-      type: Boolean,
-      required: true,
-    },
   },
   data() {
     return {
@@ -34,7 +30,11 @@ export default {
   computed: {
     ...mapState({
       currentUserId: (state) => state.users.currentUserId,
+      hillsBagged: (state) => state.users.user.hillsBagged,
     }),
+    hasBagged() {
+      return this.hillsBagged.includes(this.hillId)
+    },
   },
   methods: {
     bagIt() {
@@ -49,10 +49,12 @@ export default {
       let addingBag = await this.$store.dispatch('users/createNewBag', {
         hill_id: this.hillId,
       })
-      if (addingBag === 'prebagged') {
-        this.error = addingBag
-      }
+      console.log(addingBag, 'bagging')
+      // if (addingBag === 'prebagged') {
+      //   this.error = addingBag
+      // }
       this.isBagging = false
+      // this.hasBagged = true
     },
     async deleteBag() {
       this.isBagging = true
@@ -63,6 +65,7 @@ export default {
         this.error = deletingBag
       }
       this.isBagging = false
+      // this.hasBagged = false
     },
   },
 }

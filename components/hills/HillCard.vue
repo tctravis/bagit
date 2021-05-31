@@ -17,7 +17,7 @@
           :to="{ name: 'hills-id', params: { id: hill.id } }"
           class="flex relative items-center mb-2"
         >
-          <h2 class="relative underline z-20 text-2xl">
+          <h2 class="relative z-20 text-xl hover:underline">
             {{ hill.name }}
           </h2>
         </nuxt-link>

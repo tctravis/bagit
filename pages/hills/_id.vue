@@ -85,7 +85,8 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch('pages/setPageTitle', 'Fell details')
+    this.$store.dispatch('pages/setPageTitle', this.hill.name)
+    this.$store.dispatch('pages/setPageTheme', this.hill.areaClassName)
   },
 }
 </script>

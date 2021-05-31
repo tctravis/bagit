@@ -1,9 +1,11 @@
 <template>
   <div class="py-16">
     <NavBar />
-    <PageBanner :img-url="require('~/assets/img/banner.jpg')">{{
-      pageTitle
-    }}</PageBanner>
+    <PageBanner
+      :theme="pageTheme"
+      :img-url="require('~/assets/img/banner.jpg')"
+      >{{ pageTitle }}</PageBanner
+    >
     <div class="container py-4 relative z-0">
       <Nuxt />
     </div>
@@ -29,6 +31,7 @@ export default {
   computed: {
     ...mapState({
       pageTitle: (state) => state.pages.page.title,
+      pageTheme: (state) => state.pages.page.pageTheme,
       openBagModal: (state) => state.users.bagModalState,
     }),
   },

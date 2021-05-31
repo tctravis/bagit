@@ -1,7 +1,7 @@
 <template>
   <div
-    :class="('bg-' + hill.areaName) | removeSpaces | lowercase"
-    class="rounded-full w-8 h-8 text-white flex items-center justify-center flex-shrink-0"
+    :class="('theme-' + hill.areaName) | removeSpaces | lowercase"
+    class="rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0"
   >
     <span>{{ hill.area }}</span>
   </div>

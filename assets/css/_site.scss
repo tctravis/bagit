@@ -33,3 +33,25 @@
     @apply top-auto right-auto w-auto h-auto bg-darkgrey relative ml-auto translate-x-0 shadow-none;
   }
 }
+
+.theme-eastern {
+  @apply bg-eastern text-black;
+}
+.theme-northern {
+  @apply bg-northern text-white;
+}
+.theme-northwestern {
+  @apply bg-northwestern text-black;
+}
+.theme-southern {
+  @apply bg-southern text-white;
+}
+.theme-western {
+  @apply bg-western text-white;
+}
+.theme-fareastern {
+  @apply bg-fareastern text-white;
+}
+.theme-central {
+  @apply bg-central text-white;
+}

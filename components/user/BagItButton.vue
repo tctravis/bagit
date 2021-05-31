@@ -1,6 +1,6 @@
 <template>
   <BaseButton
-    :button-class="'bg-' + areaClassName"
+    :button-class="'theme-' + areaClassName"
     :disabled="!currentUserId"
     @click="bagIt"
     ><template v-if="!hasBagged">Bag it!</template
@@ -19,7 +19,7 @@ export default {
     areaClassName: {
       type: String,
       default: 'northwestern',
-      required: true,
+      required: false,
     },
   },
   data() {

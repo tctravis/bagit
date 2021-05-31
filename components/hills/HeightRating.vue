@@ -9,6 +9,7 @@
       :style="{ color: iconColor(n) }"
       :icon="['fa', 'mountain']"
     />
+    <span v-if="height" class="ml-2">({{ height }}m)</span>
   </div>
 </template>
 
@@ -23,6 +24,16 @@ export default {
     areaClassName: {
       type: String,
       required: true,
+    },
+    height: {
+      type: Number,
+      default: 0,
+      required: false,
+    },
+    showHeight: {
+      type: Boolean,
+      default: true,
+      required: false,
     },
     hasBagged: {
       type: Boolean,

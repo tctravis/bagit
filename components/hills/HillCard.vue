@@ -21,20 +21,23 @@
             {{ hill.name }}
           </h2>
         </nuxt-link>
-        <BagItButton
-          v-if="currentUserId"
-          :hill-id="hill.id"
-          :area-class-name="hill.areaClassName"
-          class="ml-auto relative z-20"
-        />
+        <AreaIcon class="ml-auto" :hill="hill" />
       </div>
 
       <div v-if="hillDetails" class="flex justify-between items-align">
         <HeightRating
           :height-rating="hill.heightRating"
           :area-class-name="hill.areaClassName"
+          :height="hill.height_m"
+          :show-height="true"
         ></HeightRating>
-        {{ hill.height_m }}m
+
+        <BagItButton
+          v-if="currentUserId"
+          :hill-id="hill.id"
+          :area-class-name="hill.areaClassName"
+          class="ml-auto relative z-20"
+        />
       </div>
     </div>
   </div>

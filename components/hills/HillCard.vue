@@ -3,12 +3,12 @@
     <div class="p-2 relative">
       <div
         v-if="hasBagged"
-        class="z-10 bg-black bg-opacity-25 absolute inset-0 flex items-center justify-center"
+        class="z-10 bg-black bg-opacity-75 absolute inset-0 flex items-center justify-center"
       >
-        <p
-          class="hidden text-grey font-bold text-5xl uppercase transform -rotate-6"
-        >
-          Bagged
+        <p class="hidden text-grey font-bold text-4xl uppercase">
+          <font-awesome-icon :icon="['fa', 'hiking']" /><span class="sr-only"
+            >Bagged</span
+          >
         </p>
       </div>
 
@@ -17,7 +17,10 @@
           :to="{ name: 'hills-id', params: { id: hill.id } }"
           class="flex relative items-center mb-2"
         >
-          <h2 class="relative z-20 text-xl hover:underline">
+          <h2
+            class="relative z-20 text-xl hover:underline"
+            :class="hasBagged ? 'text-white' : 'text-black'"
+          >
             {{ hill.name }}
           </h2>
         </nuxt-link>

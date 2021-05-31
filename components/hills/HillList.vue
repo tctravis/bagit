@@ -231,7 +231,7 @@ export default {
     },
   },
   mounted() {
-    this.$store.dispatch('pages/setPageTitle', 'Fells')
+    // this.$store.dispatch('pages/setPageTitle', 'Fells')
 
     if (this.totalFiltersApplied > 0) {
       this.filterTabs.selectedTab = 0

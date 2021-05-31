@@ -20,7 +20,9 @@
         </div>
       </div>
       <div class="col-span-12">
-        <BaseTitle :level="2" :has-decoration="true">Nearby Hills</BaseTitle>
+        <BaseTitle :level="2" :has-decoration="true" :theme="hill.areaClassName"
+          >Nearby Hills</BaseTitle
+        >
         <NearbyHillsList :hill="hill" :limit="12" />
       </div>
     </div>

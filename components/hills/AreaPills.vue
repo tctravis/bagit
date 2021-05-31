@@ -4,7 +4,7 @@
       v-for="area in sortedAreas"
       :key="area.id"
       :is-active="isSelected(area.id)"
-      :class="('theme-' + area.name) | removeSpaces | lowercase"
+      :class="('bg-theme-' + area.name) | removeSpaces | lowercase"
       class="text-white mb-2 mr-2"
       @click="filterByArea(area.id)"
       >{{ area.name }}</BasePill

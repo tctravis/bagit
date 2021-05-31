@@ -100,6 +100,7 @@ export default {
               'faUser',
               'faChartBar',
               'faHiking',
+              'faShoppingBag'
             ],
           },
         ],
@@ -178,7 +179,7 @@ export default {
   // },
   webfontloader: {
     google: {
-      families: ['Source Sans Pro'],
+      families: ['Source Sans Pro:400,700'],
     },
   },
   loading: {

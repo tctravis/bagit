@@ -1,6 +1,6 @@
 <template>
   <BaseButton
-    :button-class="'theme-' + areaClassName"
+    :button-class="buttonThemeClass"
     :disabled="!currentUserId"
     @click="bagIt"
     ><template v-if="!hasBagged">Bag it!</template
@@ -34,6 +34,10 @@ export default {
     }),
     hasBagged() {
       return this.hillsBagged.includes(this.hillId)
+    },
+    buttonThemeClass() {
+      // return this.hasBagged ? 'bg-theme-dark' : 'bg-theme-' + this.areaClassName
+      return this.hasBagged ? 'bg-theme-midgrey' : 'bg-theme-white'
     },
   },
   methods: {

@@ -194,6 +194,7 @@ export default {
   },
   mounted() {
     this.$store.dispatch('pages/setPageTitle', 'Fells')
+    this.$store.dispatch('pages/setPageTheme', 'dark')
 
     if (this.totalFiltersApplied > 0) {
       this.filterTabs.selectedTab = 0

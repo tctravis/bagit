@@ -16,6 +16,11 @@ export default {
       required: false,
       default: false,
     },
+    theme: {
+      type: String,
+      required: false,
+      default: 'dark',
+    },
   },
   data() {
     return {
@@ -24,9 +29,13 @@ export default {
   },
   mounted() {
     this.setDecorationClass()
+    this.setThemeClass()
     this.setTailwindClasses()
   },
   methods: {
+    setThemeClass() {
+      this.titleClasses.push('border-theme-' + this.theme)
+    },
     setDecorationClass() {
       if (this.hasDecoration) {
         this.titleClasses.push('decorated-header')

@@ -26,7 +26,7 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch('pages/setPageTitle', 'Wainwrights')
+    this.$store.dispatch('pages/setPageTitle', 'Wainwright list')
   },
 }
 </script>

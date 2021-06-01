@@ -27,6 +27,7 @@ export default {
   },
   mounted() {
     this.$store.dispatch('pages/setPageTitle', 'Wainwright list')
+    this.$store.dispatch('pages/setPageTheme', 'southern')
   },
 }
 </script>

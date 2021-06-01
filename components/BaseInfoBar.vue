@@ -1,5 +1,5 @@
 <template>
-  <div class="rounded p-2 bg-lightgrey mb-2">
+  <div class="rounded-md p-2 bg-lightgrey mb-2">
     <slot>Info here</slot>
   </div>
 </template>

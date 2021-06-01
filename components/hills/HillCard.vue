@@ -1,9 +1,9 @@
 <template>
-  <div class="bg-lightgrey" :class="hillCardTheme">
+  <div class="bg-lightgrey rounded-md" :class="hillCardTheme">
     <div class="p-2 relative">
       <div
         v-if="hasBagged"
-        class="z-10 bg-black bg-opacity-75 absolute inset-0 flex items-center justify-center"
+        class="rounded-md z-10 bg-black bg-opacity-75 absolute inset-0 flex items-center justify-center"
       >
         <p class="hidden text-grey font-bold text-4xl uppercase">
           <font-awesome-icon :icon="['fa', 'hiking']" /><span class="sr-only"

@@ -19,28 +19,28 @@
         </div>
       </div>
       <div class="col-span-12">
-        <div class="flex flex-row justify-end pb-4">
+        <div class="flex flex-row flex-wrap justify-end pb-2">
           <BasePill
             :is-active="hillList.sort === 'desc'"
-            class="bg-lightgrey mr-2"
+            class="bg-lightgrey ml-2 mb-2"
             @click="sortByHeight('desc')"
             >High-Low</BasePill
           >
           <BasePill
             :is-active="hillList.sort === 'asc'"
-            class="bg-lightgrey mr-2"
+            class="bg-lightgrey ml-2 mb-2"
             @click="sortByHeight('asc')"
             >Low-High</BasePill
           >
           <BasePill
             :is-active="hillList.sort === 'az'"
-            class="bg-lightgrey mr-2"
+            class="bg-lightgrey ml-2 mb-2"
             @click="sortByFirstLetter('az')"
             >A-Z</BasePill
           >
           <BasePill
             :is-active="hillList.sort === 'za'"
-            class="bg-lightgrey"
+            class="bg-lightgrey ml-2 mb-2"
             @click="sortByFirstLetter('za')"
             >Z-A</BasePill
           >

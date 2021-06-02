@@ -47,13 +47,8 @@
         </div>
 
         <template v-if="filteredHills.length > 0">
-          <div class="grid grid-cols-12 gap-4">
-            <HillCard
-              v-for="hill in sortedHills"
-              :key="hill.id"
-              :hill="hill"
-              class="col-span-12 sm:col-span-6 lg:col-span-4"
-            />
+          <div class="grid grid-cols-min15rem gap-4">
+            <HillCard v-for="hill in sortedHills" :key="hill.id" :hill="hill" />
           </div>
         </template>
         <template v-else>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="grid grid-cols-12 gap-4">
-      <div class="form-section col-span-12">
+      <div class="form-section col-span-12 xl:col-span-3">
         <BaseInput
           id="hills-search-filter"
           v-model="search"
@@ -18,7 +18,7 @@
           <div v-show="showFilters"><AreaPills class="py-2" /></div>
         </div>
       </div>
-      <div class="col-span-12">
+      <div class="col-span-12 xl:col-span-9">
         <div class="flex flex-row flex-wrap justify-end pb-2">
           <BasePill
             :is-active="hillList.sort === 'desc'"

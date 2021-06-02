@@ -26,7 +26,7 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch('pages/setPageTitle', 'Wainwright list')
+    this.$store.dispatch('pages/setPageTitle', 'Find a fell')
     this.$store.dispatch('pages/setPageTheme', 'primary')
   },
 }

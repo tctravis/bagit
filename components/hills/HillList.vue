@@ -2,48 +2,51 @@
   <div>
     <div class="grid grid-cols-12 gap-4">
       <div class="form-section col-span-12 xl:col-span-3">
+        <p>Find a fell...</p>
         <BaseInput
           id="hills-search-filter"
           v-model="search"
-          label="Find a fell:"
+          label="By name: "
           type="text"
           placeholder="Search by fell name"
         />
-        <BagStatusPills
+
+        <AreaPills class="py-2" />
+        <VicinityPills class="py-2" />
+        <!-- <BagStatusPills
           v-if="currentUserId"
           class="flex flex-row flex-wrap py-2"
-        />
-        <div>
-          <p @click="toggleFilters">Filters +</p>
-          <div v-show="showFilters"><AreaPills class="py-2" /></div>
-        </div>
+        /> -->
       </div>
       <div class="col-span-12 xl:col-span-9">
-        <div class="flex flex-row flex-wrap justify-end pb-2">
-          <BasePill
-            :is-active="hillList.sort === 'desc'"
-            class="bg-lightgrey ml-2 mb-2"
-            @click="sortByHeight('desc')"
-            >High-Low</BasePill
-          >
-          <BasePill
-            :is-active="hillList.sort === 'asc'"
-            class="bg-lightgrey ml-2 mb-2"
-            @click="sortByHeight('asc')"
-            >Low-High</BasePill
-          >
-          <BasePill
-            :is-active="hillList.sort === 'az'"
-            class="bg-lightgrey ml-2 mb-2"
-            @click="sortByFirstLetter('az')"
-            >A-Z</BasePill
-          >
-          <BasePill
-            :is-active="hillList.sort === 'za'"
-            class="bg-lightgrey ml-2 mb-2"
-            @click="sortByFirstLetter('za')"
-            >Z-A</BasePill
-          >
+        <div class="flex flex-row flex-wrap items-center justify-between">
+          <p>Total matches: {{ totalFilteredHills }}</p>
+          <div class="flex flex-row flex-wrap justify-end pb-2">
+            <BasePill
+              :is-active="hillList.sort === 'desc'"
+              class="bg-lightgrey ml-2 mb-2"
+              @click="sortByHeight('desc')"
+              >High-Low</BasePill
+            >
+            <BasePill
+              :is-active="hillList.sort === 'asc'"
+              class="bg-lightgrey ml-2 mb-2"
+              @click="sortByHeight('asc')"
+              >Low-High</BasePill
+            >
+            <BasePill
+              :is-active="hillList.sort === 'az'"
+              class="bg-lightgrey ml-2 mb-2"
+              @click="sortByFirstLetter('az')"
+              >A-Z</BasePill
+            >
+            <BasePill
+              :is-active="hillList.sort === 'za'"
+              class="bg-lightgrey ml-2 mb-2"
+              @click="sortByFirstLetter('za')"
+              >Z-A</BasePill
+            >
+          </div>
         </div>
 
         <template v-if="filteredHills.length > 0">
@@ -66,6 +69,7 @@
 import { mapState, mapGetters, mapActions } from 'vuex'
 
 import AreaPills from '@/components/hills/AreaPills.vue'
+import VicinityPills from '@/components/hills/VicinityPills.vue'
 import BagStatusPills from '@/components/user/BagStatusPills.vue'
 import HillCard from '@/components/hills/HillCard.vue'
 
@@ -77,6 +81,7 @@ export default {
     // BagCreateModal,
     BagStatusPills,
     AreaPills,
+    VicinityPills,
   },
   mixins: [calculateDistances],
   data() {
@@ -100,6 +105,9 @@ export default {
     hills() {
       let hills = [...this.getHills]
       return hills
+    },
+    totalFilteredHills() {
+      return this.filteredHills.length
     },
     filteredHills() {
       let hillsArray = this.hills

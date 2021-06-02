@@ -40,6 +40,32 @@ export const state = () => ({
     className: 'northwestern'
   },
   ],
+  towns: [
+    {
+      loc: {
+        'lat': '099009',
+        'lng': '09090909'
+      },
+      name: 'Kendal',
+      slug: 'kendal'
+    },
+    {
+      loc: {
+        'lat': '099009',
+        'lng': '09090909'
+      },
+      name: 'Ambleside',
+      slug: 'ambleside'
+    },
+    {
+      loc: {
+        'lat': '099009',
+        'lng': '09090909'
+      },
+      name: 'Keswick',
+      slug: 'keswick'
+    }
+  ],
   highestHill: 0,
   lowestHill: 0,
   maxHeightRating: 5,
@@ -47,9 +73,14 @@ export const state = () => ({
   hillList: {
     filters: {
       area: '',
-      bagged: 'all' // 'bagged', 'unbagged', 'all'
+      bagged: 'all', // 'bagged', 'unbagged', 'all'
+      town: ''
     },
-    sort: 'asc'
+    sort: 'asc',
+    sortObj: {
+      type: 'alphabetic',
+      param: 'a-z'
+    }
   }
 })
 
@@ -134,6 +165,9 @@ export const actions = {
 export const getters = {
   getHills(state) {
     return state.hills
+  },
+  getTowns(state) {
+    return state.towns
   },
   getAreas(state) {
     return state.areas

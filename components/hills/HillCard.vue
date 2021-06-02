@@ -88,11 +88,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-// .HillCard--bagged {
-//   @apply bg-darkgrey text-white;
-// }
-// .HillCard--unbagged {
-//   @apply bg-lightgrey;
-// }
-</style>
+<style lang="scss" scoped></style>

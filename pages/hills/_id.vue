@@ -3,7 +3,11 @@
     <div class="grid grid-cols-12 gap-4">
       <div class="grid grid-cols-12 gap-4 col-span-12">
         <div class="col-span-12 md:col-span-4">
-          <HasBaggedNotice :theme="hill.areaClassName" v-if="hasBagged" />
+          <HasBaggedNotice
+            class="mb-4"
+            :theme="hill.areaClassName"
+            v-if="hasBagged"
+          />
           <HillDetails :hill="hill" />
         </div>
         <div class="col-span-12 md:col-span-8">

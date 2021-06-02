@@ -16,9 +16,9 @@ export default {
       type: Number,
       required: true,
     },
-    areaClassName: {
+    theme: {
       type: String,
-      default: 'northwestern',
+      default: 'primary',
       required: false,
     },
   },
@@ -36,7 +36,6 @@ export default {
       return this.hillsBagged.includes(this.hillId)
     },
     buttonThemeClass() {
-      // return this.hasBagged ? 'bg-theme-dark' : 'bg-theme-' + this.areaClassName
       return this.hasBagged ? 'bg-theme-midgrey' : 'bg-theme-white'
     },
   },
@@ -53,8 +52,8 @@ export default {
       let addingBag = await this.$store.dispatch('users/createNewBag', {
         hill_id: this.hillId,
       })
-      console.log(addingBag, 'bagging')
-      // if (addingBag === 'prebagged') {
+      // console.log(addingBag, 'bagging')
+      // // if (addingBag === 'prebagged') {
       //   this.error = addingBag
       // }
       this.isBagging = false

@@ -1,6 +1,6 @@
 <template>
   <BaseInfoBar class="text-xl" :class="bgThemeClass"
-    >Congratulations, you've already bagged this fell!</BaseInfoBar
+    >Congratulations, you've bagged this fell!</BaseInfoBar
   >
 </template>
 

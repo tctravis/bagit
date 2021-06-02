@@ -38,7 +38,7 @@
         <BagItButton
           v-if="currentUserId"
           :hill-id="hill.id"
-          :area-class-name="hill.areaClassName"
+          :theme="hill.areaClassName"
           class="ml-auto relative z-20"
         />
       </div>

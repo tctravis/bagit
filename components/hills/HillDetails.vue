@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="bg-lightgrey rounded p-2 mb-2">
+    <div class="bg-lightgrey rounded-md p-2 mb-2">
       <h3 class="sr-only">Statistics</h3>
       <div class="flex flex-row justify-between items-center mb-2">
         <p class="text-lg">Wainwright #{{ hill.id }}</p>

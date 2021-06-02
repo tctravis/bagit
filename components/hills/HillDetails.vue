@@ -7,26 +7,13 @@
         <AreaIcon :hill="hill" />
       </div>
       <div class="flex flex-row justify-between items-center mb-2">
-        <HeightRating :height-rating="hill.heightRating" :area-class-name="hill.areaClassName" />
-        <p>
-          <span class="sr-only">Altitude:</span>
-          {{ hill.height_m }}m
-        </p>
-      </div>
-
-      <div class="flex flex-row justify-end items-center">
-        <nuxt-link :to="{ name: 'hills-id', params: { id: hill.id } }">
-          <BaseButton :button-class="'bg-' + hill.areaClassName">More details</BaseButton>
-        </nuxt-link>
-        <BaseButton
-          class="ml-2"
-          :button-class="'bg-' + hill.areaClassName"
-          :disabled="hasBagged"
-          @click="bagThis"
-        >
-          <template v-if="!hasBagged">Bag it!</template>
-          <template v-if="hasBagged">Bagged</template>
-        </BaseButton>
+        <HeightRating
+          :height-rating="hill.heightRating"
+          :area-class-name="hill.areaClassName"
+          :height="hill.height_m"
+          :show-height="true"
+        />
+        <p>Prominence: {{ hill.prom_m }}m</p>
       </div>
     </div>
   </div>
@@ -46,27 +33,12 @@ export default {
       type: Object,
       required: true,
     },
-    hillsBagged: {
-      type: Array,
-      required: true,
-    },
     distance: {
       type: Number,
       required: false,
     },
   },
-  computed: {
-    hasBagged() {
-      return this.hillsBagged.includes(this.hill.id)
-    },
-  },
-  methods: {
-    ...mapActions('users', ['toggleBagModal', 'setHillToBag']),
-    bagThis() {
-      this.setHillToBag(this.hill.id)
-      this.toggleBagModal()
-    },
-  },
+  methods: {},
 }
 </script>
 

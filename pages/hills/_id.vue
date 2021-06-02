@@ -3,13 +3,7 @@
     <div class="grid grid-cols-12 gap-4">
       <div class="grid grid-cols-12 gap-4 col-span-12">
         <div class="col-span-12 md:col-span-4">
-          <HillCard :hill="hill" class="mb-4" />
-          <BaseInfoBar>
-            <div class="flex flex-row items-center justify-between mb-2">
-              <p class="text-lg">Wainwright #{{ hill.id }}</p>
-              <p>Prominence: {{ hill.prom_m }}m</p>
-            </div>
-          </BaseInfoBar>
+          <HillDetails :hill="hill" />
         </div>
         <div class="col-span-12 md:col-span-8">
           <HillMap :hill="hill" :limit="12" />
@@ -31,7 +25,7 @@
 
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
-import HillCard from '@/components/hills/HillCard.vue'
+import HillDetails from '@/components/hills/HillDetails.vue'
 import HillPageTitle from '@/components/hills/HillPageTitle.vue'
 import HeightRating from '@/components/hills/HeightRating.vue'
 import HillMap from '@/components/hills/HillMap.vue'
@@ -41,7 +35,7 @@ export default {
   components: {
     HeightRating,
     HillPageTitle,
-    HillCard,
+    HillDetails,
     HillMap,
     NearbyHillsList,
   },

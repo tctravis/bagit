@@ -1,13 +1,19 @@
 <template>
-  <div class="relative flex flex-row items-center justify-center">
-    <font-awesome-icon :icon="['fa', 'certificate']" />
-    <span class="absolute block text-white text-md">{{ totalBags }}</span>
-  </div>
+  <Badge
+    icon-class="text-primary"
+    label-class="text-white"
+    :icon-text="totalBags.toString()"
+    >Total bags</Badge
+  >
 </template>
 
 <script>
 import { mapState } from 'vuex'
+import Badge from '@/components/widgets/Badge.vue'
 export default {
+  components: {
+    Badge,
+  },
   computed: {
     ...mapState({
       totalBags: (state) => state.users.user.totalBags,

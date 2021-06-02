@@ -21,7 +21,7 @@ export default {
     },
     theme: {
       type: String,
-      default: 'dark',
+      default: 'primary',
       required: false,
     },
   },

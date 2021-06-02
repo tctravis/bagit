@@ -50,6 +50,9 @@ module.exports = {
       western: {
         default: '#099D0D',
       },
+      primary: {
+        default: '#099D0D',
+      },
       error: 'red',
       success: 'green',
     },
@@ -78,9 +81,6 @@ module.exports = {
         '12': 'repeat(12, minmax(0, 1fr))',
         'min15rem': 'repeat(auto-fill, minmax(min(15rem, 100%), 1fr))'
       },
-      // gridAutoColumns: {
-      //   'min10rem': 'repeat(auto-fill, minmax(min(10rem, 100%), 1fr))'
-      // },
       height: {
         80: '20rem',
         '30rem': '30rem'

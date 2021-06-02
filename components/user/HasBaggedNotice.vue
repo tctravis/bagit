@@ -1,6 +1,6 @@
 <template>
   <BaseInfoBar class="text-xl" :class="bgThemeClass"
-    >Congratulations, you've bagged this fell!</BaseInfoBar
+    >Congratulations, you've bagged {{ hillName }}!</BaseInfoBar
   >
 </template>
 
@@ -11,6 +11,11 @@ export default {
       type: String,
       default: 'dark',
       required: true,
+    },
+    hillName: {
+      type: String,
+      default: 'this fell',
+      required: false,
     },
   },
   computed: {

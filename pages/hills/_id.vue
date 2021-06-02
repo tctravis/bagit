@@ -6,6 +6,7 @@
           <HasBaggedNotice
             class="mb-4"
             :theme="hill.areaClassName"
+            :hill-name="hill.name"
             v-if="hasBagged"
           />
           <HillDetails :hill="hill" />

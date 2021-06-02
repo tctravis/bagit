@@ -42,7 +42,7 @@ export default {
       if (this.$route.name === 'hills-id' && 'id' in this.$route.params) {
         hillId = this.$route.params.id
       }
-      return hillId
+      return JSON.parse(hillId)
     },
   },
 }

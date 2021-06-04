@@ -1,6 +1,5 @@
 <template>
   <div class="flex items-start">
-    <p class="flex-shrink-0 mr-4">Vicinity</p>
     <div>
       <BasePill
         v-for="town in sortedTowns"
@@ -8,7 +7,7 @@
         :is-active="isSelected(town.slug)"
         class="bg-theme-dark mb-2 mr-2"
         @click="filterByTown(town.slug)"
-        >Near {{ town.name }}</BasePill
+        >{{ town.name }}</BasePill
       >
     </div>
   </div>

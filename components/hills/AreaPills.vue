@@ -1,6 +1,5 @@
 <template>
   <div class="flex flex-col items-start">
-    <p class="flex-shrink-0 mr-4">Area</p>
     <div>
       <BasePill
         v-for="area in sortedAreas"

@@ -1,7 +1,49 @@
 <template>
   <div>
     <div class="grid grid-cols-12 gap-4">
-      <div class="form-section col-span-12 xl:col-span-3">
+      <!-- <BaseInfoBar class="col-span-12">
+        <p>
+          Welcome to Fell Baggr, an app to help plan and record your mission to
+          climb some, or all, of the Lake District fells listed in the classic
+          walking guides of A.W. Wainwright.
+        </p>
+      </BaseInfoBar> -->
+      <BaseInfoBar class="col-span-12 md:col-span-4">
+        <h2 class="uppercase font-bold text-lg mb-2">Search</h2>
+        <BaseInput
+          id="hills-search-filter"
+          v-model="search"
+          label="By name: "
+          type="text"
+          placeholder="Search by fell name"
+        />
+        <BaseFilter filter-name="fellsByStatus">
+          <template v-slot:label>Show</template>
+          <template v-slot:filters>
+            <BagStatusPills
+              v-if="currentUserId"
+              class="flex flex-row flex-wrap py-2"
+          /></template>
+        </BaseFilter>
+      </BaseInfoBar>
+      <BaseInfoBar class="col-span-12 md:col-span-8">
+        <h2 class="uppercase font-bold text-lg mb-2">Filter by...</h2>
+        <BaseFilter
+          filter-name="fellsByArea"
+          info="Refers to Wainwright's division of the Lakeland fells into 7 geographical areas, each covered in one of his guidebooks."
+        >
+          <template v-slot:label>Area</template>
+          <template v-slot:filters><AreaPills /></template>
+        </BaseFilter>
+        <BaseFilter
+          filter-name="fellsByTown"
+          info="Shows only those fells which are located within 5km (as the crow flies) of the selected town"
+        >
+          <template v-slot:label>Town</template>
+          <template v-slot:filters><VicinityPills class="py-2" /></template>
+        </BaseFilter>
+      </BaseInfoBar>
+      <div class="form-section col-span-12" v-show="false">
         <p>Find a fell...</p>
         <BaseInput
           id="hills-search-filter"
@@ -18,7 +60,7 @@
           class="flex flex-row flex-wrap py-2"
         /> -->
       </div>
-      <div class="col-span-12 xl:col-span-9">
+      <div class="col-span-12">
         <div class="flex flex-row flex-wrap items-center justify-between">
           <p>Total matches: {{ totalFilteredHills }}</p>
           <div class="flex flex-row flex-wrap justify-end pb-2">

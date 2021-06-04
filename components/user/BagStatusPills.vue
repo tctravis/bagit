@@ -1,24 +1,24 @@
 <template>
-  <div class="flex flex-row flex-wrap py-2">
+  <BasePills>
     <BasePill
       :is-active="this.bagStatusSelected === 'all'"
-      class="bg-darkgrey text-white mb-2 mr-2"
+      class="bg-darkgrey text-white"
       @click="filterByBagged('all')"
       >All</BasePill
     >
     <BasePill
       :is-active="this.bagStatusSelected === 'unbagged'"
-      class="bg-darkgrey text-white mb-2 mr-2"
+      class="bg-darkgrey text-white"
       @click="filterByBagged('unbagged')"
       >Unbagged</BasePill
     >
     <BasePill
       :is-active="this.bagStatusSelected === 'bagged'"
-      class="bg-darkgrey text-white mb-2 mr-2"
+      class="bg-darkgrey text-white"
       @click="filterByBagged('bagged')"
       >Bagged</BasePill
     >
-  </div>
+  </BasePills>
 </template>
 
 <script>

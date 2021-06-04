@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <a href="">Pill</a>
+  <div class="flex flex-row flex-wrap">
+    <slot></slot>
   </div>
 </template>
 

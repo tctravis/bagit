@@ -1,94 +1,77 @@
 <template>
   <div>
     <div class="grid grid-cols-12 gap-4">
-      <!-- <BaseInfoBar class="col-span-12">
+      <div class="col-span-12 lg:col-span-4">
+        <!-- <BaseInfoBar class="col-span-12">
         <p>
           Welcome to Fell Baggr, an app to help plan and record your mission to
           climb some, or all, of the Lake District fells listed in the classic
           walking guides of A.W. Wainwright.
         </p>
       </BaseInfoBar> -->
-      <BaseInfoBar class="col-span-12 md:col-span-4">
-        <h2 class="uppercase font-bold text-lg mb-2">Search</h2>
-        <BaseInput
-          id="hills-search-filter"
-          v-model="search"
-          label="By name: "
-          type="text"
-          placeholder="Search by fell name"
-        />
-        <BaseFilter filter-name="fellsByStatus">
-          <template v-slot:label>Show</template>
-          <template v-slot:filters>
-            <BagStatusPills
-              v-if="currentUserId"
-              class="flex flex-row flex-wrap py-2"
-          /></template>
-        </BaseFilter>
-      </BaseInfoBar>
-      <BaseInfoBar class="col-span-12 md:col-span-8">
-        <h2 class="uppercase font-bold text-lg mb-2">Filter by...</h2>
-        <BaseFilter
-          filter-name="fellsByArea"
-          info="Refers to Wainwright's division of the Lakeland fells into 7 geographical areas, each covered in one of his guidebooks."
-        >
-          <template v-slot:label>Area</template>
-          <template v-slot:filters><AreaPills /></template>
-        </BaseFilter>
-        <BaseFilter
-          filter-name="fellsByTown"
-          info="Shows only those fells which are located within 5km (as the crow flies) of the selected town"
-        >
-          <template v-slot:label>Town</template>
-          <template v-slot:filters><VicinityPills class="py-2" /></template>
-        </BaseFilter>
-      </BaseInfoBar>
-      <div class="form-section col-span-12" v-show="false">
-        <p>Find a fell...</p>
-        <BaseInput
-          id="hills-search-filter"
-          v-model="search"
-          label="By name: "
-          type="text"
-          placeholder="Search by fell name"
-        />
-
-        <AreaPills class="py-2" />
-        <VicinityPills class="py-2" />
-        <!-- <BagStatusPills
-          v-if="currentUserId"
-          class="flex flex-row flex-wrap py-2"
-        /> -->
+        <BaseInfoBar class="col-span-12">
+          <h2 class="uppercase font-bold text-lg mb-2">Search</h2>
+          <BaseInput
+            id="hills-search-filter"
+            v-model="search"
+            label="By name: "
+            type="text"
+            placeholder="Search by fell name"
+          />
+        </BaseInfoBar>
+        <BaseInfoBar class="col-span-12">
+          <h2 class="uppercase font-bold text-lg mb-2">Browse</h2>
+          <BaseFilter
+            filter-name="fellsByArea"
+            info="Refers to Wainwright's division of the Lakeland fells into 7 geographical areas, each covered in one of his guidebooks."
+          >
+            <template v-slot:label>By area</template>
+            <template v-slot:filters><AreaPills /></template>
+          </BaseFilter>
+          <BaseFilter
+            filter-name="fellsByTown"
+            info="Shows only those fells which are located within 5km (as the crow flies) of the selected town"
+          >
+            <template v-slot:label>By nearby town</template>
+            <template v-slot:filters><VicinityPills /></template>
+          </BaseFilter>
+          <BaseFilter filter-name="fellsByStatus" v-if="currentUserId">
+            <template v-slot:label>By bagged status</template>
+            <template v-slot:filters>
+              <BagStatusPills v-if="currentUserId"
+            /></template>
+          </BaseFilter>
+        </BaseInfoBar>
       </div>
-      <div class="col-span-12">
-        <div class="flex flex-row flex-wrap items-center justify-between">
-          <p>Total matches: {{ totalFilteredHills }}</p>
-          <div class="flex flex-row flex-wrap justify-end pb-2">
+      <div class="col-span-12 lg:col-span-8">
+        <div class="sm:flex flex-row flex-wrap items-center justify-between">
+          <p class="mb-2 sm:mb-0">Total matches: {{ totalFilteredHills }}</p>
+          <BasePills class="justify-end">
             <BasePill
               :is-active="hillList.sort === 'desc'"
-              class="bg-lightgrey ml-2 mb-2"
+              class="bg-lightgrey"
               @click="sortByHeight('desc')"
               >High-Low</BasePill
             >
             <BasePill
               :is-active="hillList.sort === 'asc'"
-              class="bg-lightgrey ml-2 mb-2"
+              class="bg-lightgrey"
               @click="sortByHeight('asc')"
               >Low-High</BasePill
             >
             <BasePill
               :is-active="hillList.sort === 'az'"
-              class="bg-lightgrey ml-2 mb-2"
+              class="bg-lightgrey"
               @click="sortByFirstLetter('az')"
               >A-Z</BasePill
             >
             <BasePill
               :is-active="hillList.sort === 'za'"
-              class="bg-lightgrey ml-2 mb-2"
+              class="bg-lightgrey"
               @click="sortByFirstLetter('za')"
               >Z-A</BasePill
             >
-          </div>
+          </BasePills>
         </div>
 
         <template v-if="filteredHills.length > 0">

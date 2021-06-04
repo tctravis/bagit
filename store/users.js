@@ -63,6 +63,7 @@ export const mutations = {
   ADD_NEW_BAG(state, bag) {
     state.user.bags.push(bag)
     state.user.hillsBagged.push(bag.hill_id)
+    state.user.totalBags++
   },
   DELETE_BAG(state, bag) {
     let index = state.user.bags.findIndex(userBag => userBag.hill_id === bag)
@@ -71,10 +72,11 @@ export const mutations = {
     }
 
     index = state.user.hillsBagged.indexOf(bag)
-    console.log('index of bag to delete', index)
+    // console.log('index of bag to delete', index)
     if (index > -1) {
       state.user.hillsBagged.splice(index, 1)
     }
+    state.user.totalBags--
   },
   BAG_MODAL_TOGGLE(state, bagModalState) {
     state.bagModalState = bagModalState
@@ -304,7 +306,7 @@ export const actions = {
           }
           commit('ADD_NEW_BAG', bagWithDetails)
         }).catch((error) => {
-          console.error("Error adding document: ", error);
+          // console.error("Error adding document: ", error);
         })
     } catch (error) {
       return error
@@ -318,9 +320,7 @@ export const actions = {
   }, bag) {
     try {
       const hillId = bag.hill_id
-      console.log(state.user.bags.length)
       const alreadyBagged = state.user.bags.some(userbag => userbag.hill_id === hillId)
-      console.log('deleting - bagged? = ', alreadyBagged)
       if (!alreadyBagged) {
         throw 'not bagged'
       }

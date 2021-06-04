@@ -1,8 +1,6 @@
 <template>
-  <div class="w-full md:flex mb-4">
-    <div
-      class="mb-2 mr-4 min-w-5rem flex items-center justify-between md:items-start md:justify-start"
-    >
+  <div class="w-full mb-4">
+    <div class="mb-2 mr-4">
       <p class="flex-shrink-1" :id="filterName">
         <slot name="label">Label</slot>
       </p>

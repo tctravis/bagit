@@ -1,17 +1,15 @@
 <template>
-  <div class="flex flex-col items-start">
-    <div>
-      <BasePill
-        v-for="area in sortedAreas"
-        :key="area.id"
-        :is-active="isSelected(area.id)"
-        :class="('bg-theme-' + area.name) | removeSpaces | lowercase"
-        class="text-white mb-2 mr-2"
-        @click="filterByArea(area.id)"
-        >{{ area.name }}</BasePill
-      >
-    </div>
-  </div>
+  <BasePills>
+    <BasePill
+      v-for="area in sortedAreas"
+      :key="area.id"
+      :is-active="isSelected(area.id)"
+      :class="('bg-theme-' + area.name) | removeSpaces | lowercase"
+      class="text-white"
+      @click="filterByArea(area.id)"
+      >{{ area.name }}</BasePill
+    >
+  </BasePills>
 </template>
 
 <script>

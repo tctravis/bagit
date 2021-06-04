@@ -1,6 +1,6 @@
 <template>
   <button
-    class="inline-flex flex-row flex-shrink-0 items-center justify-between py-1 px-4 rounded-full"
+    class="inline-flex flex-row flex-shrink-0 items-center justify-between mb-2 mr-2 py-1 px-4 rounded-full"
     :class="isActive ? 'pr-1' : ''"
     v-on="$listeners"
   >

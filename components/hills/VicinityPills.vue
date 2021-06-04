@@ -1,16 +1,14 @@
 <template>
-  <div class="flex items-start">
-    <div>
-      <BasePill
-        v-for="town in sortedTowns"
-        :key="town.slug"
-        :is-active="isSelected(town.slug)"
-        class="bg-theme-dark mb-2 mr-2"
-        @click="filterByTown(town.slug)"
-        >{{ town.name }}</BasePill
-      >
-    </div>
-  </div>
+  <BasePills>
+    <BasePill
+      v-for="town in sortedTowns"
+      :key="town.slug"
+      :is-active="isSelected(town.slug)"
+      class="bg-theme-dark"
+      @click="filterByTown(town.slug)"
+      >{{ town.name }}</BasePill
+    >
+  </BasePills>
 </template>
 
 <script>

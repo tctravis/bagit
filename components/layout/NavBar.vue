@@ -36,9 +36,9 @@
         <nav
           class="flex flex-col divide-y md:divide-y-0 md:flex-row md:items-center"
         >
-          <!-- <BaseMenuLink route="/hills/list" @click.native="toggleMenu"
+          <BaseMenuLink route="/hills/list" @click.native="toggleMenu"
             >Fells</BaseMenuLink
-          > -->
+          >
           <!-- <BaseMenuLink route="/user/bags" @click.native="toggleMenu"
             >Bags</BaseMenuLink
           > -->

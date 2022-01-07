@@ -1,6 +1,6 @@
 {
-  "workbench.settings.editor": "json",
-  "editor.formatOnSave": true,
+  // "workbench.settings.editor": "json",
+  "editor.formatOnSave": false,
   "vetur.validation.template": false,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true

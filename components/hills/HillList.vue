@@ -28,14 +28,14 @@
             <template v-slot:label>By area</template>
             <template v-slot:filters><AreaPills /></template>
           </BaseFilter>
-          <BaseFilter
+          <!-- <BaseFilter
             filter-name="fellsByTown"
             info="Shows only those fells which are located within 5km (as the crow flies) of the selected town"
           >
             <template v-slot:label>By nearby town</template>
             <template v-slot:filters><VicinityPills /></template>
-          </BaseFilter>
-          <BaseFilter filter-name="fellsByStatus" v-if="currentUserId">
+          </BaseFilter> -->
+          <BaseFilter v-if="currentUserId" filter-name="fellsByStatus">
             <template v-slot:label>By bagged status</template>
             <template v-slot:filters>
               <BagStatusPills v-if="currentUserId"
@@ -94,7 +94,7 @@
 import { mapState, mapGetters, mapActions } from 'vuex'
 
 import AreaPills from '@/components/hills/AreaPills.vue'
-import VicinityPills from '@/components/hills/VicinityPills.vue'
+// import VicinityPills from '@/components/hills/VicinityPills.vue'
 import BagStatusPills from '@/components/user/BagStatusPills.vue'
 import HillCard from '@/components/hills/HillCard.vue'
 
@@ -106,7 +106,7 @@ export default {
     // BagCreateModal,
     BagStatusPills,
     AreaPills,
-    VicinityPills,
+    // VicinityPills,
   },
   mixins: [calculateDistances],
   data() {

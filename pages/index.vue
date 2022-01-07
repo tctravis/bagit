@@ -1,22 +1,28 @@
 <template>
   <div>
-    <HillList />
+    <BaseParagraph>
+      Use this app to help plan and record your adventures bagging the Lake
+      District fells.
+    </BaseParagraph>
+    <BaseParagraph>
+      Based on the Wainwrights, the list of fells described in the classic
+      guides by A.W. Wainwright
+    </BaseParagraph>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
 
-import HillList from '@/components/hills/HillList.vue'
-
 export default {
-  components: {
-    HillList,
-  },
   computed: {
     ...mapState({
       currentUserId: (state) => state.users.currentUserId,
     }),
+  },
+  mounted() {
+    this.$store.dispatch('pages/setPageTitle', 'Fell Baggr')
+    this.$store.dispatch('pages/setPageTheme', 'primary')
   },
   head() {
     return {
@@ -24,10 +30,6 @@ export default {
         { src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' },
       ],
     }
-  },
-  mounted() {
-    this.$store.dispatch('pages/setPageTitle', 'Find a fell')
-    this.$store.dispatch('pages/setPageTheme', 'primary')
   },
 }
 </script>

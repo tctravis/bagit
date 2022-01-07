@@ -8,7 +8,7 @@
       <h1 class="uppercase text-2xl md:text-3xl lg:text-4xl font-bold">
         <slot>Page title</slot>
       </h1>
-      <div class="flex-shrink-0 ml-4" v-if="hillId">
+      <div v-if="hillId" class="flex-shrink-0 ml-4">
         <BagItButton :hill-id="hillId" :theme="theme" />
       </div>
     </div>
@@ -29,7 +29,6 @@ export default {
     theme: {
       type: String,
       default: 'primary',
-      required: false,
     },
     // hillId: {
     //   type: Number,
@@ -48,5 +47,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

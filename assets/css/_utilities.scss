@@ -1,0 +1,6 @@
+.flow > * + * {
+    margin-top: var(--flow-space, 1em);
+}
+.out-of-flow {
+    margin-top: 0 !important;
+}

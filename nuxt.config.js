@@ -4,7 +4,7 @@ export default {
    ** See https://nuxtjs.org/api/configuration-mode
    */
   // mode: 'spa',
-  ssr: false,
+  ssr: true,
   /*
    ** Nuxt target
    ** See https://nuxtjs.org/api/configuration-target
@@ -41,7 +41,11 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['@/assets/css/_site.scss', '@/assets/css/partials/_icons.scss'],
+  css: [
+    '@/assets/css/_utilities.scss',
+    '@/assets/css/_site.scss',
+    '@/assets/css/partials/_icons.scss',
+  ],
   /*
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
@@ -100,7 +104,7 @@ export default {
               'faUser',
               'faChartBar',
               'faHiking',
-              'faShoppingBag'
+              'faShoppingBag',
             ],
           },
         ],
@@ -153,7 +157,7 @@ export default {
         },
       },
     ],
-    'vue-geolocation-api/nuxt'
+    'vue-geolocation-api/nuxt',
   ],
   /*
    ** Axios module configuration

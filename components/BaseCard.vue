@@ -1,8 +1,9 @@
 <template>
-  <div :class="'card-' + theme" class="rounded p-2">
+  <div :class="'card-' + theme" class="flow p-2">
     <BaseTitle :level="2" :has-decoration="false">
-      <slot name="header" />
+      <slot name="title" />
     </BaseTitle>
+    <BaseParagraph><slot name="text" /></BaseParagraph>
   </div>
 </template>
 

@@ -1,15 +1,19 @@
 <template>
-  <div>
+  <div class="container py-4">
+    <BasePageTitle
+      ><template #title>{{ hill.name }}</template></BasePageTitle
+    >
     <div class="grid grid-cols-12 gap-4">
       <div class="grid grid-cols-12 gap-4 col-span-12">
         <div class="col-span-12 md:col-span-4">
           <HasBaggedNotice
+            v-if="hasBagged"
             class="mb-4"
             :theme="hill.areaClassName"
             :hill-name="hill.name"
-            v-if="hasBagged"
           />
           <HillDetails :hill="hill" />
+          <BagItButton :hill-id="hill.id" :theme="hill.areaClassName" />
         </div>
         <div class="col-span-12 md:col-span-8">
           <HillMap :hill="hill" :limit="12" />
@@ -31,17 +35,20 @@
 
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
+
+import BagItButton from '@/components/user/BagItButton.vue'
 import HillDetails from '@/components/hills/HillDetails.vue'
-import HillPageTitle from '@/components/hills/HillPageTitle.vue'
-import HeightRating from '@/components/hills/HeightRating.vue'
+// import HillPageTitle from '@/components/hills/HillPageTitle.vue'
+// import HeightRating from '@/components/hills/HeightRating.vue'
 import HillMap from '@/components/hills/HillMap.vue'
 import NearbyHillsList from '@/components/hills/NearbyHillsList.vue'
 import HasBaggedNotice from '@/components/user/HasBaggedNotice.vue'
 
 export default {
   components: {
-    HeightRating,
-    HillPageTitle,
+    BagItButton,
+    // HeightRating,
+    // HillPageTitle,
     HillDetails,
     HillMap,
     NearbyHillsList,

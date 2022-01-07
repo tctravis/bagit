@@ -3,22 +3,18 @@ export default {
   props: {
     level: {
       type: Number,
-      required: true,
       default: 1,
     },
     hasDecoration: {
       type: Boolean,
-      required: false,
       default: false,
     },
     srOnly: {
       type: Boolean,
-      required: false,
       default: false,
     },
     theme: {
       type: String,
-      required: false,
       default: 'dark',
     },
   },

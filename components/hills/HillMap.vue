@@ -11,7 +11,9 @@
 
 <script>
 // see https://markus.oberlehner.net/blog/using-the-google-maps-api-with-vue/
-import bingMapsInit from '@/utils/bingMaps.js'
+// import bingMapsInit from '@/utils/bingMaps.js'
+import bingMapsInit from '@/plugins/maps.js'
+
 import { theme } from '~tailwind.config'
 import { mapState } from 'vuex'
 import calculateDistances from '@/mixins/calculateDistances.js'
@@ -41,6 +43,11 @@ export default {
         ? 'Loading map...'
         : 'An internet connection is required to view maps'
     },
+  },
+  mounted() {
+    if (this.$nuxt.isOnline) {
+      this.loadMap()
+    }
   },
   methods: {
     async loadMap() {
@@ -78,11 +85,6 @@ export default {
         console.error(error)
       }
     },
-  },
-  mounted() {
-    if (this.$nuxt.isOnline) {
-      this.loadMap()
-    }
   },
 }
 </script>

@@ -1,14 +1,3 @@
-// import Vue from 'vue'
-
-// import VueBingMaps from 'vue-bing-maps'
-
-// // Default configuration
-// // Vue.use(VueBingMaps)
-// Vue.use(VueBingMaps, {
-//   debug: true,
-// })
-
-//const API_KEY = 'AIzaSyCWAaBJsI1234TI18PITVy7p0Qb6ht123';
 const API_KEY = process.env.bingMapsApiKey
 const CALLBACK_NAME = 'bingMapsCallback'
 
@@ -26,6 +15,7 @@ export default function init() {
   // If Google Maps already is initialized
   // the `initPromise` should get resolved
   // eventually.
+  console.log('init')
   if (initialized) return initPromise
 
   initialized = true

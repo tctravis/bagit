@@ -14,9 +14,18 @@
 <script>
 export default {
   props: {
-    icon: String,
-    route: String,
-    iconClass: String,
+    icon: {
+      type: String,
+      default: null,
+    },
+    route: {
+      type: String,
+      required: true,
+    },
+    iconClass: {
+      type: String,
+      default: null,
+    },
   },
 }
 </script>

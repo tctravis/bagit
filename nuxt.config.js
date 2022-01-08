@@ -4,7 +4,7 @@ export default {
    ** See https://nuxtjs.org/api/configuration-mode
    */
   // mode: 'spa',
-  ssr: false,
+  ssr: true,
   /*
    ** Nuxt target
    ** See https://nuxtjs.org/api/configuration-target
@@ -50,7 +50,11 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: ['~/plugins/filters.js', '~/plugins/vuelidate.js'],
+  plugins: [
+    { src: '~/plugins/user.js', ssr: false },
+    '~/plugins/filters.js',
+    '~/plugins/vuelidate.js',
+  ],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -132,7 +136,7 @@ export default {
           auth: {
             initialize: {
               // onAuthStateChangedMutation:
-              //   'users/ON_AUTH_STATE_CHANGED_MUTATION',
+              // 'users/ON_AUTH_STATE_CHANGED_MUTATION',
               onAuthStateChangedAction: 'users/onAuthStateChangedAction',
             },
           },
@@ -148,8 +152,7 @@ export default {
             author: 'Toby Travis',
           },
           manifest: {
-            name:
-              'Fell Baggr - an app for Wainwright baggers to record their bags',
+            name: 'Fell Baggr - an app for Wainwright baggers to record their bags',
             short_name: 'Fell Baggr',
             lang: 'en',
           },
@@ -198,7 +201,7 @@ export default {
     bingMapsApiKey: process.env.BING_MAPS_API_KEY,
   },
   router: {
-    middleware: ['hills', 'user'],
+    middleware: ['hills'],
   },
   tailwindcss: {
     exposeConfig: true,

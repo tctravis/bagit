@@ -39,44 +39,42 @@
           <BaseMenuLink route="/hills/" @click.native="toggleMenu"
             >Fells</BaseMenuLink
           >
-          <!-- <BaseMenuLink route="/user/bags" @click.native="toggleMenu"
-            >Bags</BaseMenuLink
-          > -->
-          <BaseMenuLink
-            v-if="currentUserId"
-            route="/user/stats"
-            @click.native="toggleMenu"
-            >Stats</BaseMenuLink
+          <client-only>
+            <BaseMenuLink
+              v-if="currentUserId"
+              route="/user/stats"
+              @click.native="toggleMenu"
+              >Stats</BaseMenuLink
+            ></client-only
           >
-          <!-- 
-          <BaseMenuLink route="/user/badges" @click.native="toggleMenu"
-            >Badges</BaseMenuLink
-          >
-          -->
-          <!-- <BaseMenuLink route="/about" @click.native="toggleMenu"
-            >About</BaseMenuLink
-          > -->
-          <BaseMenuLink
-            v-if="$fireAuth.currentUser !== null"
-            route="/user/edit-profile"
-            @click.native="toggleMenu"
-            >Profile</BaseMenuLink
-          >
+          <client-only>
+            <BaseMenuLink
+              v-if="currentUserId"
+              route="/user/edit-profile"
+              @click.native="toggleMenu"
+              >Profile</BaseMenuLink
+            >
+          </client-only>
         </nav>
       </div>
-      <nuxt-link
-        v-if="currentUserId === ''"
-        to="/user/login"
-        class="ml-auto md:ml-4 bg-theme-midgrey button"
-        >Login</nuxt-link
+
+      <client-only
+        ><nuxt-link
+          v-if="!currentUserId"
+          to="/user/login"
+          class="ml-auto md:ml-4 bg-theme-midgrey button"
+          >Login</nuxt-link
+        ></client-only
       >
-      <nuxt-link
-        v-if="currentUserId !== ''"
-        to="/user/login"
-        class="ml-auto md:ml-4 bg-theme-midgrey button"
-        @click.native="signOut"
-        >Logout</nuxt-link
-      >
+      <client-only
+        ><nuxt-link
+          v-if="currentUserId"
+          to="/user/login"
+          class="ml-auto md:ml-4 bg-theme-midgrey button"
+          @click.native="signOut"
+          >Logout</nuxt-link
+        >
+      </client-only>
       <div class="md:hidden pl-4 py-4 cursor-pointer" @click="toggleMenu">
         <font-awesome-icon :icon="['fa', 'bars']" />
       </div>

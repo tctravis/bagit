@@ -90,15 +90,6 @@ export const mutations = {
   UPDATE_EMAIL(state, email) {
     state.user.email = email
   },
-  ON_AUTH_STATE_CHANGED_MUTATION(state, {authUser}){
-    if (!authUser) {
-        state.user = null
-    } else {
-        // const { uid, email } = authUser
-        // state.user = { uid, email }
-        state.user = Object.assign(state.user, authUser)
-    }
-},
 }
 export const actions = {
   async fetchUser({
@@ -275,13 +266,6 @@ export const actions = {
     this.$router.push({
       path: '/',
     })
-  },
-  async nuxtServerInit({ commit }, { res }) {
-    if (res && res.locals && res.locals.user) {
-      const { ...authUser } = res.locals.user
-      commit('ON_AUTH_STATE_CHANGED_MUTATION', { authUser })
-      // commit('SET_CURRENT_USER', authUser.id)
-    }
   },
   onAuthStateChangedAction: ({
     state,

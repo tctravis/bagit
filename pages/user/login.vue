@@ -48,6 +48,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import { required, email, minLength } from 'vuelidate/lib/validators'
 export default {
   data() {
@@ -61,12 +62,15 @@ export default {
     }
   },
   methods: {
+    ...mapActions('users', ['fetchUser']),
     async login() {
       let loggedIn = await this.$store.dispatch('users/login', {
         email: this.email,
         password: this.password,
       })
       if (loggedIn.user !== undefined) {
+        // console.log(loggedIn)
+        this.fetchUser(loggedIn.user.uid)
         this.$router.push({
           //path: '/user/bags',
           path: '/',

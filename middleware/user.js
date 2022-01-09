@@ -9,7 +9,7 @@ export default function ({
     $fireAuth.currentUser === null
   ) {
     if (
-      route.name === 'user-edit-profile') {
+      route.name === 'user-edit-profile' || route.name === 'user-stats') {
       return redirect('/')
     }
   } else {

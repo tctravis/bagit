@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <client-only>
       <template v-if="currentUserId === ''">
         <LoggedOutMessage />

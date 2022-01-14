@@ -2,6 +2,9 @@
   <div class="container py-4">
     <BasePageTitle><template #title>Dashboard</template></BasePageTitle>
     <section>
+      <UserTotalBags />
+    </section>
+    <section>
       <BaseTitle :level="2" :has-decoration="true" class="text-xl"
         >Bagged by area</BaseTitle
       >
@@ -31,6 +34,7 @@
 <script>
 import ChartBaggedByArea from '@/components/user/ChartBaggedByArea.vue'
 import ChartAltitudeLine from '@/components/user/ChartAltitudeLine.vue'
+import UserTotalBags from '@/components/user/UserTotalBags.vue'
 import TooltipInfo from '@/components/widgets/TooltipInfo.vue'
 
 export default {
@@ -38,6 +42,7 @@ export default {
     ChartBaggedByArea,
     ChartAltitudeLine,
     TooltipInfo,
+    UserTotalBags,
   },
 }
 </script>

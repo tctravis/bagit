@@ -1,7 +1,7 @@
 <template>
   <Badge
     icon-class="text-primary"
-    label-class="text-white"
+    label-class="sr-only"
     :icon-text="totalBags.toString()"
     >Total bags</Badge
   >

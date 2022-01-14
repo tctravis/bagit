@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-row items-center pr-2 pb-2">
+  <div class="flex flex-row items-center">
     <div class="relative flex flex-row items-center justify-center">
       <font-awesome-icon
         :class="iconClass"
@@ -24,7 +24,6 @@ export default {
     },
     iconText: {
       type: String,
-      required: false,
       default: '',
     },
     badgeIcon: {
@@ -36,7 +35,6 @@ export default {
     },
     labelClass: {
       type: String,
-      required: false,
       default: '',
     },
   },

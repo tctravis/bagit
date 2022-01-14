@@ -19,29 +19,33 @@
             placeholder="Search by fell name"
           />
         </BaseInfoBar>
-        <BaseInfoBar class="col-span-12">
-          <h2 class="uppercase font-bold text-lg mb-2">Browse</h2>
-          <BaseFilter
-            filter-name="fellsByArea"
-            info="Refers to Wainwright's division of the Lakeland fells into 7 geographical areas, each covered in one of his guidebooks."
+        <BaseInfoBarCollapsible class="col-span-12">
+          <template #title
+            ><h2 class="uppercase font-bold text-lg">Filters</h2></template
           >
-            <template v-slot:label>By area</template>
-            <template v-slot:filters><AreaPills /></template>
-          </BaseFilter>
-          <!-- <BaseFilter
+          <template #content>
+            <BaseFilter
+              filter-name="fellsByArea"
+              info="Refers to Wainwright's division of the Lakeland fells into 7 geographical areas, each covered in one of his guidebooks."
+            >
+              <template v-slot:label>By area:</template>
+              <template v-slot:filters><AreaPills /></template>
+            </BaseFilter>
+            <!-- <BaseFilter
             filter-name="fellsByTown"
             info="Shows only those fells which are located within 5km (as the crow flies) of the selected town"
           >
             <template v-slot:label>By nearby town</template>
             <template v-slot:filters><VicinityPills /></template>
           </BaseFilter> -->
-          <BaseFilter v-if="currentUserId" filter-name="fellsByStatus">
-            <template v-slot:label>By bagged status</template>
-            <template v-slot:filters>
-              <BagStatusPills v-if="currentUserId"
-            /></template>
-          </BaseFilter>
-        </BaseInfoBar>
+            <client-only>
+              <BaseFilter v-if="currentUserId" filter-name="fellsByStatus">
+                <template v-slot:label>By bagged status:</template>
+                <template v-slot:filters> <BagStatusPills /></template>
+              </BaseFilter>
+            </client-only>
+          </template>
+        </BaseInfoBarCollapsible>
       </div>
       <div class="col-span-12 lg:col-span-8">
         <div class="sm:flex flex-row flex-wrap items-center justify-between">
@@ -76,7 +80,13 @@
 
         <template v-if="filteredHills.length > 0">
           <div class="grid grid-cols-min15rem gap-4">
-            <HillCard v-for="hill in sortedHills" :key="hill.id" :hill="hill" />
+            <client-only>
+              <HillCard
+                v-for="hill in sortedHills"
+                :key="hill.id"
+                :hill="hill"
+              />
+            </client-only>
           </div>
         </template>
         <template v-else>

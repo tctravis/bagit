@@ -9,9 +9,9 @@
     <!-- <div class="container py-4 relative z-0"> -->
     <Nuxt />
     <!-- </div> -->
-    <client-only>
+    <!-- <client-only>
       <Footer v-if="currentUserId" />
-    </client-only>
+    </client-only> -->
     <!-- <BagCreateModal v-if="openBagModal" /> -->
   </div>
 </template>

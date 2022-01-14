@@ -4,6 +4,9 @@
       <div>
         <nuxt-link to="/">FELL BAGGR</nuxt-link>
       </div>
+      <client-only>
+        <TotalBaggedBadge v-if="currentUserId" class="ml-4" />
+      </client-only>
 
       <transition
         enter-class="opacity-0"
@@ -37,14 +40,14 @@
           class="flex flex-col divide-y md:divide-y-0 md:flex-row md:items-center"
         >
           <BaseMenuLink route="/hills/" @click.native="toggleMenu"
-            >Fells</BaseMenuLink
+            >Find a fell</BaseMenuLink
           >
           <client-only>
             <BaseMenuLink
               v-if="currentUserId"
               route="/user/dashboard"
               @click.native="toggleMenu"
-              >Dashboard</BaseMenuLink
+              >Your progress</BaseMenuLink
             ></client-only
           >
           <client-only>
@@ -84,7 +87,12 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
+
+import TotalBaggedBadge from '@/components/user/badges/TotalBaggedBadge.vue'
 export default {
+  components: {
+    TotalBaggedBadge,
+  },
   data() {
     return {
       navOpen: false,

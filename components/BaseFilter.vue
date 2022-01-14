@@ -1,7 +1,7 @@
 <template>
   <div class="w-full mb-4">
-    <div class="mb-2 mr-4">
-      <p class="flex-shrink-1" :id="filterName">
+    <div class="mb-2 flex items-center justify-between">
+      <p :id="filterName">
         <slot name="label">Label</slot>
       </p>
       <BaseTooltipInfo v-if="info">{{ info }}</BaseTooltipInfo>
@@ -26,5 +26,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

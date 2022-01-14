@@ -1,5 +1,6 @@
 <template>
   <div class="container py-4">
+    <BasePageTitle><template #title>Find a fell</template></BasePageTitle>
     <HillList />
   </div>
 </template>

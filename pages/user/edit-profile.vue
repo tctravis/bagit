@@ -1,5 +1,6 @@
 <template>
-  <div class="container">
+  <div class="container py-4">
+    <BasePageTitle><template #title>Your profile</template></BasePageTitle>
     <BaseFormFeedback v-if="feedback.message !== ''" :type="feedback.type">
       {{ feedback.message }}
     </BaseFormFeedback>

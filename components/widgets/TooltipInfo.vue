@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-row items-center relative">
+  <div class="flex flex-row items-center relative z-9999">
     <div
       class="flex flex-row items-center p-1 cursor-pointer"
       @click="toggleInfoWindow"

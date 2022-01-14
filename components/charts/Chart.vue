@@ -27,23 +27,36 @@ export default {
     chartId() {
       return 'chart' + this._uid
     },
+    chartDatasets() {
+      return this.chartData.datasets
+    },
   },
   watch: {
-    chartData() {
-      this.myChart.update()
+    chartData: {
+      deep: true,
+      handler() {
+        this.myChart.data.labels = this.chartData.labels
+        this.myChart.data.datasets = this.chartData.datasets
+        this.myChart.update()
+      },
     },
   },
   mounted() {
-    let chartEl = this.$refs[this.chartId]
-    // eslint-disable-next-line
-    this.myChart = new Chart(chartEl, {
-      type: this.chartType,
-      data: {
-        labels: this.chartData.labels,
-        datasets: this.chartData.datasets,
-      },
-      options: this.chartData.options,
-    })
+    this.initChart()
+  },
+  methods: {
+    initChart() {
+      let chartEl = this.$refs[this.chartId]
+      // eslint-disable-next-line
+      this.myChart = new Chart(chartEl, {
+        type: this.chartType,
+        data: {
+          labels: this.chartData.labels,
+          datasets: this.chartData.datasets,
+        },
+        options: this.chartData.options,
+      })
+    },
   },
 }
 </script>

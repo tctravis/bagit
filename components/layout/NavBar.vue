@@ -42,9 +42,9 @@
           <client-only>
             <BaseMenuLink
               v-if="currentUserId"
-              route="/user/stats"
+              route="/user/dashboard"
               @click.native="toggleMenu"
-              >Stats</BaseMenuLink
+              >Dashboard</BaseMenuLink
             ></client-only
           >
           <client-only>

@@ -9,7 +9,10 @@ import Chart from 'chart.js'
 
 export default {
   props: {
-    chartData: Object,
+    chartData: {
+      type: Object,
+      required: true,
+    },
   },
   data: function () {
     return {
@@ -17,8 +20,13 @@ export default {
     }
   },
   watch: {
-    chartData() {
-      this.myChart.update()
+    chartData: {
+      deep: true,
+      handler() {
+        this.myChart.data.labels = this.chartData.labels
+        this.myChart.data.datasets = this.chartData.datasets
+        this.myChart.update()
+      },
     },
   },
   mounted() {

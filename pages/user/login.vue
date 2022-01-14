@@ -72,8 +72,8 @@ export default {
         // console.log(loggedIn)
         this.fetchUser(loggedIn.user.uid)
         this.$router.push({
-          //path: '/user/bags',
-          path: '/',
+          path: '/user/dashboard',
+          // path: '/',
         })
       } else {
         this.feedback.type = 'error'

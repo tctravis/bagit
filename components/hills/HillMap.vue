@@ -56,6 +56,8 @@ export default {
       })
     },
     populateMap() {
+      const hillMap = this
+
       if (!Microsoft) return false
       let map = new Microsoft.Maps.Map(this.$refs.bingMap, {
         center: new Microsoft.Maps.Location(this.hill.lat, this.hill.lng),
@@ -75,6 +77,9 @@ export default {
         color: theme.colors[this.hill.areaClassName].default,
       })
       map.entities.push(pin)
+      // Microsoft.Maps.Events.addHandler(pin, 'click', function () {
+      //   hillMap.goToHillPage(this.hill.id)
+      // })
 
       this.nearbyHills.forEach((hill) => {
         // let hillObj = hill.hill
@@ -84,6 +89,16 @@ export default {
           color: theme.colors[hill.areaClassName].default,
         })
         map.entities.push(pin)
+
+        Microsoft.Maps.Events.addHandler(pin, 'click', function () {
+          hillMap.goToHillPage(hill.id)
+        })
+      })
+    },
+    goToHillPage(hillId) {
+      this.$router.push({
+        path: '/hills/' + hillId,
+        // path: '/',
       })
     },
   },

@@ -6,6 +6,9 @@
         Use this app to help plan and record your adventures bagging the Lake
         District fells.</template
       >
+      <template #actions>
+        <nuxt-link to="/hills">Find a fell to bag</nuxt-link>
+      </template>
     </BaseHero>
     <div class="container">
       <BaseCardGrid :max-cards-per-row="3">

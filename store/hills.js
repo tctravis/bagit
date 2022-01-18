@@ -43,27 +43,59 @@ export const state = () => ({
   towns: [
     {
       loc: {
-        'lat': '099009',
-        'lng': '09090909'
+        'lat': '54.3266523',
+        'lng': '-2.7763236'
       },
       name: 'Kendal',
       slug: 'kendal'
     },
     {
       loc: {
-        'lat': '099009',
-        'lng': '09090909'
+        'lat': '54.4282623',
+        'lng': '-2.9787857'
       },
       name: 'Ambleside',
       slug: 'ambleside'
     },
     {
       loc: {
-        'lat': '099009',
-        'lng': '09090909'
+        'lat': '54.6025494',
+        'lng': '-3.1478323'
       },
       name: 'Keswick',
       slug: 'keswick'
+    },
+    {
+      loc: {
+        'lat': '54.36998',
+        'lng': '-3.0842284'
+      },
+      name: 'Coniston',
+      slug: 'coniston'
+    },
+    {
+      loc: {
+        'lat': '54.3721393',
+        'lng': '-3.0722986'
+      },
+      name: 'Hawkshead',
+      slug: 'hawkshead'
+    },
+    {
+      loc: {
+        'lat': '54.4624074',
+        'lng': '-3.031161'
+      },
+      name: 'Grasmere',
+      slug: 'grasmere'
+    },
+    {
+      loc: {
+        'lat': '54.6606719',
+        'lng': '-3.3796767'
+      },
+      name: 'Cockermouth',
+      slug: 'cockermouth'
     }
   ],
   highestHill: 0,
@@ -74,7 +106,8 @@ export const state = () => ({
     filters: {
       area: '',
       bagged: 'all', // 'bagged', 'unbagged', 'all'
-      town: ''
+      town: '',
+      heightRanges: []
     },
     sort: 'asc',
     sortObj: {

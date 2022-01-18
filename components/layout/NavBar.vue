@@ -1,5 +1,5 @@
 <template>
-  <header class="h-16 bg-darkgrey text-white fixed left-0 right-0 top-0 z-10">
+  <header class="h-16 bg-darkgrey text-white fixed left-0 right-0 top-0 z-50">
     <div class="h-16 container flex flex-row items-center justify-between">
       <div>
         <nuxt-link to="/">FELL BAGGR</nuxt-link>

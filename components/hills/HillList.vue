@@ -19,11 +19,25 @@
             placeholder="Search by fell name"
           />
         </BaseInfoBar>
-        <BaseInfoBarCollapsible class="col-span-12">
+        <BaseInfoBarCollapsible :show="true" class="col-span-12">
           <template #title
             ><h2 class="uppercase font-bold text-lg">Filters</h2></template
           >
           <template #content>
+            <BaseFilter
+              filter-name="fellsByHeightRange"
+              info="Shows only those fells whose altitudes fall within the selected ranges"
+            >
+              <template v-slot:label>Height range (m)</template>
+              <template v-slot:filters><HeightRangePills /></template>
+            </BaseFilter>
+            <BaseFilter
+              filter-name="fellsByTown"
+              info="Shows only those fells which are located within 5km (as the crow flies) of the selected town"
+            >
+              <template v-slot:label>Nearest to</template>
+              <template v-slot:filters><VicinityPills /></template>
+            </BaseFilter>
             <BaseFilter
               filter-name="fellsByArea"
               info="Refers to Wainwright's division of the Lakeland fells into 7 geographical areas, each covered in one of his guidebooks."
@@ -31,13 +45,6 @@
               <template v-slot:label>By area:</template>
               <template v-slot:filters><AreaPills /></template>
             </BaseFilter>
-            <!-- <BaseFilter
-            filter-name="fellsByTown"
-            info="Shows only those fells which are located within 5km (as the crow flies) of the selected town"
-          >
-            <template v-slot:label>By nearby town</template>
-            <template v-slot:filters><VicinityPills /></template>
-          </BaseFilter> -->
             <client-only>
               <BaseFilter v-if="currentUserId" filter-name="fellsByStatus">
                 <template v-slot:label>By bagged status:</template>
@@ -104,7 +111,8 @@
 import { mapState, mapGetters, mapActions } from 'vuex'
 
 import AreaPills from '@/components/hills/AreaPills.vue'
-// import VicinityPills from '@/components/hills/VicinityPills.vue'
+import HeightRangePills from '@/components/hills/HeightRangePills.vue'
+import VicinityPills from '@/components/hills/VicinityPills.vue'
 import BagStatusPills from '@/components/user/BagStatusPills.vue'
 import HillCard from '@/components/hills/HillCard.vue'
 
@@ -116,7 +124,8 @@ export default {
     // BagCreateModal,
     BagStatusPills,
     AreaPills,
-    // VicinityPills,
+    VicinityPills,
+    HeightRangePills,
   },
   mixins: [calculateDistances],
   data() {
@@ -130,13 +139,18 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('hills', ['getHills']),
+    ...mapGetters('hills', ['getHills', 'getTowns']),
     ...mapState({
       hillList: (state) => state.hills.hillList,
       currentUser: (state) => state.users.currentUser,
       currentUserId: (state) => state.users.currentUserId,
       user: (state) => state.users.user,
     }),
+    towns() {
+      // https://stackoverflow.com/questions/52581488/how-can-i-clone-data-from-vuex-state-to-local-data
+      let towns = [...this.getTowns]
+      return towns
+    },
     hills() {
       let hills = [...this.getHills]
       return hills
@@ -154,6 +168,24 @@ export default {
         })
 
       //filters
+
+      //by height range
+      if (this.hillList.filters.heightRanges.length > 0) {
+        hillsArray = hillsArray.filter((hill) => {
+          return this.hillList.filters.heightRanges.find((heightRange) =>
+            this.between(hill.height_m, heightRange.min, heightRange.max)
+          )
+        })
+      }
+
+      //by town
+      if (this.hillList.filters.town) {
+        let town = this.towns.find(
+          (town) => town.slug === this.hillList.filters.town
+        )
+        hillsArray = this.findDistancesFromLoc(town.loc, hillsArray)
+      }
+
       //by area
       if (this.hillList.filters.area.length > 0)
         hillsArray = hillsArray.filter((hill) => {
@@ -178,42 +210,42 @@ export default {
     },
     sortedHills() {
       let hillsArray = this.filteredHills
-      if (this.hillList.sort === 'vicinity') {
-        if (this.$geolocation.coords) {
-          let userLoc = {
-            lat: this.$geolocation.coords.latitude,
-            lng: this.$geolocation.coords.longitude,
-          }
-          hillsArray = this.findDistancesFromLoc(userLoc, hillsArray)
-        } else {
-          console.log('User location not available')
-        }
-        // console.log(this)
-      } else if (this.hillList.sort === 'az') {
-        hillsArray.sort((a, b) => {
-          if (a.name < b.name) return -1
-          if (a.name > b.name) return 1
-          return 0
-        })
-      } else if (this.hillList.sort === 'za') {
-        hillsArray.sort((a, b) => {
-          if (a.name > b.name) return -1
-          if (a.name < b.name) return 1
-          return 0
-        })
-      } else if (this.hillList.sort === 'desc') {
-        hillsArray.sort((a, b) => {
-          if (a.height_m > b.height_m) return -1
-          if (a.height_m < b.height_m) return 1
-          return 0
-        })
-      } else {
-        hillsArray.sort((a, b) => {
-          if (a.height_m < b.height_m) return -1
-          if (a.height_m > b.height_m) return 1
-          return 0
-        })
-      }
+      // if (this.hillList.sort === 'vicinity') {
+      //   if (this.$geolocation.coords) {
+      //     let userLoc = {
+      //       lat: this.$geolocation.coords.latitude,
+      //       lng: this.$geolocation.coords.longitude,
+      //     }
+      //     hillsArray = this.findDistancesFromLoc(userLoc, hillsArray)
+      //   } else {
+      //     console.log('User location not available')
+      //   }
+      //   // console.log(this)
+      // } else if (this.hillList.sort === 'az') {
+      //   hillsArray.sort((a, b) => {
+      //     if (a.name < b.name) return -1
+      //     if (a.name > b.name) return 1
+      //     return 0
+      //   })
+      // } else if (this.hillList.sort === 'za') {
+      //   hillsArray.sort((a, b) => {
+      //     if (a.name > b.name) return -1
+      //     if (a.name < b.name) return 1
+      //     return 0
+      //   })
+      // } else if (this.hillList.sort === 'desc') {
+      //   hillsArray.sort((a, b) => {
+      //     if (a.height_m > b.height_m) return -1
+      //     if (a.height_m < b.height_m) return 1
+      //     return 0
+      //   })
+      // } else {
+      //   hillsArray.sort((a, b) => {
+      //     if (a.height_m < b.height_m) return -1
+      //     if (a.height_m > b.height_m) return 1
+      //     return 0
+      //   })
+      // }
       return hillsArray
     },
     totalFiltersApplied() {
@@ -229,6 +261,9 @@ export default {
   },
   methods: {
     ...mapActions('users', ['closeBagModal']),
+    between(x, min, max) {
+      return x >= min && x <= max
+    },
     toggleFilters() {
       this.showFilters = !this.showFilters
     },

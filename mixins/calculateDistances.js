@@ -1,6 +1,6 @@
 export default {
   methods: {
-    findDistancesFromLoc(loc, hills, limit) {
+    findDistancesFromLoc(loc, hills, limit, maxDistance) {
       let distancesFromHill = []
       let originLoc = {
         lat: loc.lat,
@@ -12,13 +12,11 @@ export default {
           lon: hill.lng,
         }
         let distanceFromOrigin = this.calcDistance(originLoc, hillLoc)
-        // let nearbyHills = {
-        //   distance: distanceFromOrigin,
-        //   hill: hill,
-        // }
         hill.distance = distanceFromOrigin
-        distancesFromHill.push(hill)
-        // hill.distance = distanceFromOrigin
+
+        if (!maxDistance || distanceFromOrigin <= maxDistance) {
+          distancesFromHill.push(hill)
+        }
       })
       //sort by closest to this hill
       distancesFromHill.sort(function (a, b) {

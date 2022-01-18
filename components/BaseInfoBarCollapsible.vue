@@ -12,9 +12,15 @@
 
 <script>
 export default {
+  props: {
+    show: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return {
-      showInfoBarContent: false,
+      showInfoBarContent: this.show,
     }
   },
   computed: {

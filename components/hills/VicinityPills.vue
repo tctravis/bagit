@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     filterByTown(townSlug) {
-      console.log('filter by vicinity to town ', townSlug)
+      // console.log('filter by vicinity to town ', townSlug)
       let filters = {
         town: townSlug,
       }
@@ -47,25 +47,6 @@ export default {
     isSelected(townSlug) {
       return this.selectedTown === townSlug
     },
-    // toggleAreaSelection(areaId) {
-    //   let areaFilters = [...this.areasSelected]
-    //   if (areaFilters.includes(areaId)) {
-    //     areaFilters = areaFilters.filter((item) => item !== areaId)
-    //   } else {
-    //     areaFilters.push(areaId)
-    //   }
-    //   this.areasSelected = areaFilters
-    // },
-    // filterByArea(areaId) {
-    //   this.toggleAreaSelection(areaId)
-    //   let filters = {
-    //     area: this.areasSelected,
-    //   }
-    //   this.$store.dispatch('hills/filterHillList', filters)
-    // },
-    // isSelected(areaId) {
-    //   return this.hillList.filters.area.includes(areaId)
-    // },
   },
 }
 </script>

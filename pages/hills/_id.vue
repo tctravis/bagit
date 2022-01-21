@@ -3,6 +3,9 @@
     <BasePageTitle
       ><template #title>{{ hill.name }}</template></BasePageTitle
     >
+    <client-only>
+      <BagItButton :hill-id="hill.id" :theme="hill.areaClassName" />
+    </client-only>
     <div class="grid grid-cols-12 gap-4">
       <div class="grid grid-cols-12 gap-4 col-span-12">
         <div class="col-span-12 md:col-span-4">
@@ -13,21 +16,53 @@
             :hill-name="hill.name"
           />
           <HillDetails :hill="hill" />
-          <BagItButton :hill-id="hill.id" :theme="hill.areaClassName" />
+
+          <BaseInfoBar class="flow">
+            <div class="flex flex-row items-center justify-between">
+              <span>OS ref: {{ hill.os_grid_ref }}</span>
+              <span>OS map: {{ hill.os_map }}</span>
+            </div>
+            <div class="flex flex-row items-center justify-between">
+              <BaseButton
+                v-show="mapType === 'aerial'"
+                class="ml-auto"
+                button-class="bg-southern"
+                @click="setMapType('ordnanceSurvey')"
+                >Load OS map view</BaseButton
+              >
+              <BaseButton
+                v-show="mapType === 'ordnanceSurvey'"
+                class="ml-auto"
+                button-class="bg-southern"
+                @click="setMapType('aerial')"
+                >Load aerial view</BaseButton
+              >
+            </div>
+          </BaseInfoBar>
         </div>
         <div class="col-span-12 md:col-span-8">
-          <HillMap :hill="hill" :limit="12" />
-          <BaseInfoBar class="flex flex-row items-center justify-between">
-            <span>OS ref: {{ hill.os_grid_ref }}</span>
-            <span>OS map: {{ hill.os_map }}</span>
-          </BaseInfoBar>
+          <client-only>
+            <HillMap
+              :hill="hill"
+              :limit="nearbyHillsLimit"
+              :map-type="mapType"
+            />
+          </client-only>
         </div>
       </div>
       <div class="col-span-12">
-        <BaseTitle :level="2" :has-decoration="true" :theme="hill.areaClassName"
-          >Nearby Hills</BaseTitle
-        >
-        <NearbyHillsList :hill="hill" :limit="12" />
+        <div class="flex flex-row items-center justify-between">
+          <BaseTitle
+            :level="2"
+            :has-decoration="true"
+            :theme="hill.areaClassName"
+            >Nearby Fells</BaseTitle
+          >
+          <BaseButton @click="loadMoreNearbyHills">Load more fells</BaseButton>
+        </div>
+        <client-only>
+          <NearbyHillsList :hill="hill" :limit="nearbyHillsLimit" />
+        </client-only>
       </div>
     </div>
   </div>
@@ -53,6 +88,13 @@ export default {
     HillMap,
     NearbyHillsList,
     HasBaggedNotice,
+  },
+  data() {
+    return {
+      mapType: 'aerial',
+      baseHillsLimit: 12,
+      nearbyHillsLimit: 12,
+    }
   },
   computed: {
     apikey() {
@@ -81,6 +123,13 @@ export default {
     bagThis() {
       this.setHillToBag(this.hillId)
       this.toggleBagModal()
+    },
+    setMapType(mapType) {
+      this.mapType = mapType
+    },
+    loadMoreNearbyHills() {
+      this.nearbyHillsLimit =
+        parseInt(this.nearbyHillsLimit) + parseInt(this.baseHillsLimit)
     },
   },
   head() {

@@ -71,25 +71,25 @@ module.exports = {
         left: '-5px 0 5px rgba(0, 0, 0, 0.3)',
       },
       zIndex: {
-        '1': 1,
-        '9999': 9999,
+        1: 1,
+        9999: 9999,
       },
       translate: {
-        '105': '105%',
+        105: '105%',
       },
       gridTemplateColumns: {
-        '12': 'repeat(12, minmax(0, 1fr))',
-        'min15rem': 'repeat(auto-fill, minmax(min(15rem, 100%), 1fr))'
+        12: 'repeat(12, minmax(0, 1fr))',
+        min15rem: 'repeat(auto-fill, minmax(min(15rem, 100%), 1fr))',
       },
       height: {
         80: '20rem',
-        '30rem': '30rem'
+        '30rem': '30rem',
       },
       dropShadow: ['hover', 'focus'],
       inset: {
-        '4': '1rem',
-        '8': '2rem',
-        '1/2': '50%'
+        4: '1rem',
+        8: '2rem',
+        '1/2': '50%',
       },
       minWidth: {
         '5rem': '5rem',
@@ -100,7 +100,7 @@ module.exports = {
       },
       maxWidth: {
         '20rem': '20rem',
-      }
+      },
     },
   },
   variants: {

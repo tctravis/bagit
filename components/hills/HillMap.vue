@@ -34,6 +34,15 @@ export default {
       type: Number,
       default: 10,
     },
+    mapType: {
+      type: String,
+      default: 'aerial',
+    },
+  },
+  data() {
+    return {
+      map: null,
+    }
   },
   computed: {
     ...mapState({
@@ -49,6 +58,18 @@ export default {
         : 'An internet connection is required to view maps'
     },
   },
+  watch: {
+    mapType() {
+      console.log('map type')
+      if (!Microsoft && this.map) return false
+      this.map.setView({
+        mapTypeId: Microsoft.Maps.MapTypeId[this.mapType],
+      })
+    },
+  },
+  mounted() {
+    this.loadMap()
+  },
   methods: {
     loadMap() {
       bingMapsInit.then(() => {
@@ -59,36 +80,37 @@ export default {
       const hillMap = this
 
       if (!Microsoft) return false
-      let map = new Microsoft.Maps.Map(this.$refs.bingMap, {
+      this.map = new Microsoft.Maps.Map(this.$refs.bingMap, {
         center: new Microsoft.Maps.Location(this.hill.lat, this.hill.lng),
-        mapTypeId: Microsoft.Maps.MapTypeId.ordnanceSurvey,
-        zoom: 13,
+        mapTypeId: Microsoft.Maps.MapTypeId[hillMap.mapType],
+        // ordnanceSurvey
+        zoom: 12,
         showLocateMeButton: false,
         showMapTypeSelector: false,
         maxZoom: 16,
         minZoom: 9,
       })
-      var center = map.getCenter()
+      var center = this.map.getCenter()
 
       //Create custom Pushpin
       let pin = new Microsoft.Maps.Pushpin(center, {
         title: this.hill.name,
+        // icon: '/icons/mountain.svg',
         // text: this.hill.area,
+        icon: '<svg width="23" height="20" viewBox="0 0 23 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_113_40)"><path d="M11.5 0L23.1913 20.25H-0.191345L11.5 0Z" fill="{color}"/><path d="M11.5 4L16.2631 12.25H6.73686L11.5 4Z" fill="white"/><path d="M9.5 10L14.2631 18.25H4.73686L9.5 10Z" fill="{color}"/></g><defs><clipPath id="clip0_113_40"><rect width="23" height="20" fill="white"/></clipPath></defs></svg>',
         color: theme.colors[this.hill.areaClassName].default,
       })
-      map.entities.push(pin)
-      // Microsoft.Maps.Events.addHandler(pin, 'click', function () {
-      //   hillMap.goToHillPage(this.hill.id)
-      // })
+      this.map.entities.push(pin)
 
       this.nearbyHills.forEach((hill) => {
         // let hillObj = hill.hill
         let hillLoc = new Microsoft.Maps.Location(hill.lat, hill.lng)
         let pin = new Microsoft.Maps.Pushpin(hillLoc, {
           title: hill.name,
+          icon: '<svg width="23" height="20" viewBox="0 0 23 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_113_40)"><path d="M11.5 0L23.1913 20.25H-0.191345L11.5 0Z" fill="{color}"/><path d="M11.5 4L16.2631 12.25H6.73686L11.5 4Z" fill="white"/><path d="M9.5 10L14.2631 18.25H4.73686L9.5 10Z" fill="{color}"/></g><defs><clipPath id="clip0_113_40"><rect width="23" height="20" fill="white"/></clipPath></defs></svg>',
           color: theme.colors[hill.areaClassName].default,
         })
-        map.entities.push(pin)
+        this.map.entities.push(pin)
 
         Microsoft.Maps.Events.addHandler(pin, 'click', function () {
           hillMap.goToHillPage(hill.id)

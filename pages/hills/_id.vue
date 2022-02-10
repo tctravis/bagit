@@ -3,9 +3,8 @@
     <BasePageTitle
       ><template #title>{{ hill.name }}</template></BasePageTitle
     >
-    <client-only>
-      <BagItButton :hill-id="hill.id" :theme="hill.areaClassName" />
-    </client-only>
+
+    <BagItButton :hill-id="hill.id" :theme="hill.areaClassName" />
     <div class="grid grid-cols-12 gap-4">
       <div class="grid grid-cols-12 gap-4 col-span-12">
         <div class="col-span-12 md:col-span-4">
@@ -41,13 +40,7 @@
           </BaseInfoBar>
         </div>
         <div class="col-span-12 md:col-span-8">
-          <client-only>
-            <HillMap
-              :hill="hill"
-              :limit="nearbyHillsLimit"
-              :map-type="mapType"
-            />
-          </client-only>
+          <HillMap :hill="hill" :limit="nearbyHillsLimit" :map-type="mapType" />
         </div>
       </div>
       <div class="col-span-12">
@@ -60,9 +53,8 @@
           >
           <BaseButton @click="loadMoreNearbyHills">Load more fells</BaseButton>
         </div>
-        <client-only>
-          <NearbyHillsList :hill="hill" :limit="nearbyHillsLimit" />
-        </client-only>
+
+        <NearbyHillsList :hill="hill" :limit="nearbyHillsLimit" />
       </div>
     </div>
   </div>

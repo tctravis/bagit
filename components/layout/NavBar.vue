@@ -1,12 +1,10 @@
 <template>
   <header class="h-16 bg-darkgrey text-white fixed left-0 right-0 top-0 z-50">
     <div class="h-16 container flex flex-row items-center justify-between">
-      <div>
-        <nuxt-link to="/">FELL BAGGR</nuxt-link>
+      <div class="flex items-center">
+        <nuxt-link class="font-display text-xl" to="/">FELL BAGGR</nuxt-link>
       </div>
-      <client-only>
-        <TotalBaggedBadge v-if="currentUserId" class="ml-4" />
-      </client-only>
+      <TotalBaggedBadge v-if="currentUserId" class="ml-4" />
 
       <transition
         enter-class="opacity-0"
@@ -42,42 +40,33 @@
           <BaseMenuLink route="/hills/" @click.native="toggleMenu"
             >Find a fell</BaseMenuLink
           >
-          <client-only>
-            <BaseMenuLink
-              v-if="currentUserId"
-              route="/user/dashboard"
-              @click.native="toggleMenu"
-              >Your progress</BaseMenuLink
-            ></client-only
+
+          <BaseMenuLink
+            v-if="currentUserId"
+            route="/user/dashboard"
+            @click.native="toggleMenu"
+            >Your progress</BaseMenuLink
           >
-          <client-only>
-            <BaseMenuLink
-              v-if="currentUserId"
-              route="/user/edit-profile"
-              @click.native="toggleMenu"
-              >Profile</BaseMenuLink
-            >
-          </client-only>
+          <BaseMenuLink
+            v-if="currentUserId"
+            route="/user/edit-profile"
+            @click.native="toggleMenu"
+            >Profile</BaseMenuLink
+          >
         </nav>
       </div>
-
-      <client-only
-        ><nuxt-link
-          v-if="!currentUserId"
-          to="/user/login"
-          class="ml-auto md:ml-4 bg-theme-midgrey button"
-          >Login</nuxt-link
-        ></client-only
+      <nuxt-link
+        v-if="!currentUserId"
+        to="/user/login"
+        class="ml-auto md:ml-4 bg-theme-midgrey button"
+        >Login</nuxt-link
+      ><nuxt-link
+        v-if="currentUserId"
+        to="/user/login"
+        class="ml-auto md:ml-4 bg-theme-midgrey button"
+        @click.native="signOut"
+        >Logout</nuxt-link
       >
-      <client-only
-        ><nuxt-link
-          v-if="currentUserId"
-          to="/user/login"
-          class="ml-auto md:ml-4 bg-theme-midgrey button"
-          @click.native="signOut"
-          >Logout</nuxt-link
-        >
-      </client-only>
       <div class="md:hidden pl-4 py-4 cursor-pointer" @click="toggleMenu">
         <font-awesome-icon :icon="['fa', 'bars']" />
       </div>

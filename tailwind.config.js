@@ -26,7 +26,7 @@ module.exports = {
         default: '#cccccc',
       },
       darkgrey: {
-        default: '#333333',
+        default: '#222222',
       },
       black: '#000000',
       fareastern: {
@@ -65,6 +65,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
+        display: ['"Luckiest Guy"', ...defaultTheme.fontFamily.sans],
         sans: ['Source Sans Pro', ...defaultTheme.fontFamily.sans],
       },
       boxShadow: {

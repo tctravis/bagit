@@ -4,12 +4,13 @@ export default {
    ** See https://nuxtjs.org/api/configuration-mode
    */
   // mode: 'spa',
-  ssr: true,
+  // ssr: true,
+  ssr: false,
   /*
    ** Nuxt target
    ** See https://nuxtjs.org/api/configuration-target
    */
-  target: 'static',
+  // target: 'static',
   /*
    ** Headers of the page
    ** See https://nuxtjs.org/api/configuration-head
@@ -186,7 +187,7 @@ export default {
   // },
   webfontloader: {
     google: {
-      families: ['Source Sans Pro:400,700'],
+      families: ['Luckiest Guy:400', 'Source Sans Pro:400,700'],
     },
   },
   loading: {

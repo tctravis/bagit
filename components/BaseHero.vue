@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col items-center py-12 bg-southern text-white">
-    <BaseTitle><slot name="title" /></BaseTitle>
+    <BaseTitle :is-display-font="true"><slot name="title" /></BaseTitle>
     <p><slot name="strapline" /></p>
     <div><slot name="actions" /></div>
   </div>

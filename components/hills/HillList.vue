@@ -45,12 +45,10 @@
               <template v-slot:label>By area:</template>
               <template v-slot:filters><AreaPills /></template>
             </BaseFilter>
-            <client-only>
-              <BaseFilter v-if="currentUserId" filter-name="fellsByStatus">
-                <template v-slot:label>By bagged status:</template>
-                <template v-slot:filters> <BagStatusPills /></template>
-              </BaseFilter>
-            </client-only>
+            <BaseFilter v-if="currentUserId" filter-name="fellsByStatus">
+              <template v-slot:label>By bagged status:</template>
+              <template v-slot:filters> <BagStatusPills /></template>
+            </BaseFilter>
           </template>
         </BaseInfoBarCollapsible>
       </div>
@@ -87,13 +85,7 @@
 
         <template v-if="filteredHills.length > 0">
           <div class="grid grid-cols-min15rem gap-4">
-            <client-only>
-              <HillCard
-                v-for="hill in sortedHills"
-                :key="hill.id"
-                :hill="hill"
-              />
-            </client-only>
+            <HillCard v-for="hill in sortedHills" :key="hill.id" :hill="hill" />
           </div>
         </template>
         <template v-else>

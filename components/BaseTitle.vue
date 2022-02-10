@@ -17,6 +17,10 @@ export default {
       type: String,
       default: 'dark',
     },
+    isDisplayFont: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -58,6 +62,9 @@ export default {
       }
       if (this.srOnly) {
         classArray.push('sr-only')
+      }
+      if (this.isDisplayFont) {
+        classArray.push('font-display')
       }
       this.titleClasses = this.titleClasses.concat(classArray)
     },

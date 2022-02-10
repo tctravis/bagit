@@ -8,9 +8,7 @@
       <BaseTitle :level="2" :has-decoration="true" class="text-xl"
         >Bagged by area</BaseTitle
       >
-      <client-only>
-        <ChartBaggedByArea />
-      </client-only>
+      <ChartBaggedByArea />
     </section>
     <section>
       <div class="flex flex-row items-center justify-between">
@@ -24,9 +22,7 @@
           </BaseParagraph>
         </TooltipInfo>
       </div>
-      <client-only>
-        <ChartAltitudeLine class="mb-6" />
-      </client-only>
+      <ChartAltitudeLine class="mb-6" />
     </section>
   </div>
 </template>

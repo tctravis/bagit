@@ -70,6 +70,7 @@ export default {
     // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
     '@nuxtjs/tailwindcss',
     '@nuxtjs/moment',
+    '@nuxtjs/svg',
   ],
   /*
    ** Nuxt.js modules
@@ -188,6 +189,7 @@ export default {
   webfontloader: {
     google: {
       families: ['Luckiest Guy:400', 'Source Sans Pro:400,700'],
+      // families: ['Bowlby One:400', 'Source Sans Pro:400,700'],
     },
   },
   loading: {

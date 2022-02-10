@@ -102,6 +102,7 @@ module.exports = {
       maxWidth: {
         '20rem': '20rem',
       },
+      fill: (theme) => theme('colors'),
     },
   },
   variants: {

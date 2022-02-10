@@ -1,11 +1,13 @@
 <template>
   <header class="h-16 bg-darkgrey text-white fixed left-0 right-0 top-0 z-50">
-    <div class="h-16 container flex flex-row items-center justify-between">
+    <div class="h-16 px-2 md:px-6 flex flex-row items-center justify-between">
       <div class="flex items-center">
-        <nuxt-link class="font-display text-xl" to="/">FELL BAGGR</nuxt-link>
+        <FellBaggrLogo class="fill-eastern h-6" />
+        <nuxt-link class="ml-2 font-display text-lg" to="/"
+          >FELL BAGGR</nuxt-link
+        >
       </div>
-      <TotalBaggedBadge v-if="currentUserId" class="ml-4" />
-
+      <TotalBaggedBadge v-if="currentUserId" class="ml-4 md:ml-6" />
       <transition
         enter-class="opacity-0"
         enter-active-class="ease-out transition-medium"
@@ -67,7 +69,7 @@
         @click.native="signOut"
         >Logout</nuxt-link
       >
-      <div class="md:hidden pl-4 py-4 cursor-pointer" @click="toggleMenu">
+      <div class="md:hidden px-4 py-4 cursor-pointer" @click="toggleMenu">
         <font-awesome-icon :icon="['fa', 'bars']" />
       </div>
     </div>
@@ -77,9 +79,11 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 
+import FellBaggrLogo from '~/assets/icons/backpack.svg?inline'
 import TotalBaggedBadge from '@/components/user/badges/TotalBaggedBadge.vue'
 export default {
   components: {
+    FellBaggrLogo,
     TotalBaggedBadge,
   },
   data() {

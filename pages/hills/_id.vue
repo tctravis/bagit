@@ -3,11 +3,10 @@
     <BasePageTitle
       ><template #title>{{ hill.name }}</template></BasePageTitle
     >
-
-    <BagItButton :hill-id="hill.id" :theme="hill.areaClassName" />
     <div class="grid grid-cols-12 gap-4">
       <div class="grid grid-cols-12 gap-4 col-span-12">
-        <div class="col-span-12 md:col-span-4">
+        <div class="flow col-span-12 md:col-span-4">
+          <BagItButton :hill-id="hill.id" :theme="hill.areaClassName" />
           <HasBaggedNotice
             v-if="hasBagged"
             class="mb-4"
@@ -15,40 +14,29 @@
             :hill-name="hill.name"
           />
           <HillDetails :hill="hill" />
-
-          <BaseInfoBar class="flow">
+          <BaseInfoBar class="bg-darkgrey text-white flow">
             <div class="flex flex-row items-center justify-between">
               <span>OS ref: {{ hill.os_grid_ref }}</span>
               <span>OS map: {{ hill.os_map }}</span>
             </div>
-            <div class="flex flex-row items-center justify-between">
-              <BaseButton
-                v-show="mapType === 'aerial'"
-                class="ml-auto"
-                button-class="bg-southern"
-                @click="setMapType('ordnanceSurvey')"
-                >Load OS map view</BaseButton
-              >
-              <BaseButton
-                v-show="mapType === 'ordnanceSurvey'"
-                class="ml-auto"
-                button-class="bg-southern"
-                @click="setMapType('aerial')"
-                >Load aerial view</BaseButton
-              >
-            </div>
           </BaseInfoBar>
         </div>
         <div class="col-span-12 md:col-span-8">
-          <HillMap :hill="hill" :limit="nearbyHillsLimit" :map-type="mapType" />
+          <HillMap
+            :theme="hill.areaClassName"
+            :hill="hill"
+            :limit="nearbyHillsLimit"
+            :map-type="mapType"
+          />
         </div>
       </div>
-      <div class="col-span-12">
+      <div class="flow col-span-12">
         <div class="flex flex-row items-center justify-between">
           <BaseTitle
             :level="2"
             :has-decoration="true"
             :theme="hill.areaClassName"
+            :custom-classes="['text-white']"
             >Nearby Fells</BaseTitle
           >
           <BaseButton @click="loadMoreNearbyHills">Load more fells</BaseButton>
@@ -116,9 +104,9 @@ export default {
       this.setHillToBag(this.hillId)
       this.toggleBagModal()
     },
-    setMapType(mapType) {
-      this.mapType = mapType
-    },
+    // setMapType(mapType) {
+    //   this.mapType = mapType
+    // },
     loadMoreNearbyHills() {
       this.nearbyHillsLimit =
         parseInt(this.nearbyHillsLimit) + parseInt(this.baseHillsLimit)

@@ -1,58 +1,91 @@
 <template>
   <div class="flow">
-    <BaseHero>
-      <template #title>Start bagging Lake District fells today</template>
-      <template #strapline>
-        Use this app to help plan and record your adventures bagging the Lake
-        District fells.</template
-      >
-      <template #actions>
-        <nuxt-link to="/hills">Find a fell to bag</nuxt-link>
-      </template>
-    </BaseHero>
-    <div class="container">
+    <header class="home-hero flex flex-col items-center text-center">
+      <div class="home-hero-title-wrapper w-full pt-12">
+        <BaseTitle :is-display-font="true" :custom-class="['text-6xl']"
+          >Fell Baggr</BaseTitle
+        >
+      </div>
+      <div class="pb-12 container">
+        <p class="text-2xl uppercase font-bold text-white">
+          Plan, record and celebrate your Wainwright bagging adventures
+        </p>
+      </div>
+    </header>
+    <div class="container py-4">
       <BaseCardGrid :max-cards-per-row="3">
-        <BaseCard>
-          <template #title>Find fells to bag</template>
+        <CardWithIcon theme="darkgrey-northwestern">
+          <template #title>Find a fell to bag</template>
+          <template #icon
+            ><IconMountain class="h-6 fill-northwestern"
+          /></template>
           <template #text
             >Browse a list of the 240 Lake District fells featured in Alfred
             Wainwright's classic guides</template
           >
-        </BaseCard>
-        <BaseCard>
+          <template #action
+            ><BaseLinkButton link="/hills" theme="northwestern"
+              >Find a fell</BaseLinkButton
+            ></template
+          >
+        </CardWithIcon>
+        <CardWithIcon theme="darkgrey-eastern">
           <template #title>Record your bags</template>
+          <template #icon><IconBackpack class="fill-eastern" /></template>
           <template #text
             >Create an account to record the fells you've bagged</template
           >
-        </BaseCard>
-        <BaseCard>
+          <template #action
+            ><BaseLinkButton link="/user/register" theme="eastern"
+              >Create an account</BaseLinkButton
+            ></template
+          >
+        </CardWithIcon>
+        <CardWithIcon theme="darkgrey-southern">
           <template #title>Track your progress</template>
+          <template #icon
+            ><IconChart class="h-6 stroke-southern stroke-2 fill-southern"
+          /></template>
           <template #text
             >View charts and graphs celebrating your bagging
             acheivements</template
           >
-        </BaseCard>
+          <template #action
+            ><BaseLinkButton link="/user/register" theme="southern"
+              >Create an account</BaseLinkButton
+            ></template
+          >
+        </CardWithIcon>
       </BaseCardGrid>
     </div>
-    <div class="container">
+    <div class="container py-4">
       <BaseCardGrid :max-cards-per-row="3">
-        <BaseCard theme="northern">
+        <CardWithImage>
+          <template #img>
+            <BaseImg src="cairn.jpg" />
+          </template>
           <template #title>What are fells?</template>
           <template #text
             >A fell (from Old Norse fell, fjall, "mountain") is a high and
             barren landscape feature, such as a mountain or moor-covered
             hill.</template
           >
-        </BaseCard>
-        <BaseCard>
+        </CardWithImage>
+        <CardWithImage>
+          <template #img>
+            <BaseImg src="cairn.jpg" />
+          </template>
           <template #title>What is fell bagging?</template>
           <template #text
             >Peak, hill or fell bagging is an activity in which hikers,
             climbers, and mountaineers attempt to reach a collection of summits,
             published in the form of a list.</template
           >
-        </BaseCard>
-        <BaseCard>
+        </CardWithImage>
+        <CardWithImage>
+          <template #img>
+            <BaseImg src="cairn.jpg" />
+          </template>
           <template #title>What is a Wainwright?</template>
           <template #text
             >The Wainwrights are mountains or hills (locally known as fells) in
@@ -60,7 +93,7 @@
             of Alfred Wainwright's Pictorial Guides to the Lakeland
             Fells.</template
           >
-        </BaseCard>
+        </CardWithImage>
       </BaseCardGrid>
     </div>
   </div>
@@ -69,7 +102,16 @@
 <script>
 import { mapState } from 'vuex'
 
+import IconMountain from '~/assets/icons/mountain.svg?inline'
+import IconBackpack from '~/assets/icons/backpack.svg?inline'
+import IconChart from '~/assets/icons/chart.svg?inline'
+
 export default {
+  components: {
+    IconMountain,
+    IconBackpack,
+    IconChart,
+  },
   computed: {
     ...mapState({
       currentUserId: (state) => state.users.currentUserId,
@@ -90,6 +132,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.home-hero {
+  .home-hero-title-wrapper {
+    min-height: 300px;
+    background-image: url(~assets/img/header-bg-2.svg);
+    background-size: auto 100%;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+  }
+}
 img.bg {
   /* Set rules to fill background */
   min-height: 100%;

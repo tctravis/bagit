@@ -1,5 +1,5 @@
 <template>
-  <div class="py-16">
+  <div class="bg-darkdarkgrey py-16">
     <NavBar />
     <!-- <PageBanner
       :theme="pageTheme"
@@ -7,7 +7,9 @@
       >{{ pageTitle }}</PageBanner
     > -->
     <!-- <div class="container py-4 relative z-0"> -->
-    <Nuxt />
+    <main>
+      <Nuxt />
+    </main>
     <!-- </div> -->
     <!-- <client-only>
       <Footer v-if="currentUserId" />
@@ -20,14 +22,14 @@
 import { mapState } from 'vuex'
 import NavBar from '@/components/layout/NavBar'
 // import PageBanner from '@/components/layout/PageBanner'
-import Footer from '@/components/layout/Footer'
+// import Footer from '@/components/layout/Footer'
 // import BagCreateModal from '@/components/user/BagCreateModal'
 export default {
   transition: '',
   components: {
     NavBar,
     // PageBanner,
-    Footer,
+    // Footer,
     // BagCreateModal,
   },
   computed: {

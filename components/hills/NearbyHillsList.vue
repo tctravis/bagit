@@ -1,12 +1,5 @@
 <template>
   <div class="grid grid-cols-12 gap-4">
-    <!-- <HillListItem
-      v-for="nearbyHill in nearbyHills"
-      :key="nearbyHill.id"
-      :hill="nearbyHill"
-      :hills-bagged="hillsBagged"
-      :distance="nearbyHill.distance"
-    /> -->
     <HillCard
       v-for="nearbyHill in nearbyHills"
       :key="nearbyHill.id"

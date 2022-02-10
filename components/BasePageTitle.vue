@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-row justify-between items-start mb-4 w-full">
-    <h1 class="text-3xl decorated-header">
+    <h1 class="text-3xl text-white decorated-header">
       <slot name="title">Page title</slot>
     </h1>
     <slot name="icon"></slot>

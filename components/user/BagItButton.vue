@@ -19,7 +19,6 @@ export default {
     theme: {
       type: String,
       default: 'primary',
-      required: false,
     },
   },
   data() {
@@ -36,7 +35,7 @@ export default {
       return this.hillsBagged.includes(this.hillId)
     },
     buttonThemeClass() {
-      return this.hasBagged ? 'bg-theme-midgrey' : 'bg-theme-white'
+      return this.hasBagged ? 'bg-theme-darkgrey' : `bg-theme-midgrey`
     },
   },
   methods: {

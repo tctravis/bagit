@@ -17,9 +17,19 @@ export default {
       type: String,
       default: 'dark',
     },
+    areaTheme: {
+      type: String,
+      default: null,
+    },
     isDisplayFont: {
       type: Boolean,
       default: false,
+    },
+    customClasses: {
+      type: Array,
+      default() {
+        return []
+      },
     },
   },
   data() {
@@ -31,8 +41,18 @@ export default {
     this.setDecorationClass()
     this.setThemeClass()
     this.setTailwindClasses()
+    this.setAreaTheme()
+    this.setCustomClasses()
   },
   methods: {
+    setCustomClasses() {
+      this.customClasses.length > 0
+        ? this.titleClasses.push(this.customClasses)
+        : false
+    },
+    setAreaTheme() {
+      this.areaTheme ? this.titleClasses.push(`text-${this.areaTheme}`) : false
+    },
     setThemeClass() {
       this.titleClasses.push('border-theme-' + this.theme)
     },
@@ -42,7 +62,8 @@ export default {
       }
     },
     setTailwindClasses() {
-      let classArray = ['pt-2 mb-4']
+      // let classArray = ['pt-2 mb-4']
+      let classArray = []
       switch (this.level) {
         case 1:
           classArray.push('text-3xl')

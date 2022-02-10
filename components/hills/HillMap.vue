@@ -1,8 +1,8 @@
 <template>
-  <div class="mb-4">
+  <div class="flow">
     <div
       ref="bingMap"
-      class="w-full flex items-center justify-center h-64 md:h-80 lg:h-30rem bg-lightgrey p-2"
+      class="w-full z-1 flex items-center justify-center h-64 md:h-80 lg:h-30rem bg-lightgrey p-2"
     >
       <!-- <p>{{ loadingMessage }}</p> -->
       <template v-if="$nuxt.isOnline">
@@ -11,6 +11,22 @@
       <template v-else>
         <p>You need an internet connection to use the map</p>
       </template>
+    </div>
+    <div class="flex flex-row items-center justify-between">
+      <BaseButton
+        v-show="mapType === 'aerial'"
+        class="ml-auto"
+        :button-class="`bg-${theme}`"
+        @click="setMapType('ordnanceSurvey')"
+        >Load OS map view</BaseButton
+      >
+      <BaseButton
+        v-show="mapType === 'ordnanceSurvey'"
+        class="ml-auto"
+        :button-class="`bg-${theme}`"
+        @click="setMapType('aerial')"
+        >Load aerial view</BaseButton
+      >
     </div>
   </div>
 </template>
@@ -34,14 +50,15 @@ export default {
       type: Number,
       default: 10,
     },
-    mapType: {
+    theme: {
       type: String,
-      default: 'aerial',
+      default: 'southern',
     },
   },
   data() {
     return {
       map: null,
+      mapType: 'aerial',
     }
   },
   computed: {
@@ -122,6 +139,9 @@ export default {
         path: '/hills/' + hillId,
         // path: '/',
       })
+    },
+    setMapType(mapType) {
+      this.mapType = mapType
     },
   },
 }

@@ -3,7 +3,7 @@
     <div class="h-16 px-2 md:px-6 flex flex-row items-center justify-between">
       <div class="flex items-center">
         <FellBaggrLogo class="fill-eastern h-6" />
-        <nuxt-link class="ml-2 font-display text-lg" to="/"
+        <nuxt-link class="ml-2 pt-2 font-display text-lg" to="/"
           >FELL BAGGR</nuxt-link
         >
       </div>

@@ -18,7 +18,7 @@ import { theme } from '~tailwind.config'
 export default {
   props: {
     heightRating: {
-      type: Number,
+      type: String,
       required: true,
     },
     areaClassName: {
@@ -26,9 +26,8 @@ export default {
       required: true,
     },
     height: {
-      type: Number,
-      default: 0,
-      required: false,
+      type: String,
+      default: '0',
     },
     showHeight: {
       type: Boolean,

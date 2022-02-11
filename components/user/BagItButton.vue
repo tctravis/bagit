@@ -13,7 +13,7 @@ import { mapState } from 'vuex'
 export default {
   props: {
     hillId: {
-      type: Number,
+      type: String,
       required: true,
     },
     theme: {

@@ -175,7 +175,7 @@ export const actions = {
           }
         }
 
-        o.heightRating = heightRating
+        o.heightRating = heightRating.toString()
         return o
       })
       commit('SET_HILLS', hills)
@@ -209,6 +209,6 @@ export const getters = {
     return state.totalHills
   },
   getHillById: (state) => (id) => {
-    return state.hills.find((hill) => parseInt(hill.id) === parseInt(id))
+    return state.hills.find((hill) => hill.id === id)
   },
 }

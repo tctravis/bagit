@@ -1,14 +1,7 @@
 <template>
   <div>
     <div class="grid grid-cols-12 gap-4">
-      <div class="col-span-12 lg:col-span-4">
-        <!-- <BaseInfoBar class="col-span-12">
-        <p>
-          Welcome to Fell Baggr, an app to help plan and record your mission to
-          climb some, or all, of the Lake District fells listed in the classic
-          walking guides of A.W. Wainwright.
-        </p>
-      </BaseInfoBar> -->
+      <div class="col-span-12 lg:col-span-4 flow">
         <BaseInfoBar class="col-span-12">
           <h2 class="uppercase font-bold text-lg mb-2">Search</h2>
           <BaseInput
@@ -19,7 +12,7 @@
             placeholder="Search by fell name"
           />
         </BaseInfoBar>
-        <BaseInfoBarCollapsible :show="true" class="col-span-12">
+        <BaseInfoBarCollapsible :show="false" class="col-span-12">
           <template #title
             ><h2 class="uppercase font-bold text-lg">Filters</h2></template
           >
@@ -51,10 +44,16 @@
             </BaseFilter>
           </template>
         </BaseInfoBarCollapsible>
+        <p class="sm:mb-0 text-white">
+          Total matches: {{ totalFilteredHills }}
+        </p>
       </div>
-      <div class="col-span-12 lg:col-span-8">
-        <div class="sm:flex flex-row flex-wrap items-center justify-between">
-          <p class="mb-2 sm:mb-0">Total matches: {{ totalFilteredHills }}</p>
+
+      <div class="flow col-span-12 lg:col-span-8">
+        <!-- <div class="sm:flex flex-row flex-wrap items-center justify-between">
+          <p class="sm:mb-0 text-white">
+            Total matches: {{ totalFilteredHills }}
+          </p>
           <BasePills class="justify-end">
             <BasePill
               :is-active="hillList.sort === 'desc'"
@@ -81,7 +80,7 @@
               >Z-A</BasePill
             >
           </BasePills>
-        </div>
+        </div> -->
 
         <template v-if="filteredHills.length > 0">
           <div class="grid grid-cols-min15rem gap-4">

@@ -48,7 +48,7 @@ export default {
     },
     async createNewBag() {
       this.isBagging = true
-      let addingBag = await this.$store.dispatch('users/createNewBag', {
+      await this.$store.dispatch('users/createNewBag', {
         hill_id: this.hillId,
       })
       // console.log(addingBag, 'bagging')

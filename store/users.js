@@ -290,7 +290,7 @@ export const actions = {
     error
   }, bag) {
     try {
-      const alreadyBagged = state.user.bags.some(userbag => userbag.hill_id === bag.hill_id)
+      const alreadyBagged = state.user.hillsBagged.includes(bag.hill_id)
       if (alreadyBagged) {
         throw 'prebagged'
       }
@@ -305,6 +305,7 @@ export const actions = {
             ...hillDetails
           }
           commit('ADD_NEW_BAG', bagWithDetails)
+
         }).catch((error) => {
           // console.error("Error adding document: ", error);
         })

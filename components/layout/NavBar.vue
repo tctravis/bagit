@@ -1,5 +1,7 @@
 <template>
-  <header class="h-16 bg-darkgrey text-white fixed left-0 right-0 top-0 z-50">
+  <header
+    class="h-16 bg-darkdarkgrey text-white fixed left-0 right-0 top-0 z-50"
+  >
     <div class="h-16 px-2 md:px-6 flex flex-row items-center justify-between">
       <div class="flex items-center">
         <FellBaggrLogo class="fill-eastern h-6" />

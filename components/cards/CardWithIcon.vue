@@ -1,26 +1,23 @@
 <template>
-  <BaseCard :class="cardClasses" class="rounded-lg flow px-4 py-4">
-    <template #header>
-      <div class="flex items-start justify-between">
-        <BaseTitle
-          :area-theme="areaTheme"
-          :level="2"
-          :has-decoration="false"
-          :custom-classes="['font-bold']"
-          ><slot name="title"
-        /></BaseTitle>
-        <slot name="icon" />
-      </div>
-    </template>
-    <template #body>
-      <BaseParagraph><slot name="text" /></BaseParagraph>
-    </template>
-    <template #footer>
-      <div class="flex self-end justify-end">
-        <slot name="action" />
-      </div>
-    </template>
-  </BaseCard>
+  <div
+    class="rounded-lg px-4 py-4 bg-gradient-to-b from-darkdarkgrey to-black text-white flex flex-col"
+  >
+    <div class="flex gap-2 mb-4 items-start justify-between">
+      <BaseTitle
+        :level="2"
+        :header-font-size="3"
+        class="font-bold leading-tight"
+        ><slot name="title"
+      /></BaseTitle>
+      <slot name="icon" />
+    </div>
+    <div class="mb-4">
+      <p><slot name="text" /></p>
+    </div>
+    <div class="flex mt-auto">
+      <slot name="action" />
+    </div>
+  </div>
 </template>
 
 <script>

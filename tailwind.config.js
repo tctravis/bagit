@@ -16,6 +16,9 @@ module.exports = {
       white: {
         default: '#ffffff',
       },
+      lightlightgrey: {
+        default: '#fafafa',
+      },
       lightgrey: {
         default: '#eeeeee',
       },

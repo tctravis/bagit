@@ -52,9 +52,11 @@ export default {
    ** https://nuxtjs.org/guide/plugins
    */
   plugins: [
-    { src: '~/plugins/user.js', ssr: false },
-    '~/plugins/filters.js',
-    '~/plugins/vuelidate.js',
+    // { src: '~/plugins/user.js', mode: 'client' },
+    { src: '~/plugins/filters.js', mode: 'client' },
+    { src: '~/plugins/vuelidate.js', mode: 'client' },
+    // '~/plugins/filters.js',
+    // '~/plugins/vuelidate.js',
   ],
   /*
    ** Auto import components
@@ -204,7 +206,7 @@ export default {
     bingMapsApiKey: process.env.BING_MAPS_API_KEY,
   },
   router: {
-    middleware: ['hills'],
+    middleware: ['hills', 'user'],
   },
   tailwindcss: {
     exposeConfig: true,

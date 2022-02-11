@@ -1,8 +1,11 @@
 <template>
-  <div class="flow">
+  <div class="bg-darkdarkgrey text-white rounded-lg">
+    <div class="flex flex-row items-center justify-between p-4">
+      <h2>Hill Map</h2>
+    </div>
     <div
       ref="bingMap"
-      class="w-full z-1 flex items-center justify-center h-64 md:h-80 lg:h-30rem bg-lightgrey p-2"
+      class="w-full z-1 flex items-center justify-center h-64 md:h-80 lg:h-30rem"
     >
       <!-- <p>{{ loadingMessage }}</p> -->
       <template v-if="$nuxt.isOnline">
@@ -12,7 +15,7 @@
         <p>You need an internet connection to use the map</p>
       </template>
     </div>
-    <div class="flex flex-row items-center justify-between">
+    <div class="flex flex-row items-center justify-between p-4">
       <BaseButton
         v-show="mapType === 'aerial'"
         class="ml-auto"

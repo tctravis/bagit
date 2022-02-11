@@ -6,7 +6,6 @@
     <div class="grid grid-cols-12 gap-4">
       <div class="grid grid-cols-12 gap-4 col-span-12">
         <div class="flow col-span-12 md:col-span-4">
-          <BagItButton :hill-id="hill.id" :theme="hill.areaClassName" />
           <HasBaggedNotice
             v-if="hasBagged"
             class="mb-4"
@@ -14,12 +13,6 @@
             :hill-name="hill.name"
           />
           <HillDetails :hill="hill" />
-          <BaseInfoBar class="bg-darkgrey text-white flow">
-            <div class="flex flex-row items-center justify-between">
-              <span>OS ref: {{ hill.os_grid_ref }}</span>
-              <span>OS map: {{ hill.os_map }}</span>
-            </div>
-          </BaseInfoBar>
         </div>
         <div class="col-span-12 md:col-span-8">
           <HillMap

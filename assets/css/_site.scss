@@ -1,4 +1,9 @@
 /* eslint-disable */
+body {
+  @apply h-screen bg-darkgrey;
+}
+
+
 .form-section {
   @apply rounded bg-lightgrey p-2;
 }

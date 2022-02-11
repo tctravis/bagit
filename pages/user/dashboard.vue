@@ -1,29 +1,11 @@
 <template>
-  <div class="container py-4">
+  <div class="container flow py-4">
     <BasePageTitle><template #title>Dashboard</template></BasePageTitle>
     <section>
       <UserTotalBags />
     </section>
-    <section>
-      <BaseTitle :level="2" :has-decoration="true" class="text-xl"
-        >Bagged by area</BaseTitle
-      >
-      <ChartBaggedByArea />
-    </section>
-    <section>
-      <div class="flex flex-row items-center justify-between">
-        <BaseTitle :level="2" :has-decoration="true" class="text-xl"
-          >Altitude</BaseTitle
-        >
-        <TooltipInfo>
-          <BaseParagraph>
-            'Altitude bagged' is calculated using the prominence (rather than
-            the altitude) of all the Wainwrights you have bagged.
-          </BaseParagraph>
-        </TooltipInfo>
-      </div>
-      <ChartAltitudeLine class="mb-6" />
-    </section>
+    <ChartBaggedByArea />
+    <ChartAltitudeLine />
   </div>
 </template>
 

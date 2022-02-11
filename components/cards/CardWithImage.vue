@@ -13,7 +13,7 @@ export default {
   props: {
     theme: {
       type: String,
-      default: 'black',
+      default: 'default',
     },
   },
   computed: {
@@ -27,7 +27,7 @@ export default {
           cardClasses.push('bg-darkgrey', 'text-white')
           break
         default:
-          cardClasses.push('bg-transparent', 'text-darkgrey')
+          cardClasses.push('bg-transparent', 'text-white')
       }
       return cardClasses.join(' ')
     },

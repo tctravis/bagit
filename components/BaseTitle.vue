@@ -5,104 +5,65 @@ export default {
       type: Number,
       default: 1,
     },
+    headerFontSize: {
+      type: Number,
+      default: null,
+    },
     hasDecoration: {
       type: Boolean,
       default: false,
-    },
-    srOnly: {
-      type: Boolean,
-      default: false,
-    },
-    theme: {
-      type: String,
-      default: 'dark',
-    },
-    areaTheme: {
-      type: String,
-      default: null,
     },
     isDisplayFont: {
       type: Boolean,
       default: false,
     },
-    customClasses: {
-      type: Array,
-      default() {
-        return []
-      },
+    element: {
+      type: String,
+      default: null,
     },
   },
-  data() {
-    return {
-      titleClasses: [],
-    }
-  },
-  mounted() {
-    this.setDecorationClass()
-    this.setThemeClass()
-    this.setTailwindClasses()
-    this.setAreaTheme()
-    this.setCustomClasses()
-  },
-  methods: {
-    setCustomClasses() {
-      this.customClasses.length > 0
-        ? this.titleClasses.push(this.customClasses)
-        : false
-    },
-    setAreaTheme() {
-      this.areaTheme ? this.titleClasses.push(`text-${this.areaTheme}`) : false
-    },
-    setThemeClass() {
-      this.titleClasses.push('border-theme-' + this.theme)
-    },
-    setDecorationClass() {
-      if (this.hasDecoration) {
-        this.titleClasses.push('decorated-header')
-      }
-    },
-    setTailwindClasses() {
-      // let classArray = ['pt-2 mb-4']
-      let classArray = []
-      switch (this.level) {
+  computed: {
+    titleClasses() {
+      const titleClasses = []
+      const fontSizeLevel = this.headerFontSize
+        ? this.headerFontSize
+        : this.level
+      switch (fontSizeLevel) {
         case 1:
-          classArray.push('text-3xl')
+          titleClasses.push('text-3xl')
           break
         case 2:
-          classArray.push('text-2xl')
+          titleClasses.push('text-2xl')
           break
         case 3:
-          classArray.push('text-xl')
+          titleClasses.push('text-xl')
           break
         case 4:
-          classArray.push('text-lg')
+          titleClasses.push('text-lg')
           break
         case 5:
-          classArray.push('text-md')
+          titleClasses.push('text-md')
           break
       }
-      if (this.srOnly) {
-        classArray.push('sr-only')
-      }
       if (this.isDisplayFont) {
-        classArray.push('font-display')
+        titleClasses.push('font-display')
       }
-      this.titleClasses = this.titleClasses.concat(classArray)
+      if (this.hasDecoration) {
+        titleClasses.push('decorated-header')
+      }
+      return titleClasses
     },
   },
-  render: function (createElement) {
-    const titleClasses = this.titleClasses.join(' ')
-
-    const titleObject = {
-      attrs: {
-        class: titleClasses,
-      },
+  render(createElement) {
+    const elDataObject = {
+      class: this.titleClasses,
+      props: {},
     }
-    return createElement(
-      'h' + this.level, // tag name
-      titleObject,
-      this.$slots.default // array of children
-    )
+    if (!this.element) {
+      return createElement('h' + this.level, elDataObject, this.$slots.default)
+    } else {
+      return createElement(this.element, elDataObject, this.$slots.default)
+    }
   },
 }
 </script>

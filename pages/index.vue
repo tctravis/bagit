@@ -1,14 +1,14 @@
 <template>
   <div class="flow">
     <header class="home-hero flex flex-col items-center text-center">
-      <div class="home-hero-title-wrapper w-full pt-12">
-        <BaseTitle :is-display-font="true" :custom-class="['text-6xl']"
+      <div class="home-hero-title-wrapper w-full pt-6">
+        <BaseTitle :is-display-font="true" class="text-6xl"
           >Fell Baggr</BaseTitle
         >
       </div>
-      <div class="pb-12 container">
-        <p class="text-2xl uppercase font-bold text-white">
-          Plan, record and celebrate your Wainwright bagging adventures
+      <div class="pb-6 container">
+        <p class="text-4xl font-bold text-white">
+          Bag y'rself a Wainwright today
         </p>
       </div>
     </header>
@@ -17,7 +17,7 @@
         <CardWithIcon theme="darkgrey-northwestern">
           <template #title>Find a fell to bag</template>
           <template #icon
-            ><IconMountain class="h-6 fill-northwestern"
+            ><IconMountain class="h-6 mt-1 fill-northwestern"
           /></template>
           <template #text
             >Browse a list of the 240 Lake District fells featured in Alfred
@@ -44,7 +44,7 @@
         <CardWithIcon theme="darkgrey-southern">
           <template #title>Track your progress</template>
           <template #icon
-            ><IconChart class="h-6 stroke-southern stroke-2 fill-southern"
+            ><IconChart class="h-8 mt-1 stroke-southern stroke-2 fill-southern"
           /></template>
           <template #text
             >View charts and graphs celebrating your bagging
@@ -135,7 +135,7 @@ export default {
 .home-hero {
   .home-hero-title-wrapper {
     min-height: 300px;
-    background-image: url(~assets/img/header-bg-2.svg);
+    background-image: url(~assets/img/header-bg.svg);
     background-size: auto 100%;
     background-position: bottom center;
     background-repeat: no-repeat;

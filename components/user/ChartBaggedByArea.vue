@@ -1,5 +1,10 @@
 <template>
-  <Chart chart-type="bar" :chart-data="chartData" />
+  <ChartContainer>
+    <template #title>Bagged by area</template>
+    <template #chart
+      ><Chart chart-type="bar" :chart-data="chartData"
+    /></template>
+  </ChartContainer>
 </template>
 
 <script>

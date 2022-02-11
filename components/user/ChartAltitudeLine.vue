@@ -1,7 +1,16 @@
 <template>
-  <div>
-    <LineChart :chart-data="chartData"></LineChart>
-  </div>
+  <ChartContainer>
+    <template #title>Altitude</template>
+    <template #tooltip>
+      <TooltipInfo>
+        <BaseParagraph>
+          'Altitude bagged' is calculated using the prominence (rather than the
+          altitude) of all the Wainwrights you have bagged.
+        </BaseParagraph>
+      </TooltipInfo></template
+    >
+    <template #chart><LineChart :chart-data="chartData"></LineChart></template>
+  </ChartContainer>
 </template>
 
 <script>

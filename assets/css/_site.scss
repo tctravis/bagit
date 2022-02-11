@@ -31,7 +31,7 @@ body {
 }
 
 .collapseNav {
-  @apply shadow-left top-0 right-0 w-64 bg-southern fixed h-full overflow-auto ease-in-out transition-all duration-300 z-50;
+  @apply shadow-left top-0 right-0 w-64 bg-eastern font-bold fixed h-full overflow-auto ease-in-out transition-all duration-300 z-50;
 }
 
 @screen md {

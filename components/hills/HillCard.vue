@@ -18,7 +18,7 @@
             {{ hill.name }}
           </h2>
         </nuxt-link>
-        <AreaIcon class="ml-auto" :hill="hill" />
+        <AreaIcon class="ml-auto" :hill="hill" :has-bagged="hasBagged" />
       </div>
 
       <div v-if="hillDetails" class="flex justify-between items-align">

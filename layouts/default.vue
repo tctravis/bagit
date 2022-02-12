@@ -1,9 +1,7 @@
 <template>
   <div class="h-screen py-16">
     <NavBar />
-    <main>
-      <Nuxt />
-    </main>
+    <Nuxt />
   </div>
 </template>
 

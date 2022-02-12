@@ -6,9 +6,11 @@
         :icon="badgeIcon"
         class="text-4xl"
       />
-      <span v-if="iconText != ''" class="absolute block text-white text-md">{{
-        iconText
-      }}</span>
+      <span
+        v-if="iconText != ''"
+        class="absolute block text-black font-bold text-md"
+        >{{ iconText }}</span
+      >
     </div>
     <span class="px-2" :class="labelClass"><slot>Badge text</slot></span>
   </div>

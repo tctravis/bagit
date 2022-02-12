@@ -1,44 +1,48 @@
 <template>
-  <div class="container py-4">
-    <BasePageTitle
-      ><template #title>{{ hill.name }}</template></BasePageTitle
-    >
-    <div class="grid grid-cols-12 gap-4">
-      <div class="grid grid-cols-12 gap-4 col-span-12">
-        <div class="flow col-span-12 md:col-span-4">
-          <HasBaggedNotice
-            v-if="hasBagged"
-            class="mb-4"
-            :theme="hill.areaClassName"
-            :hill-name="hill.name"
-          />
-          <HillDetails :hill="hill" />
+  <main class="bg-gradient-to-b from-darkgrey to-black">
+    <div class="container py-4">
+      <BasePageTitle
+        ><template #title>{{ hill.name }}</template></BasePageTitle
+      >
+      <div class="grid grid-cols-12 gap-4">
+        <div class="grid grid-cols-12 gap-4 col-span-12">
+          <div class="flow col-span-12 md:col-span-4">
+            <HasBaggedNotice
+              v-if="hasBagged"
+              class="mb-4"
+              :theme="hill.areaClassName"
+              :hill-name="hill.name"
+            />
+            <HillDetails :hill="hill" />
+          </div>
+          <div class="col-span-12 md:col-span-8">
+            <HillMap
+              :theme="hill.areaClassName"
+              :hill="hill"
+              :limit="nearbyHillsLimit"
+              :map-type="mapType"
+            />
+          </div>
         </div>
-        <div class="col-span-12 md:col-span-8">
-          <HillMap
-            :theme="hill.areaClassName"
-            :hill="hill"
-            :limit="nearbyHillsLimit"
-            :map-type="mapType"
-          />
-        </div>
-      </div>
-      <div class="flow col-span-12">
-        <div class="flex flex-row items-center justify-between">
-          <BaseTitle
-            :level="2"
-            :has-decoration="true"
-            :theme="hill.areaClassName"
-            :custom-classes="['text-white']"
-            >Nearby Fells</BaseTitle
-          >
-          <BaseButton @click="loadMoreNearbyHills">Load more fells</BaseButton>
-        </div>
+        <div class="flow col-span-12">
+          <div class="flex flex-row items-center justify-between">
+            <BaseTitle
+              :level="2"
+              :has-decoration="true"
+              :theme="hill.areaClassName"
+              :custom-classes="['text-white']"
+              >Nearby Fells</BaseTitle
+            >
+            <BaseButton @click="loadMoreNearbyHills"
+              >Load more fells</BaseButton
+            >
+          </div>
 
-        <NearbyHillsList :hill="hill" :limit="nearbyHillsLimit" />
+          <NearbyHillsList :hill="hill" :limit="nearbyHillsLimit" />
+        </div>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>

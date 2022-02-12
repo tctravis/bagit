@@ -34,7 +34,9 @@ module.exports = {
       darkdarkgrey: {
         default: '#111111',
       },
-      black: '#000000',
+      black: {
+        default: '#000000',
+      },
       fareastern: {
         default: '#DA0808',
       },

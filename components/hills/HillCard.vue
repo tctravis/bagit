@@ -1,16 +1,10 @@
 <template>
-  <div class="bg-darkgrey text-white rounded-md" :class="hillCardTheme">
+  <div class="bg-darkdarkgrey text-white rounded-md" :class="hillCardTheme">
     <div class="p-2 relative">
       <div
         v-if="hasBagged"
-        class="rounded-md z-10 bg-darkdarkgrey bg-opacity-75 absolute inset-0 flex items-center justify-center"
-      >
-        <p class="hidden text-grey font-bold text-4xl uppercase">
-          <font-awesome-icon :icon="['fa', 'hiking']" /><span class="sr-only"
-            >Bagged</span
-          >
-        </p>
-      </div>
+        class="rounded-md bg-gradient-to-b from-darkdarkgrey to-darkgrey bg-opacity-75 absolute inset-0 flex items-center justify-center"
+      />
 
       <div class="flex relative items-center mb-2">
         <nuxt-link
@@ -32,7 +26,9 @@
           :height-rating="hill.heightRating"
           :area-class-name="hill.areaClassName"
           :height="hill.height_m"
-          :show-height="true"
+          :show-height="hasBagged ? false : true"
+          :has-bagged="hasBagged ? true : false"
+          class="relative z-20"
         ></HeightRating>
 
         <BagItButton
@@ -64,12 +60,10 @@ export default {
     },
     hillDetails: {
       type: Boolean,
-      required: false,
       default: true,
     },
     bagDetails: {
       type: Boolean,
-      required: false,
       default: true,
     },
   },

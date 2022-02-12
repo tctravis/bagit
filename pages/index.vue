@@ -1,13 +1,13 @@
 <template>
-  <div class="flow">
+  <div>
     <header class="home-hero flex flex-col items-center text-center">
       <div class="home-hero-title-wrapper w-full pt-6">
         <BaseTitle :is-display-font="true" class="text-5xl"
           >Fell Baggr</BaseTitle
         >
       </div>
-      <div class="pb-6 container flex">
-        <div class="max-w-lg mx-auto px-4">
+      <div class="container flex pb-6">
+        <div class="mx-auto px-4">
           <BaseTitle :level="2" class="text-white text-2xl font-bold">
             Plan and record your adventures on the Lake District
             fells</BaseTitle
@@ -140,9 +140,9 @@ export default {
 <style lang="scss" scoped>
 .home-hero {
   .home-hero-title-wrapper {
-    min-height: 200px;
+    min-height: 260px;
     background-image: url(~assets/img/header-bg.svg);
-    background-size: auto 100%;
+    background-size: 1600px 260px;
     background-position: bottom center;
     background-repeat: no-repeat;
   }
@@ -150,31 +150,31 @@ export default {
     min-height: 300px;
   }
 }
-img.bg {
-  /* Set rules to fill background */
-  min-height: 100%;
-  min-width: 800px;
+// img.bg {
+//   /* Set rules to fill background */
+//   min-height: 100%;
+//   min-width: 800px;
 
-  /* Set up proportionate scaling */
-  width: 100%;
-  height: auto;
+//   /* Set up proportionate scaling */
+//   width: 100%;
+//   height: auto;
 
-  /* Set up positioning */
-  position: fixed;
-  top: 0;
-  bottom: auto;
-  left: 0;
-}
-@media screen and (max-width: 800px) {
-  /* Specific to this particular image */
-  img.bg {
-    top: auto;
-    bottom: -100px;
-    left: 0;
-    // left: 50%;
-    // margin-left: -400px; /* 50% */
-  }
-}
+//   /* Set up positioning */
+//   position: fixed;
+//   top: 0;
+//   bottom: auto;
+//   left: 0;
+// }
+// @media screen and (max-width: 800px) {
+//   /* Specific to this particular image */
+//   img.bg {
+//     top: auto;
+//     bottom: -100px;
+//     left: 0;
+//     // left: 50%;
+//     // margin-left: -400px; /* 50% */
+//   }
+// }
 /* Sample `apply` at-rules with Tailwind CSS
 .container {
 @apply min-h-screen flex justify-center items-center text-center mx-auto;

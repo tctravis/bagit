@@ -9,7 +9,7 @@
       :style="{ color: iconColor(n) }"
       :icon="['fa', 'mountain']"
     />
-    <span v-if="height" class="ml-2">({{ height }}m)</span>
+    <span v-if="height && showHeight" class="ml-2">({{ height }}m)</span>
   </div>
 </template>
 
@@ -32,17 +32,15 @@ export default {
     showHeight: {
       type: Boolean,
       default: true,
-      required: false,
     },
     hasBagged: {
       type: Boolean,
-      default: false,
       required: false,
     },
   },
   computed: {
     enabledIconColor() {
-      return this.hasBagged ? 'darkgrey' : this.areaClassName
+      return this.hasBagged ? 'midgrey' : this.areaClassName
     },
   },
   methods: {

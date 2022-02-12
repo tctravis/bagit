@@ -2,6 +2,7 @@
   <div class="h-screen py-16">
     <NavBar />
     <Nuxt />
+    <Footer />
   </div>
 </template>
 

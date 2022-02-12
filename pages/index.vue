@@ -2,7 +2,7 @@
   <div>
     <header class="home-hero flex flex-col items-center text-center">
       <div class="home-hero-title-wrapper w-full pt-6">
-        <BaseTitle :is-display-font="true" class="text-5xl"
+        <BaseTitle :is-display-font="false" class="text-5xl uppercase font-bold"
           >Fell Baggr</BaseTitle
         >
       </div>

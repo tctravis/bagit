@@ -1,7 +1,14 @@
 <template>
   <div>
-    <BaseFormFeedback v-if="feedback.message !== ''" :type="feedback.type">{{ feedback.message }}</BaseFormFeedback>
-    <CreateUser @create-user="register">Register</CreateUser>
+    <header class="container">
+      <BasePageTitle><template #title>Register</template></BasePageTitle>
+    </header>
+    <main class="container bg-gradient-to-b from-darkgrey to-black">
+      <BaseFormFeedback v-if="feedback.message !== ''" :type="feedback.type">{{
+        feedback.message
+      }}</BaseFormFeedback>
+      <CreateUser @create-user="register">Register</CreateUser>
+    </main>
   </div>
 </template>
 
@@ -18,6 +25,9 @@ export default {
         message: '',
       },
     }
+  },
+  mounted() {
+    this.$store.dispatch('pages/setPageTitle', 'Register')
   },
   methods: {
     async register(req) {
@@ -42,9 +52,6 @@ export default {
         }
       }
     },
-  },
-  mounted() {
-    this.$store.dispatch('pages/setPageTitle', 'Register')
   },
 }
 </script>

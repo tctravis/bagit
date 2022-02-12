@@ -190,7 +190,8 @@ export default {
   // },
   webfontloader: {
     google: {
-      families: ['Luckiest Guy:400', 'Source Sans Pro:400,700'],
+      families: ['Bakbak One:400', 'Source Sans Pro:400,700'],
+      // families: ['Luckiest Guy:400', 'Source Sans Pro:400,700'],
       // families: ['Bowlby One:400', 'Source Sans Pro:400,700'],
     },
   },

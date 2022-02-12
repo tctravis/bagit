@@ -1,12 +1,9 @@
 <template>
   <div class="h-16 bg-darkdarkgrey text-white fixed left-0 right-0 top-0 z-50">
     <div class="h-16 px-2 md:px-6 flex flex-row items-center justify-between">
-      <div class="flex items-center">
-        <FellBaggrLogo class="fill-eastern h-6" />
-        <nuxt-link class="ml-2 pt-2 font-display text-lg" to="/"
-          >FELL BAGGR</nuxt-link
-        >
-      </div>
+      <nuxt-link class="text-lg font-bold uppercase flex items-center" to="/"
+        ><FellBaggrLogo class="fill-eastern mr-1 h-6" />Fell baggr</nuxt-link
+      >
       <TotalBaggedBadge v-if="currentUserId" class="ml-4 md:ml-6" />
       <transition
         enter-class="opacity-0"

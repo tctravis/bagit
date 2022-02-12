@@ -1,7 +1,11 @@
 <template>
   <div class="container py-4">
-    <BasePageTitle><template #title>Find a fell</template></BasePageTitle>
-    <HillList />
+    <header>
+      <BasePageTitle><template #title>Find a fell</template></BasePageTitle>
+    </header>
+    <main>
+      <HillList />
+    </main>
   </div>
 </template>
 

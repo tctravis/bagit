@@ -1,8 +1,13 @@
 <template>
-  <BaseFieldGroup :label="label" :field-id="fieldId" :is-required="isRequired">
+  <BaseFieldGroup
+    :label="label"
+    :field-id="fieldId"
+    :is-required="isRequired"
+    :label-above="labelAbove"
+  >
     <template v-slot:field>
       <input
-        class="border-eastern border-2 rounded p-1 flex-grow w-full"
+        class="border-eastern text-color-body border-2 rounded p-1 flex-grow w-full"
         :value="value"
         v-bind="$attrs"
         v-on="{
@@ -18,9 +23,22 @@
 export default {
   inheritAttrs: false,
   props: {
-    value: [String, Number],
-    label: String,
-    isRequired: Boolean,
+    value: {
+      type: String,
+      default: null,
+    },
+    label: {
+      type: String,
+      required: true,
+    },
+    isRequired: {
+      type: Boolean,
+      default: false,
+    },
+    labelAbove: {
+      type: Boolean,
+      default: true,
+    },
   },
   computed: {
     fieldId() {

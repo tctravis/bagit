@@ -104,7 +104,7 @@ export const state = () => ({
   totalHills: 0,
   hillList: {
     filters: {
-      area: '',
+      area: [],
       bagged: 'all', // 'bagged', 'unbagged', 'all'
       town: '',
       heightRanges: []

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-row justify-between items-start mb-4 w-full">
+  <div class="flex flex-row justify-between items-start py-4 w-full container">
     <h1 class="text-3xl text-white decorated-header">
       <slot name="title">Page title</slot>
     </h1>

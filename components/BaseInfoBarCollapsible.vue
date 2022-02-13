@@ -4,7 +4,7 @@
       <slot name="title">Info bar title</slot>
       <button @click="toggleInfoBarContent">{{ toggleButtonText }}</button>
     </div>
-    <div :class="showInfoBarContent ? 'block' : 'hidden'">
+    <div class="flow" :class="showInfoBarContent ? 'block' : 'hidden'">
       <slot name="content">Info bar content</slot>
     </div>
   </BaseInfoBar>

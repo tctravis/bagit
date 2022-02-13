@@ -1,30 +1,66 @@
 <template>
   <div>
     <div class="grid grid-cols-12 gap-4">
-      <div class="col-span-12 lg:col-span-4 flow">
+      <div class="col-span-12 md:col-span-4 flow" style="--flow-space: 0.5rem">
         <BaseInfoBar class="col-span-12">
-          <h2 class="uppercase font-bold text-lg mb-2">Search</h2>
+          <h2 class="uppercase font-bold text-lg mb-2 sr-only">Search</h2>
           <BaseInput
             id="hills-search-filter"
             v-model="search"
-            label="By name: "
+            label="Fell name"
             type="text"
             placeholder="Search by fell name"
+            :label-above="false"
           />
         </BaseInfoBar>
-        <BaseInfoBarCollapsible :show="false" class="col-span-12">
-          <template #title
-            ><h2 class="uppercase font-bold text-lg">Filters</h2></template
-          >
+        <BaseInfoBarCollapsible
+          :show="hillList.filters.heightRanges.length > 0"
+          class="col-span-12 flow"
+        >
+          <template #title><h2 class="text-md">Filter by height</h2></template>
           <template #content>
             <BaseFilter
               filter-name="fellsByHeightRange"
+              :show-filter-name="false"
               info="Shows only those fells whose altitudes fall within the selected ranges"
             >
               <template v-slot:label>Height range (m)</template>
               <template v-slot:filters><HeightRangePills /></template>
             </BaseFilter>
+          </template>
+        </BaseInfoBarCollapsible>
+        <BaseInfoBarCollapsible
+          :show="hillList.filters.area.length > 0"
+          class="col-span-12 flow"
+        >
+          <template #title><h2 class="text-md">Filter by area</h2></template>
+          <template #content>
             <BaseFilter
+              filter-name="fellsByArea"
+              :show-filter-name="false"
+              info="Refers to Wainwright's division of the Lakeland fells into 7 geographical areas, each covered in one of his guidebooks."
+            >
+              <template v-slot:label>By area:</template>
+              <template v-slot:filters><AreaPills /></template>
+            </BaseFilter>
+          </template>
+        </BaseInfoBarCollapsible>
+        <BaseInfoBarCollapsible :show="false" class="col-span-12 flow">
+          <template #title
+            ><h2 class="text-md">Sort by nearby town</h2></template
+          >
+          <template #content>
+            <BaseFilter
+              filter-name="fellsByTown"
+              :show-filter-name="false"
+              info="Shows only those fells which are located within 5km (as the crow flies) of the selected town"
+            >
+              <template v-slot:label>Nearest to</template>
+              <template v-slot:filters><VicinityPills /></template>
+            </BaseFilter>
+          </template>
+        </BaseInfoBarCollapsible>
+        <!-- <BaseFilter
               filter-name="fellsByTown"
               info="Shows only those fells which are located within 5km (as the crow flies) of the selected town"
             >
@@ -41,15 +77,25 @@
             <BaseFilter v-if="currentUserId" filter-name="fellsByStatus">
               <template v-slot:label>By bagged status:</template>
               <template v-slot:filters> <BagStatusPills /></template>
+            </BaseFilter> -->
+
+        <!-- <BaseInfoBarCollapsible :show="false" class="col-span-12">
+          <template #title
+            ><h2 class="uppercase font-bold text-lg">Sort</h2></template
+          >
+          <template #content>
+            <BaseFilter
+              filter-name="fellsByTown"
+              info="Shows only those fells which are located within 5km (as the crow flies) of the selected town"
+            >
+              <template v-slot:label>Nearest to</template>
+              <template v-slot:filters><VicinityPills /></template>
             </BaseFilter>
           </template>
-        </BaseInfoBarCollapsible>
-        <p class="sm:mb-0 text-white">
-          Total matches: {{ totalFilteredHills }}
-        </p>
+        </BaseInfoBarCollapsible> -->
       </div>
 
-      <div class="flow col-span-12 lg:col-span-8">
+      <div class="flow col-span-12 md:col-span-8">
         <!-- <div class="sm:flex flex-row flex-wrap items-center justify-between">
           <p class="sm:mb-0 text-white">
             Total matches: {{ totalFilteredHills }}
@@ -81,6 +127,18 @@
             >
           </BasePills>
         </div> -->
+
+        <div class="flex flex-row flex-wrap items-center">
+          <!-- <BasePill class="bg-darkdarkgrey text-white"
+            >Results: {{ totalFilteredHills }}</BasePill
+          > -->
+          <p class="py-2 text-white">{{ totalFilteredHills }} results</p>
+          <BagStatusPills class="ml-auto" />
+          <!-- <BaseFilter v-if="currentUserId" filter-name="fellsByStatus">
+            <template v-slot:label>By bagged status:</template>
+            <template v-slot:filters> <BagStatusPills /></template>
+          </BaseFilter> -->
+        </div>
 
         <template v-if="filteredHills.length > 0">
           <div class="grid grid-cols-min15rem gap-4">

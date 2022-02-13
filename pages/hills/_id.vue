@@ -1,9 +1,11 @@
 <template>
-  <main class="bg-gradient-to-b from-darkgrey to-black">
-    <div class="container py-4">
+  <PageWrapper>
+    <template #header>
       <BasePageTitle
         ><template #title>{{ hill.name }}</template></BasePageTitle
       >
+    </template>
+    <template #main>
       <div class="grid grid-cols-12 gap-4">
         <div class="grid grid-cols-12 gap-4 col-span-12">
           <div class="flow col-span-12 md:col-span-4">
@@ -41,8 +43,8 @@
           <NearbyHillsList :hill="hill" :limit="nearbyHillsLimit" />
         </div>
       </div>
-    </div>
-  </main>
+    </template>
+  </PageWrapper>
 </template>
 
 <script>
@@ -69,8 +71,8 @@ export default {
   data() {
     return {
       mapType: 'aerial',
-      baseHillsLimit: 12,
-      nearbyHillsLimit: 12,
+      baseHillsLimit: 18,
+      nearbyHillsLimit: 18,
     }
   },
   computed: {

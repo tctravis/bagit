@@ -63,6 +63,10 @@ module.exports = {
       },
       error: 'red',
       success: 'green',
+      // text colors
+      color: {
+        body: '#222222',
+      },
     },
     screens: {
       xsm: '400px',

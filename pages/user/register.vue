@@ -1,15 +1,15 @@
 <template>
-  <div>
-    <header class="container">
+  <PageWrapper>
+    <template #header>
       <BasePageTitle><template #title>Register</template></BasePageTitle>
-    </header>
-    <main class="container bg-gradient-to-b from-darkgrey to-black">
+    </template>
+    <template #main>
       <BaseFormFeedback v-if="feedback.message !== ''" :type="feedback.type">{{
         feedback.message
       }}</BaseFormFeedback>
       <CreateUser @create-user="register">Register</CreateUser>
-    </main>
-  </div>
+    </template>
+  </PageWrapper>
 </template>
 
 <script>

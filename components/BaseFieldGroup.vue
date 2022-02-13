@@ -1,9 +1,10 @@
 <template>
-  <div class="w-full sm:flex items-center py-2">
+  <div class="w-full items-center py-2" :class="labelAbove ? '' : 'flex'">
     <label
       v-if="label"
       :for="fieldId"
-      class="block flex-shrink-0 mb-2 sm:mb-0 sm:mr-2"
+      class="flex-shrink-0"
+      :class="labelAbove ? 'block mb-2' : 'mr-2'"
       >{{ label
       }}<span v-if="isRequired" class="text-error ml-1">*</span></label
     >
@@ -14,9 +15,22 @@
 <script>
 export default {
   props: {
-    label: String,
-    fieldId: String,
-    isRequired: Boolean,
+    label: {
+      type: String,
+      required: true,
+    },
+    fieldId: {
+      type: String,
+      required: true,
+    },
+    isRequired: {
+      type: Boolean,
+      default: false,
+    },
+    labelAbove: {
+      type: Boolean,
+      default: true,
+    },
   },
 }
 </script>

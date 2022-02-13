@@ -1,25 +1,34 @@
 <template>
-  <div>
-    <template v-if="currentUserId === ''">
-      <LoggedOutMessage />
+  <PageWrapper>
+    <template #header>
+      <BasePageTitle><template #title>Badges</template></BasePageTitle>
     </template>
-    <template v-else>
-      <BaseInfoBar>
-        Celebrate your progress by collecting milestone badges and challenge
-        awards.
-      </BaseInfoBar>
+    <template #main>
+      <template v-if="currentUserId === ''">
+        <LoggedOutMessage />
+      </template>
+      <template v-else>
+        <BaseInfoBar>
+          Celebrate your progress by collecting milestone badges and challenge
+          awards.
+        </BaseInfoBar>
+      </template>
+      <div class="grid grid-cols-12 gap-4">
+        <div class="col-span-12 sm:col-span-6">
+          <BaseTitle :level="2" :has-decoration="true"
+            >Milestone Badges</BaseTitle
+          >
+          <BadgesMilestones />
+        </div>
+        <div class="col-span-12 sm:col-span-6">
+          <BaseTitle :level="2" :has-decoration="true"
+            >Challenge Awards</BaseTitle
+          >
+          <BadgesChallenges />
+        </div>
+      </div>
     </template>
-    <div class="grid grid-cols-12 gap-4">
-      <div class="col-span-12 sm:col-span-6">
-        <BaseTitle :level="2" :has-decoration="true">Milestone Badges</BaseTitle>
-        <BadgesMilestones />
-      </div>
-      <div class="col-span-12 sm:col-span-6">
-        <BaseTitle :level="2" :has-decoration="true">Challenge Awards</BaseTitle>
-        <BadgesChallenges />
-      </div>
-    </div>
-  </div>
+  </PageWrapper>
 </template>
 
 <script>

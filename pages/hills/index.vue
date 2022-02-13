@@ -1,12 +1,12 @@
 <template>
-  <div class="container py-4">
-    <header>
+  <PageWrapper>
+    <template #header>
       <BasePageTitle><template #title>Find a fell</template></BasePageTitle>
-    </header>
-    <main>
+    </template>
+    <template #main>
       <HillList />
-    </main>
-  </div>
+    </template>
+  </PageWrapper>
 </template>
 
 <script>

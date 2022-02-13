@@ -1,12 +1,16 @@
 <template>
-  <div class="container flow py-4">
-    <BasePageTitle><template #title>Dashboard</template></BasePageTitle>
-    <section>
-      <UserTotalBags />
-    </section>
-    <ChartBaggedByArea />
-    <ChartAltitudeLine />
-  </div>
+  <PageWrapper>
+    <template #header>
+      <BasePageTitle><template #title>Dashboard</template></BasePageTitle>
+    </template>
+    <template #main>
+      <div class="flow">
+        <UserTotalBags />
+        <ChartBaggedByArea />
+        <ChartAltitudeLine />
+      </div>
+    </template>
+  </PageWrapper>
 </template>
 
 <script>

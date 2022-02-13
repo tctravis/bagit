@@ -4,7 +4,7 @@
       v-for="town in sortedTowns"
       :key="town.slug"
       :is-active="isSelected(town.slug)"
-      class="bg-theme-dark"
+      class="bg-northern"
       @click="filterByTown(town.slug)"
       >{{ town.name }}</BasePill
     >

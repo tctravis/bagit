@@ -1,6 +1,6 @@
 <template>
-  <div class="w-full mb-4">
-    <div class="mb-2 flex items-center justify-between">
+  <div class="w-full">
+    <div v-if="showFilterName" class="mb-2 flex items-center justify-between">
       <p :id="filterName">
         <slot name="label">Label</slot>
       </p>
@@ -21,6 +21,10 @@ export default {
       type: String,
       default: null,
       required: false,
+    },
+    showFilterName: {
+      type: Boolean,
+      default: true,
     },
   },
 }

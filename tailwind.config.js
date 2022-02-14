@@ -13,53 +13,56 @@ module.exports = {
       padding: '1rem',
     },
     colors: {
-      white: {
-        default: '#ffffff',
-      },
-      lightlightgrey: {
-        default: '#fafafa',
-      },
-      lightgrey: {
-        default: '#eeeeee',
-      },
-      midgrey: {
-        default: '#666',
-      },
+      white: '#ffffff',
+      black: '#000000',
       grey: {
-        default: '#cccccc',
-      },
-      darkgrey: {
-        DEFAULT: '#222222',
-      },
-      darkdarkgrey: {
-        default: '#111111',
-      },
-      black: {
-        default: '#000000',
+        darkest: 'var(--grey-darkest)',
+        dark: 'var(--grey-dark)',
+        DEFAULT: 'var(--grey-lightest)',
+        light: 'var(--grey-light)',
+        lightest: 'var(--grey-lightest)',
       },
       fareastern: {
-        default: '#DA0808',
+        light: 'var(--fareastern-light)',
+        DEFAULT: 'var(--fareastern)',
+        dark: 'var(--fareastern-dark)',
+        contrast: 'var(--fareastern-contrast)',
       },
       eastern: {
-        default: '#82C606',
+        light: 'var(--eastern-light)',
+        DEFAULT: 'var(--eastern)',
+        dark: 'var(--eastern-dark)',
+        contrast: 'var(--eastern-contrast)',
       },
       central: {
-        default: '#0888DC',
+        light: 'var(--central-light)',
+        DEFAULT: 'var(--central)',
+        dark: 'var(--central-dark)',
+        contrast: 'var(--central-contrast)',
       },
       southern: {
-        default: '#F56C0A',
+        light: 'var(--southern-light)',
+        DEFAULT: 'var(--southern)',
+        dark: 'var(--southern-dark)',
+        contrast: 'var(--southern-contrast)',
       },
       northern: {
-        default: '#9D2C19',
+        light: 'var(--northern-light)',
+        DEFAULT: 'var(--northern)',
+        dark: 'var(--northern-dark)',
+        contrast: 'var(--northern-contrast)',
       },
       northwestern: {
-        default: '#F5D201',
+        light: 'var(--northwestern-light)',
+        DEFAULT: 'var(--northwestern)',
+        dark: 'var(--northwestern-dark)',
+        contrast: 'var(--northwestern-contrast)',
       },
       western: {
-        default: '#099D0D',
-      },
-      primary: {
-        default: '#099D0D',
+        light: 'var(--western-light)',
+        DEFAULT: 'var(--western)',
+        dark: 'var(--western-dark)',
+        contrast: 'var(--western-contrast)',
       },
       error: 'red',
       success: 'green',
@@ -68,6 +71,62 @@ module.exports = {
         body: '#222222',
       },
     },
+    // colors: {
+    //   white: {
+    //     default: '#ffffff',
+    //   },
+    //   lightlightgrey: {
+    //     default: '#fafafa',
+    //   },
+    //   lightgrey: {
+    //     default: '#eeeeee',
+    //   },
+    //   midgrey: {
+    //     default: '#666',
+    //   },
+    //   grey: {
+    //     default: '#cccccc',
+    //   },
+    //   darkgrey: {
+    //     DEFAULT: '#222222',
+    //   },
+    //   darkdarkgrey: {
+    //     default: '#111111',
+    //   },
+    //   black: {
+    //     default: '#000000',
+    //   },
+    //   fareastern: {
+    //     default: '#DA0808',
+    //   },
+    //   eastern: {
+    //     default: '#82C606',
+    //   },
+    //   central: {
+    //     default: '#0888DC',
+    //   },
+    //   southern: {
+    //     default: '#F56C0A',
+    //   },
+    //   northern: {
+    //     default: '#9D2C19',
+    //   },
+    //   northwestern: {
+    //     default: '#F5D201',
+    //   },
+    //   western: {
+    //     default: '#099D0D',
+    //   },
+    //   primary: {
+    //     default: '#099D0D',
+    //   },
+    //   error: 'red',
+    //   success: 'green',
+    //   // text colors
+    //   color: {
+    //     body: '#222222',
+    //   },
+    // },
     screens: {
       xsm: '400px',
       sm: '640px',

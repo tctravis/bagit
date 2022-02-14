@@ -15,7 +15,7 @@
         </div>
       </div>
     </header>
-    <main class="bg-gradient-to-b from-darkgrey to-black">
+    <main class="bg-gradient-to-b from-grey-dark to-black">
       <div class="container py-4">
         <BaseCardGrid :max-cards-per-row="3">
           <CardsCardWithIcon theme="darkgrey-northwestern">

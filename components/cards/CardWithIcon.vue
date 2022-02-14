@@ -25,18 +25,18 @@ export default {
   props: {
     theme: {
       type: String,
-      default: 'dark-darkgrey',
+      default: 'grey-darkest',
     },
   },
   computed: {
     cardClasses() {
       const cardClasses = []
       switch (this.baseTheme) {
-        case 'dark':
+        case 'black':
           cardClasses.push('bg-black', 'text-white')
           break
-        case 'darkgrey':
-          cardClasses.push('bg-grey-dark', 'text-white')
+        case 'grey-darkest':
+          cardClasses.push('bg-grey-darkest', 'text-white')
           break
         default:
           cardClasses.push('bg-lightgrey', 'text-color-body')

@@ -29,7 +29,7 @@ module.exports = {
         default: '#cccccc',
       },
       darkgrey: {
-        default: '#222222',
+        DEFAULT: '#222222',
       },
       darkdarkgrey: {
         default: '#111111',

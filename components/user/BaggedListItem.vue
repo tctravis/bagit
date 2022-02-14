@@ -4,7 +4,7 @@
       class="flex flex-row justify-start items-center cursor-pointer"
       @click="toggleDetails"
     >
-      <AreaIcon
+      <HillsAreaIcon
         :area="bag.area"
         :class="('bg-' + bag.areaName) | removeSpaces | lowercase"
       />
@@ -24,7 +24,7 @@
       v-if="detailsExpanded"
       class="w-full flex items-start bg-lightgrey p-2 rounded mt-2"
     >
-      <p class="whitespace-no-wrap mr-4">
+      <p class="whitespace-nowrap mr-4">
         {{ $moment(bag.date).format('DD MM YY') }}
       </p>
       <div>
@@ -47,11 +47,7 @@
 </template>
 
 <script>
-import AreaIcon from '@/components/hills/AreaIcon.vue'
 export default {
-  components: {
-    AreaIcon,
-  },
   props: {
     bag: {
       type: Object,

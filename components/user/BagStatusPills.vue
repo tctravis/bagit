@@ -2,19 +2,19 @@
   <BasePills>
     <BasePill
       :is-active="this.bagStatusSelected === 'all'"
-      class="bg-darkdarkgrey text-white"
+      class="bg-grey-darkest text-white"
       @click="filterByBagged('all')"
       >All</BasePill
     >
     <BasePill
       :is-active="this.bagStatusSelected === 'unbagged'"
-      class="bg-darkdarkgrey text-white"
+      class="bg-grey-darkest text-white"
       @click="filterByBagged('unbagged')"
       >Unbagged</BasePill
     >
     <BasePill
       :is-active="this.bagStatusSelected === 'bagged'"
-      class="bg-darkdarkgrey text-white"
+      class="bg-grey-darkest text-white"
       @click="filterByBagged('bagged')"
       >Bagged</BasePill
     >

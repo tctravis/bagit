@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-row items-start mb-4">
-    <AreaIcon :hill="hill" />
+    <HillsAreaIcon :hill="hill" />
     <h1 class="text-2xl ml-2">
       <slot>Page title</slot>
     </h1>
@@ -18,12 +18,8 @@
 
 <script>
 import { mapActions } from 'vuex'
-import AreaIcon from '@/components/hills/AreaIcon.vue'
 
 export default {
-  components: {
-    AreaIcon,
-  },
   props: {
     hill: {
       type: Object,

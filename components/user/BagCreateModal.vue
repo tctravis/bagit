@@ -3,10 +3,10 @@
     <template v-slot:header>Bag it!</template>
     <template v-slot:body>
       <template v-if="currentUserId !== ''">
-        <BagCreate :hill="hillToBag" />
+        <UserBagCreate :hill="hillToBag" />
       </template>
       <template v-else>
-        <LoggedOutMessage />
+        <UserLoggedOutMessage />
       </template>
     </template>
     <template v-slot:footer></template>
@@ -15,14 +15,8 @@
 
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
-import LoggedOutMessage from '@/components/user/LoggedOutMessage.vue'
-import BagCreate from '@/components/user/BagCreate.vue'
 
 export default {
-  components: {
-    BagCreate,
-    LoggedOutMessage,
-  },
   computed: {
     ...mapState({
       currentUserId: (state) => state.users.currentUserId,

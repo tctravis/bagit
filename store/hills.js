@@ -100,7 +100,7 @@ export const state = () => ({
   ],
   highestHill: 0,
   lowestHill: 0,
-  maxHeightRating: 5,
+  maxHillsHeightRating: 5,
   totalHills: 0,
   hillList: {
     filters: {
@@ -166,9 +166,9 @@ export const actions = {
         o.areaClassName = fullAreaName.toLowerCase().replace(/ /g, '')
 
         let heightRating = 0
-        const heightIncrement = Math.ceil((state.highestHill - state.lowestHill) / state.maxHeightRating)
+        const heightIncrement = Math.ceil((state.highestHill - state.lowestHill) / state.maxHillsHeightRating)
 
-        for (let i = 1; i <= state.maxHeightRating; i++) {
+        for (let i = 1; i <= state.maxHillsHeightRating; i++) {
           if (hill.height_m < (state.lowestHill + (heightIncrement * i))) {
             heightRating = i
             break

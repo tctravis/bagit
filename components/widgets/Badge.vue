@@ -8,7 +8,7 @@
       />
       <span
         v-if="iconText != ''"
-        class="absolute block text-black font-bold text-md"
+        class="absolute block text-color-body font-bold text-md"
         >{{ iconText }}</span
       >
     </div>

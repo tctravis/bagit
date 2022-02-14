@@ -1,20 +1,17 @@
 <template>
-  <ChartContainer>
+  <ChartsChartContainer>
     <template #title>Bagged by area</template>
     <template #chart
-      ><Chart chart-type="bar" :chart-data="chartData"
+      ><ChartsChart chart-type="bar" :chart-data="chartData"
     /></template>
-  </ChartContainer>
+  </ChartsChartContainer>
 </template>
 
 <script>
 import { theme } from '~tailwind.config'
-import Chart from '@/components/charts/Chart.vue'
 import { mapState } from 'vuex'
+
 export default {
-  components: {
-    Chart,
-  },
   computed: {
     ...mapState({
       hills: (state) => state.hills.hills,
@@ -56,18 +53,20 @@ export default {
         bgColors: [],
       }
       this.sortedAreas.forEach((area) => {
-        areaThemeData.bgColors.push(theme.colors[area.className].default)
+        const areaColor = this.$utilities.getThemeColor(area.className)
+        areaThemeData.bgColors.push(areaColor)
       })
       return areaThemeData
     },
     chartData() {
+      const defaultChartColor = this.$utilities.getThemeColor('grey')
       let data = {
         labels: this.chartLabels,
         datasets: [
           {
             label: 'Total hills',
             data: this.totalHillsInArea,
-            backgroundColor: theme.colors.grey.default,
+            backgroundColor: defaultChartColor,
           },
           {
             label: 'Total bags',

@@ -2,7 +2,7 @@
   <div>
     <template v-if="sortedBagsDesc.length > 0">
       <div class="grid grid-cols-12 gap-4">
-        <HillCard
+        <HillsHillCard
           v-for="(hill, index) in bagsList"
           :key="index"
           :hill="hill"
@@ -18,13 +18,8 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaggedListItem from '@/components/user/BaggedListItem.vue'
-import HillCard from '@/components/hills/HillCard.vue'
+
 export default {
-  components: {
-    BaggedListItem,
-    HillCard,
-  },
   props: {
     bagsToShow: {
       type: Number,

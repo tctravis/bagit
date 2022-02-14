@@ -1,5 +1,5 @@
 <template>
-  <section class="flow rounded p-2 md:p-4 bg-lightgrey text-black">
+  <section class="flow rounded p-2 md:p-4 bg-grey-light text-color-body">
     <div class="flex flex-row items-center justify-between">
       <BaseTitle :level="2" :header-font-size="2" :has-decoration="true"
         ><slot name="title"

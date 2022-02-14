@@ -1,17 +1,14 @@
 <template>
   <div>
-    <PieChart :chart-data="chartData"></PieChart>
+    <ChartsPieChart :chart-data="chartData"></ChartsPieChart>
   </div>
 </template>
 
 <script>
 import { theme } from '~tailwind.config'
-import PieChart from '@/components/charts/PieChart.vue'
 import { mapGetters } from 'vuex'
+
 export default {
-  components: {
-    PieChart,
-  },
   props: {
     bags: {
       Type: Array,
@@ -29,12 +26,12 @@ export default {
             label: 'Wainwrights Bagged',
             data: [totalBags, totalUnclimbed],
             backgroundColor: [
-              theme.colors.western.default,
-              theme.colors.grey.default,
+              theme.colors.western.DEFAULT,
+              theme.colors.grey.DEFAULT,
             ],
             hoverBackgroundColor: [
-              theme.colors.central.default,
-              theme.colors.lightgrey.default,
+              theme.colors.central.DEFAULT,
+              theme.colors.lightgrey.DEFAULT,
             ],
           },
         ],

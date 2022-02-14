@@ -1,88 +1,88 @@
 <template>
   <div class="mb-4">
-    <BadgeRack>
-      <Badge
+    <WidgetsBadgeRack>
+      <WidgetsBadge
         class="w-1/2"
         :icon-class="totalBags >= 10 ? 'text-southern' : 'text-grey'"
-        :label-class="totalBags >= 10 ? 'text-darkgrey' : 'text-grey'"
+        :label-class="totalBags >= 10 ? 'text-color-body' : 'text-grey'"
         icon-text="10"
-        >10 bags</Badge
+        >10 bags</WidgetsBadge
       >
-      <Badge
+      <WidgetsBadge
         class="w-1/2"
         :icon-class="totalBags >= 20 ? 'text-eastern' : 'text-grey'"
-        :label-class="totalBags >= 20 ? 'text-darkgrey' : 'text-grey'"
+        :label-class="totalBags >= 20 ? 'text-color-body' : 'text-grey'"
         icon-text="20"
-        >20 bags</Badge
+        >20 bags</WidgetsBadge
       >
-      <Badge
+      <WidgetsBadge
         class="w-1/2"
         :icon-class="totalBags >= 50 ? 'text-northern' : 'text-grey'"
-        :label-class="totalBags >= 50 ? 'text-darkgrey' : 'text-grey'"
+        :label-class="totalBags >= 50 ? 'text-color-body' : 'text-grey'"
         icon-text="50"
-        >50 bags</Badge
+        >50 bags</WidgetsBadge
       >
-      <Badge
+      <WidgetsBadge
         class="w-1/2"
         :icon-class="totalBags >= 100 ? 'text-northwestern' : 'text-grey'"
-        :label-class="totalBags >= 100 ? 'text-darkgrey' : 'text-grey'"
+        :label-class="totalBags >= 100 ? 'text-color-body' : 'text-grey'"
         icon-text="100"
-        >100 bags</Badge
+        >100 bags</WidgetsBadge
       >
-      <Badge
+      <WidgetsBadge
         class="w-1/2"
         :icon-class="totalBags >= 150 ? 'text-western' : 'text-grey'"
-        :label-class="totalBags >= 150 ? 'text-darkgrey' : 'text-grey'"
+        :label-class="totalBags >= 150 ? 'text-color-body' : 'text-grey'"
         icon-text="150"
-        >150 bags</Badge
+        >150 bags</WidgetsBadge
       >
-      <Badge
+      <WidgetsBadge
         class="w-1/2"
         :icon-class="totalBags >= 200 ? 'text-fareastern' : 'text-grey'"
-        :label-class="totalBags >= 200 ? 'text-darkgrey' : 'text-grey'"
+        :label-class="totalBags >= 200 ? 'text-color-body' : 'text-grey'"
         icon-text="200"
-        >200 bags</Badge
+        >200 bags</WidgetsBadge
       >
-    </BadgeRack>
+    </WidgetsBadgeRack>
     <div
       class="rounded px-2 pt-2"
       :class="totalBags === totalHills ? 'bg-central' : 'bg-lightgrey'"
     >
-      <Badge
+      <WidgetsBadge
         class="justify-center"
         :icon-class="totalBags === totalHills ? 'text-white' : 'text-grey'"
         :label-class="
           totalBags === totalHills ? 'text-white text-lg' : 'text-grey text-lg'
         "
         :badge-icon="['fa', 'trophy']"
-        >Bagged 'em all!</Badge
+        >Bagged 'em all!</WidgetsBadge
       >
     </div>
     <BaseTitle :level="3">Challenges</BaseTitle>
     <div>
-      <Badge
+      <WidgetsBadge
         :icon-class="hasBagged([1, 10]) ? 'text-southern' : 'text-grey'"
-        :label-class="hasBagged([1, 10]) ? 'text-darkgrey' : 'text-grey'"
+        :label-class="hasBagged([1, 10]) ? 'text-color-body' : 'text-grey'"
         :badge-icon="['fa', 'ribbon']"
-        >10 highest fells bagged</Badge
+        >10 highest fells bagged</WidgetsBadge
       >
-      <Badge
+      <WidgetsBadge
         :icon-class="mostBagsInADay >= 5 ? 'text-southern' : 'text-grey'"
-        :label-class="mostBagsInADay >= 5 ? 'text-darkgrey' : 'text-grey'"
+        :label-class="mostBagsInADay >= 5 ? 'text-color-body' : 'text-grey'"
         :badge-icon="['fa', 'ribbon']"
-        >5 bags in a day</Badge
+        >5 bags in a day</WidgetsBadge
       >
-      <Badge
+      <WidgetsBadge
         :icon-class="mostBagsInADay >= 10 ? 'text-southern' : 'text-grey'"
-        :label-class="mostBagsInADay >= 10 ? 'text-darkgrey' : 'text-grey'"
+        :label-class="mostBagsInADay >= 10 ? 'text-color-body' : 'text-grey'"
         :badge-icon="['fa', 'ribbon']"
-        >10 bags in a day</Badge
+        >10 bags in a day</WidgetsBadge
       >
-      <Badge
+      <WidgetsBadge
         :icon-class="bagsInEachArea ? 'text-southern' : 'text-grey'"
-        :label-class="bagsInEachArea ? 'text-darkgrey' : 'text-grey'"
+        :label-class="bagsInEachArea ? 'text-color-body' : 'text-grey'"
         :badge-icon="['fa', 'ribbon']"
-        >At least 1 bag in each area</Badge
+        >At least 1 bag in each area</WidgetsBadge
       >
     </div>
   </div>
@@ -91,14 +91,8 @@
 <script>
 import calcMode from '@/utils/calcMode.js'
 import { mapGetters, mapState } from 'vuex'
-import BadgeRack from '@/components/widgets/BadgeRack.vue'
-import Badge from '@/components/widgets/Badge.vue'
 
 export default {
-  components: {
-    Badge,
-    BadgeRack,
-  },
   data() {
     return {}
   },

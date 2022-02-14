@@ -1,26 +1,22 @@
 <template>
-  <ChartContainer>
+  <ChartsChartContainer>
     <template #title>Altitude</template>
     <template #tooltip>
-      <TooltipInfo>
+      <WidgetsTooltipInfo>
         <BaseParagraph>
           'Altitude bagged' is calculated using the prominence (rather than the
           altitude) of all the Wainwrights you have bagged.
         </BaseParagraph>
-      </TooltipInfo></template
+      </WidgetsTooltipInfo></template
     >
-    <template #chart><LineChart :chart-data="chartData"></LineChart></template>
-  </ChartContainer>
+    <template #chart><ChartsLineChart :chart-data="chartData" /></template>
+  </ChartsChartContainer>
 </template>
 
 <script>
-// import { theme } from '~tailwind.config'
-import LineChart from '@/components/charts/LineChart.vue'
 import { mapState } from 'vuex'
+
 export default {
-  components: {
-    LineChart,
-  },
   computed: {
     ...mapState({
       userBags: (state) => state.users.user.bags,

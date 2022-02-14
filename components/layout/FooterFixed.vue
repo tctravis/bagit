@@ -1,21 +1,21 @@
 <template>
   <footer
-    class="z-50 h-16 fixed bg-darkgrey text-white left-0 right-0 bottom-0 z-1 flex flex-row items-center"
+    class="z-50 h-16 fixed bg-grey-dark text-white left-0 right-0 bottom-0 z-1 flex flex-row items-center"
   >
     <div class="container">
       <div v-if="currentUserId">
-        <TotalBaggedBadge />
+        <UserTotalBaggedBadge />
         <div
           v-if="showMilestones"
           class="container flex flex-row items-center justify-between"
         >
           <div class="flex flex-row items-center">
-            <MilestoneBadge :target="10" class="mr-2" />
-            <MilestoneBadge :target="20" class="mr-2" />
-            <MilestoneBadge :target="50" class="mr-2" />
-            <MilestoneBadge :target="100" class="mr-2" />
-            <MilestoneBadge :target="150" class="mr-2" />
-            <MilestoneBadge :target="214" class="mr-2" />
+            <UserMilestoneBadge :target="10" class="mr-2" />
+            <UserMilestoneBadge :target="20" class="mr-2" />
+            <UserMilestoneBadge :target="50" class="mr-2" />
+            <UserMilestoneBadge :target="100" class="mr-2" />
+            <UserMilestoneBadge :target="150" class="mr-2" />
+            <UserMilestoneBadge :target="214" class="mr-2" />
           </div>
         </div>
       </div>
@@ -28,13 +28,8 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
-import MilestoneBadge from '@/components/user/badges/MilestoneBadge.vue'
-import TotalBaggedBadge from '@/components/user/badges/TotalBaggedBadge.vue'
+
 export default {
-  components: {
-    MilestoneBadge,
-    TotalBaggedBadge,
-  },
   data() {
     return {
       showMilestones: false,

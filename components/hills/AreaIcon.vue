@@ -23,7 +23,7 @@ export default {
     areaIconClass() {
       let themeClass = null
       if (this.hasBagged) {
-        themeClass = 'bg-midgrey'
+        themeClass = 'bg-grey'
       } else {
         let areaClassName = this.$options.filters.removeSpaces(
           this.hill.areaName

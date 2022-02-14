@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper>
+  <LayoutPageWrapper>
     <template #header>
       <BasePageTitle
         ><template #title>{{ hill.name }}</template></BasePageTitle
@@ -9,16 +9,16 @@
       <div class="grid grid-cols-12 gap-4">
         <div class="grid grid-cols-12 gap-4 col-span-12">
           <div class="flow col-span-12 md:col-span-4">
-            <HasBaggedNotice
+            <UserHasBaggedNotice
               v-if="hasBagged"
               class="mb-4"
               :theme="hill.areaClassName"
               :hill-name="hill.name"
             />
-            <HillDetails :hill="hill" />
+            <HillsHillDetails :hill="hill" />
           </div>
           <div class="col-span-12 md:col-span-8">
-            <HillMap
+            <HillsHillMap
               :theme="hill.areaClassName"
               :hill="hill"
               :limit="nearbyHillsLimit"
@@ -40,34 +40,17 @@
             >
           </div>
 
-          <NearbyHillsList :hill="hill" :limit="nearbyHillsLimit" />
+          <HillsNearbyHillsList :hill="hill" :limit="nearbyHillsLimit" />
         </div>
       </div>
     </template>
-  </PageWrapper>
+  </LayoutPageWrapper>
 </template>
 
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
 
-import BagItButton from '@/components/user/BagItButton.vue'
-import HillDetails from '@/components/hills/HillDetails.vue'
-// import HillPageTitle from '@/components/hills/HillPageTitle.vue'
-// import HeightRating from '@/components/hills/HeightRating.vue'
-import HillMap from '@/components/hills/HillMap.vue'
-import NearbyHillsList from '@/components/hills/NearbyHillsList.vue'
-import HasBaggedNotice from '@/components/user/HasBaggedNotice.vue'
-
 export default {
-  components: {
-    BagItButton,
-    // HeightRating,
-    // HillPageTitle,
-    HillDetails,
-    HillMap,
-    NearbyHillsList,
-    HasBaggedNotice,
-  },
   data() {
     return {
       mapType: 'aerial',

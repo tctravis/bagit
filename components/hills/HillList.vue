@@ -25,7 +25,7 @@
               info="Shows only those fells whose altitudes fall within the selected ranges"
             >
               <template v-slot:label>Height range (m)</template>
-              <template v-slot:filters><HeightRangePills /></template>
+              <template v-slot:filters><HillsHeightRangePills /></template>
             </BaseFilter>
           </template>
         </BaseInfoBarCollapsible>
@@ -41,7 +41,7 @@
               info="Refers to Wainwright's division of the Lakeland fells into 7 geographical areas, each covered in one of his guidebooks."
             >
               <template v-slot:label>By area:</template>
-              <template v-slot:filters><AreaPills /></template>
+              <template v-slot:filters><HillsAreaPills /></template>
             </BaseFilter>
           </template>
         </BaseInfoBarCollapsible>
@@ -56,7 +56,7 @@
               info="Shows only those fells which are located within 5km (as the crow flies) of the selected town"
             >
               <template v-slot:label>Nearest to</template>
-              <template v-slot:filters><VicinityPills /></template>
+              <template v-slot:filters><HillsVicinityPills /></template>
             </BaseFilter>
           </template>
         </BaseInfoBarCollapsible>
@@ -129,11 +129,11 @@
         </div> -->
 
         <div class="flex flex-row flex-wrap items-center">
-          <!-- <BasePill class="bg-darkdarkgrey text-white"
+          <!-- <BasePill class="bg-grey-darkest text-white"
             >Results: {{ totalFilteredHills }}</BasePill
           > -->
           <p class="py-2 text-white">{{ totalFilteredHills }} results</p>
-          <BagStatusPills class="ml-auto" />
+          <UserBagStatusPills class="ml-auto" />
           <!-- <BaseFilter v-if="currentUserId" filter-name="fellsByStatus">
             <template v-slot:label>By bagged status:</template>
             <template v-slot:filters> <BagStatusPills /></template>
@@ -142,7 +142,11 @@
 
         <template v-if="filteredHills.length > 0">
           <div class="grid grid-cols-min15rem gap-4">
-            <HillCard v-for="hill in sortedHills" :key="hill.id" :hill="hill" />
+            <HillsHillCard
+              v-for="hill in sortedHills"
+              :key="hill.id"
+              :hill="hill"
+            />
           </div>
         </template>
         <template v-else>
@@ -159,23 +163,9 @@
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
 
-import AreaPills from '@/components/hills/AreaPills.vue'
-import HeightRangePills from '@/components/hills/HeightRangePills.vue'
-import VicinityPills from '@/components/hills/VicinityPills.vue'
-import BagStatusPills from '@/components/user/BagStatusPills.vue'
-import HillCard from '@/components/hills/HillCard.vue'
-
 import calculateDistances from '@/mixins/calculateDistances.js'
 
 export default {
-  components: {
-    HillCard,
-    // BagCreateModal,
-    BagStatusPills,
-    AreaPills,
-    VicinityPills,
-    HeightRangePills,
-  },
   mixins: [calculateDistances],
   data() {
     return {

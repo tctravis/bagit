@@ -9,18 +9,14 @@
         <slot>Page title</slot>
       </h1>
       <div v-if="hillId" class="flex-shrink-0 ml-4">
-        <BagItButton :hill-id="hillId" :theme="theme" />
+        <UserBagItButton :hill-id="hillId" :theme="theme" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import BagItButton from '@/components/user/BagItButton.vue'
 export default {
-  components: {
-    BagItButton,
-  },
   props: {
     imgUrl: {
       type: String,

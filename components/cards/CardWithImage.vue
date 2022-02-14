@@ -24,7 +24,7 @@ export default {
           cardClasses.push('bg-black', 'text-white')
           break
         case 'dark':
-          cardClasses.push('bg-darkgrey', 'text-white')
+          cardClasses.push('bg-grey-dark', 'text-white')
           break
         default:
           cardClasses.push('bg-transparent', 'text-white')

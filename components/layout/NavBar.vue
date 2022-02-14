@@ -1,10 +1,10 @@
 <template>
-  <div class="h-16 bg-darkdarkgrey text-white fixed left-0 right-0 top-0 z-50">
+  <div class="h-16 bg-grey-darkest text-white fixed left-0 right-0 top-0 z-50">
     <div class="h-16 px-2 md:px-6 flex flex-row items-center justify-between">
       <nuxt-link class="text-lg font-bold uppercase flex items-center" to="/"
         ><FellBaggrLogo class="fill-eastern mr-1 h-6" />Fell baggr</nuxt-link
       >
-      <TotalBaggedBadge v-if="currentUserId" class="ml-4 md:ml-6" />
+      <UserBadgesTotalBaggedBadge v-if="currentUserId" class="ml-4 md:ml-6" />
       <transition
         enter-class="opacity-0"
         enter-active-class="ease-out transition-medium"
@@ -32,7 +32,7 @@
           navOpen ? 'transform translate-x-0' : 'transform translate-x-105'
         "
       >
-        <BaseClose class="h-16 bg-darkgrey px-4" @click="toggleMenu" />
+        <BaseClose class="h-16 bg-grey-dark px-4" @click="toggleMenu" />
         <nav
           class="flex flex-col divide-y md:divide-y-0 md:flex-row md:items-center"
         >
@@ -77,11 +77,10 @@
 import { mapState, mapActions } from 'vuex'
 
 import FellBaggrLogo from '~/assets/icons/backpack.svg?inline'
-import TotalBaggedBadge from '@/components/user/badges/TotalBaggedBadge.vue'
+
 export default {
   components: {
     FellBaggrLogo,
-    TotalBaggedBadge,
   },
   data() {
     return {

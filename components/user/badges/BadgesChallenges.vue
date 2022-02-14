@@ -1,28 +1,28 @@
 <template>
   <div>
-    <Badge
+    <WidgetsBadge
       :icon-class="hasBagged([1, 10]) ? 'text-southern' : 'text-grey'"
-      :label-class="hasBagged([1, 10]) ? 'text-darkgrey' : 'text-grey'"
+      :label-class="hasBagged([1, 10]) ? 'text-color-body' : 'text-grey'"
       :badge-icon="['fa', 'ribbon']"
-      >10 highest fells bagged</Badge
+      >10 highest fells bagged</WidgetsBadge
     >
-    <Badge
+    <WidgetsBadge
       :icon-class="mostBagsInADay >= 5 ? 'text-southern' : 'text-grey'"
-      :label-class="mostBagsInADay >= 5 ? 'text-darkgrey' : 'text-grey'"
+      :label-class="mostBagsInADay >= 5 ? 'text-color-body' : 'text-grey'"
       :badge-icon="['fa', 'ribbon']"
-      >5 bags in a day</Badge
+      >5 bags in a day</WidgetsBadge
     >
-    <Badge
+    <WidgetsBadge
       :icon-class="mostBagsInADay >= 10 ? 'text-southern' : 'text-grey'"
-      :label-class="mostBagsInADay >= 10 ? 'text-darkgrey' : 'text-grey'"
+      :label-class="mostBagsInADay >= 10 ? 'text-color-body' : 'text-grey'"
       :badge-icon="['fa', 'ribbon']"
-      >10 bags in a day</Badge
+      >10 bags in a day</WidgetsBadge
     >
-    <Badge
+    <WidgetsBadge
       :icon-class="bagsInEachArea ? 'text-southern' : 'text-grey'"
-      :label-class="bagsInEachArea ? 'text-darkgrey' : 'text-grey'"
+      :label-class="bagsInEachArea ? 'text-color-body' : 'text-grey'"
       :badge-icon="['fa', 'ribbon']"
-      >At least 1 bag in each area</Badge
+      >At least 1 bag in each area</WidgetsBadge
     >
   </div>
 </template>
@@ -30,12 +30,8 @@
 <script>
 import calcMode from '@/utils/calcMode.js'
 import { mapGetters, mapState } from 'vuex'
-import Badge from '@/components/widgets/Badge.vue'
 
 export default {
-  components: {
-    Badge,
-  },
   data() {
     return {}
   },

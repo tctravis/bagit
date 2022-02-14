@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper>
+  <LayoutPageWrapper>
     <template #header>
       <BasePageTitle><template #title>Your profile</template></BasePageTitle>
     </template>
@@ -54,7 +54,7 @@
         </div>
       </div>
     </template>
-  </PageWrapper>
+  </LayoutPageWrapper>
 </template>
 
 <script>

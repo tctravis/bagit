@@ -32,8 +32,8 @@ export default {
   methods: {
     iconColor(n) {
       return n <= this.rating
-        ? theme.colors[this.areaClassName].default
-        : theme.colors.grey.default
+        ? theme.colors[this.areaClassName].DEFAULT
+        : theme.colors.grey.DEFAULT
     },
   },
 }

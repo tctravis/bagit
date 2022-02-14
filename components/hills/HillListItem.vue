@@ -5,7 +5,7 @@
       :class="hasBagged ? 'opacity-50' : ''"
       @click="toggleDetails"
     >
-      <AreaIcon :hill="hill" />
+      <HillsAreaIcon :hill="hill" />
       <h3 class="text-lg text-left mx-2">{{ hill.name }}</h3>
 
       <div class="ml-auto">
@@ -28,7 +28,7 @@
       </div>
     </div>
     <div v-if="detailsExpanded">
-      <HillDetails
+      <HillsHillDetails
         :hill="hill"
         :hills-bagged="hillsBagged"
         :distance="distance"
@@ -40,14 +40,8 @@
 
 <script>
 import { mapState } from 'vuex'
-import AreaIcon from '@/components/hills/AreaIcon.vue'
-import HillDetails from '@/components/hills/HillDetails.vue'
 
 export default {
-  components: {
-    AreaIcon,
-    HillDetails,
-  },
   props: {
     hill: {
       type: Object,

@@ -1,11 +1,11 @@
 /* eslint-disable */
 body {
-  @apply h-screen bg-darkgrey;
+  @apply h-screen bg-grey-dark;
 }
 
 
 .form-section {
-  @apply rounded bg-lightgrey p-2;
+  @apply rounded bg-grey-light p-2;
 }
 
 .form-section-buttons {
@@ -24,7 +24,7 @@ body {
 }
 
 .button {
-  @apply py-1 px-4 rounded flex flex-row whitespace-no-wrap shadow;
+  @apply py-1 px-4 rounded flex flex-row whitespace-nowrap shadow;
   &:disabled {
     @apply opacity-50;
   }
@@ -36,7 +36,7 @@ body {
 
 @screen md {
   .collapseNav {
-    @apply top-auto right-auto w-auto h-auto bg-darkgrey relative ml-auto translate-x-0 shadow-none;
+    @apply top-auto right-auto w-auto h-auto bg-grey-dark relative ml-auto translate-x-0 shadow-none;
   }
 }
 
@@ -74,13 +74,13 @@ body {
 }
 
 .bg-theme-eastern {
-  @apply bg-eastern text-black;
+  @apply bg-eastern text-color-body;
 }
 .bg-theme-northern {
   @apply bg-northern text-white;
 }
 .bg-theme-northwestern {
-  @apply bg-northwestern text-black;
+  @apply bg-northwestern text-color-body;
 }
 .bg-theme-southern {
   @apply bg-southern text-white;
@@ -98,17 +98,14 @@ body {
   @apply bg-black text-white;
 }
 .bg-theme-darkgrey {
-  @apply bg-darkgrey text-white;
+  @apply bg-grey-dark text-white;
 }
 .bg-theme-grey {
-  @apply bg-grey text-black;
+  @apply bg-grey text-color-body;
 }
 .bg-theme-midgrey {
-  @apply bg-midgrey text-white;
+  @apply bg-grey text-white;
 }
 .bg-theme-white {
-  @apply bg-white text-darkgrey;
-}
-.bg-theme-primary {
-  @apply bg-primary text-white;
+  @apply bg-white text-color-body;
 }

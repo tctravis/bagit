@@ -21,16 +21,16 @@ export default {
       const btnClasses = []
       switch (this.theme) {
         case 'northwestern':
-          btnClasses.push('bg-northwestern', 'text-darkgrey')
+          btnClasses.push('bg-northwestern', 'text-color-body')
           break
         case 'eastern':
-          btnClasses.push('bg-eastern', 'text-darkgrey')
+          btnClasses.push('bg-eastern', 'text-color-body')
           break
         case 'southern':
-          btnClasses.push('bg-southern', 'text-darkgrey')
+          btnClasses.push('bg-southern', 'text-color-body')
           break
         default:
-          btnClasses.push('bg-darkgrey', 'text-white')
+          btnClasses.push('bg-grey-dark', 'text-white')
       }
       return btnClasses.join(' ')
     },

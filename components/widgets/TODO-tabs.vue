@@ -18,7 +18,7 @@
         <font-awesome-icon
           v-if="filterTabs.selectedTab === 0"
           :icon="['fa', 'times']"
-          class="text-darkgrey ml-auto"
+          class="text-color-body ml-auto"
         />
       </h3>
       <h3
@@ -35,7 +35,7 @@
         <font-awesome-icon
           v-if="filterTabs.selectedTab === 1"
           :icon="['fa', 'times']"
-          class="text-darkgrey ml-auto"
+          class="text-color-body ml-auto"
         />
       </h3>
     </div>
@@ -53,19 +53,19 @@
       <div class="flex flex-row flex-wrap">
         <BasePill
           :is-active="hillList.filters.bagged === 'all'"
-          class="bg-darkgrey text-white mb-2 mr-2"
+          class="bg-grey-dark text-white mb-2 mr-2"
           @click="filterByBagged('all')"
           >All</BasePill
         >
         <BasePill
           :is-active="hillList.filters.bagged === 'bagged'"
-          class="bg-darkgrey text-white mb-2 mr-2"
+          class="bg-grey-dark text-white mb-2 mr-2"
           @click="filterByBagged('bagged')"
           >Bagged</BasePill
         >
         <BasePill
           :is-active="hillList.filters.bagged === 'unbagged'"
-          class="bg-darkgrey text-white mb-2 mr-2"
+          class="bg-grey-dark text-white mb-2 mr-2"
           @click="filterByBagged('unbagged')"
           >Not bagged</BasePill
         >
@@ -82,13 +82,13 @@
       <div class="flex flex-row justify-end">
         <BasePill
           :is-active="hillList.sort === 'desc'"
-          class="bg-darkgrey text-white mr-2"
+          class="bg-grey-dark text-white mr-2"
           @click="sortByHeight('desc')"
           >High-Low</BasePill
         >
         <BasePill
           :is-active="hillList.sort === 'asc'"
-          class="bg-darkgrey text-white"
+          class="bg-grey-dark text-white"
           @click="sortByHeight('asc')"
           >Low-High</BasePill
         >

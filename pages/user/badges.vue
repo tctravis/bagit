@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper>
+  <LayoutPageWrapper>
     <template #header>
       <BasePageTitle><template #title>Badges</template></BasePageTitle>
     </template>
@@ -18,28 +18,23 @@
           <BaseTitle :level="2" :has-decoration="true"
             >Milestone Badges</BaseTitle
           >
-          <BadgesMilestones />
+          <UserBadgesBadgesMilestones />
         </div>
         <div class="col-span-12 sm:col-span-6">
           <BaseTitle :level="2" :has-decoration="true"
             >Challenge Awards</BaseTitle
           >
-          <BadgesChallenges />
+          <UserBadgesBadgesChallenges />
         </div>
       </div>
     </template>
-  </PageWrapper>
+  </LayoutPageWrapper>
 </template>
 
 <script>
 import { mapState, mapGetters } from 'vuex'
-import BadgesMilestones from '@/components/user/badges/BadgesMilestones.vue'
-import BadgesChallenges from '@/components/user/badges/BadgesChallenges.vue'
+
 export default {
-  components: {
-    BadgesMilestones,
-    BadgesChallenges,
-  },
   computed: {
     ...mapState({
       user: (state) => state.users.user,

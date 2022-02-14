@@ -40,14 +40,14 @@ export default {
   },
   computed: {
     enabledIconColor() {
-      return this.hasBagged ? 'midgrey' : this.areaClassName
+      return this.hasBagged ? 'grey' : this.areaClassName
     },
   },
   methods: {
     iconColor(n) {
       return n <= this.heightRating
-        ? theme.colors[this.enabledIconColor].default
-        : theme.colors.grey.default
+        ? theme.colors[this.enabledIconColor].DEFAULT
+        : theme.colors.grey.DEFAULT
     },
   },
 }

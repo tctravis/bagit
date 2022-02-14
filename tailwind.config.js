@@ -90,7 +90,7 @@ module.exports = {
     //   darkgrey: {
     //     DEFAULT: '#222222',
     //   },
-    //   darkdarkgrey: {
+    //   grey-darkest: {
     //     default: '#111111',
     //   },
     //   black: {

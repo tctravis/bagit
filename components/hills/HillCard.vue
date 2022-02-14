@@ -1,9 +1,9 @@
 <template>
-  <div class="bg-darkdarkgrey text-white rounded-md" :class="hillCardTheme">
+  <div class="bg-grey-darkest text-white rounded-md" :class="hillCardTheme">
     <div class="p-2 relative">
       <div
         v-if="hasBagged"
-        class="rounded-md bg-gradient-to-b from-darkdarkgrey to-darkgrey bg-opacity-75 absolute inset-0 flex items-center justify-center"
+        class="rounded-md bg-gradient-to-b from-grey-darkest to-darkgrey bg-opacity-75 absolute inset-0 flex items-center justify-center"
       />
 
       <div class="flex relative items-center mb-2">
@@ -18,20 +18,20 @@
             {{ hill.name }}
           </h2>
         </nuxt-link>
-        <AreaIcon class="ml-auto" :hill="hill" :has-bagged="hasBagged" />
+        <HillsAreaIcon class="ml-auto" :hill="hill" :has-bagged="hasBagged" />
       </div>
 
       <div v-if="hillDetails" class="flex justify-between items-align">
-        <HeightRating
+        <HillsHeightRating
           :height-rating="hill.heightRating"
           :area-class-name="hill.areaClassName"
           :height="hill.height_m"
           :show-height="hasBagged ? false : true"
           :has-bagged="hasBagged ? true : false"
           class="relative z-20"
-        ></HeightRating>
+        ></HillsHeightRating>
 
-        <BagItButton
+        <UserBagItButton
           v-if="currentUserId"
           :hill-id="hill.id"
           :theme="hill.areaClassName"
@@ -44,15 +44,8 @@
 
 <script>
 import { mapState } from 'vuex'
-import AreaIcon from '@/components/hills/AreaIcon.vue'
-import HeightRating from '@/components/hills/HeightRating.vue'
-import BagItButton from '@/components/user/BagItButton.vue'
+
 export default {
-  components: {
-    HeightRating,
-    AreaIcon,
-    BagItButton,
-  },
   props: {
     hill: {
       type: Object,

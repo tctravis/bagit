@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper>
+  <LayoutPageWrapper>
     <template #header>
       <BasePageTitle><template #title>Register</template></BasePageTitle>
     </template>
@@ -9,7 +9,7 @@
       }}</BaseFormFeedback>
       <CreateUser @create-user="register">Register</CreateUser>
     </template>
-  </PageWrapper>
+  </LayoutPageWrapper>
 </template>
 
 <script>

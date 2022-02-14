@@ -7,8 +7,8 @@
     <slot>Pill</slot>
     <span
       v-if="isActive"
-      class="ml-2 rounded-full h-6 w-6 flex items-center justify-center bg-white text-darkgrey text-center"
-      ><font-awesome-icon :icon="['fa', 'times']" class="text-darkgrey"
+      class="ml-2 rounded-full h-6 w-6 flex items-center justify-center bg-white text-color-body text-center"
+      ><font-awesome-icon :icon="['fa', 'times']" class="text-color-body"
     /></span>
   </button>
 </template>

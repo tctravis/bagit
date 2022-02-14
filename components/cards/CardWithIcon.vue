@@ -1,6 +1,6 @@
 <template>
   <div
-    class="rounded-lg px-4 py-4 bg-gradient-to-b from-darkdarkgrey to-black text-white flex flex-col"
+    class="rounded-lg px-4 py-4 bg-gradient-to-b from-grey-darkest to-black text-white flex flex-col"
   >
     <div class="flex gap-2 mb-4 items-start justify-between">
       <BaseTitle
@@ -36,10 +36,10 @@ export default {
           cardClasses.push('bg-black', 'text-white')
           break
         case 'darkgrey':
-          cardClasses.push('bg-darkgrey', 'text-white')
+          cardClasses.push('bg-grey-dark', 'text-white')
           break
         default:
-          cardClasses.push('bg-lightgrey', 'text-darkgrey')
+          cardClasses.push('bg-lightgrey', 'text-color-body')
       }
       return cardClasses.join(' ')
     },

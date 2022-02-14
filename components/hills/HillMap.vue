@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-darkdarkgrey text-white rounded-lg">
+  <div class="bg-grey-darkest text-white rounded-lg">
     <div class="flex flex-row items-center justify-between p-4">
       <h2>Hill Map</h2>
     </div>
@@ -112,23 +112,26 @@ export default {
       })
       var center = this.map.getCenter()
 
+      let pinColor = this.$utilities.getThemeColor(this.hill.areaClassName)
+
       //Create custom Pushpin
       let pin = new Microsoft.Maps.Pushpin(center, {
         title: this.hill.name,
         // icon: '/icons/mountain.svg',
         // text: this.hill.area,
         icon: '<svg width="23" height="20" viewBox="0 0 23 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_113_40)"><path d="M11.5 0L23.1913 20.25H-0.191345L11.5 0Z" fill="{color}"/><path d="M11.5 4L16.2631 12.25H6.73686L11.5 4Z" fill="white"/><path d="M9.5 10L14.2631 18.25H4.73686L9.5 10Z" fill="{color}"/></g><defs><clipPath id="clip0_113_40"><rect width="23" height="20" fill="white"/></clipPath></defs></svg>',
-        color: theme.colors[this.hill.areaClassName].default,
+        color: pinColor,
       })
       this.map.entities.push(pin)
 
       this.nearbyHills.forEach((hill) => {
+        let pinColor = this.$utilities.getThemeColor(hill.areaClassName)
         // let hillObj = hill.hill
         let hillLoc = new Microsoft.Maps.Location(hill.lat, hill.lng)
         let pin = new Microsoft.Maps.Pushpin(hillLoc, {
           title: hill.name,
           icon: '<svg width="23" height="20" viewBox="0 0 23 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_113_40)"><path d="M11.5 0L23.1913 20.25H-0.191345L11.5 0Z" fill="{color}"/><path d="M11.5 4L16.2631 12.25H6.73686L11.5 4Z" fill="white"/><path d="M9.5 10L14.2631 18.25H4.73686L9.5 10Z" fill="{color}"/></g><defs><clipPath id="clip0_113_40"><rect width="23" height="20" fill="white"/></clipPath></defs></svg>',
-          color: theme.colors[hill.areaClassName].default,
+          color: pinColor,
         })
         this.map.entities.push(pin)
 

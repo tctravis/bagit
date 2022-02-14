@@ -1,6 +1,6 @@
 <template>
   <div class="grid grid-cols-12 gap-4">
-    <HillCard
+    <HillsHillCard
       v-for="nearbyHill in nearbyHills"
       :key="nearbyHill.id"
       :hill="nearbyHill"
@@ -10,15 +10,10 @@
 </template>
 
 <script>
-//import calcDistance from '@/utils/calcDistance.js'
 import calculateDistances from '@/mixins/calculateDistances.js'
 import { mapState, mapGetters } from 'vuex'
-import HillCard from '@/components/hills/HillCard.vue'
-// import HillListItem from '@/components/hills/HillListItem.vue'
+
 export default {
-  components: {
-    HillCard,
-  },
   mixins: [calculateDistances],
   props: {
     hill: {

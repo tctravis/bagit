@@ -1,20 +1,16 @@
 <template>
   <div class="h-screen py-16">
-    <NavBar />
+    <LayoutNavBar />
     <Nuxt />
-    <Footer />
+    <LayoutFooter />
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import NavBar from '@/components/layout/NavBar'
 
 export default {
   transition: '',
-  components: {
-    NavBar,
-  },
   computed: {
     ...mapState({
       pageTitle: (state) => state.pages.page.title,

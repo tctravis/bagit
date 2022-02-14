@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper>
+  <LayoutPageWrapper>
     <template #header>
       <BasePageTitle><template #title>Reset password</template></BasePageTitle>
     </template>
@@ -32,7 +32,7 @@
         </div>
       </form>
     </template>
-  </PageWrapper>
+  </LayoutPageWrapper>
 </template>
 
 <script>

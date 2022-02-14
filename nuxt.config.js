@@ -46,14 +46,13 @@ export default {
     '@/assets/css/_theme.scss',
     '@/assets/css/_utilities.scss',
     '@/assets/css/_site.scss',
-    // '@/assets/css/partials/_icons.scss',
   ],
   /*
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
   plugins: [
-    // { src: '~/plugins/user.js', mode: 'client' },
+    { src: '~/plugins/utilities.js', mode: 'client' },
     { src: '~/plugins/filters.js', mode: 'client' },
     { src: '~/plugins/vuelidate.js', mode: 'client' },
     // '~/plugins/filters.js',

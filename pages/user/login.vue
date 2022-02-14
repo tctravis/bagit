@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper>
+  <LayoutPageWrapper>
     <template #header>
       <BasePageTitle><template #title>Log-in</template></BasePageTitle>
     </template>
@@ -49,7 +49,7 @@
         <BaseLink to="/user/register">Sign up for an account</BaseLink>
       </BaseInfoBar>
     </template>
-  </PageWrapper>
+  </LayoutPageWrapper>
 </template>
 
 <script>

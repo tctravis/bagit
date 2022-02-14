@@ -18,7 +18,7 @@
     <main class="bg-gradient-to-b from-darkgrey to-black">
       <div class="container py-4">
         <BaseCardGrid :max-cards-per-row="3">
-          <CardWithIcon theme="darkgrey-northwestern">
+          <CardsCardWithIcon theme="darkgrey-northwestern">
             <template #title>Find a fell to bag</template>
             <template #icon
               ><IconMountain class="h-6 mt-1 fill-northwestern"
@@ -32,8 +32,8 @@
                 >Find a fell</BaseLinkButton
               ></template
             >
-          </CardWithIcon>
-          <CardWithIcon theme="darkgrey-eastern">
+          </CardsCardWithIcon>
+          <CardsCardWithIcon theme="darkgrey-eastern">
             <template #title>Record your bags</template>
             <template #icon><IconBackpack class="fill-eastern" /></template>
             <template #text
@@ -44,8 +44,8 @@
                 >Create an account</BaseLinkButton
               ></template
             >
-          </CardWithIcon>
-          <CardWithIcon theme="darkgrey-southern">
+          </CardsCardWithIcon>
+          <CardsCardWithIcon theme="darkgrey-southern">
             <template #title>Track your progress</template>
             <template #icon
               ><IconChart
@@ -60,12 +60,12 @@
                 >Create an account</BaseLinkButton
               ></template
             >
-          </CardWithIcon>
+          </CardsCardWithIcon>
         </BaseCardGrid>
       </div>
       <div class="container py-4">
         <BaseCardGrid :max-cards-per-row="3">
-          <CardWithImage>
+          <CardsCardWithImage>
             <template #img>
               <BaseImg src="cairn.jpg" />
             </template>
@@ -75,8 +75,8 @@
               barren landscape feature, such as a mountain or moor-covered
               hill.</template
             >
-          </CardWithImage>
-          <CardWithImage>
+          </CardsCardWithImage>
+          <CardsCardWithImage>
             <template #img>
               <BaseImg src="cairn.jpg" />
             </template>
@@ -86,8 +86,8 @@
               climbers, and mountaineers attempt to reach a collection of
               summits, published in the form of a list.</template
             >
-          </CardWithImage>
-          <CardWithImage>
+          </CardsCardWithImage>
+          <CardsCardWithImage>
             <template #img>
               <BaseImg src="cairn.jpg" />
             </template>
@@ -98,7 +98,7 @@
               one of Alfred Wainwright's Pictorial Guides to the Lakeland
               Fells.</template
             >
-          </CardWithImage>
+          </CardsCardWithImage>
         </BaseCardGrid>
       </div>
     </main>

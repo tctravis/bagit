@@ -1,6 +1,6 @@
 <template>
   <nuxt-link
-    class="p-4 md:px-4 md:py-1 bg-eastern text-darkdarkgrey hover:bg-darkdarkgrey hover:text-white md:bg-darkdarkgrey md:text-white md:hover:bg-eastern md:hover:text-darkdarkgrey md:rounded flex flex-row items-center"
+    class="p-4 md:px-4 md:py-1 bg-eastern text-grey-darkest hover:bg-grey-darkest hover:text-white md:bg-grey-darkest md:text-white md:hover:bg-eastern md:hover:text-grey-darkest md:rounded flex flex-row items-center"
     :to="route"
     v-on="$listeners"
   >

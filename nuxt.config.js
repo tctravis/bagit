@@ -43,9 +43,10 @@ export default {
    ** Global CSS
    */
   css: [
+    '@/assets/css/_theme.scss',
     '@/assets/css/_utilities.scss',
     '@/assets/css/_site.scss',
-    '@/assets/css/partials/_icons.scss',
+    // '@/assets/css/partials/_icons.scss',
   ],
   /*
    ** Plugins to load before mounting the App

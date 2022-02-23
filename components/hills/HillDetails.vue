@@ -1,7 +1,7 @@
 <template>
-  <div class="flow bg-grey-darkest text-white rounded-md p-4">
+  <div class="bg-grey-darkest text-white rounded-md flow p-2">
     <!-- <h3 class="sr-only">Statistics</h3> -->
-    <div class="flex flex-row justify-between items-center mb-2">
+    <div class="flex flex-row justify-between items-center">
       <HillsHeightRating
         :height-rating="hill.heightRating"
         :area-class-name="hill.areaClassName"
@@ -10,11 +10,11 @@
       />
       <HillsAreaIcon :hill="hill" />
     </div>
-    <div class="flex flex-col lg:flex-row lg:justify-between lg:items-center">
+    <div class="flex gap-2 flex-wrap justify-between items-center">
       <span>OS ref: {{ hill.os_grid_ref }}</span>
       <span>OS map: {{ hill.os_map }}</span>
     </div>
-    <div class="flex flex-col lg:flex-row lg:justify-between lg:items-center">
+    <div class="flex gap-2 flex-wrap justify-between items-center">
       <!-- <p>Prominence: {{ hill.prom_m }}m</p> -->
       <UserBagItButton
         class="ml-auto"

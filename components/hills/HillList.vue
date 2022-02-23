@@ -1,7 +1,10 @@
 <template>
   <div>
     <div class="grid grid-cols-12 gap-4">
-      <div class="col-span-12 md:col-span-4 flow" style="--flow-space: 0.5rem">
+      <div
+        class="col-span-12 md:col-span-5 lg:col-span-4 flow"
+        style="--flow-space: 0.5rem"
+      >
         <BaseInfoBar class="col-span-12">
           <h2 class="uppercase font-bold text-lg mb-2 sr-only">Search</h2>
           <BaseInput
@@ -95,7 +98,7 @@
         </BaseInfoBarCollapsible> -->
       </div>
 
-      <div class="flow col-span-12 md:col-span-8">
+      <div class="flow col-span-12 md:col-span-7 lg:col-span-8">
         <!-- <div class="sm:flex flex-row flex-wrap items-center justify-between">
           <p class="sm:mb-0 text-white">
             Total matches: {{ totalFilteredHills }}

@@ -1,42 +1,46 @@
 :root {
-    --grey-darkest: #1f2d3d;
-    --grey-dark: #3c4858;
-    --grey: #c0ccda;
-    --grey-light: #e0e6ed;
-    --grey-lightest: #f9fafc;
+    // https://tailwindcss.com/docs/customizing-colors
+    --grey-darkest: #171717;
+    --grey-darker:#262626;
+    --grey-dark: #404040;
+    --grey: #737373;
+    --grey-light: #d4d4d4;
+    --grey-lighter: #e5e5e5;
+    --grey-lightest: #f5f5f5;
 
-    --far-eastern-light: #DA0808;
-    --far-eastern: #DA0808;
-    --far-eastern-dark: #DA0808;
-    --far-eastern-contrast: var(--grey-darkest);
+    //https://maketintsandshades.com
+    --fareastern-light: #de2121;
+    --fareastern: #DA0808;
+    --fareastern-dark: #c40707;
+    --fareastern-contrast: var(--grey-lightest);
 
-    --eastern-light: #82C606;
+    --eastern-light: #8fcc1f;
     --eastern: #82C606;
-    --eastern-dark: #82C606;
+    --eastern-dark: #75b205;
     --eastern-contrast: var(--grey-darkest);
 
-    --central-light: #0888DC;
+    --central-light: #2194e0;
     --central: #0888DC;
-    --central-dark: #0888DC;
+    --central-dark: #077ac6;
     --central-contrast: var(--grey-darkest);
 
-    --southern-light: #F56C0A;
+    --southern-light: #f67b23;
     --southern: #F56C0A;
-    --southern-dark: #F56C0A;
+    --southern-dark: #dd6109;
     --southern-contrast: var(--grey-darkest);
 
-    --northern-light: #9D2C19;
+    --northern-light: #a74130;
     --northern: #9D2C19;
-    --northern-dark: #9D2C19;
-    --northern-contrast: var(--grey-darkest);
+    --northern-dark: #8d2817;
+    --northern-contrast: var(--grey-lightest);
 
-    --northwestern-light: #F5D201;
+    --northwestern-light: #f6d71a;
     --northwestern: #F5D201;
-    --northwestern-dark: #F5D201;
+    --northwestern-dark: #ddbd01;
     --northwestern-contrast: var(--grey-darkest);
 
-    --western-light: #099D0D;
+    --western-light: #22a725;
     --western: #099D0D;
-    --western-dark: #099D0D;
+    --western-dark: #088d0c;
     --western-contrast: var(--grey-darkest);
 }

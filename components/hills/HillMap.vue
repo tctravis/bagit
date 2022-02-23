@@ -19,14 +19,14 @@
       <BaseButton
         v-show="mapType === 'aerial'"
         class="ml-auto"
-        :button-class="`bg-${theme}`"
+        theme="grey-dark"
         @click="setMapType('ordnanceSurvey')"
         >Load OS map view</BaseButton
       >
       <BaseButton
         v-show="mapType === 'ordnanceSurvey'"
         class="ml-auto"
-        :button-class="`bg-${theme}`"
+        theme="grey-dark"
         @click="setMapType('aerial')"
         >Load aerial view</BaseButton
       >

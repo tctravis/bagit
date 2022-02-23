@@ -32,7 +32,10 @@
           navOpen ? 'transform translate-x-0' : 'transform translate-x-105'
         "
       >
-        <BaseClose class="h-16 bg-grey-dark px-4" @click="toggleMenu" />
+        <BaseClose
+          class="h-16 bg-grey-darker hover:bg-grey-darkest px-4"
+          @click="toggleMenu"
+        />
         <nav
           class="flex flex-col divide-y md:divide-y-0 md:flex-row md:items-center"
         >
@@ -122,3 +125,12 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.collapseNav {
+  @apply shadow-left top-0 right-0 w-64 bg-eastern font-bold fixed h-full overflow-auto ease-in-out transition-all duration-300 z-50;
+  @screen md {
+    @apply top-auto right-auto w-auto h-auto bg-grey-darkest relative ml-auto translate-x-0 shadow-none;
+  }
+}
+</style>

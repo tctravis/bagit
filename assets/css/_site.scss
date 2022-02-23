@@ -1,8 +1,10 @@
 /* eslint-disable */
 body {
-  @apply h-screen bg-grey-dark;
+  @apply h-screen bg-grey-darker text-white;
 }
-
+// .main {
+//   @apply bg-grey-darker;
+// }
 
 .form-section {
   @apply rounded bg-grey-light p-2;
@@ -27,16 +29,6 @@ body {
   @apply py-1 px-4 rounded flex flex-row whitespace-nowrap shadow;
   &:disabled {
     @apply opacity-50;
-  }
-}
-
-.collapseNav {
-  @apply shadow-left top-0 right-0 w-64 bg-eastern font-bold fixed h-full overflow-auto ease-in-out transition-all duration-300 z-50;
-}
-
-@screen md {
-  .collapseNav {
-    @apply top-auto right-auto w-auto h-auto bg-grey-dark relative ml-auto translate-x-0 shadow-none;
   }
 }
 
@@ -74,37 +66,40 @@ body {
 }
 
 .bg-theme-eastern {
-  @apply bg-eastern text-color-body;
+  @apply bg-eastern text-eastern-contrast;
 }
 .bg-theme-northern {
-  @apply bg-northern text-white;
+  @apply bg-northern text-northern-contrast;
 }
 .bg-theme-northwestern {
-  @apply bg-northwestern text-color-body;
+  @apply bg-northwestern text-northwestern-contrast;
 }
 .bg-theme-southern {
-  @apply bg-southern text-white;
+  @apply bg-southern text-southern-contrast;
 }
 .bg-theme-western {
-  @apply bg-western text-white;
+  @apply bg-western text-western-contrast;
 }
 .bg-theme-fareastern {
-  @apply bg-fareastern text-white;
+  @apply bg-fareastern text-fareastern-contrast;
 }
 .bg-theme-central {
-  @apply bg-central text-white;
+  @apply bg-central text-central-contrast;
 }
-.bg-theme-dark {
-  @apply bg-black text-white;
+.bg-theme-black {
+  @apply bg-black text-grey-lightest;
 }
-.bg-theme-darkgrey {
-  @apply bg-grey-dark text-white;
+.bg-theme-greydarkest {
+  @apply bg-grey-darkest text-grey-lightest;
+}
+.bg-theme-greydarker {
+  @apply bg-grey-darker text-grey-lightest;
+}
+.bg-theme-greydark {
+  @apply bg-grey-dark text-grey-lightest;
 }
 .bg-theme-grey {
   @apply bg-grey text-color-body;
-}
-.bg-theme-midgrey {
-  @apply bg-grey text-white;
 }
 .bg-theme-white {
   @apply bg-white text-color-body;

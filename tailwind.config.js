@@ -17,9 +17,11 @@ module.exports = {
       black: '#000000',
       grey: {
         darkest: 'var(--grey-darkest)',
+        darker: 'var(--grey-darker)',
         dark: 'var(--grey-dark)',
-        DEFAULT: 'var(--grey-lightest)',
+        DEFAULT: 'var(--grey)',
         light: 'var(--grey-light)',
+        lighter: 'var(--grey-lighter)',
         lightest: 'var(--grey-lightest)',
       },
       fareastern: {
@@ -68,7 +70,7 @@ module.exports = {
       success: 'green',
       // text colors
       color: {
-        body: '#222222',
+        body: 'var(--grey-darkest)',
       },
     },
     // colors: {
@@ -199,6 +201,8 @@ module.exports = {
         /-western$/,
         /-fareastern$/,
         /-central$/,
+        /-light$/,
+        /-dark$/,
       ],
     },
   },

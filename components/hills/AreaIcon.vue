@@ -1,7 +1,7 @@
 <template>
   <div
     :class="areaIconClass"
-    class="rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0"
+    class="rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-bold"
   >
     <span>{{ hill.area }}</span>
   </div>
@@ -23,7 +23,7 @@ export default {
     areaIconClass() {
       let themeClass = null
       if (this.hasBagged) {
-        themeClass = 'bg-grey'
+        themeClass = 'bg-theme-greydark'
       } else {
         let areaClassName = this.$options.filters.removeSpaces(
           this.hill.areaName

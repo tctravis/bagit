@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-black text-white">
+  <footer>
     <div class="container py-4">
       <div class="flex">
         <p class="ml-auto">&copy;2022 Toby Travis</p>

@@ -1,8 +1,5 @@
 <template>
-  <BaseButton
-    :button-class="buttonThemeClass"
-    :disabled="!currentUserId"
-    @click="bagIt"
+  <BaseButton :theme="theme" :disabled="!currentUserId" @click="bagIt"
     ><template v-if="!hasBagged">Bag it!</template
     ><template v-if="hasBagged">Unbag it!</template></BaseButton
   >
@@ -18,7 +15,7 @@ export default {
     },
     theme: {
       type: String,
-      default: 'primary',
+      default: 'grey',
     },
   },
   data() {
@@ -34,9 +31,9 @@ export default {
     hasBagged() {
       return this.hillsBagged.includes(this.hillId)
     },
-    buttonThemeClass() {
-      return this.hasBagged ? 'bg-theme-darkgrey' : `bg-theme-midgrey`
-    },
+    // buttonThemeClass() {
+    //   return this.hasBagged ? 'bg-theme-darkgrey' : `bg-theme-midgrey`
+    // },
   },
   methods: {
     bagIt() {

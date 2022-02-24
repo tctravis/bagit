@@ -26,7 +26,7 @@
               :disabled="$v.$invalid"
               type="submit"
               button-class="bg-southern"
-              >Reset password</BaseButton
+              ><template #text>Reset password</template></BaseButton
             >
           </div>
         </div>
@@ -72,7 +72,7 @@ export default {
           url: 'https://tender-stonebraker-214900.netlify.app/user/login',
           handleCodeInApp: false,
         }
-        return await this.$fireAuth.sendPasswordResetEmail(
+        return await this.$fire.auth.sendPasswordResetEmail(
           this.email,
           actionCodeSettings
         )

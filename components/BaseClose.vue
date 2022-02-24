@@ -1,15 +1,20 @@
 <template>
   <div
-    class="md:hidden flex flex-row justify-end items-center cursor-pointer"
+    class="md:hidden flex flex-row justify-end items-center cursor-pointer p-4"
     v-on="$listeners"
   >
     Close
-    <font-awesome-icon :icon="['fa', 'times']" :class="'ml-2 text-xl'" />
+    <CloseIcon class="stroke-eastern h-6 ml-4" />
   </div>
 </template>
 
 <script>
-export default {}
+import CloseIcon from '~/assets/icons/cross.svg?inline'
+export default {
+  components: {
+    CloseIcon,
+  },
+}
 </script>
 
 <style lang="scss" scoped></style>

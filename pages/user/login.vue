@@ -39,7 +39,7 @@
               :disabled="$v.$invalid"
               type="submit"
               button-class="bg-southern"
-              >Log In</BaseButton
+              ><template #text>Log In</template></BaseButton
             >
           </div>
         </div>

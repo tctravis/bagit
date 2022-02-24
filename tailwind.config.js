@@ -73,62 +73,6 @@ module.exports = {
         body: 'var(--grey-darkest)',
       },
     },
-    // colors: {
-    //   white: {
-    //     default: '#ffffff',
-    //   },
-    //   lightlightgrey: {
-    //     default: '#fafafa',
-    //   },
-    //   lightgrey: {
-    //     default: '#eeeeee',
-    //   },
-    //   midgrey: {
-    //     default: '#666',
-    //   },
-    //   grey: {
-    //     default: '#cccccc',
-    //   },
-    //   darkgrey: {
-    //     DEFAULT: '#222222',
-    //   },
-    //   grey-darkest: {
-    //     default: '#111111',
-    //   },
-    //   black: {
-    //     default: '#000000',
-    //   },
-    //   fareastern: {
-    //     default: '#DA0808',
-    //   },
-    //   eastern: {
-    //     default: '#82C606',
-    //   },
-    //   central: {
-    //     default: '#0888DC',
-    //   },
-    //   southern: {
-    //     default: '#F56C0A',
-    //   },
-    //   northern: {
-    //     default: '#9D2C19',
-    //   },
-    //   northwestern: {
-    //     default: '#F5D201',
-    //   },
-    //   western: {
-    //     default: '#099D0D',
-    //   },
-    //   primary: {
-    //     default: '#099D0D',
-    //   },
-    //   error: 'red',
-    //   success: 'green',
-    //   // text colors
-    //   color: {
-    //     body: '#222222',
-    //   },
-    // },
     screens: {
       xsm: '400px',
       sm: '640px',
@@ -176,6 +120,9 @@ module.exports = {
         '20rem': '20rem',
       },
       fill: (theme) => theme('colors'),
+      stroke: {
+        eastern: 'var(--eastern)',
+      },
     },
   },
   variants: {
@@ -193,17 +140,19 @@ module.exports = {
       'nuxt.config.js',
     ],
     options: {
-      whitelistPatterns: [
-        /-eastern$/,
-        /-northern$/,
-        /-northwestern$/,
-        /-southern$/,
-        /-western$/,
-        /-fareastern$/,
-        /-central$/,
-        /-light$/,
-        /-dark$/,
-      ],
+      safelist: {
+        standard: [
+          /-eastern$/,
+          /-northern$/,
+          /-northwestern$/,
+          /-southern$/,
+          /-western$/,
+          /-fareastern$/,
+          /-central$/,
+          /-light$/,
+          /-dark$/,
+        ],
+      },
     },
   },
 }

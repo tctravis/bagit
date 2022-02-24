@@ -100,7 +100,7 @@ export const actions = {
   }, userId) {
     if (state.user.email !== '' && state.currentUserId === userId) return
 
-    const userRef = this.$fireStore.collection('users').doc(userId)
+    const userRef = this.$fire.firestore.collection('users').doc(userId)
     let user = await userRef.get()
     commit('SET_USER', user.data())
 
@@ -172,10 +172,10 @@ export const actions = {
     }
 
     try {
-      const authUser = await this.$fireAuth.createUserWithEmailAndPassword(credentials.email, credentials.password)
+      const authUser = await this.$fire.auth.createUserWithEmailAndPassword(credentials.email, credentials.password)
 
       // also add user profile details to users firestore collection
-      const userRef = this.$fireStore.collection('users').doc(authUser.user.uid)
+      const userRef = this.$fire.firestore.collection('users').doc(authUser.user.uid)
       const addUserDetails = await userRef.set(newUser).catch(function (err) {
         return err
       })
@@ -213,7 +213,7 @@ export const actions = {
     state,
   }, credentials) {
     try {
-      return await this.$fireAuth.signInWithEmailAndPassword(credentials.email, credentials.password)
+      return await this.$fire.auth.signInWithEmailAndPassword(credentials.email, credentials.password)
     } catch (err) {
       return err
     }
@@ -221,7 +221,7 @@ export const actions = {
   async signOut({
     dispatch
   }) {
-    await this.$fireAuth.signOut().catch(function (e) {
+    await this.$fire.auth.signOut().catch(function (e) {
       error({
         statusCode: e.code,
         message: e.message
@@ -234,8 +234,8 @@ export const actions = {
     commit
   }, user) {
     try {
-      const userRef = this.$fireStore.collection('users').doc(state.currentUserId)
-      // const userRef = this.$fireStore.collection('users').doc('gfsgsfgsf')
+      const userRef = this.$fire.firestore.collection('users').doc(state.currentUserId)
+      // const userRef = this.$fire.firestore.collection('users').doc('gfsgsfgsf')
       const userUpdate = await userRef.update(user)
 
       commit('UPDATE_PROFILE', user)
@@ -248,7 +248,7 @@ export const actions = {
     state,
     commit
   }, email) {
-    const currentUser = this.$fireAuth.currentUser;
+    const currentUser = this.$fire.auth.currentUser;
     try {
       const updateEmailRef = await currentUser.updateEmail(email)
       commit('UPDATE_EMAIL', email)
@@ -294,7 +294,7 @@ export const actions = {
       if (alreadyBagged) {
         throw 'prebagged'
       }
-      const userBagsRef = this.$fireStore.collection('users').doc(state.currentUserId).collection('bags')
+      const userBagsRef = this.$fire.firestore.collection('users').doc(state.currentUserId).collection('bags')
 
       return await userBagsRef.add(bag)
         .then(function (docRef) {
@@ -325,7 +325,7 @@ export const actions = {
       if (!alreadyBagged) {
         throw 'not bagged'
       }
-      const userRef = this.$fireStore.collection('users').doc(state.currentUserId).collection('bags')
+      const userRef = this.$fire.firestore.collection('users').doc(state.currentUserId).collection('bags')
       return await userRef.where('hill_id', '==', hillId).get().then(function (snapshot) {
         // https://stackoverflow.com/questions/47180076/how-to-delete-document-from-firestore-using-where-clause
         snapshot.forEach((doc) => {

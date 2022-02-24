@@ -25,7 +25,7 @@
       />
       <div class="flex flex-row justify-end pt-4">
         <BaseButton type="submit" button-class="bg-southern text-white"
-          ><slot>Update User</slot></BaseButton
+          ><template #text>Update User</template></BaseButton
         >
       </div>
     </form>

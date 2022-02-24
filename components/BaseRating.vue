@@ -5,7 +5,6 @@
       <font-awesome-icon
         v-for="n in ratingOutOf"
         :key="n"
-        :style="{ color: iconColor(n) }"
         :icon="['fa', 'star']"
       />
     </p>

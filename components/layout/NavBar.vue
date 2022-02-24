@@ -1,8 +1,10 @@
 <template>
   <div class="h-16 bg-grey-darkest text-white fixed left-0 right-0 top-0 z-50">
     <div class="h-16 px-2 md:px-6 flex flex-row items-center justify-between">
-      <nuxt-link class="text-lg font-bold uppercase flex items-center" to="/"
-        ><FellBaggrLogo class="fill-eastern mr-1 h-6" />Fell baggr</nuxt-link
+      <nuxt-link
+        class="text-lg font-bold uppercase flex gap-2 items-center"
+        to="/"
+        ><FellBaggrLogo class="fill-eastern h-8" />Fell baggr</nuxt-link
       >
       <UserBadgesTotalBaggedBadge v-if="currentUserId" class="ml-4 md:ml-6" />
       <transition
@@ -70,7 +72,7 @@
         >Logout</nuxt-link
       >
       <div class="md:hidden px-4 py-4 cursor-pointer" @click="toggleMenu">
-        <font-awesome-icon :icon="['fa', 'bars']" />
+        <MenuIcon class="stroke-eastern h-5" />
       </div>
     </div>
   </div>
@@ -80,10 +82,12 @@
 import { mapState, mapActions } from 'vuex'
 
 import FellBaggrLogo from '~/assets/icons/backpack.svg?inline'
+import MenuIcon from '~/assets/icons/menu.svg?inline'
 
 export default {
   components: {
     FellBaggrLogo,
+    MenuIcon,
   },
   data() {
     return {

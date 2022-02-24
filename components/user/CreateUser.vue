@@ -58,7 +58,7 @@
             :disabled="$v.$invalid"
             type="submit"
             button-class="bg-southern text-white"
-            ><slot>Update User</slot></BaseButton
+            ><template #text>Update User</template></BaseButton
           >
         </div>
       </div>

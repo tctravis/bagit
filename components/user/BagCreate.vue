@@ -29,7 +29,7 @@
             type="submit"
             button-class="bg-northwestern"
             :disabled="$v.$invalid"
-            >Bag It!</BaseButton
+            ><template #text>Bag It!</template></BaseButton
           >
         </div>
         <BaseValidationMessage v-if="error === 'prebagged'" message-type="error"

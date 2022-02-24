@@ -3,19 +3,18 @@
     <span>
       <slot></slot>
     </span>
-    <font-awesome-icon
-      v-for="n in 5"
-      :key="n"
-      :style="{ color: iconColor(n) }"
-      :icon="['fa', 'mountain']"
-    />
+    <IconMountain v-for="n in 5" :key="n" class="h-5" :class="iconClass(n)" />
     <span v-if="height && showHeight" class="ml-2">({{ height }}m)</span>
   </div>
 </template>
 
 <script>
-import { theme } from '~tailwind.config'
+import IconMountain from '~/assets/icons/mountain.svg?inline'
+
 export default {
+  components: {
+    IconMountain,
+  },
   props: {
     heightRating: {
       type: String,
@@ -39,17 +38,13 @@ export default {
     },
   },
   computed: {
-    enabledIconColor() {
-      return this.hasBagged
-        ? theme.colors.grey.DEFAULT
-        : theme.colors[this.areaClassName].DEFAULT
+    iconColor() {
+      return this.hasBagged ? 'fill-grey-light' : `fill-${this.areaClassName}`
     },
   },
   methods: {
-    iconColor(n) {
-      return n <= this.heightRating
-        ? this.enabledIconColor
-        : theme.colors.grey.dark
+    iconClass(n) {
+      return n <= this.heightRating ? this.iconColor : `fill-grey`
     },
   },
 }

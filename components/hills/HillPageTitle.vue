@@ -9,9 +9,10 @@
       :button-class="'bg-' + hill.areaClassName"
       :disabled="hasBagged"
       @click="bagThis"
-    >
-      <template v-if="!hasBagged">Bag it!</template>
-      <template v-if="hasBagged">Bagged already</template>
+      ><template #text>
+        <template v-if="!hasBagged">Bag it!</template>
+        <template v-if="hasBagged">Bagged already</template>
+      </template>
     </BaseButton>
   </div>
 </template>

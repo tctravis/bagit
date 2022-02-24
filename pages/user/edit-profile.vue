@@ -22,7 +22,7 @@
               />
               <div class="form-section-buttons">
                 <BaseButton type="submit" button-class="bg-southern text-white">
-                  <slot>Update Profile</slot>
+                  <template #text>Update Profile</template>
                 </BaseButton>
               </div>
             </form>
@@ -43,7 +43,7 @@
               />
               <div class="form-section-buttons">
                 <BaseButton type="submit" button-class="bg-southern text-white">
-                  <slot>Update email</slot>
+                  <template #text>Update email</template>
                 </BaseButton>
               </div>
             </form>

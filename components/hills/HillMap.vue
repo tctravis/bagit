@@ -9,7 +9,9 @@
     >
       <!-- <p>{{ loadingMessage }}</p> -->
       <template v-if="$nuxt.isOnline">
-        <BaseButton @click="loadMap">Load map</BaseButton>
+        <BaseButton @click="loadMap"
+          ><template #text>Load map</template></BaseButton
+        >
       </template>
       <template v-else>
         <p>You need an internet connection to use the map</p>
@@ -21,14 +23,14 @@
         class="ml-auto"
         theme="grey-dark"
         @click="setMapType('ordnanceSurvey')"
-        >Load OS map view</BaseButton
+        ><template #text>Load OS map view</template></BaseButton
       >
       <BaseButton
         v-show="mapType === 'ordnanceSurvey'"
         class="ml-auto"
         theme="grey-dark"
         @click="setMapType('aerial')"
-        >Load aerial view</BaseButton
+        ><template #text>Load aerial view</template></BaseButton
       >
     </div>
   </div>
@@ -38,7 +40,6 @@
 // see https://markus.oberlehner.net/blog/using-the-google-maps-api-with-vue/
 import { bingMapsInit } from '@/plugins/bing-maps.js'
 
-import { theme } from '~tailwind.config'
 import { mapState } from 'vuex'
 import calculateDistances from '@/mixins/calculateDistances.js'
 

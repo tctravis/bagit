@@ -1,13 +1,11 @@
 <template>
   <button
-    class="py-1 px-4 rounded flex flex-row whitespace-nowrap shadow disabled:opacity-50 font-bold transition-colors"
+    class="py-1 px-4 rounded flex gap-2 flex-row whitespace-nowrap shadow disabled:opacity-50 font-bold transition-colors"
     :class="buttonClasses"
     v-on="$listeners"
   >
-    <slot />
-    <div v-if="faIconClass">
-      <font-awesome-icon :icon="['fa', faIconClass]" class="ml-2" />
-    </div>
+    <slot name="text" />
+    <slot name="icon" />
   </button>
 </template>
 
@@ -19,11 +17,7 @@ export default {
       type: String,
       default: null,
     },
-    // buttonClass: {
-    //   type: String,
-    //   default: null,
-    // },
-    faIconClass: {
+    iconClass: {
       type: String,
       default: null,
     },
@@ -57,24 +51,5 @@ export default {
       return btnClasses.join(' ')
     },
   },
-  // computed: {
-  //   btnClasses() {
-  //     const btnClasses = []
-  //     switch (this.theme) {
-  //       case 'northwestern':
-  //         btnClasses.push('bg-northwestern', 'text-color-body')
-  //         break
-  //       case 'eastern':
-  //         btnClasses.push('bg-eastern', 'text-color-body')
-  //         break
-  //       case 'southern':
-  //         btnClasses.push('bg-southern', 'text-color-body')
-  //         break
-  //       default:
-  //         btnClasses.push('bg-grey-dark', 'text-white')
-  //     }
-  //     return btnClasses.join(' ')
-  //   },
-  // },
 }
 </script>

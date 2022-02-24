@@ -155,7 +155,7 @@
         <template v-else>
           <p class="mb-2">Sorry, there are no results for your search</p>
           <BaseButton button-class="bg-southern" @click="clearSearch()"
-            >Start a new search</BaseButton
+            ><template #text>Start a new search</template></BaseButton
           >
         </template>
       </div>

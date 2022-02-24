@@ -1,6 +1,6 @@
 <template>
   <WidgetsBadge
-    icon-class="text-eastern"
+    icon-class="fill-eastern"
     label-class="sr-only"
     :icon-text="totalBags.toString()"
     >Total bags</WidgetsBadge

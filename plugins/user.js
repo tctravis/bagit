@@ -1,18 +1,18 @@
 /* eslint-disable */
 export default function ({
-    $fireAuth,
+    $fire.auth,
     route,
     redirect,
     store
   }) {
     if (
-      $fireAuth.currentUser === null
+      $fire.auth.currentUser === null
     ) {
       if (
         route.name === 'user-edit-profile') {
         return redirect('/')
       }
     } else {
-      return store.dispatch('users/fetchUser', $fireAuth.currentUser.uid)
+      return store.dispatch('users/fetchUser', $fire.auth.currentUser.uid)
     }
   }

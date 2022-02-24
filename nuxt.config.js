@@ -71,6 +71,7 @@ export default {
     // '@nuxtjs/eslint-module',
     // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
     '@nuxtjs/tailwindcss',
+    // '@nuxtjs/fontawesome',
     '@nuxtjs/moment',
     '@nuxtjs/svg',
   ],
@@ -88,36 +89,36 @@ export default {
         regex: /^(\.\/.*)*Base[A-Z].+\.(vue|jsx?)$/,
       },
     ],
-    [
-      'nuxt-fontawesome',
-      {
-        imports: [
-          {
-            set: '@fortawesome/free-solid-svg-icons',
-            icons: [
-              'faMountain',
-              'faCheck',
-              'faShoePrints',
-              'faWindowClose',
-              'faChevronDown',
-              'faChevronRight',
-              'faChevronUp',
-              'faStar',
-              'faTimes',
-              'faQuestionCircle',
-              'faCertificate',
-              'faRibbon',
-              'faTrophy',
-              'faBars',
-              'faUser',
-              'faChartBar',
-              'faHiking',
-              'faShoppingBag',
-            ],
-          },
-        ],
-      },
-    ],
+    // [
+    //   'nuxt-fontawesome',
+    //   {
+    //     imports: [
+    //       {
+    //         set: '@fortawesome/free-solid-svg-icons',
+    //         icons: [
+    //           'faMountain',
+    //           'faCheck',
+    //           'faShoePrints',
+    //           'faWindowClose',
+    //           'faChevronDown',
+    //           'faChevronRight',
+    //           'faChevronUp',
+    //           'faStar',
+    //           'faTimes',
+    //           'faQuestionCircle',
+    //           'faCertificate',
+    //           'faRibbon',
+    //           'faTrophy',
+    //           'faBars',
+    //           'faUser',
+    //           'faChartBar',
+    //           'faHiking',
+    //           'faShoppingBag',
+    //         ],
+    //       },
+    //     ],
+    //   },
+    // ],
     'nuxt-webfontloader',
     [
       '@nuxtjs/firebase',
@@ -192,13 +193,13 @@ export default {
   // },
 
   // https://stackoverflow.com/questions/67827277/unable-to-build-nuxt-due-to-a-problem-with-postcss-when-using-bulma-and-buefy-n
-  build: {
-    postcss: {
-      plugins: {
-        'postcss-custom-properties': false,
-      },
-    },
-  },
+  // build: {
+  //   postcss: {
+  //     plugins: {
+  //       'postcss-custom-properties': false,
+  //     },
+  //   },
+  // },
 
   webfontloader: {
     google: {
@@ -233,4 +234,29 @@ export default {
   geolocation: {
     watch: true,
   },
+
+  // fontawesome: {
+  //   icons: {
+  //     solid: [
+  //       'faMountain',
+  //       'faCheck',
+  //       'faShoePrints',
+  //       'faWindowClose',
+  //       'faChevronDown',
+  //       'faChevronRight',
+  //       'faChevronUp',
+  //       'faStar',
+  //       'faTimes',
+  //       'faQuestionCircle',
+  //       'faCertificate',
+  //       'faRibbon',
+  //       'faTrophy',
+  //       'faBars',
+  //       'faUser',
+  //       'faChartBar',
+  //       'faHiking',
+  //       'faShoppingBag',
+  //     ],
+  //   },
+  // },
 }

@@ -1,7 +1,9 @@
 <template>
   <BaseButton :theme="theme" :disabled="!currentUserId" @click="bagIt"
-    ><template v-if="!hasBagged">Bag it!</template
-    ><template v-if="hasBagged">Unbag it!</template></BaseButton
+    ><template #text
+      ><template v-if="!hasBagged">Bag it!</template
+      ><template v-if="hasBagged">Unbag it!</template></template
+    ></BaseButton
   >
 </template>
 

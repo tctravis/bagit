@@ -36,7 +36,7 @@
               >Nearby Fells</BaseTitle
             >
             <BaseButton @click="loadMoreNearbyHills"
-              >Load more fells</BaseButton
+              ><template #text>Load more fells</template></BaseButton
             >
           </div>
 

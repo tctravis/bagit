@@ -8,11 +8,11 @@
         {{ feedback.message }}
       </BaseFormFeedback>
       <div class="grid grid-cols-12 gap-4">
-        <div class="col-span-12 sm:col-span-6">
+        <div class="col-span-12 sm:col-span-6 flow">
           <BaseTitle :level="2" :has-decoration="true" class="text-xl"
             >Profile details</BaseTitle
           >
-          <div class="form-section">
+          <BaseFormWrapper>
             <form @submit.prevent="updateProfile">
               <BaseInput
                 id="userName"
@@ -20,19 +20,18 @@
                 label="Username"
                 type="text"
               />
-              <div class="form-section-buttons">
-                <BaseButton type="submit" button-class="bg-southern text-white">
-                  <template #text>Update Profile</template>
-                </BaseButton>
-              </div>
+
+              <BaseButton type="submit" theme="eastern">
+                <template #text>Update Profile</template>
+              </BaseButton>
             </form>
-          </div>
+          </BaseFormWrapper>
         </div>
-        <div class="col-span-12 sm:col-span-6">
+        <div class="col-span-12 sm:col-span-6 flow">
           <BaseTitle :level="2" :has-decoration="true" class="text-xl"
             >Update login details</BaseTitle
           >
-          <div class="form-section">
+          <BaseFormWrapper>
             <form @submit.prevent="updateEmail">
               <BaseInput
                 id="email"
@@ -41,13 +40,12 @@
                 type="email"
                 :is-required="true"
               />
-              <div class="form-section-buttons">
-                <BaseButton type="submit" button-class="bg-southern text-white">
-                  <template #text>Update email</template>
-                </BaseButton>
-              </div>
+
+              <BaseButton type="submit" theme="eastern">
+                <template #text>Update email</template>
+              </BaseButton>
             </form>
-          </div>
+          </BaseFormWrapper>
           <div class="form-section text-right">
             <nuxt-link to="/user/password-reset">Reset password</nuxt-link>
           </div>

@@ -166,11 +166,13 @@ export default {
     ],
     'vue-geolocation-api/nuxt',
   ],
+
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
   axios: {},
+
   /*
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
@@ -188,6 +190,16 @@ export default {
   //     }
   //   },
   // },
+
+  // https://stackoverflow.com/questions/67827277/unable-to-build-nuxt-due-to-a-problem-with-postcss-when-using-bulma-and-buefy-n
+  build: {
+    postcss: {
+      plugins: {
+        'postcss-custom-properties': false,
+      },
+    },
+  },
+
   webfontloader: {
     google: {
       families: ['Bakbak One:400', 'Source Sans Pro:400,700'],
@@ -195,23 +207,29 @@ export default {
       // families: ['Bowlby One:400', 'Source Sans Pro:400,700'],
     },
   },
+
   loading: {
     color: 'black',
     throttle: 0,
   },
+
   generate: {
     fallback: true,
   },
+
   env: {
     currentUserId: process.env.CURRENT_USER_ID,
     bingMapsApiKey: process.env.BING_MAPS_API_KEY,
   },
+
   router: {
     middleware: ['hills', 'user'],
   },
+
   tailwindcss: {
     exposeConfig: true,
   },
+
   geolocation: {
     watch: true,
   },

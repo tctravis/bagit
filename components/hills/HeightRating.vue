@@ -3,7 +3,7 @@
     <span>
       <slot></slot>
     </span>
-    <IconMountain v-for="n in 5" :key="n" class="h-5" :class="iconClass(n)" />
+    <IconMountain v-for="n in 5" :key="n" class="h-4" :class="iconClass(n)" />
     <span v-if="height && showHeight" class="ml-2">({{ height }}m)</span>
   </div>
 </template>

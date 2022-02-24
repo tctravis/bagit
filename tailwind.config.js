@@ -152,6 +152,7 @@ module.exports = {
           /-central$/,
           /-light$/,
           /-dark$/,
+          /-contrast$/,
         ],
       },
     },

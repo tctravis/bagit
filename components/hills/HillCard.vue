@@ -4,7 +4,7 @@
     :class="hillCardTheme"
     style="--flow-space: 2rem"
   >
-    <div class="flex relative items-center">
+    <div class="flex gap-2 relative items-center">
       <nuxt-link
         :to="{ name: 'hills-id', params: { id: hill.id } }"
         class="flex relative items-center mb-2"
@@ -18,7 +18,7 @@
       </nuxt-link>
       <HillsAreaIcon class="ml-auto" :hill="hill" :has-bagged="hasBagged" />
     </div>
-    <div v-if="hillDetails" class="flex justify-between items-align">
+    <div v-if="hillDetails" class="flex gap-2 justify-between items-align">
       <HillsHeightRating
         :height-rating="hill.heightRating"
         :area-class-name="hill.areaClassName"

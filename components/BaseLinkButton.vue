@@ -1,5 +1,9 @@
 <template>
-  <nuxt-link :to="link" class="button font-bold" :class="btnClasses">
+  <nuxt-link
+    :to="link"
+    class="py-1 px-4 rounded flex gap-2 flex-row whitespace-nowrap shadow disabled:opacity-50 font-bold transition-colors"
+    :class="buttonClasses"
+  >
     <slot />
   </nuxt-link>
 </template>
@@ -17,20 +21,30 @@ export default {
     },
   },
   computed: {
-    btnClasses() {
+    buttonClasses() {
       const btnClasses = []
+      btnClasses.push(`bg-${this.theme}`)
       switch (this.theme) {
-        case 'northwestern':
-          btnClasses.push('bg-northwestern', 'text-color-body')
+        case 'grey-dark':
+          btnClasses.push(`hover:bg-grey-darker`, `text-grey-lightest`)
           break
-        case 'eastern':
-          btnClasses.push('bg-eastern', 'text-color-body')
+        case 'northern':
+          btnClasses.push(
+            `hover:bg-${this.theme}-dark`,
+            `text-${this.theme}-contrast`
+          )
           break
-        case 'southern':
-          btnClasses.push('bg-southern', 'text-color-body')
+        case 'fareastern':
+          btnClasses.push(
+            `hover:bg-${this.theme}-dark`,
+            `text-${this.theme}-contrast`
+          )
           break
         default:
-          btnClasses.push('bg-grey-dark', 'text-white')
+          btnClasses.push(
+            `hover:bg-${this.theme}-light`,
+            `text-${this.theme}-contrast`
+          )
       }
       return btnClasses.join(' ')
     },

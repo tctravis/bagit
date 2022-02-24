@@ -8,13 +8,17 @@
     <span
       v-if="isActive"
       class="ml-2 rounded-full h-6 w-6 flex items-center justify-center bg-white text-color-body text-center"
-      ><font-awesome-icon :icon="['fa', 'times']" class="text-color-body"
+      ><CloseIcon class="h-4 stroke-grey-darkest"
     /></span>
   </button>
 </template>
 
 <script>
+import CloseIcon from '~/assets/icons/cross.svg?inline'
 export default {
+  components: {
+    CloseIcon,
+  },
   props: {
     isActive: Boolean,
   },

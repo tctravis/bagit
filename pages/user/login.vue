@@ -4,50 +4,54 @@
       <BasePageTitle><template #title>Log-in</template></BasePageTitle>
     </template>
     <template #main>
-      <BaseFormFeedback v-if="feedback.message !== ''" :type="feedback.type">
-        {{ feedback.message }}
-      </BaseFormFeedback>
+      <div class="flow">
+        <BaseFormFeedback v-if="feedback.message !== ''" :type="feedback.type">
+          {{ feedback.message }}
+        </BaseFormFeedback>
 
-      <form @submit.prevent="login">
-        <div class="form-section">
-          <p class="text-error mb-4">* required</p>
-          <BaseInput
-            id="user-email"
-            v-model="email"
-            label="Email:"
-            type="text"
-            :is-required="true"
-            @blur="$v.email.$touch()"
-          />
-          <BaseValidationMessage v-if="$v.email.$error" message-type="error"
-            >Please enter your email</BaseValidationMessage
-          >
-          <BaseInput
-            id="user-password"
-            v-model="password"
-            label="Password:"
-            type="password"
-            :is-required="true"
-            @blur="$v.password.$touch()"
-          />
-          <BaseValidationMessage v-if="$v.password.$error" message-type="error"
-            >Please enter your password</BaseValidationMessage
-          >
-          <div class="flex flex-row justify-between pt-4">
-            <BaseLink to="/user/password-reset">Forgotten password?</BaseLink>
-            <BaseButton
-              :disabled="$v.$invalid"
-              type="submit"
-              button-class="bg-southern"
-              ><template #text>Log In</template></BaseButton
+        <BaseFormWrapper>
+          <form @submit.prevent="login">
+            <p>
+              Fields marked <span class="text-eastern">*</span> are required
+            </p>
+            <BaseInput
+              id="user-email"
+              v-model="email"
+              label="Email:"
+              type="text"
+              :is-required="true"
+              @blur="$v.email.$touch()"
+            />
+            <BaseValidationMessage v-if="$v.email.$error" message-type="error"
+              >Please enter your email</BaseValidationMessage
             >
-          </div>
-        </div>
-      </form>
-      <BaseInfoBar>
-        New user?
-        <BaseLink to="/user/register">Sign up for an account</BaseLink>
-      </BaseInfoBar>
+            <BaseInput
+              id="user-password"
+              v-model="password"
+              label="Password:"
+              type="password"
+              :is-required="true"
+              @blur="$v.password.$touch()"
+            />
+            <BaseValidationMessage
+              v-if="$v.password.$error"
+              message-type="error"
+              >Please enter your password</BaseValidationMessage
+            >
+            <div class="flex flex-row justify-between pt-4">
+              <BaseLink to="/user/password-reset">Forgotten password?</BaseLink>
+              <BaseButton :disabled="$v.$invalid" type="submit" theme="eastern"
+                ><template #text>Log In</template></BaseButton
+              >
+            </div>
+          </form>
+        </BaseFormWrapper>
+
+        <BaseInfoBar>
+          New user?
+          <BaseLink to="/user/register">Sign up for an account</BaseLink>
+        </BaseInfoBar>
+      </div>
     </template>
   </LayoutPageWrapper>
 </template>

@@ -35,9 +35,9 @@
               :custom-classes="['text-white']"
               >Nearby Fells</BaseTitle
             >
-            <BaseButton @click="loadMoreNearbyHills"
+            <!-- <BaseButton @click="loadMoreNearbyHills"
               ><template #text>Load more fells</template></BaseButton
-            >
+            > -->
           </div>
 
           <HillsNearbyHillsList :hill="hill" :limit="nearbyHillsLimit" />

@@ -1,7 +1,5 @@
 <template>
-  <nuxt-link class="underline text-southern" :to="to"
-    ><slot>Link text</slot></nuxt-link
-  >
+  <nuxt-link class="underline" :to="to"><slot>Link text</slot></nuxt-link>
 </template>
 
 <script>

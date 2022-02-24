@@ -5,7 +5,9 @@
   > -->
   <div :class="'bg-theme-' + theme" class="flex items-center bg-cover">
     <div class="container py-4 flex items-center justify-between">
-      <h1 class="uppercase text-2xl md:text-3xl lg:text-4xl font-bold">
+      <h1
+        class="uppercase text-2xl md:text-3xl lg:text-4xl font-bold text-color-body"
+      >
         <slot>Page title</slot>
       </h1>
       <div v-if="hillId" class="flex-shrink-0 ml-4">

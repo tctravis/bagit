@@ -59,17 +59,19 @@
           >
         </nav>
       </div>
-      <nuxt-link
+      <BaseLinkButton
         v-if="!currentUserId"
-        to="/user/login"
+        theme="grey-dark"
+        link="/user/login"
         class="ml-auto md:ml-4 bg-theme-midgrey button"
-        >Login</nuxt-link
-      ><nuxt-link
+        >Login</BaseLinkButton
+      ><BaseLinkButton
         v-if="currentUserId"
-        to="/user/login"
+        theme="grey-dark"
+        link="/user/login"
         class="ml-auto md:ml-4 bg-theme-midgrey button"
         @click.native="signOut"
-        >Logout</nuxt-link
+        >Logout</BaseLinkButton
       >
       <div class="md:hidden px-4 py-4 cursor-pointer" @click="toggleMenu">
         <MenuIcon class="stroke-eastern h-5" />

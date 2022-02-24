@@ -122,6 +122,7 @@ module.exports = {
       fill: (theme) => theme('colors'),
       stroke: {
         eastern: 'var(--eastern)',
+        'grey-darkest': 'var(--grey-darkest)',
       },
     },
   },

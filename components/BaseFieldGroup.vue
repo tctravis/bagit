@@ -6,7 +6,7 @@
       class="flex-shrink-0"
       :class="labelAbove ? 'block mb-2' : 'mr-2'"
       >{{ label
-      }}<span v-if="isRequired" class="text-error ml-1">*</span></label
+      }}<span v-if="isRequired" class="text-eastern ml-1">*</span></label
     >
     <slot name="field" />
   </div>
